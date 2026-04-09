@@ -1,0 +1,23 @@
+# Game data — never commit
+raw/
+*.pak
+
+# Python
+__pycache__/
+*.pyc
+venv/
+.venv/
+
+# OS junk
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor
+.vscode/
+.idea/
+*.swp
+
+# Local notes / scratch
+notes.txt
+TODO.md
