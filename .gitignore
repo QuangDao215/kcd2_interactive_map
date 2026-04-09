@@ -21,3 +21,10 @@ desktop.ini
 # Local notes / scratch
 notes.txt
 TODO.md
+
+
+@"
+icons/*
+icons/items/*
+!icons/items/
+"@ | Add-Content .gitignore
