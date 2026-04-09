@@ -860,11 +860,17 @@ const CATEGORY_GROUPS = [
 // ═══════════════════════════════════════════════
 // ██ CUSTOM CRS FOR TILE LAYERS
 // ═══════════════════════════════════════════════
+// ██ CUSTOM CRS FOR TILE LAYERS
+// ═══════════════════════════════════════════════
+// Transformation (1, 0, -1, mapHeight): flips lat so positive lat goes UP
+// (matching default L.CRS.Simple convention) but offsets by mapHeight so all
+// pixel y values stay non-negative within the image bounds. This preserves
+// the existing marker code (`L.marker([y, x])`) without flipping visuals.
 // At z = max_zoom, scale = 1 (1 latlng unit = 1 source pixel).
 // At z = 0, scale = 1/2^max_zoom (whole map fits in one 256px tile).
-// This makes existing marker code (`L.marker([y, x])`) work unchanged.
-function makeMapCRS(maxZoom) {
+function makeMapCRS(maxZoom, mapHeight) {
   return L.extend({}, L.CRS.Simple, {
+    transformation: new L.Transformation(1, 0, -1, mapHeight),
     scale: function (zoom) {
       return Math.pow(2, zoom - maxZoom);
     },
@@ -952,7 +958,7 @@ async function loadRegion(region) {
 
   // Create new map with region-specific CRS
   map = L.map('map', {
-    crs: makeMapCRS(maxZoom),
+    crs: makeMapCRS(maxZoom, mapH),
     minZoom: 0,
     maxZoom: maxZoom,
     zoomSnap: 0.25,
@@ -963,8 +969,10 @@ async function loadRegion(region) {
 
   // Bounds in image pixel coordinates
   const bounds = [[0, 0], [mapH, mapW]];
-  const pad = 500;
-  map.setMaxBounds([[-pad, -pad], [mapH + pad, mapW + pad]]);
+  const pad = 200;
+  // Pad south/east/west but NOT north — north padding would produce
+  // negative pixel y with our transformation.
+  map.setMaxBounds([[-pad, -pad], [mapH, mapW + pad]]);
 
   // Tile layer instead of image overlay
   imageOverlay = L.tileLayer(regionCfg.tilesUrl, {
