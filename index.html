@@ -1,0 +1,1923 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KCD2 Interactive Map — Kingdom Come: Deliverance II</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"/>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Source+Sans+3:wght@300;400;500;600&display=swap');
+
+  :root {
+    --bg-dark: #1a1714;
+    --bg-panel: #23201b;
+    --bg-hover: #2e2a24;
+    --bg-active: #3a342c;
+    --border: #3d3630;
+    --border-light: #554d43;
+    --text-primary: #e8dcc8;
+    --text-secondary: #a89b88;
+    --text-muted: #746a5c;
+    --accent: #c9a84c;
+    --accent-hover: #ddb94f;
+    --accent-dim: #a08535;
+    --danger: #b34444;
+    --success: #5a9e4b;
+    --scrollbar-thumb: #4a4238;
+    --scrollbar-track: #1a1714;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Source Sans 3', -apple-system, sans-serif;
+    background: var(--bg-dark);
+    color: var(--text-primary);
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+  }
+
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--scrollbar-track); }
+  ::-webkit-scrollbar-thumb { background: var(--scrollbar-thumb); border-radius: 3px; }
+  ::-webkit-scrollbar-thumb:hover { background: var(--border-light); }
+
+  /* ── Sidebar ── */
+  #sidebar {
+    width: 300px;
+    min-width: 300px;
+    height: 100vh;
+    background: var(--bg-panel);
+    border-right: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    z-index: 1000;
+    transition: margin-left 0.3s ease;
+  }
+  #sidebar.collapsed { margin-left: -300px; }
+
+  .sidebar-header {
+    padding: 16px 18px;
+    border-bottom: 1px solid var(--border);
+    flex-shrink: 0;
+  }
+  .sidebar-header h1 {
+    font-family: 'Cinzel', serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--accent);
+    letter-spacing: 1px;
+  }
+  .sidebar-header .subtitle {
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-top: 2px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+
+  /* ── Region Switcher ── */
+  .region-switcher {
+    display: flex;
+    padding: 12px 18px;
+    gap: 8px;
+    border-bottom: 1px solid var(--border);
+    flex-shrink: 0;
+  }
+  .region-btn {
+    flex: 1;
+    padding: 8px 12px;
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    color: var(--text-secondary);
+    font-family: 'Cinzel', serif;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    letter-spacing: 0.5px;
+  }
+  .region-btn:hover { border-color: var(--border-light); color: var(--text-primary); }
+  .region-btn.active {
+    background: var(--accent-dim);
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  /* ── Sidebar Tabs ── */
+  .sidebar-tabs {
+    display: flex;
+    border-bottom: 1px solid var(--border);
+    flex-shrink: 0;
+  }
+  .sidebar-tab {
+    flex: 1;
+    padding: 10px 8px;
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid transparent;
+    color: var(--text-muted);
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .sidebar-tab:hover { color: var(--text-secondary); }
+  .sidebar-tab.active {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+  }
+
+  /* ── Tab Content ── */
+  .tab-content { display: none; flex: 1; overflow-y: auto; }
+  .tab-content.active { display: flex; flex-direction: column; }
+
+  /* ── Category List ── */
+  .category-controls {
+    padding: 10px 18px 6px;
+    display: flex;
+    gap: 8px;
+    flex-shrink: 0;
+  }
+  .cat-ctrl-btn {
+    padding: 4px 10px;
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    color: var(--text-muted);
+    font-size: 11px;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .cat-ctrl-btn:hover { color: var(--text-secondary); border-color: var(--border-light); }
+
+  .category-list { padding: 6px 12px; flex: 1; overflow-y: auto; }
+
+  /* ── Category Groups ── */
+  .cat-group { margin-bottom: 2px; }
+  .cat-group-header {
+    display: flex;
+    align-items: center;
+    padding: 7px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.15s;
+    gap: 6px;
+    user-select: none;
+  }
+  .cat-group-header:hover { background: var(--bg-hover); }
+  .cat-group-header .group-arrow {
+    font-size: 10px;
+    color: var(--text-muted);
+    width: 14px;
+    text-align: center;
+    flex-shrink: 0;
+    transition: transform 0.2s;
+  }
+  .cat-group-header.expanded .group-arrow { transform: rotate(90deg); }
+  .cat-group-header .group-name {
+    font-family: 'Cinzel', serif;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--accent);
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    flex: 1;
+  }
+  .cat-group-header .group-count {
+    font-size: 11px;
+    color: var(--text-muted);
+    min-width: 24px;
+    text-align: right;
+  }
+  .cat-group-header .group-toggle-all {
+    padding: 1px 6px;
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    color: var(--text-muted);
+    font-size: 10px;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .cat-group-header .group-toggle-all:hover {
+    color: var(--text-secondary);
+    border-color: var(--border-light);
+  }
+  .cat-group-children { display: none; padding-left: 8px; }
+  .cat-group-children.expanded { display: block; }
+
+  .category-item {
+    display: flex;
+    align-items: center;
+    padding: 6px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.15s;
+    gap: 8px;
+    user-select: none;
+  }
+  .category-item:hover { background: var(--bg-hover); }
+  .category-item .cat-icon {
+    width: 22px;
+    text-align: center;
+    font-size: 14px;
+    flex-shrink: 0;
+  }
+  .category-item .cat-name {
+    font-size: 13px;
+    color: var(--text-primary);
+    flex: 1;
+  }
+  .category-item .cat-count {
+    font-size: 11px;
+    color: var(--text-muted);
+    min-width: 20px;
+    text-align: right;
+  }
+  .category-item .cat-toggle {
+    width: 14px; height: 14px;
+    border: 1.5px solid var(--border-light);
+    border-radius: 3px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.15s;
+  }
+  .category-item.active .cat-toggle {
+    background: var(--accent);
+    border-color: var(--accent);
+  }
+  .category-item.active .cat-toggle::after {
+    content: '✓';
+    font-size: 10px;
+    color: var(--bg-dark);
+    font-weight: 700;
+  }
+
+  /* ── Search ── */
+  .search-box {
+    padding: 10px 18px;
+    border-bottom: 1px solid var(--border);
+    flex-shrink: 0;
+  }
+  .search-input {
+    width: 100%;
+    padding: 8px 12px;
+    background: var(--bg-dark);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    color: var(--text-primary);
+    font-size: 13px;
+    font-family: inherit;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .search-input::placeholder { color: var(--text-muted); }
+  .search-input:focus { border-color: var(--accent-dim); }
+
+  /* ── My Markers Tab ── */
+  .my-markers-list { padding: 8px 12px; flex: 1; overflow-y: auto; }
+  .my-marker-item {
+    display: flex;
+    align-items: center;
+    padding: 8px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.15s;
+    gap: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+  .my-marker-item:last-child { border-bottom: none; }
+  .my-marker-item:hover { background: var(--bg-hover); }
+  .my-marker-item .mm-icon { font-size: 14px; flex-shrink: 0; }
+  .my-marker-item .mm-info { flex: 1; min-width: 0; }
+  .my-marker-item .mm-name { font-size: 13px; font-weight: 500; }
+  .my-marker-item .mm-coords { font-size: 11px; color: var(--text-muted); }
+  .my-marker-item .mm-delete {
+    padding: 2px 6px;
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-size: 14px;
+    border-radius: 3px;
+    transition: all 0.15s;
+  }
+  .my-marker-item .mm-delete:hover { color: var(--danger); background: rgba(179,68,68,0.15); }
+
+  .no-markers {
+    padding: 24px 18px;
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 13px;
+    line-height: 1.6;
+  }
+
+  /* ── Tools Tab ── */
+  .tools-section { padding: 16px 18px; }
+  .tools-section h3 {
+    font-family: 'Cinzel', serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--accent);
+    margin-bottom: 10px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+  .tool-btn {
+    display: block;
+    width: 100%;
+    padding: 10px 14px;
+    margin-bottom: 8px;
+    background: var(--bg-dark);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    color: var(--text-primary);
+    font-size: 13px;
+    font-family: inherit;
+    cursor: pointer;
+    text-align: left;
+    transition: all 0.15s;
+  }
+  .tool-btn:hover { border-color: var(--border-light); background: var(--bg-hover); }
+  .tool-btn.danger { border-color: rgba(179,68,68,0.3); }
+  .tool-btn.danger:hover { border-color: var(--danger); background: rgba(179,68,68,0.1); }
+  .tool-desc { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
+
+  /* ── Map ── */
+  #map-container { flex: 1; position: relative; }
+  #map { width: 100%; height: 100%; background: var(--bg-dark); }
+
+  .leaflet-container { background: var(--bg-dark) !important; }
+  .leaflet-control-zoom a {
+    background: var(--bg-panel) !important;
+    color: var(--text-primary) !important;
+    border-color: var(--border) !important;
+  }
+  .leaflet-control-zoom a:hover { background: var(--bg-hover) !important; }
+
+  /* ── Toggle Button ── */
+  #toggle-sidebar {
+    position: absolute;
+    left: 0;
+    top: 80px;
+    z-index: 1001;
+    padding: 8px 10px;
+    background: var(--bg-panel);
+    border: 1px solid var(--border);
+    border-left: none;
+    border-radius: 0 4px 4px 0;
+    color: var(--text-secondary);
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.2s;
+  }
+  #toggle-sidebar:hover { background: var(--bg-hover); color: var(--text-primary); }
+
+  /* ── Coordinates Display ── */
+  #coords-display {
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+    z-index: 1001;
+    padding: 4px 10px;
+    background: rgba(26,23,20,0.85);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    font-size: 12px;
+    color: var(--text-secondary);
+    font-family: 'Source Sans 3', monospace;
+    pointer-events: none;
+  }
+
+  /* ── Custom Popup Styles ── */
+  .leaflet-popup-content-wrapper {
+    background: var(--bg-panel) !important;
+    border: 1px solid var(--border) !important;
+    border-radius: 6px !important;
+    color: var(--text-primary) !important;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.5) !important;
+  }
+  .leaflet-popup-tip { background: var(--bg-panel) !important; border: 1px solid var(--border) !important; }
+  .leaflet-popup-close-button { color: var(--text-muted) !important; }
+  .leaflet-popup-close-button:hover { color: var(--text-primary) !important; }
+
+  .popup-title {
+    font-family: 'Cinzel', serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--accent);
+    margin-bottom: 4px;
+  }
+  .popup-category { font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; }
+  .popup-desc { font-size: 13px; color: var(--text-secondary); line-height: 1.5; }
+  .popup-coords { font-size: 11px; color: var(--text-muted); margin-top: 6px; font-family: monospace; }
+
+  /* ── Progress Tracking Button ── */
+  .popup-progress-btn {
+    display: block;
+    width: 100%;
+    margin-top: 8px;
+    padding: 6px 12px;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    font-size: 12px;
+    font-family: inherit;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.15s;
+    text-align: center;
+    background: transparent;
+    color: var(--text-secondary);
+  }
+  .popup-progress-btn:hover { border-color: var(--border-light); background: var(--bg-hover); }
+  .popup-progress-btn.completed {
+    background: rgba(90,158,75,0.15);
+    border-color: var(--success);
+    color: var(--success);
+  }
+  .popup-progress-btn.completed:hover {
+    background: rgba(90,158,75,0.25);
+  }
+
+  /* ── Marker Add Form (popup) ── */
+  .marker-form { min-width: 220px; }
+  .marker-form h3 {
+    font-family: 'Cinzel', serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--accent);
+    margin-bottom: 10px;
+  }
+  .marker-form label { display: block; font-size: 12px; color: var(--text-muted); margin-bottom: 3px; margin-top: 8px; }
+  .marker-form input, .marker-form textarea, .marker-form select {
+    width: 100%;
+    padding: 6px 10px;
+    background: var(--bg-dark);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    color: var(--text-primary);
+    font-size: 13px;
+    font-family: inherit;
+    outline: none;
+  }
+  .marker-form textarea { resize: vertical; min-height: 50px; }
+  .marker-form select option { background: var(--bg-dark); color: var(--text-primary); }
+  .marker-form .form-actions { display: flex; gap: 8px; margin-top: 12px; }
+  .marker-form .btn {
+    flex: 1;
+    padding: 7px 12px;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    font-size: 12px;
+    font-family: inherit;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.15s;
+  }
+  .marker-form .btn-save { background: var(--accent-dim); border-color: var(--accent); color: var(--bg-dark); }
+  .marker-form .btn-save:hover { background: var(--accent); }
+  .marker-form .btn-cancel { background: transparent; color: var(--text-secondary); }
+  .marker-form .btn-cancel:hover { background: var(--bg-hover); }
+
+  /* ── Custom Marker Icons ── */
+  .custom-marker-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    font-size: 14px;
+    border: 2px solid rgba(255,255,255,0.8);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+    cursor: pointer;
+    transition: transform 0.15s;
+  }
+  .custom-marker-icon:hover { transform: scale(1.15); }
+
+  /* ── Toast ── */
+  #toast {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    padding: 10px 20px;
+    background: var(--bg-panel);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    color: var(--text-primary);
+    font-size: 13px;
+    z-index: 9999;
+    transition: transform 0.3s ease;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+  }
+  #toast.show { transform: translateX(-50%) translateY(0); }
+
+  /* ── Modal ── */
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    z-index: 2000;
+    align-items: center;
+    justify-content: center;
+  }
+  .modal-overlay.show { display: flex; }
+  .modal {
+    background: var(--bg-panel);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 24px;
+    max-width: 500px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+  }
+  .modal h2 {
+    font-family: 'Cinzel', serif;
+    font-size: 16px;
+    color: var(--accent);
+    margin-bottom: 12px;
+  }
+  .modal textarea {
+    width: 100%;
+    min-height: 200px;
+    padding: 10px;
+    background: var(--bg-dark);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    color: var(--text-primary);
+    font-size: 12px;
+    font-family: monospace;
+    resize: vertical;
+    outline: none;
+  }
+  .modal .form-actions { display: flex; gap: 8px; margin-top: 14px; justify-content: flex-end; }
+  .modal .btn {
+    padding: 8px 16px;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    font-size: 13px;
+    font-family: inherit;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.15s;
+  }
+  .modal .btn-primary { background: var(--accent-dim); border-color: var(--accent); color: var(--bg-dark); }
+  .modal .btn-primary:hover { background: var(--accent); }
+  .modal .btn-secondary { background: transparent; color: var(--text-secondary); }
+  .modal .btn-secondary:hover { background: var(--bg-hover); }
+
+  /* ── Settlement Labels ── */
+  .settlement-label {
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: #e8d5a3;
+    text-shadow: 
+      -1px -1px 2px rgba(0,0,0,0.9),
+       1px -1px 2px rgba(0,0,0,0.9),
+      -1px  1px 2px rgba(0,0,0,0.9),
+       1px  1px 2px rgba(0,0,0,0.9),
+       0    0   6px rgba(0,0,0,0.7);
+    white-space: nowrap;
+    pointer-events: none;
+    letter-spacing: 0.5px;
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 768px) {
+    #sidebar { width: 260px; min-width: 260px; position: absolute; height: 100%; z-index: 1002; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Sidebar -->
+<div id="sidebar">
+  <div class="sidebar-header">
+    <h1>KCD2 Map</h1>
+    <div class="subtitle">Kingdom Come: Deliverance II</div>
+  </div>
+
+  <!-- Region Switcher -->
+  <div class="region-switcher">
+    <button class="region-btn active" data-region="trosky" onclick="switchRegion('trosky')">Trosky</button>
+    <button class="region-btn" data-region="kuttenberg" onclick="switchRegion('kuttenberg')">Kuttenberg</button>
+  </div>
+
+  <!-- Map Options -->
+  <div style="padding: 4px 18px 8px; font-size: 12px; color: var(--text-secondary);">
+    <label style="cursor:pointer; display:inline-flex; align-items:center; gap:5px;">
+      <input type="checkbox" id="toggle-labels" checked onchange="toggleSettlementLabels()" style="accent-color: var(--accent);">
+      Show settlement names
+    </label>
+  </div>
+
+  <!-- Tabs -->
+  <div class="sidebar-tabs">
+    <button class="sidebar-tab active" data-tab="markers" onclick="switchTab('markers')">Markers</button>
+    <button class="sidebar-tab" data-tab="my-markers" onclick="switchTab('my-markers')">My Markers</button>
+    <button class="sidebar-tab" data-tab="tools" onclick="switchTab('tools')">Tools</button>
+  </div>
+
+  <!-- Search -->
+  <div class="search-box">
+    <input type="text" class="search-input" id="search-input" placeholder="Search markers..." oninput="filterCategories(this.value)">
+  </div>
+
+  <!-- Markers Tab -->
+  <div class="tab-content active" id="tab-markers">
+    <div class="category-controls">
+      <button class="cat-ctrl-btn" onclick="toggleAllCategories(true)">Show All</button>
+      <button class="cat-ctrl-btn" onclick="toggleAllCategories(false)">Hide All</button>
+    </div>
+    <div class="category-list" id="category-list"></div>
+  </div>
+
+  <!-- My Markers Tab -->
+  <div class="tab-content" id="tab-my-markers">
+    <div class="my-markers-list" id="my-markers-list">
+      <div class="no-markers">Right-click on the map to add a custom marker.</div>
+    </div>
+  </div>
+
+  <!-- Tools Tab -->
+  <div class="tab-content" id="tab-tools">
+    <div class="tools-section">
+      <h3>Import / Export</h3>
+      <button class="tool-btn" onclick="exportMarkers()">
+        Export My Markers
+        <div class="tool-desc">Download your custom markers as JSON</div>
+      </button>
+      <button class="tool-btn" onclick="showImportModal()">
+        Import Markers
+        <div class="tool-desc">Load markers from a JSON file</div>
+      </button>
+      <button class="tool-btn" onclick="exportProgress()">
+        Export Progress
+        <div class="tool-desc">Download discovered/collected state as JSON</div>
+      </button>
+      <button class="tool-btn" onclick="showImportProgressModal()">
+        Import Progress
+        <div class="tool-desc">Load discovered/collected state from JSON</div>
+      </button>
+    </div>
+    <div class="tools-section">
+      <h3>Data Management</h3>
+      <button class="tool-btn danger" onclick="clearMyMarkers()">
+        Clear My Markers
+        <div class="tool-desc">Remove all custom markers (cannot undo)</div>
+      </button>
+      <button class="tool-btn danger" onclick="clearProgress()">
+        Clear Progress
+        <div class="tool-desc">Reset all discovered/collected markers (cannot undo)</div>
+      </button>
+    </div>
+    <div class="tools-section">
+      <h3>About</h3>
+      <p style="font-size:12px;color:var(--text-muted);line-height:1.6;">
+        KCD2 Interactive Map v1.0<br>
+        Built with Leaflet.js<br><br>
+        The Kingdom Come: Deliverance II logo, icons, and the map are copyright and property of
+        <a href="https://warhorsestudios.cz/" style="color:var(--accent);">Warhorse Studios</a>.
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- Map -->
+<div id="map-container">
+  <button id="toggle-sidebar" onclick="toggleSidebar()">☰</button>
+  <div id="map"></div>
+  <div id="coords-display">X: 0 &nbsp; Y: 0</div>
+</div>
+
+<!-- Toast -->
+<div id="toast"></div>
+
+<!-- Import Modal -->
+<div class="modal-overlay" id="import-modal">
+  <div class="modal">
+    <h2>Import Markers</h2>
+    <p style="font-size:13px;color:var(--text-secondary);margin-bottom:12px;">
+      Paste your JSON marker data below, or use the file picker.
+    </p>
+    <input type="file" id="import-file" accept=".json" style="margin-bottom:10px;font-size:13px;color:var(--text-secondary);" onchange="loadImportFile(event)">
+    <textarea id="import-data" placeholder='[{"name":"My Spot","x":3000,"y":2500,"category":"interesting_site","description":"Cool place"}]'></textarea>
+    <div class="form-actions">
+      <button class="btn btn-secondary" onclick="closeImportModal()">Cancel</button>
+      <button class="btn btn-primary" onclick="importMarkers()">Import</button>
+    </div>
+  </div>
+</div>
+
+<!-- Import Progress Modal -->
+<div class="modal-overlay" id="import-progress-modal">
+  <div class="modal">
+    <h2>Import Progress</h2>
+    <p style="font-size:13px;color:var(--text-secondary);margin-bottom:12px;">
+      Paste your progress JSON below, or use the file picker.
+    </p>
+    <input type="file" id="import-progress-file" accept=".json" style="margin-bottom:10px;font-size:13px;color:var(--text-secondary);" onchange="loadImportProgressFile(event)">
+    <textarea id="import-progress-data" placeholder='{"trosky":["category:x:y",...],"kuttenberg":[...]}'></textarea>
+    <div class="form-actions">
+      <button class="btn btn-secondary" onclick="closeImportProgressModal()">Cancel</button>
+      <button class="btn btn-primary" onclick="importProgress()">Import</button>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script src="data/markers_trosky.js"></script>
+<script src="data/markers_kuttenberg.js"></script>
+<script src="data/icon_map.js"></script>
+<script src="data/settlement_labels.js"></script>
+<script>
+// ═══════════════════════════════════════════════
+// ██ CONFIG
+// ═══════════════════════════════════════════════
+
+const CONFIG = {
+  // Per-region map dimensions and settings
+  regions: {
+    trosky: {
+      mapWidth: 6144,       // 3 cols × 2048
+      mapHeight: 6144,      // 3 rows × 2048
+      max_zoom: 5,          // tile pyramid max zoom (8192-canvas / 256)
+      tilesUrl: 'tiles/trosky/{z}/{x}/{y}.webp',
+      markers: 'data/markers_trosky.json',
+    },
+    kuttenberg: {
+      mapWidth: 12288,      // 6 cols × 2048
+      mapHeight: 10240,     // 5 rows × 2048
+      max_zoom: 6,          // tile pyramid max zoom (16384-canvas / 256)
+      tilesUrl: 'tiles/kuttenberg/{z}/{x}/{y}.webp',
+      markers: 'data/markers_kuttenberg.json',
+    },
+  },
+
+  // localStorage keys
+  storageKeys: {
+    userMarkers: 'kcd2_user_markers',
+    activeCategories: 'kcd2_active_categories',
+    lastRegion: 'kcd2_last_region',
+    discoveredMarkers: 'kcd2_discovered_markers',
+  }
+};
+
+
+// ═══════════════════════════════════════════════
+// ██ STATE
+// ═══════════════════════════════════════════════
+
+let map = null;
+let currentRegion = 'trosky';
+let imageOverlay = null;
+let categories = [];
+let activeCategories = new Set();
+let markerLayers = {};       // category_id -> L.layerGroup
+let markersByKey = {};       // markerKey -> L.marker (for opacity control)
+let userMarkerLayer = null;
+let settlementLabelLayer = null;  // text labels for settlement names
+let allMarkerData = {};      // region -> { categories, markers }
+let userMarkers = {};        // region -> [{ id, name, description, category, x, y }]
+let tempMarker = null;
+let nextUserMarkerId = 1;
+let collapsedGroups = {};    // group_name -> bool (collapsed state)
+let discoveredMarkers = {};  // region -> Set of marker keys
+
+// Categories that use "Collected" label (items); everything else uses "Discovered"
+const ITEM_CATEGORIES = new Set([
+  "loot_sword", "loot_polearm", "loot_heavy_weapon", "loot_bow", "loot_ammo",
+  "loot_shield", "loot_dagger", "loot_armour_body", "loot_armour_head",
+  "loot_armour_legs", "loot_armour_arms", "loot_armour_jewellery",
+  "loot_armour_belt", "loot_armour_pouch", "loot_potion", "loot_poison",
+  "loot_skill_book", "loot_recipe", "loot_lore_book", "loot_map", "loot_letter",
+  "loot_food", "loot_herb", "loot_blacksmithing", "loot_alchemy_mat",
+  "loot_usable", "loot_misc", "loot_utility", "loot_dice", "loot_badge",
+  "loot_tack", "loot_saddle", "loot_horseshoe", "loot_bridle",
+]);
+
+// ── Category Groups (sidebar organization) ──
+const CATEGORY_GROUPS = [
+  { name: "Armour", collapsed: true, categories: [
+    "loot_armour_arms", "loot_armour_belt", "loot_armour_body",
+    "loot_armour_head", "loot_armour_jewellery", "loot_armour_legs",
+    "loot_armour_pouch"
+  ]},
+  { name: "Books", collapsed: true, categories: [
+    "loot_letter", "loot_lore_book", "loot_map", "loot_recipe", "loot_skill_book"
+  ]},
+  { name: "Food", collapsed: true, categories: ["loot_food"] },
+  { name: "Materials", collapsed: true, categories: [
+    "loot_alchemy_mat", "loot_blacksmithing", "loot_herb"
+  ]},
+  { name: "NPCs", collapsed: false, categories: [
+    "apothecary", "armourer", "baker", "barber", "baths", "blacksmith",
+    "butchery", "cobbler", "fisherman", "grocer", "gunsmith", "herbalist",
+    "horse_trader", "huntsman", "miller", "saddler", "scribe", "shield_painter",
+    "skill_trainer", "tailor", "tanner", "tavern", "trader", "weaponsmith"
+  ]},
+  { name: "Poisons", collapsed: true, categories: ["loot_poison"] },
+  { name: "Potions", collapsed: true, categories: ["loot_potion"] },
+  { name: "Quests", collapsed: true, categories: [
+    "quest_main", "quest_side", "quest_task"
+  ]},
+  { name: "Tack", collapsed: true, categories: [
+    "loot_bridle", "loot_horseshoe", "loot_saddle", "loot_tack"
+  ]},
+  { name: "Weapons", collapsed: true, categories: [
+    "loot_ammo", "loot_bow", "loot_dagger", "loot_heavy_weapon",
+    "loot_polearm", "loot_shield", "loot_sword"
+  ]},
+  { name: "Points of Interest", collapsed: false, categories: [
+    "alchemy_bench", "archery_range", "bailiff", "bandit_camp", "beehive",
+    "camp", "cart_stash", "combat_arena", "conc_cross", "dice_table",
+    "dog", "drying_rack", "fast_travel", "fist_fight_arena", "grave", "home",
+    "hunting_spot", "hunting_boar", "hunting_deer", "hunting_wolf",
+    "indulgence_box", "interesting_site", "lodgings", "loot_badge",
+    "loot_dice", "loot_misc", "loot_usable", "loot_utility",
+    "lootable_corpse", "nest", "pillory", "player_bed", "selling_chest",
+    "sharpening_wheel", "shrine", "smokehouse", "underground", "washing",
+    "woodland_garden"
+  ]},
+];
+
+
+// ═══════════════════════════════════════════════
+// ██ INITIALIZATION
+// ═══════════════════════════════════════════════
+
+// ═══════════════════════════════════════════════
+// ██ CUSTOM CRS FOR TILE LAYERS
+// ═══════════════════════════════════════════════
+// At z = max_zoom, scale = 1 (1 latlng unit = 1 source pixel).
+// At z = 0, scale = 1/2^max_zoom (whole map fits in one 256px tile).
+// This makes existing marker code (`L.marker([y, x])`) work unchanged.
+function makeMapCRS(maxZoom) {
+  return L.extend({}, L.CRS.Simple, {
+    scale: function (zoom) {
+      return Math.pow(2, zoom - maxZoom);
+    },
+    zoom: function (scale) {
+      return Math.log(scale) / Math.LN2 + maxZoom;
+    },
+  });
+}
+
+
+async function init() {
+  // Restore state
+  currentRegion = localStorage.getItem(CONFIG.storageKeys.lastRegion) || 'trosky';
+  loadUserMarkersFromStorage();
+  loadActiveCategoriesFromStorage();
+  loadDiscoveredFromStorage();
+
+  // Set active region button
+  document.querySelectorAll('.region-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.region === currentRegion);
+  });
+
+  // Load region (creates the map)
+  await loadRegion(currentRegion);
+
+  // Restore from URL hash if present
+  restoreFromHash();
+}
+
+function attachMapEventHandlers() {
+  map.on('mousemove', onMouseMove);
+  map.on('contextmenu', onRightClick);
+  map.on('moveend', updateHash);
+}
+
+function onMouseMove(e) {
+  const x = Math.round(e.latlng.lng);
+  const y = Math.round(e.latlng.lat);
+  document.getElementById('coords-display').textContent = `X: ${x}  Y: ${y}`;
+}
+
+function restoreFromHash() {
+  const hash = window.location.hash;
+  if (!hash) return;
+  const match = hash.match(/#(\d+\.?\d*)\/(\d+\.?\d*)\/(\d+\.?\d*)/);
+  if (match) {
+    const zoom = parseFloat(match[1]);
+    const y = parseFloat(match[2]);
+    const x = parseFloat(match[3]);
+    map.setView([y, x], zoom);
+  }
+}
+
+function updateHash() {
+  if (window.location.protocol === 'file:') return;
+  const center = map.getCenter();
+  const zoom = map.getZoom();
+  const hash = `#${zoom.toFixed(2)}/${center.lat.toFixed(1)}/${center.lng.toFixed(1)}`;
+  history.replaceState(null, null, hash);
+}
+
+
+// ═══════════════════════════════════════════════
+// ██ REGION MANAGEMENT
+// ═══════════════════════════════════════════════
+
+async function loadRegion(region) {
+  const regionCfg = CONFIG.regions[region];
+  const mapW = regionCfg.mapWidth;
+  const mapH = regionCfg.mapHeight;
+  const maxZoom = regionCfg.max_zoom;
+
+  // Destroy existing map (CRS changes per region, so map must be recreated)
+  if (map) {
+    map.off();
+    map.remove();
+    map = null;
+  }
+
+  // Reset all layer state
+  imageOverlay = null;
+  markerLayers = {};
+  markersByKey = {};
+  settlementLabelLayer = null;
+
+  // Create new map with region-specific CRS
+  map = L.map('map', {
+    crs: makeMapCRS(maxZoom),
+    minZoom: 0,
+    maxZoom: maxZoom,
+    zoomSnap: 0.25,
+    zoomDelta: 0.5,
+    zoomControl: true,
+    attributionControl: false,
+  });
+
+  // Bounds in image pixel coordinates
+  const bounds = [[0, 0], [mapH, mapW]];
+  const pad = 500;
+  map.setMaxBounds([[-pad, -pad], [mapH + pad, mapW + pad]]);
+
+  // Tile layer instead of image overlay
+  imageOverlay = L.tileLayer(regionCfg.tilesUrl, {
+    tileSize: 256,
+    minZoom: 0,
+    maxZoom: maxZoom,
+    maxNativeZoom: maxZoom,
+    minNativeZoom: 0,
+    noWrap: true,
+    bounds: bounds,
+    attribution: '© Warhorse Studios',
+  }).addTo(map);
+
+  // Center on region
+  map.fitBounds(bounds);
+
+  // User marker layer
+  userMarkerLayer = L.layerGroup().addTo(map);
+
+  // Re-attach event handlers
+  attachMapEventHandlers();
+
+  // Load marker data
+  if (!allMarkerData[region]) {
+    let loaded = false;
+
+    // Only try fetch on http/https (file:// protocol blocks fetch via CORS)
+    if (window.location.protocol !== 'file:') {
+      try {
+        const resp = await fetch(regionCfg.markers);
+        if (!resp.ok) throw new Error(`HTTP ${resp.status}: ${resp.statusText}`);
+        allMarkerData[region] = await resp.json();
+        console.log(`[KCD2 Map] Loaded ${region} via fetch: ${allMarkerData[region].markers?.length || 0} markers`);
+        loaded = true;
+      } catch (e) {
+        console.warn(`[KCD2 Map] Fetch failed for ${region}, trying fallback...`);
+      }
+    }
+
+    // Fallback: use data loaded via <script> tags
+    if (!loaded) {
+      const fallbackKey = `MARKER_DATA_${region.toUpperCase()}`;
+      if (window[fallbackKey]) {
+        allMarkerData[region] = window[fallbackKey];
+        console.log(`[KCD2 Map] Loaded ${region} via embedded script: ${allMarkerData[region].markers?.length || 0} markers`);
+      } else {
+        console.error(`[KCD2 Map] No marker data found for ${region}`);
+        allMarkerData[region] = { categories: [], markers: [] };
+      }
+    }
+  }
+
+  // Merge categories (use trosky as the master list)
+  const regionData = allMarkerData[region];
+  if (regionData.categories && regionData.categories.length > 0) {
+    categories = regionData.categories;
+  }
+
+  // Ensure extra categories exist (not in marker JSON but needed for manual markers)
+  const EXTRA_CATEGORIES = [
+    { id: "barber", name: "Barber", icon: "💈", color: "#c9a84c" },
+    { id: "fist_fight_arena", name: "Fist Fight Arena", icon: "👊", color: "#c9a84c" },
+  ];
+  EXTRA_CATEGORIES.forEach(extra => {
+    if (!categories.find(c => c.id === extra.id)) {
+      categories.push(extra);
+    }
+  });
+
+  // Ensure every category referenced in CATEGORY_GROUPS is available for manual markers
+  CATEGORY_GROUPS.forEach(group => {
+    group.categories.forEach(catId => {
+      if (!categories.find(c => c.id === catId)) {
+        // Auto-generate a friendly name from the id
+        const name = catId.replace(/^loot_/, '').replace(/_/g, ' ')
+          .replace(/\b\w/g, l => l.toUpperCase());
+        categories.push({ id: catId, name, icon: "📦", color: "#c9a84c" });
+      }
+    });
+  });
+
+  // Initialize category layers
+  categories.forEach(cat => {
+    markerLayers[cat.id] = L.layerGroup();
+    if (activeCategories.has(cat.id)) {
+      markerLayers[cat.id].addTo(map);
+    }
+  });
+
+  // Add markers to layers
+  let markerCount = 0;
+  if (regionData.markers) {
+    regionData.markers.forEach(m => {
+      addPoiMarker(m);
+      markerCount++;
+    });
+  }
+  console.log(`[KCD2 Map] Region: ${region}, Categories: ${categories.length}, Markers loaded: ${markerCount}, Active layers: ${activeCategories.size}`);
+
+  // Render user markers
+  renderUserMarkersOnMap(region);
+
+  // Render settlement labels
+  renderSettlementLabels(region);
+
+  // Render sidebar
+  renderCategoryList();
+  renderMyMarkersList();
+}
+
+function switchRegion(region) {
+  if (region === currentRegion) return;
+  currentRegion = region;
+  localStorage.setItem(CONFIG.storageKeys.lastRegion, region);
+
+  document.querySelectorAll('.region-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.region === region);
+  });
+
+  loadRegion(region);
+}
+
+
+// ═══════════════════════════════════════════════
+// ██ MARKER CREATION
+// ═══════════════════════════════════════════════
+
+function createMarkerIcon(emoji, color, size = 28, categoryId = '') {
+  // Use extracted game icon if available — no circle background
+  const iconMap = window.ICON_MAP || {};
+  const iconPath = iconMap[categoryId];
+
+  if (iconPath) {
+    return L.divIcon({
+      className: '',
+      html: `<img src="${iconPath}" style="width:${size}px;height:${size}px;object-fit:contain;display:block;" alt="">`,
+      iconSize: [size, size],
+      iconAnchor: [size / 2, size / 2],
+      popupAnchor: [0, -size / 2],
+    });
+  }
+
+  // Fallback: emoji icon with circle
+  return L.divIcon({
+    className: '',
+    html: `<div class="custom-marker-icon" style="background:${color};width:${size}px;height:${size}px;font-size:${size * 0.5}px;">${emoji}</div>`,
+    iconSize: [size, size],
+    iconAnchor: [size / 2, size / 2],
+    popupAnchor: [0, -size / 2],
+  });
+}
+
+function addPoiMarker(markerData) {
+  const cat = categories.find(c => c.id === markerData.category);
+  if (!cat) {
+    console.warn(`[KCD2 Map] Skipped marker "${markerData.name}" — category "${markerData.category}" not found`);
+    return;
+  }
+
+  const icon = createMarkerIcon(cat.icon, cat.color, 28, cat.id);
+  const marker = L.marker([markerData.y, markerData.x], { icon });
+
+  const markerKey = getMarkerKey(markerData);
+  const isItem = ITEM_CATEGORIES.has(markerData.category);
+  const doneLabel = isItem ? '✓ Collected' : '✓ Discovered';
+  const undoneLabel = isItem ? '☐ Mark as Collected' : '☐ Mark as Discovered';
+  const btnId = `prog-${markerKey.replace(/[^a-zA-Z0-9]/g, '_')}`;
+
+  marker.on('popupopen', () => {
+    // Update button state when popup opens (discovered state may have changed)
+    const btn = document.getElementById(btnId);
+    if (btn) {
+      const discovered = isMarkerDiscovered(markerData);
+      btn.classList.toggle('completed', discovered);
+      btn.textContent = discovered ? doneLabel : undoneLabel;
+    }
+  });
+
+  const popupHtml = `
+    <div class="popup-title">${markerData.name}</div>
+    <div class="popup-category">${cat.name}</div>
+    ${markerData.description ? `<div class="popup-desc">${markerData.description}</div>` : ''}
+    <div class="popup-coords">X: ${markerData.x} &nbsp; Y: ${markerData.y}</div>
+    <button class="popup-progress-btn" id="${btnId}"
+      data-done-label="${doneLabel}" data-undone-label="${undoneLabel}"
+      onclick="toggleMarkerDiscovered('${markerKey}', '${btnId}')">${undoneLabel}</button>
+  `;
+  marker.bindPopup(popupHtml, { maxWidth: 280 });
+
+  // Store reference for opacity control
+  markersByKey[markerKey] = marker;
+
+  // Fade discovered markers
+  if (isMarkerDiscovered(markerData)) {
+    marker.setOpacity(0.5);
+  }
+
+  if (markerLayers[cat.id]) {
+    markerLayers[cat.id].addLayer(marker);
+  }
+}
+
+function addUserMarkerToMap(markerData) {
+  const cat = categories.find(c => c.id === markerData.category);
+  const icon = createMarkerIcon(
+    cat ? cat.icon : '📌',
+    cat ? cat.color : '#c9a84c',
+    26,
+    cat ? cat.id : ''
+  );
+
+  const marker = L.marker([markerData.y, markerData.x], { icon, draggable: true });
+
+  const markerKey = getMarkerKey(markerData);
+  const isItem = ITEM_CATEGORIES.has(markerData.category);
+  const doneLabel = isItem ? '✓ Collected' : '✓ Discovered';
+  const undoneLabel = isItem ? '☐ Mark as Collected' : '☐ Mark as Discovered';
+  const btnId = `prog-user-${markerKey.replace(/[^a-zA-Z0-9]/g, '_')}`;
+
+  marker.on('popupopen', () => {
+    const btn = document.getElementById(btnId);
+    if (btn) {
+      const discovered = isMarkerDiscovered(markerData);
+      btn.classList.toggle('completed', discovered);
+      btn.textContent = discovered ? doneLabel : undoneLabel;
+    }
+  });
+
+  const popupHtml = `
+    <div class="popup-title">${markerData.name || 'Custom Marker'}</div>
+    <div class="popup-category">${cat ? cat.name : 'Custom'} — User Marker</div>
+    ${markerData.description ? `<div class="popup-desc">${markerData.description}</div>` : ''}
+    <div class="popup-coords">X: ${markerData.x} &nbsp; Y: ${markerData.y}</div>
+    <button class="popup-progress-btn" id="${btnId}"
+      data-done-label="${doneLabel}" data-undone-label="${undoneLabel}"
+      onclick="toggleMarkerDiscovered('${markerKey}', '${btnId}')">${undoneLabel}</button>
+  `;
+  marker.bindPopup(popupHtml, { maxWidth: 280 });
+
+  // Store reference for opacity control
+  markersByKey[markerKey] = marker;
+
+  // Fade discovered markers
+  if (isMarkerDiscovered(markerData)) {
+    marker.setOpacity(0.5);
+  }
+
+  // Update position on drag
+  marker.on('dragend', function(e) {
+    const pos = e.target.getLatLng();
+    markerData.x = Math.round(pos.lng);
+    markerData.y = Math.round(pos.lat);
+    saveUserMarkersToStorage();
+    renderMyMarkersList();
+
+    // Update popup with new coords (keep discover button)
+    const newBtnId = `prog-user-${getMarkerKey(markerData).replace(/[^a-zA-Z0-9]/g, '_')}`;
+    const newPopup = `
+      <div class="popup-title">${markerData.name || 'Custom Marker'}</div>
+      <div class="popup-category">${cat ? cat.name : 'Custom'} — User Marker</div>
+      ${markerData.description ? `<div class="popup-desc">${markerData.description}</div>` : ''}
+      <div class="popup-coords">X: ${markerData.x} &nbsp; Y: ${markerData.y}</div>
+      <button class="popup-progress-btn" id="${newBtnId}"
+        data-done-label="${doneLabel}" data-undone-label="${undoneLabel}"
+        onclick="toggleMarkerDiscovered('${getMarkerKey(markerData)}', '${newBtnId}')">${undoneLabel}</button>
+    `;
+    marker.setPopupContent(newPopup);
+
+    // Update markersByKey with new key
+    delete markersByKey[markerKey];
+    markersByKey[getMarkerKey(markerData)] = marker;
+  });
+
+  marker._userMarkerId = markerData.id;
+  userMarkerLayer.addLayer(marker);
+}
+
+
+// ═══════════════════════════════════════════════
+// ██ CATEGORY MANAGEMENT
+// ═══════════════════════════════════════════════
+
+function renderCategoryList(filter = '') {
+  const list = document.getElementById('category-list');
+  const regionMarkers = allMarkerData[currentRegion]?.markers || [];
+  const filterLower = filter.toLowerCase();
+  const iconMap = window.ICON_MAP || {};
+
+  // Initialize collapsed state from defaults on first render
+  if (Object.keys(collapsedGroups).length === 0) {
+    CATEGORY_GROUPS.forEach(g => { collapsedGroups[g.name] = g.collapsed; });
+  }
+
+  // Build a set of all grouped category IDs
+  const groupedCatIds = new Set();
+  CATEGORY_GROUPS.forEach(g => g.categories.forEach(id => groupedCatIds.add(id)));
+
+  // Collect ungrouped categories (categories in data but not in any group)
+  const ungroupedCats = categories.filter(cat =>
+    !groupedCatIds.has(cat.id) &&
+    (!filter || cat.name.toLowerCase().includes(filterLower))
+  );
+
+  let html = '';
+
+  // Render each group
+  CATEGORY_GROUPS.forEach(group => {
+    // Get categories in this group that exist in current data
+    const groupCats = group.categories
+      .map(id => categories.find(c => c.id === id))
+      .filter(cat => cat && (!filter || cat.name.toLowerCase().includes(filterLower)));
+
+    if (groupCats.length === 0) return; // Skip empty groups
+
+    // Calculate group totals
+    const groupTotal = groupCats.reduce((sum, cat) =>
+      sum + regionMarkers.filter(m => m.category === cat.id).length, 0);
+    const groupActiveCount = groupCats.filter(cat => activeCategories.has(cat.id)).length;
+
+    const isExpanded = filter ? true : !collapsedGroups[group.name]; // Expand all when searching
+    const expandedClass = isExpanded ? 'expanded' : '';
+
+    html += `<div class="cat-group">`;
+    html += `<div class="cat-group-header ${expandedClass}" onclick="toggleGroup('${group.name}')">`;
+    html += `  <span class="group-arrow">▶</span>`;
+    html += `  <span class="group-name">${group.name}</span>`;
+    html += `  <span class="group-count">${groupTotal}</span>`;
+    html += `  <button class="group-toggle-all" onclick="event.stopPropagation();toggleGroupCategories('${group.name}', ${groupActiveCount < groupCats.length})">${groupActiveCount < groupCats.length ? '☐' : '☑'}</button>`;
+    html += `</div>`;
+    html += `<div class="cat-group-children ${expandedClass}">`;
+
+    groupCats.forEach(cat => {
+      const count = regionMarkers.filter(m => m.category === cat.id).length;
+      const active = activeCategories.has(cat.id);
+      const iconHtml = iconMap[cat.id]
+        ? `<img src="${iconMap[cat.id]}" style="width:20px;height:20px;object-fit:contain;" alt="">`
+        : cat.icon;
+      html += `
+        <div class="category-item ${active ? 'active' : ''}" onclick="toggleCategory('${cat.id}')">
+          <span class="cat-icon">${iconHtml}</span>
+          <span class="cat-name">${cat.name}</span>
+          <span class="cat-count">${count}</span>
+          <span class="cat-toggle"></span>
+        </div>`;
+    });
+
+    html += `</div></div>`;
+  });
+
+  // Render ungrouped categories at the bottom (if any)
+  if (ungroupedCats.length > 0) {
+    if (collapsedGroups['Other'] === undefined) collapsedGroups['Other'] = false;
+    const otherExpanded = filter ? true : !collapsedGroups['Other'];
+    const otherClass = otherExpanded ? 'expanded' : '';
+    const otherTotal = ungroupedCats.reduce((sum, cat) =>
+      sum + regionMarkers.filter(m => m.category === cat.id).length, 0);
+    const otherActiveCount = ungroupedCats.filter(cat => activeCategories.has(cat.id)).length;
+
+    html += `<div class="cat-group">`;
+    html += `<div class="cat-group-header ${otherClass}" onclick="toggleGroup('Other')">`;
+    html += `  <span class="group-arrow">▶</span>`;
+    html += `  <span class="group-name">Other</span>`;
+    html += `  <span class="group-count">${otherTotal}</span>`;
+    html += `  <button class="group-toggle-all" onclick="event.stopPropagation();toggleOtherCategories(${otherActiveCount < ungroupedCats.length})">${otherActiveCount < ungroupedCats.length ? '☐' : '☑'}</button>`;
+    html += `</div>`;
+    html += `<div class="cat-group-children ${otherClass}">`;
+    ungroupedCats.forEach(cat => {
+      const count = regionMarkers.filter(m => m.category === cat.id).length;
+      const active = activeCategories.has(cat.id);
+      const iconHtml = iconMap[cat.id]
+        ? `<img src="${iconMap[cat.id]}" style="width:20px;height:20px;object-fit:contain;" alt="">`
+        : cat.icon;
+      html += `
+        <div class="category-item ${active ? 'active' : ''}" onclick="toggleCategory('${cat.id}')">
+          <span class="cat-icon">${iconHtml}</span>
+          <span class="cat-name">${cat.name}</span>
+          <span class="cat-count">${count}</span>
+          <span class="cat-toggle"></span>
+        </div>`;
+    });
+    html += `</div></div>`;
+  }
+
+  list.innerHTML = html;
+}
+
+function toggleGroup(groupName) {
+  collapsedGroups[groupName] = !collapsedGroups[groupName];
+  renderCategoryList(document.getElementById('search-input').value);
+}
+
+function toggleGroupCategories(groupName, show) {
+  const group = CATEGORY_GROUPS.find(g => g.name === groupName);
+  if (!group) return;
+  group.categories.forEach(catId => {
+    if (show) {
+      activeCategories.add(catId);
+      if (markerLayers[catId]) map.addLayer(markerLayers[catId]);
+    } else {
+      activeCategories.delete(catId);
+      if (markerLayers[catId]) map.removeLayer(markerLayers[catId]);
+    }
+  });
+  saveActiveCategoriesFromStorage();
+  renderCategoryList(document.getElementById('search-input').value);
+}
+
+function toggleOtherCategories(show) {
+  const groupedCatIds = new Set();
+  CATEGORY_GROUPS.forEach(g => g.categories.forEach(id => groupedCatIds.add(id)));
+  categories.forEach(cat => {
+    if (groupedCatIds.has(cat.id)) return;
+    if (show) {
+      activeCategories.add(cat.id);
+      if (markerLayers[cat.id]) map.addLayer(markerLayers[cat.id]);
+    } else {
+      activeCategories.delete(cat.id);
+      if (markerLayers[cat.id]) map.removeLayer(markerLayers[cat.id]);
+    }
+  });
+  saveActiveCategoriesFromStorage();
+  renderCategoryList(document.getElementById('search-input').value);
+}
+
+function toggleCategory(catId) {
+  if (activeCategories.has(catId)) {
+    activeCategories.delete(catId);
+    if (markerLayers[catId]) map.removeLayer(markerLayers[catId]);
+  } else {
+    activeCategories.add(catId);
+    if (markerLayers[catId]) map.addLayer(markerLayers[catId]);
+  }
+  saveActiveCategoriesFromStorage();
+  renderCategoryList(document.getElementById('search-input').value);
+}
+
+function toggleAllCategories(show) {
+  let totalMarkers = 0;
+  categories.forEach(cat => {
+    if (show) {
+      activeCategories.add(cat.id);
+      if (markerLayers[cat.id]) {
+        map.addLayer(markerLayers[cat.id]);
+        totalMarkers += markerLayers[cat.id].getLayers().length;
+      }
+    } else {
+      activeCategories.delete(cat.id);
+      if (markerLayers[cat.id]) map.removeLayer(markerLayers[cat.id]);
+    }
+  });
+  console.log(`[KCD2 Map] Toggle all ${show ? 'ON' : 'OFF'}: ${categories.length} categories, ${totalMarkers} markers on map`);
+  saveActiveCategoriesFromStorage();
+  renderCategoryList(document.getElementById('search-input').value);
+}
+
+function filterCategories(query) {
+  renderCategoryList(query);
+}
+
+
+// ═══════════════════════════════════════════════
+// ██ USER MARKERS
+// ═══════════════════════════════════════════════
+
+function onRightClick(e) {
+  e.originalEvent.preventDefault();
+  const x = Math.round(e.latlng.lng);
+  const y = Math.round(e.latlng.lat);
+
+  // Remove temp marker if exists
+  if (tempMarker) map.removeLayer(tempMarker);
+
+  // Category options (sorted alphabetically)
+  const catOptions = [...categories]
+    .sort((a, b) => a.name.localeCompare(b.name))
+    .map(c => `<option value="${c.id}">${c.icon} ${c.name}</option>`)
+    .join('');
+
+  const formHtml = `
+    <div class="marker-form">
+      <h3>Add Marker</h3>
+      <label>Name</label>
+      <input type="text" id="new-marker-name" placeholder="Enter name..." autofocus>
+      <label>Category</label>
+      <select id="new-marker-cat">
+        <option value="">📌 Custom</option>
+        ${catOptions}
+      </select>
+      <label>Description</label>
+      <textarea id="new-marker-desc" placeholder="Optional description..."></textarea>
+      <div class="form-actions">
+        <button class="btn btn-cancel" onclick="cancelNewMarker()">Cancel</button>
+        <button class="btn btn-save" onclick="saveNewMarker(${x}, ${y})">Save</button>
+      </div>
+    </div>
+  `;
+
+  tempMarker = L.marker([y, x], {
+    icon: createMarkerIcon('📌', '#c9a84c', 26)
+  }).addTo(map);
+
+  tempMarker.bindPopup(formHtml, { maxWidth: 300, closeOnClick: false, autoClose: false }).openPopup();
+}
+
+function saveNewMarker(x, y) {
+  const name = document.getElementById('new-marker-name').value.trim() || 'Unnamed Marker';
+  const category = document.getElementById('new-marker-cat').value || 'interesting_site';
+  const description = document.getElementById('new-marker-desc').value.trim();
+
+  const markerData = {
+    id: nextUserMarkerId++,
+    name,
+    category,
+    description,
+    x,
+    y,
+  };
+
+  if (!userMarkers[currentRegion]) userMarkers[currentRegion] = [];
+  userMarkers[currentRegion].push(markerData);
+  saveUserMarkersToStorage();
+
+  // Remove temp, add permanent
+  if (tempMarker) {
+    map.removeLayer(tempMarker);
+    tempMarker = null;
+  }
+  addUserMarkerToMap(markerData);
+  renderMyMarkersList();
+  showToast(`Marker "${name}" added`);
+}
+
+function cancelNewMarker() {
+  if (tempMarker) {
+    map.removeLayer(tempMarker);
+    tempMarker = null;
+  }
+}
+
+function deleteUserMarker(id) {
+  if (!userMarkers[currentRegion]) return;
+  userMarkers[currentRegion] = userMarkers[currentRegion].filter(m => m.id !== id);
+  saveUserMarkersToStorage();
+
+  // Remove from map
+  userMarkerLayer.eachLayer(layer => {
+    if (layer._userMarkerId === id) userMarkerLayer.removeLayer(layer);
+  });
+
+  renderMyMarkersList();
+  showToast('Marker removed');
+}
+
+function flyToMarker(x, y) {
+  map.flyTo([y, x], 2, { duration: 0.5 });
+}
+
+function renderUserMarkersOnMap(region) {
+  userMarkerLayer.clearLayers();
+  const markers = userMarkers[region] || [];
+  markers.forEach(m => addUserMarkerToMap(m));
+}
+
+function renderMyMarkersList() {
+  const list = document.getElementById('my-markers-list');
+  const markers = userMarkers[currentRegion] || [];
+
+  if (markers.length === 0) {
+    list.innerHTML = '<div class="no-markers">Right-click on the map to add a custom marker.</div>';
+    return;
+  }
+
+  list.innerHTML = markers.map(m => {
+    const cat = categories.find(c => c.id === m.category);
+    return `
+      <div class="my-marker-item" onclick="flyToMarker(${m.x}, ${m.y})">
+        <span class="mm-icon">${cat ? cat.icon : '📌'}</span>
+        <div class="mm-info">
+          <div class="mm-name">${m.name}</div>
+          <div class="mm-coords">X: ${m.x} Y: ${m.y}</div>
+        </div>
+        <button class="mm-delete" onclick="event.stopPropagation();deleteUserMarker(${m.id})" title="Delete">✕</button>
+      </div>
+    `;
+  }).join('');
+}
+
+
+// ═══════════════════════════════════════════════
+// ██ IMPORT / EXPORT
+// ═══════════════════════════════════════════════
+
+function exportMarkers() {
+  const markers = userMarkers[currentRegion] || [];
+  if (markers.length === 0) {
+    showToast('No custom markers to export');
+    return;
+  }
+
+  const data = JSON.stringify(markers, null, 2);
+  const blob = new Blob([data], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `kcd2_markers_${currentRegion}_${Date.now()}.json`;
+  a.click();
+  URL.revokeObjectURL(url);
+  showToast(`Exported ${markers.length} markers`);
+}
+
+function showImportModal() {
+  document.getElementById('import-modal').classList.add('show');
+  document.getElementById('import-data').value = '';
+  document.getElementById('import-file').value = '';
+}
+
+function closeImportModal() {
+  document.getElementById('import-modal').classList.remove('show');
+}
+
+function loadImportFile(event) {
+  const file = event.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = (e) => {
+    document.getElementById('import-data').value = e.target.result;
+  };
+  reader.readAsText(file);
+}
+
+function importMarkers() {
+  const raw = document.getElementById('import-data').value.trim();
+  if (!raw) {
+    showToast('No data to import');
+    return;
+  }
+
+  try {
+    const data = JSON.parse(raw);
+    const markers = Array.isArray(data) ? data : (data.markers || []);
+
+    if (!userMarkers[currentRegion]) userMarkers[currentRegion] = [];
+
+    let count = 0;
+    markers.forEach(m => {
+      if (m.x !== undefined && m.y !== undefined) {
+        const newMarker = {
+          id: nextUserMarkerId++,
+          name: m.name || 'Imported Marker',
+          category: m.category || 'interesting_site',
+          description: m.description || '',
+          x: m.x,
+          y: m.y,
+        };
+        userMarkers[currentRegion].push(newMarker);
+        addUserMarkerToMap(newMarker);
+        count++;
+      }
+    });
+
+    saveUserMarkersToStorage();
+    renderMyMarkersList();
+    closeImportModal();
+    showToast(`Imported ${count} markers`);
+  } catch (e) {
+    showToast('Invalid JSON format');
+    console.error('Import error:', e);
+  }
+}
+
+function clearMyMarkers() {
+  const markers = userMarkers[currentRegion] || [];
+  if (markers.length === 0) {
+    showToast('No markers to clear');
+    return;
+  }
+  if (!confirm(`Delete all ${markers.length} custom markers for ${currentRegion}? This cannot be undone.`)) return;
+
+  userMarkers[currentRegion] = [];
+  saveUserMarkersToStorage();
+  userMarkerLayer.clearLayers();
+  renderMyMarkersList();
+  showToast('All custom markers cleared');
+}
+
+// ── Progress Export / Import ──
+
+function exportProgress() {
+  const serializable = {};
+  Object.entries(discoveredMarkers).forEach(([region, set]) => {
+    serializable[region] = Array.from(set);
+  });
+  const total = Object.values(serializable).reduce((sum, arr) => sum + arr.length, 0);
+  if (total === 0) {
+    showToast('No progress to export');
+    return;
+  }
+  const blob = new Blob([JSON.stringify(serializable, null, 2)], { type: 'application/json' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = `kcd2_progress_${new Date().toISOString().slice(0, 10)}.json`;
+  a.click();
+  showToast(`Exported ${total} discovered markers`);
+}
+
+function showImportProgressModal() {
+  document.getElementById('import-progress-modal').classList.add('active');
+  document.getElementById('import-progress-data').value = '';
+  document.getElementById('import-progress-file').value = '';
+}
+
+function closeImportProgressModal() {
+  document.getElementById('import-progress-modal').classList.remove('active');
+}
+
+function loadImportProgressFile(event) {
+  const file = event.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = (e) => {
+    document.getElementById('import-progress-data').value = e.target.result;
+  };
+  reader.readAsText(file);
+}
+
+function importProgress() {
+  try {
+    const raw = document.getElementById('import-progress-data').value.trim();
+    if (!raw) { showToast('No data to import'); return; }
+    const data = JSON.parse(raw);
+    let count = 0;
+
+    Object.entries(data).forEach(([region, keys]) => {
+      if (!discoveredMarkers[region]) {
+        discoveredMarkers[region] = new Set();
+      }
+      const arr = Array.isArray(keys) ? keys : [];
+      arr.forEach(key => {
+        discoveredMarkers[region].add(key);
+        count++;
+      });
+    });
+
+    saveDiscoveredToStorage();
+
+    // Update opacity for current region markers
+    Object.entries(markersByKey).forEach(([key, marker]) => {
+      const set = discoveredMarkers[currentRegion];
+      if (set && set.has(key)) {
+        marker.setOpacity(0.5);
+      } else {
+        marker.setOpacity(1.0);
+      }
+    });
+
+    closeImportProgressModal();
+    showToast(`Imported ${count} discovered markers`);
+  } catch (e) {
+    console.error('Import progress error:', e);
+    showToast('Invalid JSON data');
+  }
+}
+
+function clearProgress() {
+  const set = discoveredMarkers[currentRegion];
+  const count = set ? set.size : 0;
+  if (count === 0) {
+    showToast('No progress to clear');
+    return;
+  }
+  if (!confirm(`Reset ${count} discovered markers for ${currentRegion}? This cannot be undone.`)) return;
+
+  discoveredMarkers[currentRegion] = new Set();
+  saveDiscoveredToStorage();
+
+  // Restore all markers to full opacity
+  Object.values(markersByKey).forEach(marker => marker.setOpacity(1.0));
+
+  showToast('All progress cleared');
+}
+
+
+// ═══════════════════════════════════════════════
+// ██ SETTLEMENT LABELS
+// ═══════════════════════════════════════════════
+
+let showSettlementLabels = true;
+
+function renderSettlementLabels(region) {
+  if (settlementLabelLayer) {
+    map.removeLayer(settlementLabelLayer);
+  }
+  settlementLabelLayer = L.layerGroup();
+
+  const labels = (typeof SETTLEMENT_LABELS !== 'undefined') ? SETTLEMENT_LABELS[region] : null;
+  if (!labels) return;
+
+  labels.forEach(label => {
+    const icon = L.divIcon({
+      className: 'settlement-label',
+      html: label.name,
+      iconSize: null,
+      iconAnchor: [0, 0],
+    });
+    L.marker([label.y, label.x], { icon, interactive: false, zIndexOffset: -1000 })
+      .addTo(settlementLabelLayer);
+  });
+
+  if (showSettlementLabels) {
+    settlementLabelLayer.addTo(map);
+  }
+}
+
+function toggleSettlementLabels() {
+  const cb = document.getElementById('toggle-labels');
+  showSettlementLabels = cb ? cb.checked : !showSettlementLabels;
+  if (!settlementLabelLayer) return;
+  if (showSettlementLabels) {
+    settlementLabelLayer.addTo(map);
+  } else {
+    map.removeLayer(settlementLabelLayer);
+  }
+}
+
+
+// ═══════════════════════════════════════════════
+// ██ LOCAL STORAGE
+// ═══════════════════════════════════════════════
+
+function saveUserMarkersToStorage() {
+  localStorage.setItem(CONFIG.storageKeys.userMarkers, JSON.stringify(userMarkers));
+}
+
+function loadUserMarkersFromStorage() {
+  try {
+    const saved = localStorage.getItem(CONFIG.storageKeys.userMarkers);
+    if (saved) {
+      userMarkers = JSON.parse(saved);
+      // Find max ID
+      Object.values(userMarkers).forEach(markers => {
+        markers.forEach(m => {
+          if (m.id >= nextUserMarkerId) nextUserMarkerId = m.id + 1;
+        });
+      });
+    }
+  } catch (e) {
+    console.warn('Could not load user markers:', e);
+  }
+}
+
+function saveActiveCategoriesFromStorage() {
+  localStorage.setItem(CONFIG.storageKeys.activeCategories, JSON.stringify([...activeCategories]));
+}
+
+function loadActiveCategoriesFromStorage() {
+  try {
+    const saved = localStorage.getItem(CONFIG.storageKeys.activeCategories);
+    if (saved) {
+      activeCategories = new Set(JSON.parse(saved));
+    } else {
+      activeCategories = new Set(['city', 'fast_travel']);
+    }
+  } catch (e) {
+    activeCategories = new Set(['city', 'fast_travel']);
+  }
+}
+
+function saveDiscoveredToStorage() {
+  // Convert Sets to arrays for JSON serialization
+  const serializable = {};
+  Object.entries(discoveredMarkers).forEach(([region, set]) => {
+    serializable[region] = [...set];
+  });
+  localStorage.setItem(CONFIG.storageKeys.discoveredMarkers, JSON.stringify(serializable));
+}
+
+function loadDiscoveredFromStorage() {
+  try {
+    const saved = localStorage.getItem(CONFIG.storageKeys.discoveredMarkers);
+    if (saved) {
+      const parsed = JSON.parse(saved);
+      Object.entries(parsed).forEach(([region, arr]) => {
+        discoveredMarkers[region] = new Set(arr);
+      });
+    }
+  } catch (e) {
+    console.warn('Could not load discovered markers:', e);
+  }
+}
+
+function getMarkerKey(markerData) {
+  // Unique key: category + coordinates (stable across reloads)
+  return `${markerData.category}:${markerData.x}:${markerData.y}`;
+}
+
+function isMarkerDiscovered(markerData) {
+  const set = discoveredMarkers[currentRegion];
+  return set ? set.has(getMarkerKey(markerData)) : false;
+}
+
+function toggleMarkerDiscovered(key, btnId) {
+  if (!discoveredMarkers[currentRegion]) {
+    discoveredMarkers[currentRegion] = new Set();
+  }
+  const set = discoveredMarkers[currentRegion];
+  const btn = document.getElementById(btnId);
+  const marker = markersByKey[key];
+  if (set.has(key)) {
+    set.delete(key);
+    if (btn) {
+      btn.classList.remove('completed');
+      btn.textContent = btn.dataset.undoneLabel;
+    }
+    if (marker) marker.setOpacity(1.0);
+  } else {
+    set.add(key);
+    if (btn) {
+      btn.classList.add('completed');
+      btn.textContent = btn.dataset.doneLabel;
+    }
+    if (marker) marker.setOpacity(0.5);
+  }
+  saveDiscoveredToStorage();
+}
+
+
+// ═══════════════════════════════════════════════
+// ██ UI HELPERS
+// ═══════════════════════════════════════════════
+
+function toggleSidebar() {
+  document.getElementById('sidebar').classList.toggle('collapsed');
+}
+
+function switchTab(tabName) {
+  document.querySelectorAll('.sidebar-tab').forEach(t => t.classList.toggle('active', t.dataset.tab === tabName));
+  document.querySelectorAll('.tab-content').forEach(tc => tc.classList.remove('active'));
+  document.getElementById(`tab-${tabName}`).classList.add('active');
+}
+
+function showToast(message) {
+  const toast = document.getElementById('toast');
+  toast.textContent = message;
+  toast.classList.add('show');
+  setTimeout(() => toast.classList.remove('show'), 2500);
+}
+
+
+// ═══════════════════════════════════════════════
+// ██ INIT
+// ═══════════════════════════════════════════════
+
+window.addEventListener('DOMContentLoaded', init);
+</script>
+</body>
+</html>
