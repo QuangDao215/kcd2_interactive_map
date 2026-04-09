@@ -1,0 +1,13 @@
+{
+  "source": "map.png",
+  "width": 6144,
+  "height": 6144,
+  "canvas_size": 8192,
+  "tile_size": 256,
+  "min_zoom": 0,
+  "max_zoom": 5,
+  "format": "webp",
+  "tile_url": "{z}/{x}/{y}.webp",
+  "tiles_written": 815,
+  "tiles_skipped": 550
+}
