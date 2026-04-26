@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>KCD2 Interactive Map — Kingdom Come: Deliverance II</title>
+<link rel="icon" type="image/png" href="main_icon.png">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"/>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Source+Sans+3:wght@300;400;500;600&display=swap');
@@ -295,7 +296,7 @@
   }
   .my-marker-item:last-child { border-bottom: none; }
   .my-marker-item:hover { background: var(--bg-hover); }
-  .my-marker-item .mm-icon { font-size: 14px; flex-shrink: 0; }
+  .my-marker-item .mm-icon { font-size: 14px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; width: 24px; }
   .my-marker-item .mm-info { flex: 1; min-width: 0; }
   .my-marker-item .mm-name { font-size: 13px; font-weight: 500; }
   .my-marker-item .mm-coords { font-size: 11px; color: var(--text-muted); }
@@ -355,6 +356,17 @@
   #map { width: 100%; height: 100%; background: var(--bg-dark); }
 
   .leaflet-container { background: var(--bg-dark) !important; }
+
+  /* Fix tile seams (sub-pixel gaps between tiles during transforms) */
+  .leaflet-tile-container {
+    will-change: transform;
+  }
+  .leaflet-tile {
+    outline: 1px solid transparent;
+    backface-visibility: hidden;
+    image-rendering: auto;
+  }
+
   .leaflet-control-zoom a {
     background: var(--bg-panel) !important;
     color: var(--text-primary) !important;
@@ -446,6 +458,16 @@
     background: rgba(90,158,75,0.25);
   }
 
+  /* ── Popup Action Buttons ── */
+  .popup-actions { display: flex; gap: 6px; margin-top: 8px; }
+  .popup-action-btn {
+    flex: 1; padding: 4px 8px; border: 1px solid var(--border); border-radius: 4px;
+    background: transparent; color: var(--text-secondary); font-size: 12px;
+    cursor: pointer; text-align: center; transition: all 0.15s;
+  }
+  .popup-action-btn:hover { background: var(--bg-hover); color: var(--text-primary); border-color: var(--border-light); }
+  .popup-action-btn.danger:hover { color: var(--danger); border-color: var(--danger); background: rgba(179,68,68,0.1); }
+
   /* ── Marker Add Form (popup) ── */
   .marker-form { min-width: 220px; }
   .marker-form h3 {
@@ -469,6 +491,34 @@
   }
   .marker-form textarea { resize: vertical; min-height: 50px; }
   .marker-form select option { background: var(--bg-dark); color: var(--text-primary); }
+
+  /* ── Custom Icon Dropdown ── */
+  .icon-dropdown { position: relative; }
+  .icon-dropdown-btn {
+    width: 100%; padding: 7px 10px; background: var(--bg-dark); border: 1px solid var(--border);
+    border-radius: 4px; color: var(--text-primary); font-size: 13px; cursor: pointer;
+    display: flex; align-items: center; gap: 8px; text-align: left;
+  }
+  .icon-dropdown-btn:hover { border-color: var(--border-light); }
+  .icon-dropdown-btn img { width: 20px; height: 20px; image-rendering: pixelated; }
+  .icon-dropdown-list {
+    display: none; position: absolute; left: 0; right: 0; top: 100%;
+    max-height: 200px; overflow-y: auto; background: var(--bg-dark);
+    border: 1px solid var(--border); border-radius: 0 0 4px 4px;
+    z-index: 2000;
+  }
+  .icon-dropdown-list.open { display: block; }
+  .icon-dropdown-item {
+    display: flex; align-items: center; gap: 8px; padding: 5px 10px;
+    cursor: pointer; font-size: 13px; color: var(--text-primary);
+  }
+  .icon-dropdown-item:hover { background: var(--bg-hover); }
+  .icon-dropdown-item img { width: 20px; height: 20px; image-rendering: pixelated; }
+  .icon-dropdown-search {
+    width: 100%; padding: 6px 10px; border: none; border-bottom: 1px solid var(--border);
+    background: var(--bg-panel); color: var(--text-primary); font-size: 13px; outline: none;
+  }
+
   .marker-form .form-actions { display: flex; gap: 8px; margin-top: 12px; }
   .marker-form .btn {
     flex: 1;
@@ -825,7 +875,7 @@ const CATEGORY_GROUPS = [
     "apothecary", "armourer", "baker", "barber", "baths", "blacksmith",
     "butchery", "cobbler", "fisherman", "grocer", "gunsmith", "herbalist",
     "horse_trader", "huntsman", "miller", "saddler", "scribe", "shield_painter",
-    "skill_trainer", "tailor", "tanner", "tavern", "trader", "weaponsmith"
+    "skill_trainer", "smithy", "tailor", "tanner", "tavern", "trader", "weaponsmith"
   ]},
   { name: "Poisons", collapsed: true, categories: ["loot_poison"] },
   { name: "Potions", collapsed: true, categories: ["loot_potion"] },
@@ -957,14 +1007,19 @@ async function loadRegion(region) {
   settlementLabelLayer = null;
 
   // Create new map with region-specific CRS
+  // maxZoom extends beyond the tile pyramid's max — Leaflet upscales the
+  // highest-resolution tiles for closer inspection. +2 gives 4× extra zoom.
+  const extraZoom = 2;
   map = L.map('map', {
     crs: makeMapCRS(maxZoom, mapH),
     minZoom: 0,
-    maxZoom: maxZoom,
+    maxZoom: maxZoom + extraZoom,
     zoomSnap: 0.25,
     zoomDelta: 0.5,
     zoomControl: true,
     attributionControl: false,
+    preferCanvas: true,
+    fadeAnimation: false,
   });
 
   // Bounds in image pixel coordinates
@@ -974,15 +1029,22 @@ async function loadRegion(region) {
   // negative pixel y with our transformation.
   map.setMaxBounds([[-pad, -pad], [mapH, mapW + pad]]);
 
-  // Tile layer instead of image overlay
+  // Tile layer — sharp detail where tiles exist.
+  // 1×1 transparent PNG as fallback for missing/skipped tiles.
+  const EMPTY_TILE = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=';
+
   imageOverlay = L.tileLayer(regionCfg.tilesUrl, {
     tileSize: 256,
     minZoom: 0,
-    maxZoom: maxZoom,
+    maxZoom: maxZoom + extraZoom,
     maxNativeZoom: maxZoom,
     minNativeZoom: 0,
     noWrap: true,
     bounds: bounds,
+    updateWhenZooming: false,    // don't reload tiles mid-zoom animation
+    updateInterval: 150,         // throttle tile updates during pan
+    keepBuffer: 3,               // keep extra tiles around viewport
+    errorTileUrl: EMPTY_TILE,    // transparent fallback for missing tiles
     attribution: '© Warhorse Studios',
   }).addTo(map);
 
@@ -1035,6 +1097,8 @@ async function loadRegion(region) {
   const EXTRA_CATEGORIES = [
     { id: "barber", name: "Barber", icon: "💈", color: "#c9a84c" },
     { id: "fist_fight_arena", name: "Fist Fight Arena", icon: "👊", color: "#c9a84c" },
+    { id: "player_bed", name: "Player Bed", icon: "🛏️", color: "#c9a84c" },
+    { id: "smithy", name: "Smithy", icon: "⚒️", color: "#c9a84c" },
   ];
   EXTRA_CATEGORIES.forEach(extra => {
     if (!categories.find(c => c.id === extra.id)) {
@@ -1209,6 +1273,10 @@ function addUserMarkerToMap(markerData) {
     <button class="popup-progress-btn" id="${btnId}"
       data-done-label="${doneLabel}" data-undone-label="${undoneLabel}"
       onclick="toggleMarkerDiscovered('${markerKey}', '${btnId}')">${undoneLabel}</button>
+    <div class="popup-actions">
+      <button class="popup-action-btn" onclick="editUserMarker(${markerData.id})">✎ Edit</button>
+      <button class="popup-action-btn danger" onclick="if(confirm('Delete this marker?'))deleteUserMarker(${markerData.id})">✕ Delete</button>
+    </div>
   `;
   marker.bindPopup(popupHtml, { maxWidth: 280 });
 
@@ -1238,6 +1306,10 @@ function addUserMarkerToMap(markerData) {
       <button class="popup-progress-btn" id="${newBtnId}"
         data-done-label="${doneLabel}" data-undone-label="${undoneLabel}"
         onclick="toggleMarkerDiscovered('${getMarkerKey(markerData)}', '${newBtnId}')">${undoneLabel}</button>
+      <div class="popup-actions">
+        <button class="popup-action-btn" onclick="editUserMarker(${markerData.id})">✎ Edit</button>
+        <button class="popup-action-btn danger" onclick="if(confirm('Delete this marker?'))deleteUserMarker(${markerData.id})">✕ Delete</button>
+      </div>
     `;
     marker.setPopupContent(newPopup);
 
@@ -1445,11 +1517,16 @@ function onRightClick(e) {
   // Remove temp marker if exists
   if (tempMarker) map.removeLayer(tempMarker);
 
-  // Category options (sorted alphabetically)
-  const catOptions = [...categories]
-    .sort((a, b) => a.name.localeCompare(b.name))
-    .map(c => `<option value="${c.id}">${c.icon} ${c.name}</option>`)
-    .join('');
+  // Category options with real icons (sorted alphabetically)
+  const iconMap = window.ICON_MAP || {};
+  const sortedCats = [...categories].sort((a, b) => a.name.localeCompare(b.name));
+  const catItems = sortedCats.map(c => {
+    const iconSrc = iconMap[c.id] || '';
+    const iconHtml = iconSrc
+      ? `<img src="${iconSrc}" onerror="this.style.display='none'">`
+      : `<span style="width:20px;text-align:center">${c.icon || '📦'}</span>`;
+    return `<div class="icon-dropdown-item" data-value="${c.id}" onclick="selectCategory('${c.id}', '${c.name.replace(/'/g, "\\'")}', '${iconSrc}')">${iconHtml} ${c.name}</div>`;
+  }).join('');
 
   const formHtml = `
     <div class="marker-form">
@@ -1457,10 +1534,19 @@ function onRightClick(e) {
       <label>Name</label>
       <input type="text" id="new-marker-name" placeholder="Enter name..." autofocus>
       <label>Category</label>
-      <select id="new-marker-cat">
-        <option value="">📌 Custom</option>
-        ${catOptions}
-      </select>
+      <input type="hidden" id="new-marker-cat" value="">
+      <div class="icon-dropdown" id="cat-dropdown">
+        <div class="icon-dropdown-btn" onclick="toggleCatDropdown()">
+          <span style="width:20px;text-align:center">📌</span> <span id="cat-dropdown-label">Custom</span>
+        </div>
+        <div class="icon-dropdown-list" id="cat-dropdown-list">
+          <input type="text" class="icon-dropdown-search" id="cat-search" placeholder="Search..." oninput="filterCatDropdown(this.value)">
+          <div id="cat-dropdown-items">
+            <div class="icon-dropdown-item" data-value="" onclick="selectCategory('', 'Custom', '')"><span style="width:20px;text-align:center">📌</span> Custom</div>
+            ${catItems}
+          </div>
+        </div>
+      </div>
       <label>Description</label>
       <textarea id="new-marker-desc" placeholder="Optional description..."></textarea>
       <div class="form-actions">
@@ -1475,6 +1561,43 @@ function onRightClick(e) {
   }).addTo(map);
 
   tempMarker.bindPopup(formHtml, { maxWidth: 300, closeOnClick: false, autoClose: false }).openPopup();
+}
+
+function toggleCatDropdown() {
+  const list = document.getElementById('cat-dropdown-list');
+  list.classList.toggle('open');
+  if (list.classList.contains('open')) {
+    const search = document.getElementById('cat-search');
+    if (search) { search.value = ''; filterCatDropdown(''); search.focus(); }
+  }
+}
+
+// Close dropdown when clicking outside
+document.addEventListener('click', function(e) {
+  const dropdown = document.getElementById('cat-dropdown');
+  const list = document.getElementById('cat-dropdown-list');
+  if (dropdown && list && !dropdown.contains(e.target)) {
+    list.classList.remove('open');
+  }
+});
+
+function selectCategory(value, name, iconSrc) {
+  document.getElementById('new-marker-cat').value = value;
+  const btn = document.querySelector('.icon-dropdown-btn');
+  const iconHtml = iconSrc
+    ? `<img src="${iconSrc}" style="width:20px;height:20px;image-rendering:pixelated">`
+    : `<span style="width:20px;text-align:center">${value ? '📦' : '📌'}</span>`;
+  btn.innerHTML = `${iconHtml} <span id="cat-dropdown-label">${name}</span>`;
+  document.getElementById('cat-dropdown-list').classList.remove('open');
+}
+
+function filterCatDropdown(query) {
+  const items = document.querySelectorAll('#cat-dropdown-items .icon-dropdown-item');
+  const q = query.toLowerCase();
+  items.forEach(item => {
+    const text = item.textContent.toLowerCase();
+    item.style.display = text.includes(q) ? '' : 'none';
+  });
 }
 
 function saveNewMarker(x, y) {
@@ -1526,8 +1649,146 @@ function deleteUserMarker(id) {
   showToast('Marker removed');
 }
 
+function editUserMarker(id) {
+  const markers = userMarkers[currentRegion] || [];
+  const markerData = markers.find(m => m.id === id);
+  if (!markerData) return;
+
+  // Find the Leaflet marker layer
+  let leafletMarker = null;
+  userMarkerLayer.eachLayer(layer => {
+    if (layer._userMarkerId === id) leafletMarker = layer;
+  });
+  if (!leafletMarker) return;
+
+  // Build edit form with icon dropdown
+  const iconMap = window.ICON_MAP || {};
+  const sortedCats = [...categories].sort((a, b) => a.name.localeCompare(b.name));
+  const currentCat = categories.find(c => c.id === markerData.category);
+  const currentIconSrc = iconMap[markerData.category] || '';
+  const currentCatName = currentCat ? currentCat.name : 'Custom';
+  const currentIconHtml = currentIconSrc
+    ? `<img src="${currentIconSrc}" style="width:20px;height:20px;image-rendering:pixelated">`
+    : `<span style="width:20px;text-align:center">${currentCat?.icon || '📌'}</span>`;
+
+  const catItems = sortedCats.map(c => {
+    const iconSrc = iconMap[c.id] || '';
+    const iconHtml = iconSrc
+      ? `<img src="${iconSrc}" onerror="this.style.display='none'">`
+      : `<span style="width:20px;text-align:center">${c.icon || '📦'}</span>`;
+    return `<div class="icon-dropdown-item" data-value="${c.id}" onclick="selectCategory('${c.id}', '${c.name.replace(/'/g, "\\'")}', '${iconSrc}')">${iconHtml} ${c.name}</div>`;
+  }).join('');
+
+  const editHtml = `
+    <div class="marker-form">
+      <h3>Edit Marker</h3>
+      <label>Name</label>
+      <input type="text" id="edit-marker-name" value="${(markerData.name || '').replace(/"/g, '&quot;')}">
+      <label>Category</label>
+      <input type="hidden" id="new-marker-cat" value="${markerData.category}">
+      <div class="icon-dropdown" id="cat-dropdown">
+        <div class="icon-dropdown-btn" onclick="toggleCatDropdown()">
+          ${currentIconHtml} <span id="cat-dropdown-label">${currentCatName}</span>
+        </div>
+        <div class="icon-dropdown-list" id="cat-dropdown-list">
+          <input type="text" class="icon-dropdown-search" id="cat-search" placeholder="Search..." oninput="filterCatDropdown(this.value)">
+          <div id="cat-dropdown-items">
+            <div class="icon-dropdown-item" data-value="" onclick="selectCategory('', 'Custom', '')"><span style="width:20px;text-align:center">📌</span> Custom</div>
+            ${catItems}
+          </div>
+        </div>
+      </div>
+      <label>Description</label>
+      <textarea id="edit-marker-desc">${markerData.description || ''}</textarea>
+      <div class="form-actions">
+        <button class="btn btn-cancel" onclick="cancelEditMarker(${id})">Cancel</button>
+        <button class="btn btn-save" onclick="saveEditedMarker(${id})">Save</button>
+      </div>
+    </div>
+  `;
+
+  leafletMarker.setPopupContent(editHtml);
+  leafletMarker.openPopup();
+}
+
+function saveEditedMarker(id) {
+  const markers = userMarkers[currentRegion] || [];
+  const markerData = markers.find(m => m.id === id);
+  if (!markerData) return;
+
+  const oldKey = getMarkerKey(markerData);
+
+  // Read new values
+  const newName = document.getElementById('edit-marker-name').value.trim() || 'Unnamed Marker';
+  const newCategory = document.getElementById('new-marker-cat').value || 'interesting_site';
+  const newDesc = document.getElementById('edit-marker-desc').value.trim();
+
+  // Update discovered key if category changed
+  const set = discoveredMarkers[currentRegion];
+  const wasDiscovered = set && set.has(oldKey);
+
+  // Update marker data
+  markerData.name = newName;
+  markerData.category = newCategory;
+  markerData.description = newDesc;
+
+  const newKey = getMarkerKey(markerData);
+
+  // Migrate discovered state
+  if (wasDiscovered && oldKey !== newKey) {
+    set.delete(oldKey);
+    set.add(newKey);
+    saveDiscoveredToStorage();
+  }
+
+  saveUserMarkersToStorage();
+
+  // Remove old marker from map and re-add with new icon
+  userMarkerLayer.eachLayer(layer => {
+    if (layer._userMarkerId === id) {
+      delete markersByKey[oldKey];
+      userMarkerLayer.removeLayer(layer);
+    }
+  });
+
+  addUserMarkerToMap(markerData);
+  renderMyMarkersList();
+  showToast('Marker updated');
+}
+
+function cancelEditMarker(id) {
+  // Re-add original popup by removing and re-adding the marker
+  const markers = userMarkers[currentRegion] || [];
+  const markerData = markers.find(m => m.id === id);
+  if (!markerData) return;
+
+  userMarkerLayer.eachLayer(layer => {
+    if (layer._userMarkerId === id) {
+      const key = getMarkerKey(markerData);
+      delete markersByKey[key];
+      userMarkerLayer.removeLayer(layer);
+    }
+  });
+
+  addUserMarkerToMap(markerData);
+}
+
 function flyToMarker(x, y) {
-  map.flyTo([y, x], 2, { duration: 0.5 });
+  // Use a zoom level near the tile pyramid max for clear detail
+  const targetZoom = Math.max(map.getMaxZoom() - 1, map.getZoom());
+  map.flyTo([y, x], targetZoom, { duration: 0.6 });
+
+  // After the fly animation completes, open the popup of the marker at this location
+  const targetKey = `${x}:${y}`;
+  setTimeout(() => {
+    for (const [key, marker] of Object.entries(markersByKey)) {
+      // Match by coordinates (key format: "category:x:y")
+      if (key.endsWith(targetKey)) {
+        marker.openPopup();
+        return;
+      }
+    }
+  }, 650);
 }
 
 function renderUserMarkersOnMap(region) {
@@ -1547,9 +1808,14 @@ function renderMyMarkersList() {
 
   list.innerHTML = markers.map(m => {
     const cat = categories.find(c => c.id === m.category);
+    const iconMap = window.ICON_MAP || {};
+    const iconSrc = iconMap[m.category];
+    const iconHtml = iconSrc
+      ? `<img src="${iconSrc}" style="width:20px;height:20px;image-rendering:pixelated">`
+      : `<span>${cat ? cat.icon : '📌'}</span>`;
     return `
       <div class="my-marker-item" onclick="flyToMarker(${m.x}, ${m.y})">
-        <span class="mm-icon">${cat ? cat.icon : '📌'}</span>
+        <span class="mm-icon">${iconHtml}</span>
         <div class="mm-info">
           <div class="mm-name">${m.name}</div>
           <div class="mm-coords">X: ${m.x} Y: ${m.y}</div>
