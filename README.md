@@ -4,7 +4,7 @@ An interactive web map for **Kingdom Come: Deliverance II**, covering both the T
 
 Track your progress, find merchants, locate quest objectives, and discover hidden points of interest across Bohemia.
 
-> 🌐 **Live site:** [https://QuangDao215.github.io/kcd2-map/](https://QuangDao215.github.io/kcd2-map/)
+> 🌐 **Live site:** [https://quangdao215.github.io/kcd2_interactive_map/](https://quangdao215.github.io/kcd2_interactive_map/)
 
 ![Screenshot placeholder](docs/screenshot.png)
 

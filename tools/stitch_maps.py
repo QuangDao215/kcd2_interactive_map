@@ -3,14 +3,16 @@ KCD2 Map Tile Stitcher
 =====================
 Stitches regional map tiles into a single image.
 
+Uses an optional background image (or the low-res overview tile _0) to fill
+missing tile areas. High-res detail tiles are pasted on top.
+
 Supports both grid types:
   - Trosky:     3x3 grid (tiles 1-9)  -> 6144 x 6144
   - Kuttenberg: 6x5 grid (tiles 1-30) -> 12288 x 10240
-    Missing tiles (inaccessible areas) are filled black.
 
 Usage:
-    python stitch_maps.py --input <folder> --output <output.png> --region trosky
-    python stitch_maps.py --input <folder> --output <output.png> --region kuttenberg
+    python stitch_maps.py -i <folder> -o <output.png> -r kuttenberg -b maps/j5vhvv3hslie1.jpeg
+    python stitch_maps.py -i <folder> -o <output.png> -r trosky
 
 Requirements:
     pip install Pillow
@@ -26,6 +28,8 @@ try:
 except ImportError:
     print("Error: Pillow is required. Install with: pip install Pillow")
     sys.exit(1)
+
+Image.MAX_IMAGE_PIXELS = None  # Allow large images (Reddit map is 125M pixels)
 
 TILE_SIZE = 2048
 
@@ -51,7 +55,9 @@ def get_grid_position(tile_index, cols, tile_start=1):
 
 
 def find_tiles(input_dir, prefix):
+    """Find detail tiles (index > 0) and return as dict {index: filepath}."""
     tiles = {}
+    overview = None
     input_path = Path(input_dir)
     extensions = [".tif", ".tiff", ".png", ".jpg", ".jpeg", ".bmp"]
 
@@ -67,11 +73,12 @@ def find_tiles(input_dir, prefix):
         except ValueError:
             continue
         if idx == 0:
-            print(f"  Skipping overview tile: {f.name}")
+            overview = str(f)
+            print(f"  Found overview tile: {f.name}")
             continue
         tiles[idx] = str(f)
 
-    return tiles
+    return tiles, overview
 
 
 def find_tiles_fallback(input_dir):
@@ -90,10 +97,10 @@ def find_tiles_fallback(input_dir):
                     tiles[idx] = str(f)
             except ValueError:
                 pass
-    return tiles
+    return tiles, None
 
 
-def stitch(tiles, output_path, cols, rows, tile_start=1, quality=95):
+def stitch(tiles, overview_path, output_path, cols, rows, tile_start=1, quality=95, background_path=None):
     out_w = cols * TILE_SIZE
     out_h = rows * TILE_SIZE
     total_positions = cols * rows
@@ -102,8 +109,30 @@ def stitch(tiles, output_path, cols, rows, tile_start=1, quality=95):
     print(f"Output: {out_w} x {out_h} pixels")
     print(f"Tiles found: {len(tiles)} / {total_positions}")
 
-    canvas = Image.new("RGB", (out_w, out_h), (0, 0, 0))
+    missing = [i for i in range(tile_start, tile_start + total_positions) if i not in tiles]
 
+    # Use background image if provided (exact size match, no scaling needed)
+    if background_path and missing:
+        print(f"\n  Loading background image for {len(missing)} missing areas...")
+        bg = Image.open(background_path)
+        if bg.size == (out_w, out_h):
+            canvas = bg.convert("RGB")
+            print(f"  Background: {bg.size} (exact match)")
+        else:
+            canvas = bg.resize((out_w, out_h), Image.LANCZOS).convert("RGB")
+            print(f"  Background resized from {bg.size} -> {out_w}x{out_h}")
+        bg.close()
+    # Fallback to overview tile if available
+    elif overview_path and missing:
+        print(f"\n  Loading overview tile as background for {len(missing)} missing areas...")
+        overview = Image.open(overview_path)
+        canvas = overview.resize((out_w, out_h), Image.LANCZOS).convert("RGB")
+        print(f"  Overview resized from {overview.size} -> {out_w}x{out_h}")
+        overview.close()
+    else:
+        canvas = Image.new("RGB", (out_w, out_h), (0, 0, 0))
+
+    # Paste detail tiles on top
     placed = 0
     for idx, filepath in sorted(tiles.items()):
         col, row = get_grid_position(idx, cols, tile_start)
@@ -127,14 +156,14 @@ def stitch(tiles, output_path, cols, rows, tile_start=1, quality=95):
         tile.close()
         placed += 1
 
-    missing = [i for i in range(tile_start, tile_start + total_positions) if i not in tiles]
     if missing:
-        print(f"\n  Missing tiles (black): {missing}")
+        source = "background" if background_path else ("overview" if overview_path else "black")
+        print(f"\n  Missing tiles (filled from {source}): {missing}")
 
     os.makedirs(os.path.dirname(output_path) or ".", exist_ok=True)
     ext = output_path.lower()
     if ext.endswith(".png"):
-        canvas.save(output_path, "PNG", optimize=True)
+        canvas.save(output_path, "PNG")
     elif ext.endswith((".jpg", ".jpeg")):
         canvas.save(output_path, "JPEG", quality=quality)
     elif ext.endswith(".webp"):
@@ -144,7 +173,7 @@ def stitch(tiles, output_path, cols, rows, tile_start=1, quality=95):
 
     file_size = os.path.getsize(output_path) / (1024 * 1024)
     print(f"\nSaved: {output_path} ({file_size:.1f} MB)")
-    print(f"Placed {placed} tiles, {len(missing)} black")
+    print(f"Placed {placed} tiles, {len(missing)} from background")
     canvas.close()
     return out_w, out_h
 
@@ -165,26 +194,34 @@ Tile grid layouts (1-indexed, row-major):
     parser.add_argument("--input", "-i", required=True, help="Folder with tile images")
     parser.add_argument("--output", "-o", required=True, help="Output path (.png/.jpg/.webp)")
     parser.add_argument("--region", "-r", required=True, choices=list(REGIONS.keys()))
+    parser.add_argument("--background", "-b", default=None,
+                        help="Background image for missing tiles (exact size or will be scaled)")
     parser.add_argument("--quality", "-q", type=int, default=95, help="JPEG/WebP quality (default: 95)")
     args = parser.parse_args()
 
     region = REGIONS[args.region]
-    tiles = find_tiles(args.input, region["prefix"])
+    tiles, overview = find_tiles(args.input, region["prefix"])
     if not tiles:
         print(f"No '{region['prefix']}*' files found. Trying fallback...")
-        tiles = find_tiles_fallback(args.input)
+        tiles, overview = find_tiles_fallback(args.input)
     if not tiles:
         print(f"ERROR: No tiles found in '{args.input}'")
         sys.exit(1)
 
     print(f"Region: {args.region}")
-    print(f"Found {len(tiles)} tiles:")
+    print(f"Found {len(tiles)} detail tiles:")
     for idx, path in sorted(tiles.items()):
         size_mb = os.path.getsize(path) / (1024 * 1024)
         print(f"  [{idx:2d}] {Path(path).name} ({size_mb:.1f} MB)")
+    if overview:
+        size_mb = os.path.getsize(overview) / (1024 * 1024)
+        print(f"Overview: {Path(overview).name} ({size_mb:.1f} MB)")
+    if args.background:
+        size_mb = os.path.getsize(args.background) / (1024 * 1024)
+        print(f"Background: {Path(args.background).name} ({size_mb:.1f} MB)")
 
-    w, h = stitch(tiles, args.output, region["cols"], region["rows"],
-                  region["tile_start"], args.quality)
+    w, h = stitch(tiles, overview, args.output, region["cols"], region["rows"],
+                  region["tile_start"], args.quality, args.background)
     print(f"\nDone! {w}x{h} px")
 
 

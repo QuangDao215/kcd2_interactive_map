@@ -7,7 +7,8 @@ window.ICON_MAP = {
   "baker":            "icons/bakery_icon.png",
   "barber":           "icons/barber_icon.png",
   "baths":            "icons/baths_icon.png",
-  "blacksmith":       "icons/smithy_icon.png",
+  "blacksmith":       "icons/blacksmith_icon.png",
+  "smithy":           "icons/smithy_icon.png",
   "butchery":         "icons/butchery_icon.png",
   "cobbler":          "icons/shoemaker_icon.png",
   "dice_table":       "icons/DiceTable_icon.png",
@@ -69,7 +70,7 @@ window.ICON_MAP = {
   "dog":              "icons/dog_icon.png",
   "cart_stash":       "icons/sellingChest_icon.png",
   "lootable_corpse":  "icons/sellingChest_icon.png",
-
+  "fisherman":        "icons/fishingSpot_icon.png",
   "loot_alchemy_mat":      "icons/items/special_teethWolf_icon.png",
   "loot_ammo":             "icons/items/arrowTest_icon.png",
   "loot_armour_arms":      "icons/items/Gloves02_m02_D1_icon.png",

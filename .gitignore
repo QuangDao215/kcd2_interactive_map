@@ -22,9 +22,15 @@ desktop.ini
 notes.txt
 TODO.md
 
-
-@"
+# Icons — committed selectively via active_icons.txt
 icons/*
 icons/items/*
 !icons/items/
-"@ | Add-Content .gitignore
+
+# Large map assets & local backups/scratch — keep out of git
+maps/local/
+maps_backup/
+data_backup/
+reports/
+1780944286261.gif
+.claude/

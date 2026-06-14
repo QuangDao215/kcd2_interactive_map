@@ -5,6 +5,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>KCD2 Interactive Map — Kingdom Come: Deliverance II</title>
 <link rel="icon" type="image/png" href="main_icon.png">
+<meta name="description" content="Interactive map for Kingdom Come: Deliverance II — POIs, loot, quests, NPCs and personal progress tracking across the Trosky and Kuttenberg regions.">
+<meta name="theme-color" content="#1a1714">
+<meta property="og:type" content="website">
+<meta property="og:title" content="KCD2 Interactive Map">
+<meta property="og:description" content="Explore POIs, loot, quests and NPCs across Trosky and Kuttenberg — with personal progress tracking, custom markers, and settlement detail maps.">
+<meta property="og:url" content="https://quangdao215.github.io/kcd2_interactive_map/">
+<meta property="og:image" content="https://quangdao215.github.io/kcd2_interactive_map/main_icon.png">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="KCD2 Interactive Map">
+<meta name="twitter:description" content="Interactive POI/loot/quest map for Kingdom Come: Deliverance II with progress tracking.">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"/>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Source+Sans+3:wght@300;400;500;600&display=swap');
@@ -115,17 +125,30 @@
   }
   .sidebar-tab {
     flex: 1;
-    padding: 10px 8px;
+    padding: 10px 6px;
     background: transparent;
     border: none;
     border-bottom: 2px solid transparent;
     color: var(--text-muted);
-    font-size: 12px;
+    font-size: 11px;
     font-weight: 500;
     cursor: pointer;
     transition: all 0.2s;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.4px;
+    white-space: nowrap;
+  }
+
+  /* Keyboard focus rings (only show for keyboard users, not mouse clicks) */
+  button:focus-visible,
+  input:focus-visible,
+  select:focus-visible,
+  textarea:focus-visible,
+  a:focus-visible,
+  [tabindex]:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 1px;
+    border-radius: 3px;
   }
   .sidebar-tab:hover { color: var(--text-secondary); }
   .sidebar-tab.active {
@@ -195,19 +218,34 @@
     min-width: 24px;
     text-align: right;
   }
+  /* Group-level toggle switch (toggles every category in the group at once) */
   .cat-group-header .group-toggle-all {
-    padding: 1px 6px;
-    background: transparent;
+    position: relative;
+    width: 30px; height: 16px;
+    border-radius: 8px;
     border: 1px solid var(--border);
-    border-radius: 3px;
-    color: var(--text-muted);
-    font-size: 10px;
+    background: var(--bg-dark);
+    flex-shrink: 0;
     cursor: pointer;
-    transition: all 0.15s;
+    padding: 0;
+    transition: background 0.15s, border-color 0.15s;
   }
-  .cat-group-header .group-toggle-all:hover {
-    color: var(--text-secondary);
-    border-color: var(--border-light);
+  .cat-group-header .group-toggle-all::after {
+    content: '';
+    position: absolute;
+    top: 2px; left: 2px;
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: var(--text-muted);
+    transition: left 0.15s, background 0.15s;
+  }
+  .cat-group-header .group-toggle-all.on {
+    background: var(--accent-dim);
+    border-color: var(--accent);
+  }
+  .cat-group-header .group-toggle-all.on::after {
+    left: 16px;
+    background: var(--bg-dark);
   }
   .cat-group-children { display: none; padding-left: 8px; }
   .cat-group-children.expanded { display: block; }
@@ -240,25 +278,32 @@
     min-width: 20px;
     text-align: right;
   }
+  /* Per-category toggle switch (replaces the old checkbox — clearer on/off) */
   .category-item .cat-toggle {
-    width: 14px; height: 14px;
-    border: 1.5px solid var(--border-light);
-    border-radius: 3px;
+    position: relative;
+    width: 30px; height: 16px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: var(--bg-dark);
     flex-shrink: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.15s;
+    transition: background 0.15s, border-color 0.15s;
+  }
+  .category-item .cat-toggle::after {
+    content: '';
+    position: absolute;
+    top: 2px; left: 2px;
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: var(--text-muted);
+    transition: left 0.15s, background 0.15s;
   }
   .category-item.active .cat-toggle {
-    background: var(--accent);
+    background: var(--accent-dim);
     border-color: var(--accent);
   }
   .category-item.active .cat-toggle::after {
-    content: '✓';
-    font-size: 10px;
-    color: var(--bg-dark);
-    font-weight: 700;
+    left: 16px;
+    background: var(--bg-dark);
   }
 
   /* ── Search ── */
@@ -281,6 +326,24 @@
   }
   .search-input::placeholder { color: var(--text-muted); }
   .search-input:focus { border-color: var(--accent-dim); }
+  .search-results {
+    display: none; max-height: 260px; overflow-y: auto;
+    background: var(--bg-dark); border: 1px solid var(--border); border-top: none;
+    margin: -1px 18px 0; border-radius: 0 0 4px 4px;
+  }
+  .search-results.active { display: block; }
+  .search-result-item {
+    display: flex; align-items: center; gap: 8px; padding: 6px 10px;
+    cursor: pointer; font-size: 12px; color: var(--text-primary); border-bottom: 1px solid var(--border);
+  }
+  .search-result-item:last-child { border-bottom: none; }
+  .search-result-item:hover { background: var(--bg-hover); }
+  .search-result-item img { width: 18px; height: 18px; image-rendering: pixelated; flex-shrink: 0; }
+  .search-result-item .sr-name { font-weight: 500; }
+  .search-result-item .sr-cat { color: var(--text-muted); font-size: 11px; }
+  .cat-progress { font-size: 10px; color: var(--text-muted); margin-left: auto; margin-right: 4px; white-space: nowrap; }
+  .cat-progress .done { color: var(--success); }
+  .group-progress { font-size: 10px; color: var(--text-muted); margin-left: 4px; }
 
   /* ── My Markers Tab ── */
   .my-markers-list { padding: 8px 12px; flex: 1; overflow-y: auto; }
@@ -373,6 +436,27 @@
     border-color: var(--border) !important;
   }
   .leaflet-control-zoom a:hover { background: var(--bg-hover) !important; }
+
+  /* ── POI marker glow (per-group colour) + hover affordance ── */
+  .leaflet-marker-icon.poi-marker img {
+    filter: drop-shadow(0 0 2px var(--glow, transparent));
+    transition: filter 0.15s ease;
+  }
+  .leaflet-marker-icon.poi-marker:hover img {
+    filter: drop-shadow(0 0 6px var(--glow)) drop-shadow(0 0 3px var(--glow));
+  }
+
+  /* ── Marker tooltips (name on hover) ── */
+  .leaflet-tooltip.poi-tooltip {
+    background: var(--bg-panel);
+    border: 1px solid var(--border);
+    color: var(--text-primary);
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 12px; font-weight: 500;
+    padding: 3px 8px; border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+  }
+  .leaflet-tooltip.poi-tooltip::before { display: none; }
 
   /* ── Toggle Button ── */
   #toggle-sidebar {
@@ -468,6 +552,56 @@
   .popup-action-btn:hover { background: var(--bg-hover); color: var(--text-primary); border-color: var(--border-light); }
   .popup-action-btn.danger:hover { color: var(--danger); border-color: var(--danger); background: rgba(179,68,68,0.1); }
 
+  /* ── Local Map Calibration Panel ── */
+  #calibration-panel {
+    display: none; position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%);
+    z-index: 2000; background: var(--bg-panel); border: 1px solid var(--border);
+    border-radius: 8px; padding: 12px 16px; min-width: 320px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.5); font-size: 12px;
+  }
+  #calibration-panel.active { display: block; }
+  #calibration-panel h3 { margin: 0 0 8px; font-size: 14px; color: var(--accent-dim); }
+
+  /* ── Settlement Name Positioning Panel ── */
+  #label-edit-panel {
+    display: none; position: absolute; bottom: 40px; right: 20px;
+    z-index: 2000; background: var(--bg-panel); border: 1px solid var(--border);
+    border-radius: 8px; padding: 12px 16px; min-width: 280px; max-width: 320px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.5); font-size: 12px;
+  }
+  #label-edit-panel.active { display: block; }
+  #label-edit-panel h3 { margin: 0 0 8px; font-size: 14px; color: var(--accent-dim); }
+  #label-edit-panel .cal-actions { display: flex; gap: 6px; margin-top: 8px; }
+  #label-edit-panel .cal-actions button { flex: 1; }
+  /* Marker Edit panel (same layout as the others) */
+  #marker-edit-panel {
+    display: none; position: absolute; bottom: 40px; right: 20px;
+    z-index: 2000; background: var(--bg-panel); border: 1px solid var(--border);
+    border-radius: 8px; padding: 12px 16px; min-width: 280px; max-width: 320px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.5); font-size: 12px;
+  }
+  #marker-edit-panel.active { display: block; }
+  #marker-edit-panel h3 { margin: 0 0 8px; font-size: 14px; color: var(--accent-dim); }
+  #marker-edit-panel .cal-actions { display: flex; gap: 6px; margin-top: 8px; }
+  #marker-edit-panel .cal-actions button { flex: 1; }
+  #marker-edit-panel .me-status {
+    font-size: 11px; color: var(--text-muted); margin: 0 0 8px;
+    padding: 5px 8px; background: var(--bg-dark); border-radius: 4px; text-align: center;
+  }
+  #marker-edit-panel .me-status.active { color: var(--accent); font-weight: 600; }
+  /* Flash a tool panel to draw attention when the user tries to open another */
+  @keyframes toolFlash {
+    0%, 100% { box-shadow: 0 4px 20px rgba(0,0,0,0.5); }
+    20%, 60% { box-shadow: 0 0 0 2px var(--accent), 0 4px 24px rgba(0,0,0,0.6); }
+  }
+  #calibration-panel.tool-flash, #label-edit-panel.tool-flash, #marker-edit-panel.tool-flash { animation: toolFlash 0.5s ease 2; }
+  #calibration-panel .cal-row { display: flex; align-items: center; gap: 8px; margin: 6px 0; }
+  #calibration-panel .cal-row label { width: 60px; color: var(--text-secondary); }
+  #calibration-panel input[type=range] { flex: 1; accent-color: var(--accent); }
+  #calibration-panel .cal-bounds { font-family: monospace; font-size: 11px; color: var(--text-muted); padding: 6px; background: var(--bg-dark); border-radius: 4px; margin: 8px 0; word-break: break-all; }
+  #calibration-panel .cal-actions { display: flex; gap: 6px; margin-top: 8px; }
+  #calibration-panel .cal-actions button { flex: 1; }
+
   /* ── Marker Add Form (popup) ── */
   .marker-form { min-width: 220px; }
   .marker-form h3 {
@@ -533,6 +667,8 @@
   }
   .marker-form .btn-save { background: var(--accent-dim); border-color: var(--accent); color: var(--bg-dark); }
   .marker-form .btn-save:hover { background: var(--accent); }
+  .marker-form .btn-del { background: rgba(179,68,68,0.15); border-color: var(--danger); color: var(--danger); }
+  .marker-form .btn-del:hover { background: rgba(179,68,68,0.28); }
   .marker-form .btn-cancel { background: transparent; color: var(--text-secondary); }
   .marker-form .btn-cancel:hover { background: var(--bg-hover); }
 
@@ -632,7 +768,7 @@
     font-size: 13px;
     font-weight: 600;
     color: #e8d5a3;
-    text-shadow: 
+    text-shadow:
       -1px -1px 2px rgba(0,0,0,0.9),
        1px -1px 2px rgba(0,0,0,0.9),
       -1px  1px 2px rgba(0,0,0,0.9),
@@ -642,6 +778,78 @@
     pointer-events: none;
     letter-spacing: 0.5px;
   }
+  /* Positioning mode: make each name grabbable for drag-to-place */
+  .settlement-label.label-draggable {
+    pointer-events: auto;
+    cursor: move;
+    outline: 2px dashed var(--accent);
+    outline-offset: 2px;
+    background: rgba(0,0,0,0.35);
+    border-radius: 3px;
+  }
+  /* Inner span grows the name as you zoom in so it stays readable at high zoom
+     (driven by --label-scale from updateLabelScale). Lives on the span, NOT the
+     marker root, so it doesn't clobber Leaflet's positioning transform. */
+  .settlement-label .sl-name {
+    display: inline-block;
+    transform-origin: left center;
+    transform: scale(var(--label-scale, 1));
+  }
+
+  /* ── Legend overlay ── */
+  #legend-btn {
+    position: absolute; bottom: 8px; left: 8px; z-index: 1001;
+    padding: 6px 12px; background: var(--bg-panel); border: 1px solid var(--border);
+    border-radius: 4px; color: var(--text-secondary); font-size: 12px; cursor: pointer;
+    font-family: inherit; transition: all 0.2s;
+  }
+  #legend-btn:hover { background: var(--bg-hover); color: var(--text-primary); }
+  #legend-panel {
+    display: none; position: absolute; bottom: 42px; left: 8px; z-index: 1001;
+    width: 260px; max-height: 60vh; overflow-y: auto;
+    background: var(--bg-panel); border: 1px solid var(--border); border-radius: 8px;
+    padding: 8px 12px 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+  }
+  #legend-panel.active { display: block; }
+  .legend-group-title {
+    font-family: 'Cinzel', serif; font-size: 11px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.5px; margin: 9px 0 4px;
+    padding-bottom: 3px; border-bottom: 1px solid var(--border);
+  }
+  .legend-row { display: flex; align-items: center; gap: 8px; padding: 2px 0; font-size: 12px; color: var(--text-secondary); }
+  .legend-row img { width: 18px; height: 18px; image-rendering: pixelated; flex-shrink: 0; }
+
+  /* ── Map Options (toggle switches) ── */
+  .map-options {
+    padding: 8px 18px 10px;
+    border-bottom: 1px solid var(--border);
+    flex-shrink: 0;
+  }
+  .map-option {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 5px 0; cursor: pointer; user-select: none;
+  }
+  .map-option .mo-label { font-size: 12px; color: var(--text-secondary); transition: color 0.15s; }
+  .map-option:hover .mo-label { color: var(--text-primary); }
+  .map-option input { position: absolute; opacity: 0; width: 0; height: 0; }
+  .map-option .mo-switch {
+    position: relative; width: 34px; height: 18px; border-radius: 9px; flex-shrink: 0;
+    background: var(--bg-dark); border: 1px solid var(--border); transition: background 0.2s, border-color 0.2s;
+  }
+  .map-option .mo-switch::after {
+    content: ''; position: absolute; top: 2px; left: 2px; width: 12px; height: 12px;
+    border-radius: 50%; background: var(--text-muted); transition: left 0.2s, background 0.2s;
+  }
+  .map-option input:checked + .mo-switch { background: var(--accent-dim); border-color: var(--accent); }
+  .map-option input:checked + .mo-switch::after { left: 18px; background: var(--bg-dark); }
+  .map-option input:focus-visible + .mo-switch { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  /* Search empty state */
+  .search-no-results { padding: 14px 12px; text-align: center; color: var(--text-muted); font-size: 12px; }
+
+  /* Danger button (themed confirm dialog) */
+  .modal .btn-danger { background: rgba(179,68,68,0.15); border-color: var(--danger); color: var(--danger); }
+  .modal .btn-danger:hover { background: rgba(179,68,68,0.28); }
 
   /* ── Responsive ── */
   @media (max-width: 768px) {
@@ -665,10 +873,21 @@
   </div>
 
   <!-- Map Options -->
-  <div style="padding: 4px 18px 8px; font-size: 12px; color: var(--text-secondary);">
-    <label style="cursor:pointer; display:inline-flex; align-items:center; gap:5px;">
-      <input type="checkbox" id="toggle-labels" checked onchange="toggleSettlementLabels()" style="accent-color: var(--accent);">
-      Show settlement names
+  <div class="map-options">
+    <label class="map-option">
+      <span class="mo-label">Settlement names</span>
+      <input type="checkbox" id="toggle-labels" checked onchange="toggleSettlementLabels()">
+      <span class="mo-switch"></span>
+    </label>
+    <label class="map-option">
+      <span class="mo-label">Detail maps</span>
+      <input type="checkbox" id="toggle-local-maps" checked onchange="toggleLocalMaps()">
+      <span class="mo-switch"></span>
+    </label>
+    <label class="map-option">
+      <span class="mo-label">Hide discovered</span>
+      <input type="checkbox" id="toggle-hide-discovered" onchange="toggleHideDiscovered()">
+      <span class="mo-switch"></span>
     </label>
   </div>
 
@@ -681,8 +900,9 @@
 
   <!-- Search -->
   <div class="search-box">
-    <input type="text" class="search-input" id="search-input" placeholder="Search markers..." oninput="filterCategories(this.value)">
+    <input type="text" class="search-input" id="search-input" placeholder="Search markers by name..." oninput="onSearchInput(this.value)" onfocus="onSearchInput(this.value)">
   </div>
+  <div class="search-results" id="search-results"></div>
 
   <!-- Markers Tab -->
   <div class="tab-content active" id="tab-markers">
@@ -704,6 +924,14 @@
   <div class="tab-content" id="tab-tools">
     <div class="tools-section">
       <h3>Import / Export</h3>
+      <button class="tool-btn" onclick="exportAll()" style="border-left: 3px solid var(--accent);">
+        Export All Data
+        <div class="tool-desc">Download markers, progress, label positions &amp; filters in one file</div>
+      </button>
+      <button class="tool-btn" onclick="showImportAllModal()" style="border-left: 3px solid var(--accent);">
+        Import All Data
+        <div class="tool-desc">Restore everything from a backup file</div>
+      </button>
       <button class="tool-btn" onclick="exportMarkers()">
         Export My Markers
         <div class="tool-desc">Download your custom markers as JSON</div>
@@ -733,6 +961,21 @@
       </button>
     </div>
     <div class="tools-section">
+      <h3>Developer Tools</h3>
+      <button class="tool-btn" onclick="calOpen()">
+        Calibrate Local Map
+        <div class="tool-desc">Drag and resize a local map overlay to find correct bounds</div>
+      </button>
+      <button class="tool-btn" onclick="labelEditOpen()">
+        Position Settlement Names
+        <div class="tool-desc">Drag each settlement name to reposition it, then export</div>
+      </button>
+      <button class="tool-btn" onclick="markerEditOpen()">
+        Edit Markers
+        <div class="tool-desc">Click a marker to rename or delete it, then export</div>
+      </button>
+    </div>
+    <div class="tools-section">
       <h3>About</h3>
       <p style="font-size:12px;color:var(--text-muted);line-height:1.6;">
         KCD2 Interactive Map v1.0<br>
@@ -746,9 +989,11 @@
 
 <!-- Map -->
 <div id="map-container">
-  <button id="toggle-sidebar" onclick="toggleSidebar()">☰</button>
+  <button id="toggle-sidebar" onclick="toggleSidebar()" aria-label="Toggle sidebar" title="Toggle sidebar">☰</button>
   <div id="map"></div>
   <div id="coords-display">X: 0 &nbsp; Y: 0</div>
+  <button id="legend-btn" onclick="toggleLegend()" title="Show icon legend">🗝️ Legend</button>
+  <div id="legend-panel"><div id="legend-content"></div></div>
 </div>
 
 <!-- Toast -->
@@ -786,11 +1031,101 @@
   </div>
 </div>
 
+<!-- Import All Modal -->
+<div class="modal-overlay" id="import-all-modal">
+  <div class="modal">
+    <h2>Import All Data</h2>
+    <p style="font-size:13px;color:var(--text-secondary);margin-bottom:12px;">
+      Restore markers, progress, settlement-name positions and category filters from a backup file. This will <strong>replace</strong> your current data.
+    </p>
+    <input type="file" id="import-all-file" accept=".json" style="margin-bottom:10px;font-size:13px;color:var(--text-secondary);" onchange="loadImportAllFile(event)">
+    <textarea id="import-all-data" placeholder='{"userMarkers":{...},"discoveredMarkers":{...},"labelPositions":{...},"activeCategories":[...]}'></textarea>
+    <div class="form-actions">
+      <button class="btn btn-secondary" onclick="closeImportAllModal()">Cancel</button>
+      <button class="btn btn-primary" onclick="importAll()">Import</button>
+    </div>
+  </div>
+</div>
+
+<!-- Confirm Dialog -->
+<div class="modal-overlay" id="confirm-modal" onclick="if(event.target===this)_confirmClose(false)">
+  <div class="modal" style="max-width:380px;">
+    <h2 id="confirm-title">Are you sure?</h2>
+    <p id="confirm-message" style="font-size:13px;color:var(--text-secondary);line-height:1.5;margin-bottom:4px;"></p>
+    <div class="form-actions">
+      <button class="btn btn-secondary" onclick="_confirmClose(false)">Cancel</button>
+      <button class="btn btn-primary" id="confirm-ok" onclick="_confirmClose(true)">Confirm</button>
+    </div>
+  </div>
+</div>
+
+<!-- Settlement Name Positioning Panel -->
+<div id="label-edit-panel">
+  <h3>📍 Position Settlement Names</h3>
+  <p style="color:var(--text-muted);margin:4px 0 8px;line-height:1.5;">
+    Click <b>Start</b>, then drag each name to its spot. Each drop auto-saves to your
+    browser. Use <b>Export</b> to bake them into the data files.
+  </p>
+  <button id="label-edit-toggle" class="btn btn-secondary" style="width:100%;margin-bottom:8px;" onclick="labelEditToggle()">✥ Start Editing</button>
+  <div class="cal-actions">
+    <button class="btn btn-secondary" onclick="labelEditReset()">↺ Reset</button>
+    <button class="btn btn-secondary" onclick="labelEditExport()">💾 Export</button>
+    <button class="btn btn-primary" onclick="labelEditClose()">✓ Done</button>
+  </div>
+</div>
+
+<!-- Marker Edit Panel -->
+<div id="marker-edit-panel">
+  <h3>✏️ Edit Markers</h3>
+  <p style="color:var(--text-muted);margin:4px 0 8px;line-height:1.5;">
+    Click <b>Start</b>, then click any marker to <b>rename</b> or <b>delete</b> it.
+    <b>Save to data/</b> writes the changes straight into the data files (Chrome/Edge
+    over localhost), or <b>Download</b> the files to move in manually.
+  </p>
+  <button id="marker-edit-toggle" class="btn btn-secondary" style="width:100%;margin-bottom:8px;" onclick="markerEditToggle()">✥ Start Editing</button>
+  <div id="marker-edit-status" class="me-status">No unsaved changes</div>
+  <button class="btn btn-primary" style="width:100%;margin-bottom:6px;" onclick="markerEditSaveToData()">💾 Save changes to data/ folder</button>
+  <div class="cal-actions">
+    <button class="btn btn-secondary" onclick="markerEditReset()">↺ Reset</button>
+    <button class="btn btn-secondary" onclick="markerEditExport()">⤓ Download</button>
+    <button class="btn btn-secondary" onclick="markerEditClose()">✓ Done</button>
+  </div>
+</div>
+
+<!-- Local Map Calibration Panel -->
+<div id="calibration-panel">
+  <h3>🗺️ Calibrate Local Map</h3>
+  <div class="cal-row">
+    <label>Map</label>
+    <select id="cal-select" onchange="calSelectMap(this.value)" style="flex:1;padding:4px;background:var(--bg-dark);border:1px solid var(--border);border-radius:4px;color:var(--text-primary);font-size:12px;">
+      <option value="">— Select —</option>
+    </select>
+  </div>
+  <div class="cal-row">
+    <label>Opacity</label>
+    <input type="range" id="cal-opacity" min="0" max="100" value="60" oninput="calUpdateOpacity(this.value)">
+    <span id="cal-opacity-val">60%</span>
+  </div>
+  <div class="cal-row">
+    <label>Scale %</label>
+    <input type="number" id="cal-scale" value="100" min="10" max="500" step="5" onchange="calApplyScale(this.value)" style="width:70px;padding:4px;background:var(--bg-dark);border:1px solid var(--border);border-radius:4px;color:var(--text-primary);font-size:12px;">
+    <button class="btn btn-secondary" onclick="calApplyScale(document.getElementById('cal-scale').value)" style="padding:4px 8px;font-size:11px;">Apply</button>
+  </div>
+  <p style="color:var(--text-muted);margin:6px 0;">Drag the overlay to move it. Adjust scale % to resize.</p>
+  <div class="cal-bounds" id="cal-bounds">Select a map to calibrate</div>
+  <div class="cal-actions">
+    <button class="btn btn-secondary" onclick="calCopyBounds()">📋 Copy Bounds</button>
+    <button class="btn btn-secondary" onclick="calExportConfig()">💾 Export Config</button>
+    <button class="btn btn-primary" onclick="calClose()">✓ Done</button>
+  </div>
+</div>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
 <script src="data/markers_trosky.js"></script>
 <script src="data/markers_kuttenberg.js"></script>
 <script src="data/icon_map.js"></script>
 <script src="data/settlement_labels.js"></script>
+<script src="data/local_maps.js"></script>
 <script>
 // ═══════════════════════════════════════════════
 // ██ CONFIG
@@ -838,6 +1173,10 @@ let markerLayers = {};       // category_id -> L.layerGroup
 let markersByKey = {};       // markerKey -> L.marker (for opacity control)
 let userMarkerLayer = null;
 let settlementLabelLayer = null;  // text labels for settlement names
+let labelEditing = false;         // when true, settlement names are drag-to-position
+let localMapOverlays = [];       // local detail map overlays
+let showLocalMaps = true;
+let localMapsConfig = {};        // loaded from data/local_maps.json
 let allMarkerData = {};      // region -> { categories, markers }
 let userMarkers = {};        // region -> [{ id, name, description, category, x, y }]
 let tempMarker = null;
@@ -855,6 +1194,19 @@ const ITEM_CATEGORIES = new Set([
   "loot_food", "loot_herb", "loot_blacksmithing", "loot_alchemy_mat",
   "loot_usable", "loot_misc", "loot_utility", "loot_dice", "loot_badge",
   "loot_tack", "loot_saddle", "loot_horseshoe", "loot_bridle",
+]);
+
+// Categories that count toward progress stats (collectible/discoverable only).
+// NPCs, facilities, and persistent map fixtures are excluded.
+const PROGRESS_CATEGORIES = new Set([
+  // All loot items
+  ...ITEM_CATEGORIES,
+  // Quests
+  "quest_main", "quest_side", "quest_task",
+  // Discoverable landmarks
+  "shrine", "conc_cross", "grave", "interesting_site",
+  // One-time lootable
+  "nest", "cart_stash", "lootable_corpse",
 ]);
 
 // ── Category Groups (sidebar organization) ──
@@ -890,17 +1242,42 @@ const CATEGORY_GROUPS = [
     "loot_polearm", "loot_shield", "loot_sword"
   ]},
   { name: "Points of Interest", collapsed: false, categories: [
-    "alchemy_bench", "archery_range", "bailiff", "bandit_camp", "beehive",
+    "alchemy_bench", "archery_range", "bandit_camp", "beehive",
     "camp", "cart_stash", "combat_arena", "conc_cross", "dice_table",
     "dog", "drying_rack", "fast_travel", "fist_fight_arena", "grave", "home",
     "hunting_spot", "hunting_boar", "hunting_deer", "hunting_wolf",
     "indulgence_box", "interesting_site", "lodgings", "loot_badge",
     "loot_dice", "loot_misc", "loot_usable", "loot_utility",
-    "lootable_corpse", "nest", "pillory", "player_bed", "selling_chest",
+    "lootable_corpse", "nest", "player_bed", "selling_chest",
     "sharpening_wheel", "shrine", "smokehouse", "underground", "washing",
     "woodland_garden"
   ]},
 ];
+
+// Per-group accent colours — used to tint marker glows and the legend group
+// titles, so categories are distinguishable at a glance.
+const GROUP_COLORS = {
+  "Armour": "#9aa7b5",            // steel
+  "Books": "#c9954c",            // parchment
+  "Food": "#8fae5a",            // green
+  "Materials": "#b5764c",        // copper
+  "NPCs": "#c9a84c",            // gold
+  "Poisons": "#6fae7a",          // venom green
+  "Potions": "#a06ab5",          // violet
+  "Quests": "#e0c24c",          // bright gold
+  "Tack": "#a98c6a",            // leather
+  "Weapons": "#c25a5a",          // blood red
+  "Points of Interest": "#5a9ec9", // blue
+};
+const DEFAULT_GROUP_COLOR = "#c9a84c";
+const _catGroupColorCache = {};
+function categoryGroupColor(catId) {
+  if (catId in _catGroupColorCache) return _catGroupColorCache[catId];
+  const group = CATEGORY_GROUPS.find(g => g.categories.includes(catId));
+  const color = group ? (GROUP_COLORS[group.name] || DEFAULT_GROUP_COLOR) : DEFAULT_GROUP_COLOR;
+  _catGroupColorCache[catId] = color;
+  return color;
+}
 
 
 // ═══════════════════════════════════════════════
@@ -938,6 +1315,20 @@ async function init() {
   loadActiveCategoriesFromStorage();
   loadDiscoveredFromStorage();
 
+  // Load local maps config
+  try {
+    if (window.location.protocol !== 'file:') {
+      const resp = await fetch('data/local_maps.json');
+      if (resp.ok) localMapsConfig = await resp.json();
+    }
+  } catch (e) {
+    console.warn('[KCD2 Map] Fetch local_maps.json failed:', e);
+  }
+  // Fallback to script-tag loaded data
+  if (Object.keys(localMapsConfig).length === 0 && window.LOCAL_MAPS_DATA) {
+    localMapsConfig = window.LOCAL_MAPS_DATA;
+  }
+
   // Set active region button
   document.querySelectorAll('.region-btn').forEach(btn => {
     btn.classList.toggle('active', btn.dataset.region === currentRegion);
@@ -954,6 +1345,9 @@ function attachMapEventHandlers() {
   map.on('mousemove', onMouseMove);
   map.on('contextmenu', onRightClick);
   map.on('moveend', updateHash);
+  map.on('zoomend', updateLocalMapVisibility);
+  map.on('moveend', updateLocalMapVisibility);
+  map.on('zoomend', updateLabelScale);
 }
 
 function onMouseMove(e) {
@@ -965,12 +1359,33 @@ function onMouseMove(e) {
 function restoreFromHash() {
   const hash = window.location.hash;
   if (!hash) return;
-  const match = hash.match(/#(\d+\.?\d*)\/(\d+\.?\d*)\/(\d+\.?\d*)/);
+
+  // Format: #zoom/y/x or #zoom/y/x/category:mx:my (with marker permalink)
+  const match = hash.match(/#(-?\d+\.?\d*)\/(-?\d+\.?\d*)\/(-?\d+\.?\d*)(?:\/(.+))?/);
   if (match) {
     const zoom = parseFloat(match[1]);
     const y = parseFloat(match[2]);
     const x = parseFloat(match[3]);
+    const markerKey = match[4] || null;
+
     map.setView([y, x], zoom);
+
+    if (markerKey) {
+      // Open the marker's popup after a short delay for rendering
+      setTimeout(() => {
+        const marker = markersByKey[markerKey];
+        if (marker) {
+          // Ensure category is visible
+          const catId = markerKey.split(':')[0];
+          if (!activeCategories.has(catId) && markerLayers[catId]) {
+            activeCategories.add(catId);
+            markerLayers[catId].addTo(map);
+            renderCategoryList('');
+          }
+          marker.openPopup();
+        }
+      }, 500);
+    }
   }
 }
 
@@ -979,6 +1394,14 @@ function updateHash() {
   const center = map.getCenter();
   const zoom = map.getZoom();
   const hash = `#${zoom.toFixed(2)}/${center.lat.toFixed(1)}/${center.lng.toFixed(1)}`;
+  history.replaceState(null, null, hash);
+}
+
+function updateHashWithMarker(markerKey) {
+  if (window.location.protocol === 'file:') return;
+  const center = map.getCenter();
+  const zoom = map.getZoom();
+  const hash = `#${zoom.toFixed(2)}/${center.lat.toFixed(1)}/${center.lng.toFixed(1)}/${markerKey}`;
   history.replaceState(null, null, hash);
 }
 
@@ -1050,6 +1473,7 @@ async function loadRegion(region) {
 
   // Center on region
   map.fitBounds(bounds);
+  updateLabelScale();
 
   // User marker layer
   userMarkerLayer = L.layerGroup().addTo(map);
@@ -1126,14 +1550,12 @@ async function loadRegion(region) {
     }
   });
 
-  // Add markers to layers
+  // Add markers to layers (with local renames applied and deletions removed)
   let markerCount = 0;
-  if (regionData.markers) {
-    regionData.markers.forEach(m => {
-      addPoiMarker(m);
-      markerCount++;
-    });
-  }
+  getEditedMarkers(region).forEach(m => {
+    addPoiMarker(m);
+    markerCount++;
+  });
   console.log(`[KCD2 Map] Region: ${region}, Categories: ${categories.length}, Markers loaded: ${markerCount}, Active layers: ${activeCategories.size}`);
 
   // Render user markers
@@ -1142,9 +1564,18 @@ async function loadRegion(region) {
   // Render settlement labels
   renderSettlementLabels(region);
 
+  // Load local detail maps
+  loadLocalMaps(region);
+
   // Render sidebar
   renderCategoryList();
   renderMyMarkersList();
+
+  // Apply hide-discovered state if active
+  if (hideDiscovered) applyHideDiscovered();
+
+  // Keep the Edit Markers counter in sync (e.g. after a region switch)
+  if (typeof updateMarkerEditStatus === 'function') updateMarkerEditStatus();
 }
 
 function switchRegion(region) {
@@ -1164,15 +1595,15 @@ function switchRegion(region) {
 // ██ MARKER CREATION
 // ═══════════════════════════════════════════════
 
-function createMarkerIcon(emoji, color, size = 28, categoryId = '') {
+function createMarkerIcon(emoji, color, size = 28, categoryId = '', glowColor = '') {
   // Use extracted game icon if available — no circle background
   const iconMap = window.ICON_MAP || {};
   const iconPath = iconMap[categoryId];
 
   if (iconPath) {
     return L.divIcon({
-      className: '',
-      html: `<img src="${iconPath}" style="width:${size}px;height:${size}px;object-fit:contain;display:block;" alt="">`,
+      className: 'poi-marker',
+      html: `<img src="${iconPath}" style="--glow:${glowColor || 'transparent'};width:${size}px;height:${size}px;object-fit:contain;display:block;" alt="">`,
       iconSize: [size, size],
       iconAnchor: [size / 2, size / 2],
       popupAnchor: [0, -size / 2],
@@ -1196,8 +1627,9 @@ function addPoiMarker(markerData) {
     return;
   }
 
-  const icon = createMarkerIcon(cat.icon, cat.color, 28, cat.id);
+  const icon = createMarkerIcon(cat.icon, cat.color, 28, cat.id, categoryGroupColor(cat.id));
   const marker = L.marker([markerData.y, markerData.x], { icon });
+  marker.bindTooltip(markerData.name, { direction: 'top', offset: [0, -16], opacity: 0.95, className: 'poi-tooltip' });
 
   const markerKey = getMarkerKey(markerData);
   const isItem = ITEM_CATEGORIES.has(markerData.category);
@@ -1205,26 +1637,14 @@ function addPoiMarker(markerData) {
   const undoneLabel = isItem ? '☐ Mark as Collected' : '☐ Mark as Discovered';
   const btnId = `prog-${markerKey.replace(/[^a-zA-Z0-9]/g, '_')}`;
 
-  marker.on('popupopen', () => {
-    // Update button state when popup opens (discovered state may have changed)
-    const btn = document.getElementById(btnId);
-    if (btn) {
-      const discovered = isMarkerDiscovered(markerData);
-      btn.classList.toggle('completed', discovered);
-      btn.textContent = discovered ? doneLabel : undoneLabel;
-    }
-  });
+  marker.on('popupopen', () => updateHashWithMarker(markerKey));
+  marker.on('popupclose', () => updateHash());
 
-  const popupHtml = `
-    <div class="popup-title">${markerData.name}</div>
-    <div class="popup-category">${cat.name}</div>
-    ${markerData.description ? `<div class="popup-desc">${markerData.description}</div>` : ''}
-    <div class="popup-coords">X: ${markerData.x} &nbsp; Y: ${markerData.y}</div>
-    <button class="popup-progress-btn" id="${btnId}"
-      data-done-label="${doneLabel}" data-undone-label="${undoneLabel}"
-      onclick="toggleMarkerDiscovered('${markerKey}', '${btnId}')">${undoneLabel}</button>
-  `;
-  marker.bindPopup(popupHtml, { maxWidth: 280 });
+  // Popup content is built at open time so it reflects the current discovered
+  // state and switches to an inline edit form when the Edit Markers tool is on.
+  marker._poi = markerData;
+  marker._cat = cat;
+  marker.bindPopup(() => poiPopupHtml(markerData, cat, markerKey, btnId, doneLabel, undoneLabel), { maxWidth: 280 });
 
   // Store reference for opacity control
   markersByKey[markerKey] = marker;
@@ -1236,6 +1656,244 @@ function addPoiMarker(markerData) {
 
   if (markerLayers[cat.id]) {
     markerLayers[cat.id].addLayer(marker);
+  }
+}
+
+// ── POI marker editing (Edit Markers tool) ──
+let markerEditing = false;
+const MARKER_EDIT_KEY = 'kcd2_marker_edits';
+const MARKER_DELETE_KEY = 'kcd2_marker_deletes';
+
+function loadMarkerEdits(region) {
+  try { return (JSON.parse(localStorage.getItem(MARKER_EDIT_KEY) || '{}'))[region] || {}; }
+  catch (e) { return {}; }
+}
+function loadMarkerDeletes(region) {
+  try { return (JSON.parse(localStorage.getItem(MARKER_DELETE_KEY) || '{}'))[region] || []; }
+  catch (e) { return []; }
+}
+function saveMarkerEdit(region, key, name) {
+  try {
+    const all = JSON.parse(localStorage.getItem(MARKER_EDIT_KEY) || '{}');
+    if (!all[region]) all[region] = {};
+    all[region][key] = { name };
+    localStorage.setItem(MARKER_EDIT_KEY, JSON.stringify(all));
+  } catch (e) { console.error('Failed to save marker edit:', e); }
+}
+function addMarkerDelete(region, key) {
+  try {
+    const all = JSON.parse(localStorage.getItem(MARKER_DELETE_KEY) || '{}');
+    if (!all[region]) all[region] = [];
+    if (!all[region].includes(key)) all[region].push(key);
+    localStorage.setItem(MARKER_DELETE_KEY, JSON.stringify(all));
+  } catch (e) { console.error('Failed to save marker deletion:', e); }
+}
+
+// Base markers for a region with local renames applied and deletions removed.
+// Returns fresh copies so the pristine allMarkerData is never mutated.
+function getEditedMarkers(region) {
+  const base = (allMarkerData[region] && allMarkerData[region].markers) || [];
+  const edits = loadMarkerEdits(region);
+  const deletes = new Set(loadMarkerDeletes(region));
+  const out = [];
+  base.forEach(m => {
+    const key = getMarkerKey(m);
+    if (deletes.has(key)) return;
+    const e = edits[key];
+    out.push(e && e.name != null ? { ...m, name: e.name } : { ...m });
+  });
+  return out;
+}
+
+// Popup content — normal view, or an inline edit form when the tool is active.
+function poiPopupHtml(markerData, cat, markerKey, btnId, doneLabel, undoneLabel) {
+  if (markerEditing) {
+    const safeName = (markerData.name || '').replace(/"/g, '&quot;');
+    return `<div class="popup-category">${cat.name}</div>
+      <div class="marker-form" style="min-width:210px;">
+        <label>Marker name</label>
+        <input type="text" id="poi-edit-name" value="${safeName}">
+        <div class="popup-coords" style="margin-top:6px;">X: ${markerData.x} &nbsp; Y: ${markerData.y}</div>
+        <div class="form-actions">
+          <button class="btn btn-del" onclick="deletePoiMarker('${markerKey}')">🗑 Delete</button>
+          <button class="btn btn-save" onclick="savePoiMarkerName('${markerKey}')">Save</button>
+        </div>
+      </div>`;
+  }
+  const discovered = isMarkerDiscovered(markerData);
+  return `<div class="popup-title">${markerData.name}</div>
+    <div class="popup-category">${cat.name}</div>
+    ${markerData.description ? `<div class="popup-desc">${markerData.description}</div>` : ''}
+    <div class="popup-coords">X: ${markerData.x} &nbsp; Y: ${markerData.y}</div>
+    <button class="popup-progress-btn${discovered ? ' completed' : ''}" id="${btnId}"
+      data-done-label="${doneLabel}" data-undone-label="${undoneLabel}"
+      onclick="toggleMarkerDiscovered('${markerKey}', '${btnId}')">${discovered ? doneLabel : undoneLabel}</button>`;
+}
+
+function savePoiMarkerName(key) {
+  const input = document.getElementById('poi-edit-name');
+  if (!input) return;
+  const newName = input.value.trim();
+  if (!newName) { showToast('Name cannot be empty'); return; }
+  const marker = markersByKey[key];
+  if (marker) {
+    if (marker._poi) marker._poi.name = newName;
+    if (marker.getTooltip()) marker.setTooltipContent(newName);
+    marker.closePopup();
+  }
+  saveMarkerEdit(currentRegion, key, newName);
+  renderCategoryList(document.getElementById('search-input')?.value || '');
+  updateMarkerEditStatus();
+  showToast(`Renamed to "${newName}"`);
+}
+
+function deletePoiMarker(key) {
+  showConfirm('Delete this marker from the map data? You can restore it later with Reset in the Edit Markers tool.', { title: 'Delete marker', confirmText: 'Delete', danger: true }).then(ok => {
+    if (!ok) return;
+    const marker = markersByKey[key];
+    if (marker) {
+      marker.closePopup();
+      const catId = key.split(':')[0];
+      if (markerLayers[catId] && markerLayers[catId].hasLayer(marker)) markerLayers[catId].removeLayer(marker);
+      delete markersByKey[key];
+    }
+    addMarkerDelete(currentRegion, key);
+    renderCategoryList(document.getElementById('search-input')?.value || '');
+    updateMarkerEditStatus();
+    showToast('Marker deleted');
+  });
+}
+
+// ── Edit Markers tool ──
+function markerEditCounts(region) {
+  return { renamed: Object.keys(loadMarkerEdits(region)).length, deleted: loadMarkerDeletes(region).length };
+}
+function updateMarkerEditStatus() {
+  const el = document.getElementById('marker-edit-status');
+  if (!el) return;
+  const { renamed, deleted } = markerEditCounts(currentRegion);
+  const total = renamed + deleted;
+  if (total === 0) {
+    el.className = 'me-status';
+    el.textContent = `No unsaved changes for ${currentRegion}`;
+  } else {
+    el.className = 'me-status active';
+    el.textContent = `${total} unsaved change${total > 1 ? 's' : ''} (${renamed} renamed · ${deleted} deleted)`;
+  }
+}
+function markerEditOpen() {
+  if (!ensureSoleTool('marker-edit-panel')) return;
+  document.getElementById('marker-edit-panel').classList.add('active');
+  updateMarkerEditStatus();
+}
+function markerEditClose() {
+  if (markerEditing) markerEditToggle();  // leave edit mode cleanly
+  document.getElementById('marker-edit-panel').classList.remove('active');
+}
+function markerEditToggle() {
+  markerEditing = !markerEditing;
+  const btn = document.getElementById('marker-edit-toggle');
+  if (btn) {
+    btn.textContent = markerEditing ? '■ Stop Editing' : '✥ Start Editing';
+    btn.classList.toggle('btn-primary', markerEditing);
+    btn.classList.toggle('btn-secondary', !markerEditing);
+  }
+  if (map) map.closePopup();  // reopen in the right mode
+  showToast(markerEditing ? 'Click a marker to rename or delete it' : 'Marker editing off');
+}
+function markerEditReset() {
+  showConfirm(`Discard all marker renames and deletions for ${currentRegion}? This restores them to the original data.`, { title: 'Reset marker edits', confirmText: 'Reset', danger: true }).then(ok => {
+    if (!ok) return;
+    try {
+      const edits = JSON.parse(localStorage.getItem(MARKER_EDIT_KEY) || '{}');
+      const deletes = JSON.parse(localStorage.getItem(MARKER_DELETE_KEY) || '{}');
+      delete edits[currentRegion];
+      delete deletes[currentRegion];
+      localStorage.setItem(MARKER_EDIT_KEY, JSON.stringify(edits));
+      localStorage.setItem(MARKER_DELETE_KEY, JSON.stringify(deletes));
+    } catch (e) {}
+    loadRegion(currentRegion);  // rebuild from original data
+    updateMarkerEditStatus();
+    showToast(`Marker edits reset for ${currentRegion}`);
+  });
+}
+function markerEditExport() {
+  const region = currentRegion;
+  const { jsonStr, jsStr } = buildMarkerFiles(region);
+  markerDownload(`markers_${region}.json`, jsonStr, 'application/json');
+  setTimeout(() => markerDownload(`markers_${region}.js`, jsStr, 'text/javascript'), 120);
+  const editCount = Object.keys(loadMarkerEdits(region)).length;
+  const delCount = loadMarkerDeletes(region).length;
+  showToast(`Downloaded markers_${region}.{js,json} (${editCount} renamed, ${delCount} deleted) — move both into data/`);
+}
+function markerDownload(filename, text, mime) {
+  const blob = new Blob([text], { type: mime });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = filename;
+  a.click();
+}
+
+// Build the {json, js} contents for a region's marker file (edits applied).
+function buildMarkerFiles(region) {
+  const base = allMarkerData[region] || { region, markers: [] };
+  const out = { ...base, markers: getEditedMarkers(region) };
+  const jsonStr = JSON.stringify(out, null, 2);
+  const jsStr = `// Marker data for ${region} — edited via the in-app Edit Markers tool\nwindow.MARKER_DATA_${region.toUpperCase()} = ${jsonStr};\n`;
+  return { out, jsonStr, jsStr };
+}
+
+function clearRegionMarkerEdits(region) {
+  try {
+    const e = JSON.parse(localStorage.getItem(MARKER_EDIT_KEY) || '{}'); delete e[region];
+    localStorage.setItem(MARKER_EDIT_KEY, JSON.stringify(e));
+    const d = JSON.parse(localStorage.getItem(MARKER_DELETE_KEY) || '{}'); delete d[region];
+    localStorage.setItem(MARKER_DELETE_KEY, JSON.stringify(d));
+  } catch (err) {}
+}
+
+// Directly write the edited marker files into the project's data/ folder using
+// the File System Access API. Requires Chrome/Edge over http://localhost (a
+// secure context) and a one-time folder grant. Falls back to a download.
+let dataDirHandle = null;
+async function writeFileToDir(dirHandle, name, contents) {
+  const fh = await dirHandle.getFileHandle(name, { create: true });
+  const w = await fh.createWritable();
+  await w.write(contents);
+  await w.close();
+}
+async function markerEditSaveToData() {
+  const region = currentRegion;
+  const { renamed, deleted } = markerEditCounts(region);
+  if (renamed + deleted === 0) { showToast(`No unsaved changes for ${region}`); return; }
+  if (!window.showDirectoryPicker) {
+    showToast('Direct save needs Chrome/Edge over http://localhost — downloading instead');
+    markerEditExport();
+    return;
+  }
+  try {
+    if (!dataDirHandle) {
+      showToast('Select your project’s data/ folder…');
+      dataDirHandle = await window.showDirectoryPicker({ id: 'kcd2-data', mode: 'readwrite' });
+    }
+    if (await dataDirHandle.queryPermission({ mode: 'readwrite' }) !== 'granted') {
+      if (await dataDirHandle.requestPermission({ mode: 'readwrite' }) !== 'granted') {
+        showToast('Write permission denied'); return;
+      }
+    }
+    const { out, jsonStr, jsStr } = buildMarkerFiles(region);
+    await writeFileToDir(dataDirHandle, `markers_${region}.json`, jsonStr);
+    await writeFileToDir(dataDirHandle, `markers_${region}.js`, jsStr);
+    // Files are now the source of truth: fold edits into the in-memory base and
+    // clear the pending-changes store so the model stays consistent.
+    allMarkerData[region] = out;
+    clearRegionMarkerEdits(region);
+    updateMarkerEditStatus();
+    showToast(`Saved markers_${region}.{js,json} to data/ ✓ (${renamed} renamed, ${deleted} deleted)`);
+  } catch (e) {
+    if (e && e.name === 'AbortError') return; // user cancelled the picker
+    console.error('Save to data/ failed:', e);
+    showToast('Save failed — see console (F12)');
   }
 }
 
@@ -1275,7 +1933,7 @@ function addUserMarkerToMap(markerData) {
       onclick="toggleMarkerDiscovered('${markerKey}', '${btnId}')">${undoneLabel}</button>
     <div class="popup-actions">
       <button class="popup-action-btn" onclick="editUserMarker(${markerData.id})">✎ Edit</button>
-      <button class="popup-action-btn danger" onclick="if(confirm('Delete this marker?'))deleteUserMarker(${markerData.id})">✕ Delete</button>
+      <button class="popup-action-btn danger" onclick="showConfirm('Delete this marker?',{title:'Delete marker',confirmText:'Delete',danger:true}).then(ok=>ok&&deleteUserMarker(${markerData.id}))">✕ Delete</button>
     </div>
   `;
   marker.bindPopup(popupHtml, { maxWidth: 280 });
@@ -1308,7 +1966,7 @@ function addUserMarkerToMap(markerData) {
         onclick="toggleMarkerDiscovered('${getMarkerKey(markerData)}', '${newBtnId}')">${undoneLabel}</button>
       <div class="popup-actions">
         <button class="popup-action-btn" onclick="editUserMarker(${markerData.id})">✎ Edit</button>
-        <button class="popup-action-btn danger" onclick="if(confirm('Delete this marker?'))deleteUserMarker(${markerData.id})">✕ Delete</button>
+        <button class="popup-action-btn danger" onclick="showConfirm('Delete this marker?',{title:'Delete marker',confirmText:'Delete',danger:true}).then(ok=>ok&&deleteUserMarker(${markerData.id}))">✕ Delete</button>
       </div>
     `;
     marker.setPopupContent(newPopup);
@@ -1329,7 +1987,10 @@ function addUserMarkerToMap(markerData) {
 
 function renderCategoryList(filter = '') {
   const list = document.getElementById('category-list');
-  const regionMarkers = allMarkerData[currentRegion]?.markers || [];
+  const regionMarkers = [
+    ...getEditedMarkers(currentRegion),
+    ...(userMarkers[currentRegion] || []),
+  ];
   const filterLower = filter.toLowerCase();
   const iconMap = window.ICON_MAP || {};
 
@@ -1359,10 +2020,17 @@ function renderCategoryList(filter = '') {
 
     if (groupCats.length === 0) return; // Skip empty groups
 
-    // Calculate group totals
+    // Calculate group totals and discovered counts (only for progress-trackable categories)
     const groupTotal = groupCats.reduce((sum, cat) =>
       sum + regionMarkers.filter(m => m.category === cat.id).length, 0);
+    const progressCats = groupCats.filter(cat => PROGRESS_CATEGORIES.has(cat.id));
+    const progressTotal = progressCats.reduce((sum, cat) =>
+      sum + regionMarkers.filter(m => m.category === cat.id).length, 0);
+    const progressDiscovered = progressCats.reduce((sum, cat) =>
+      sum + regionMarkers.filter(m => m.category === cat.id && isMarkerDiscovered(m)).length, 0);
     const groupActiveCount = groupCats.filter(cat => activeCategories.has(cat.id)).length;
+    const hasProgress = progressTotal > 0;
+    const groupPct = progressTotal > 0 ? Math.round(progressDiscovered / progressTotal * 100) : 0;
 
     const isExpanded = filter ? true : !collapsedGroups[group.name]; // Expand all when searching
     const expandedClass = isExpanded ? 'expanded' : '';
@@ -1371,22 +2039,30 @@ function renderCategoryList(filter = '') {
     html += `<div class="cat-group-header ${expandedClass}" onclick="toggleGroup('${group.name}')">`;
     html += `  <span class="group-arrow">▶</span>`;
     html += `  <span class="group-name">${group.name}</span>`;
-    html += `  <span class="group-count">${groupTotal}</span>`;
-    html += `  <button class="group-toggle-all" onclick="event.stopPropagation();toggleGroupCategories('${group.name}', ${groupActiveCount < groupCats.length})">${groupActiveCount < groupCats.length ? '☐' : '☑'}</button>`;
+    html += hasProgress
+      ? `  <span class="group-progress">${progressDiscovered}/${progressTotal} (${groupPct}%)</span>`
+      : `  <span class="group-progress">${groupTotal}</span>`;
+    html += `  <button class="group-toggle-all${groupActiveCount === groupCats.length ? ' on' : ''}" aria-label="Toggle all ${group.name}" onclick="event.stopPropagation();toggleGroupCategories('${group.name}', ${groupActiveCount < groupCats.length})"></button>`;
     html += `</div>`;
     html += `<div class="cat-group-children ${expandedClass}">`;
 
     groupCats.forEach(cat => {
-      const count = regionMarkers.filter(m => m.category === cat.id).length;
+      const catMarkers = regionMarkers.filter(m => m.category === cat.id);
+      const count = catMarkers.length;
+      const trackable = PROGRESS_CATEGORIES.has(cat.id);
+      const discovered = trackable ? catMarkers.filter(m => isMarkerDiscovered(m)).length : 0;
       const active = activeCategories.has(cat.id);
       const iconHtml = iconMap[cat.id]
         ? `<img src="${iconMap[cat.id]}" style="width:20px;height:20px;object-fit:contain;" alt="">`
         : cat.icon;
+      const statsHtml = trackable
+        ? `<span class="cat-progress"><span class="done">${discovered}</span>/${count}</span>`
+        : `<span class="cat-progress">${count}</span>`;
       html += `
         <div class="category-item ${active ? 'active' : ''}" onclick="toggleCategory('${cat.id}')">
           <span class="cat-icon">${iconHtml}</span>
           <span class="cat-name">${cat.name}</span>
-          <span class="cat-count">${count}</span>
+          ${statsHtml}
           <span class="cat-toggle"></span>
         </div>`;
     });
@@ -1401,27 +2077,42 @@ function renderCategoryList(filter = '') {
     const otherClass = otherExpanded ? 'expanded' : '';
     const otherTotal = ungroupedCats.reduce((sum, cat) =>
       sum + regionMarkers.filter(m => m.category === cat.id).length, 0);
+    const otherProgressCats = ungroupedCats.filter(cat => PROGRESS_CATEGORIES.has(cat.id));
+    const otherProgressTotal = otherProgressCats.reduce((sum, cat) =>
+      sum + regionMarkers.filter(m => m.category === cat.id).length, 0);
+    const otherDiscovered = otherProgressCats.reduce((sum, cat) =>
+      sum + regionMarkers.filter(m => m.category === cat.id && isMarkerDiscovered(m)).length, 0);
     const otherActiveCount = ungroupedCats.filter(cat => activeCategories.has(cat.id)).length;
+    const otherHasProgress = otherProgressTotal > 0;
+    const otherPct = otherProgressTotal > 0 ? Math.round(otherDiscovered / otherProgressTotal * 100) : 0;
 
     html += `<div class="cat-group">`;
     html += `<div class="cat-group-header ${otherClass}" onclick="toggleGroup('Other')">`;
     html += `  <span class="group-arrow">▶</span>`;
     html += `  <span class="group-name">Other</span>`;
-    html += `  <span class="group-count">${otherTotal}</span>`;
-    html += `  <button class="group-toggle-all" onclick="event.stopPropagation();toggleOtherCategories(${otherActiveCount < ungroupedCats.length})">${otherActiveCount < ungroupedCats.length ? '☐' : '☑'}</button>`;
+    html += otherHasProgress
+      ? `  <span class="group-progress">${otherDiscovered}/${otherProgressTotal} (${otherPct}%)</span>`
+      : `  <span class="group-progress">${otherTotal}</span>`;
+    html += `  <button class="group-toggle-all${otherActiveCount === ungroupedCats.length ? ' on' : ''}" aria-label="Toggle all Other" onclick="event.stopPropagation();toggleOtherCategories(${otherActiveCount < ungroupedCats.length})"></button>`;
     html += `</div>`;
     html += `<div class="cat-group-children ${otherClass}">`;
     ungroupedCats.forEach(cat => {
-      const count = regionMarkers.filter(m => m.category === cat.id).length;
+      const catMarkers = regionMarkers.filter(m => m.category === cat.id);
+      const count = catMarkers.length;
+      const trackable = PROGRESS_CATEGORIES.has(cat.id);
+      const discovered = trackable ? catMarkers.filter(m => isMarkerDiscovered(m)).length : 0;
       const active = activeCategories.has(cat.id);
       const iconHtml = iconMap[cat.id]
         ? `<img src="${iconMap[cat.id]}" style="width:20px;height:20px;object-fit:contain;" alt="">`
         : cat.icon;
+      const statsHtml = trackable
+        ? `<span class="cat-progress"><span class="done">${discovered}</span>/${count}</span>`
+        : `<span class="cat-progress">${count}</span>`;
       html += `
         <div class="category-item ${active ? 'active' : ''}" onclick="toggleCategory('${cat.id}')">
           <span class="cat-icon">${iconHtml}</span>
           <span class="cat-name">${cat.name}</span>
-          <span class="cat-count">${count}</span>
+          ${statsHtml}
           <span class="cat-toggle"></span>
         </div>`;
     });
@@ -1469,6 +2160,32 @@ function toggleOtherCategories(show) {
   renderCategoryList(document.getElementById('search-input').value);
 }
 
+// ── Legend overlay ──
+let legendOpen = false;
+function toggleLegend() {
+  legendOpen = !legendOpen;
+  document.getElementById('legend-panel').classList.toggle('active', legendOpen);
+  if (legendOpen) renderLegend();
+}
+function renderLegend() {
+  const iconMap = window.ICON_MAP || {};
+  let html = '';
+  CATEGORY_GROUPS.forEach(g => {
+    const color = GROUP_COLORS[g.name] || DEFAULT_GROUP_COLOR;
+    const cats = g.categories.map(id => categories.find(c => c.id === id)).filter(Boolean);
+    if (!cats.length) return;
+    html += `<div class="legend-group-title" style="color:${color}">${g.name}</div>`;
+    cats.forEach(c => {
+      const src = iconMap[c.id];
+      const ic = src
+        ? `<img src="${src}" onerror="this.style.display='none'">`
+        : `<span style="width:18px;text-align:center">${c.icon || '📌'}</span>`;
+      html += `<div class="legend-row">${ic}<span>${c.name}</span></div>`;
+    });
+  });
+  document.getElementById('legend-content').innerHTML = html;
+}
+
 function toggleCategory(catId) {
   if (activeCategories.has(catId)) {
     activeCategories.delete(catId);
@@ -1502,6 +2219,120 @@ function toggleAllCategories(show) {
 
 function filterCategories(query) {
   renderCategoryList(query);
+}
+
+let hideDiscovered = false;
+
+function onSearchInput(query) {
+  const q = query.trim().toLowerCase();
+
+  // Always filter categories
+  renderCategoryList(query);
+
+  // Show marker name search results
+  const resultsEl = document.getElementById('search-results');
+  if (!q || q.length < 2) {
+    resultsEl.classList.remove('active');
+    resultsEl.innerHTML = '';
+    return;
+  }
+
+  const iconMap = window.ICON_MAP || {};
+  const regionMarkers = getEditedMarkers(currentRegion);
+  const userMkrs = userMarkers[currentRegion] || [];
+
+  // Search both POI markers and user markers
+  const matches = [];
+  regionMarkers.forEach(m => {
+    if ((m.name || '').toLowerCase().includes(q)) {
+      matches.push({ ...m, source: 'poi' });
+    }
+  });
+  userMkrs.forEach(m => {
+    if ((m.name || '').toLowerCase().includes(q)) {
+      matches.push({ ...m, source: 'user' });
+    }
+  });
+
+  if (matches.length === 0) {
+    resultsEl.innerHTML = '<div class="search-no-results">No markers found</div>';
+    resultsEl.classList.add('active');
+    return;
+  }
+
+  // Limit to 20 results
+  const limited = matches.slice(0, 20);
+  resultsEl.innerHTML = limited.map(m => {
+    const cat = categories.find(c => c.id === m.category);
+    const iconSrc = iconMap[m.category];
+    const iconHtml = iconSrc
+      ? `<img src="${iconSrc}" onerror="this.style.display='none'">`
+      : `<span style="width:18px;text-align:center;font-size:12px">${cat?.icon || '📌'}</span>`;
+    const catName = cat ? cat.name : 'Custom';
+    const tag = m.source === 'user' ? ' (mine)' : '';
+    return `<div class="search-result-item" onclick="searchResultClick(${m.x}, ${m.y}, '${getMarkerKey(m)}')">
+      ${iconHtml}
+      <div>
+        <div class="sr-name">${m.name}</div>
+        <div class="sr-cat">${catName}${tag} — (${m.x}, ${m.y})</div>
+      </div>
+    </div>`;
+  }).join('') + (matches.length > 20 ? `<div style="padding:6px 10px;font-size:11px;color:var(--text-muted);text-align:center">+${matches.length - 20} more results</div>` : '');
+  resultsEl.classList.add('active');
+}
+
+function searchResultClick(x, y, markerKey) {
+  // Close search results
+  document.getElementById('search-results').classList.remove('active');
+  document.getElementById('search-input').value = '';
+  renderCategoryList('');
+
+  // Ensure the category is visible
+  const parts = markerKey.split(':');
+  const catId = parts[0];
+  if (!activeCategories.has(catId) && markerLayers[catId]) {
+    activeCategories.add(catId);
+    markerLayers[catId].addTo(map);
+    saveActiveCategoriesFromStorage();
+    renderCategoryList('');
+  }
+
+  // Fly to marker and open popup
+  flyToMarker(x, y);
+
+  // Update URL with marker permalink
+  updateHashWithMarker(markerKey);
+}
+
+// Close search results when clicking elsewhere
+document.addEventListener('click', function(e) {
+  const searchBox = document.querySelector('.search-box');
+  const resultsEl = document.getElementById('search-results');
+  if (searchBox && resultsEl && !searchBox.contains(e.target) && !resultsEl.contains(e.target)) {
+    resultsEl.classList.remove('active');
+  }
+});
+
+
+// ── Hide Discovered Toggle ──
+
+function toggleHideDiscovered() {
+  hideDiscovered = document.getElementById('toggle-hide-discovered').checked;
+  applyHideDiscovered();
+}
+
+function applyHideDiscovered() {
+  Object.entries(markersByKey).forEach(([key, marker]) => {
+    const set = discoveredMarkers[currentRegion];
+    const discovered = set && set.has(key);
+    if (hideDiscovered && discovered) {
+      marker.setOpacity(0);
+      if (marker._icon) marker._icon.style.pointerEvents = 'none';
+    } else {
+      marker.setOpacity(discovered ? 0.5 : 1.0);
+      if (marker._icon) marker._icon.style.pointerEvents = '';
+    }
+  });
 }
 
 
@@ -1909,13 +2740,13 @@ function importMarkers() {
   }
 }
 
-function clearMyMarkers() {
+async function clearMyMarkers() {
   const markers = userMarkers[currentRegion] || [];
   if (markers.length === 0) {
     showToast('No markers to clear');
     return;
   }
-  if (!confirm(`Delete all ${markers.length} custom markers for ${currentRegion}? This cannot be undone.`)) return;
+  if (!(await showConfirm(`Delete all ${markers.length} custom markers for ${currentRegion}? This cannot be undone.`, {title:'Clear my markers', confirmText:'Delete all', danger:true}))) return;
 
   userMarkers[currentRegion] = [];
   saveUserMarkersToStorage();
@@ -2002,14 +2833,14 @@ function importProgress() {
   }
 }
 
-function clearProgress() {
+async function clearProgress() {
   const set = discoveredMarkers[currentRegion];
   const count = set ? set.size : 0;
   if (count === 0) {
     showToast('No progress to clear');
     return;
   }
-  if (!confirm(`Reset ${count} discovered markers for ${currentRegion}? This cannot be undone.`)) return;
+  if (!(await showConfirm(`Reset ${count} discovered markers for ${currentRegion}? This cannot be undone.`, {title:'Clear progress', confirmText:'Reset', danger:true}))) return;
 
   discoveredMarkers[currentRegion] = new Set();
   saveDiscoveredToStorage();
@@ -2021,48 +2852,677 @@ function clearProgress() {
 }
 
 
+// ── Export / Import All Data ──
+
+function exportAll() {
+  const allData = {
+    version: 2,
+    exportDate: new Date().toISOString(),
+    userMarkers: userMarkers,
+    discoveredMarkers: {},
+    labelPositions: {},                  // v2: settlement-name drag positions
+    activeCategories: [...activeCategories], // v2: which category filters are on
+  };
+
+  // Serialize discovered markers (Sets → Arrays)
+  Object.entries(discoveredMarkers).forEach(([region, set]) => {
+    allData.discoveredMarkers[region] = Array.from(set);
+  });
+
+  // Settlement-name positions (stored separately in localStorage)
+  try { allData.labelPositions = JSON.parse(localStorage.getItem(LABEL_POS_KEY) || '{}'); } catch (e) {}
+
+  const totalMarkers = Object.values(userMarkers).reduce((sum, arr) => sum + arr.length, 0);
+  const totalDiscovered = Object.values(allData.discoveredMarkers).reduce((sum, arr) => sum + arr.length, 0);
+  const totalLabelPos = Object.values(allData.labelPositions).reduce((sum, obj) => sum + Object.keys(obj || {}).length, 0);
+
+  if (totalMarkers === 0 && totalDiscovered === 0 && totalLabelPos === 0) {
+    showToast('No data to export');
+    return;
+  }
+
+  const blob = new Blob([JSON.stringify(allData, null, 2)], { type: 'application/json' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = `kcd2_backup_${new Date().toISOString().slice(0, 10)}.json`;
+  a.click();
+  showToast(`Exported ${totalMarkers} markers + ${totalDiscovered} discoveries${totalLabelPos ? ` + ${totalLabelPos} label positions` : ''}`);
+}
+
+function showImportAllModal() {
+  document.getElementById('import-all-modal').classList.add('active');
+  document.getElementById('import-all-data').value = '';
+  document.getElementById('import-all-file').value = '';
+}
+
+function closeImportAllModal() {
+  document.getElementById('import-all-modal').classList.remove('active');
+}
+
+function loadImportAllFile(event) {
+  const file = event.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = (e) => {
+    document.getElementById('import-all-data').value = e.target.result;
+  };
+  reader.readAsText(file);
+}
+
+async function importAll() {
+  try {
+    const raw = document.getElementById('import-all-data').value.trim();
+    if (!raw) { showToast('No data to import'); return; }
+    const data = JSON.parse(raw);
+
+    if (!(await showConfirm('This will replace all your current markers, progress, settlement-name positions, and category filters. Continue?', {title:'Import all data', confirmText:'Replace'}))) return;
+
+    let markerCount = 0;
+    let discoveredCount = 0;
+
+    // Restore user markers
+    if (data.userMarkers) {
+      Object.entries(data.userMarkers).forEach(([region, markers]) => {
+        userMarkers[region] = Array.isArray(markers) ? markers : [];
+        markerCount += userMarkers[region].length;
+      });
+      // Update nextUserMarkerId to prevent ID conflicts
+      let maxId = 0;
+      Object.values(userMarkers).forEach(arr => {
+        arr.forEach(m => { if (m.id > maxId) maxId = m.id; });
+      });
+      nextUserMarkerId = maxId + 1;
+      saveUserMarkersToStorage();
+    }
+
+    // Restore discovered markers
+    if (data.discoveredMarkers) {
+      Object.entries(data.discoveredMarkers).forEach(([region, keys]) => {
+        const arr = Array.isArray(keys) ? keys : [];
+        discoveredMarkers[region] = new Set(arr);
+        discoveredCount += arr.length;
+      });
+      saveDiscoveredToStorage();
+    }
+
+    // Restore settlement-name positions (v2+ backups)
+    let labelPosCount = 0;
+    if (data.labelPositions && typeof data.labelPositions === 'object') {
+      localStorage.setItem(LABEL_POS_KEY, JSON.stringify(data.labelPositions));
+      labelPosCount = Object.values(data.labelPositions).reduce((sum, obj) => sum + Object.keys(obj || {}).length, 0);
+    }
+
+    // Restore active category filters (v2+ backups)
+    if (Array.isArray(data.activeCategories)) {
+      activeCategories = new Set(data.activeCategories);
+      saveActiveCategoriesFromStorage();
+    }
+
+    // Rebuild the whole view so markers, progress, category filters and label
+    // positions all reflect the imported state.
+    await loadRegion(currentRegion);
+
+    closeImportAllModal();
+    showToast(`Imported ${markerCount} markers + ${discoveredCount} discoveries${labelPosCount ? ` + ${labelPosCount} label positions` : ''}`);
+  } catch (e) {
+    console.error('Import all error:', e);
+    showToast('Invalid JSON data');
+  }
+}
+
+
+// ═══════════════════════════════════════════════
+// ██ LOCAL MAP CALIBRATION TOOL
+// ═══════════════════════════════════════════════
+
+let calActiveOverlay = null;  // reference to the localMapOverlays entry being calibrated
+let calBounds = null;
+let calDragging = false;
+let calDragStart = null;
+let calOriginalBounds = null;
+
+// Only one developer tool panel may be open at a time. If another is already
+// open, flash it and tell the user to save/close it first (avoids losing work).
+const TOOL_PANELS = [
+  { id: 'calibration-panel', name: 'Calibrate Local Map' },
+  { id: 'label-edit-panel', name: 'Position Settlement Names' },
+  { id: 'marker-edit-panel', name: 'Edit Markers' },
+];
+function ensureSoleTool(targetId) {
+  for (const t of TOOL_PANELS) {
+    const el = document.getElementById(t.id);
+    if (t.id !== targetId && el && el.classList.contains('active')) {
+      el.classList.remove('tool-flash'); void el.offsetWidth; el.classList.add('tool-flash');
+      showToast(`Close "${t.name}" first — save/export your changes, then click ✓ Done.`);
+      return false;
+    }
+  }
+  return true;
+}
+
+function calOpen() {
+  if (!ensureSoleTool('calibration-panel')) return;
+  const panel = document.getElementById('calibration-panel');
+  panel.classList.add('active');
+
+  // Populate dropdown with current region's local maps
+  const select = document.getElementById('cal-select');
+  const maps = localMapsConfig[currentRegion] || [];
+  select.innerHTML = '<option value="">— Select —</option>';
+  maps.forEach((cfg, i) => {
+    select.innerHTML += `<option value="${i}">${cfg.name}</option>`;
+  });
+
+  // Ensure all local maps are visible for calibration
+  localMapOverlays.forEach(o => {
+    if (!o.visible) {
+      o.layer.addTo(map);
+      o.visible = true;
+    }
+  });
+}
+
+function calClose() {
+  document.getElementById('calibration-panel').classList.remove('active');
+  calDetachEvents();
+
+  // Persist calibrated bounds into the config and restore as non-interactive
+  if (calActiveOverlay && calBounds) {
+    const newBounds = [
+      [calBounds.getSouthWest().lat, calBounds.getSouthWest().lng],
+      [calBounds.getNorthEast().lat, calBounds.getNorthEast().lng]
+    ];
+    calActiveOverlay.config.bounds = newBounds;
+
+    // Save to localStorage so calibration survives page refresh
+    saveLocalMapBounds(currentRegion, calActiveOverlay.config.name, newBounds);
+
+    map.removeLayer(calActiveOverlay.layer);
+    calActiveOverlay.layer = L.imageOverlay(calActiveOverlay.config.image, newBounds, {
+      opacity: 1,
+      interactive: false,
+      zIndex: 500,
+    }).addTo(map);
+    calActiveOverlay.visible = true;
+  }
+
+  calActiveOverlay = null;
+  calBounds = null;
+  calOriginalBounds = null;
+  map.dragging.enable();
+}
+
+function saveLocalMapBounds(region, name, bounds) {
+  try {
+    const saved = JSON.parse(localStorage.getItem('kcd2_local_map_bounds') || '{}');
+    if (!saved[region]) saved[region] = {};
+    saved[region][name] = bounds;
+    localStorage.setItem('kcd2_local_map_bounds', JSON.stringify(saved));
+  } catch (e) { console.error('Failed to save local map bounds:', e); }
+}
+
+function loadLocalMapBounds(region, name) {
+  try {
+    const saved = JSON.parse(localStorage.getItem('kcd2_local_map_bounds') || '{}');
+    return saved[region]?.[name] || null;
+  } catch (e) { return null; }
+}
+
+function calSelectMap(indexStr) {
+  calDetachEvents();
+
+  if (indexStr === '') {
+    calActiveOverlay = null;
+    calBounds = null;
+    document.getElementById('cal-bounds').textContent = 'Select a map to calibrate';
+    return;
+  }
+
+  const idx = parseInt(indexStr);
+  const entry = localMapOverlays[idx];
+  if (!entry) return;
+
+  // Remove the non-interactive overlay and recreate as interactive
+  if (entry.layer) map.removeLayer(entry.layer);
+
+  const opacity = document.getElementById('cal-opacity').value / 100;
+  entry.layer = L.imageOverlay(entry.config.image, entry.config.bounds, {
+    opacity: opacity,
+    interactive: true,
+    zIndex: 1000,
+  }).addTo(map);
+
+  calActiveOverlay = entry;
+  calBounds = L.latLngBounds(entry.layer.getBounds().getSouthWest(), entry.layer.getBounds().getNorthEast());
+  calOriginalBounds = L.latLngBounds(calBounds.getSouthWest(), calBounds.getNorthEast());
+
+  // Wait for the element to render, then attach drag events
+  setTimeout(() => {
+    const el = entry.layer.getElement();
+    if (el) {
+      el.style.cursor = 'move';
+      el.style.pointerEvents = 'auto';
+      el.addEventListener('mousedown', calStartDrag);
+    }
+  }, 100);
+
+  document.getElementById('cal-scale').value = 100;
+  calUpdateBoundsDisplay();
+}
+
+function calDetachEvents() {
+  if (calActiveOverlay && calActiveOverlay.layer.getElement()) {
+    const el = calActiveOverlay.layer.getElement();
+    el.style.cursor = '';
+    el.removeEventListener('mousedown', calStartDrag);
+  }
+  // Restore full opacity
+  if (calActiveOverlay) {
+    calActiveOverlay.layer.setOpacity(1);
+  }
+}
+
+function calStartDrag(e) {
+  e.preventDefault();
+  e.stopPropagation();
+  calDragging = true;
+  calDragStart = { x: e.clientX, y: e.clientY, bounds: L.latLngBounds(calBounds.getSouthWest(), calBounds.getNorthEast()) };
+  map.dragging.disable();
+
+  document.addEventListener('mousemove', calOnDrag);
+  document.addEventListener('mouseup', calStopDrag);
+}
+
+function calOnDrag(e) {
+  if (!calDragging || !calDragStart) return;
+
+  const dx = e.clientX - calDragStart.x;
+  const dy = e.clientY - calDragStart.y;
+
+  const startPoint = map.latLngToContainerPoint(calDragStart.bounds.getCenter());
+  const newPoint = L.point(startPoint.x + dx, startPoint.y + dy);
+  const newCenter = map.containerPointToLatLng(newPoint);
+
+  const oldCenter = calDragStart.bounds.getCenter();
+  const dLat = newCenter.lat - oldCenter.lat;
+  const dLng = newCenter.lng - oldCenter.lng;
+
+  const sw = calDragStart.bounds.getSouthWest();
+  const ne = calDragStart.bounds.getNorthEast();
+
+  calBounds = L.latLngBounds(
+    [sw.lat + dLat, sw.lng + dLng],
+    [ne.lat + dLat, ne.lng + dLng]
+  );
+
+  calActiveOverlay.layer.setBounds(calBounds);
+  calUpdateBoundsDisplay();
+}
+
+function calStopDrag() {
+  calDragging = false;
+  calDragStart = null;
+  map.dragging.enable();
+  document.removeEventListener('mousemove', calOnDrag);
+  document.removeEventListener('mouseup', calStopDrag);
+}
+
+function calApplyScale(pct) {
+  if (!calActiveOverlay || !calOriginalBounds) return;
+
+  const scale = parseFloat(pct) / 100;
+  if (isNaN(scale) || scale <= 0) return;
+
+  // Scale from the current center position, using original dimensions
+  const center = calBounds.getCenter();
+  const origHalfLat = (calOriginalBounds.getNorthEast().lat - calOriginalBounds.getSouthWest().lat) / 2;
+  const origHalfLng = (calOriginalBounds.getNorthEast().lng - calOriginalBounds.getSouthWest().lng) / 2;
+
+  calBounds = L.latLngBounds(
+    [center.lat - origHalfLat * scale, center.lng - origHalfLng * scale],
+    [center.lat + origHalfLat * scale, center.lng + origHalfLng * scale]
+  );
+
+  calActiveOverlay.layer.setBounds(calBounds);
+  calUpdateBoundsDisplay();
+}
+
+function calUpdateOpacity(value) {
+  document.getElementById('cal-opacity-val').textContent = value + '%';
+  if (calActiveOverlay) calActiveOverlay.layer.setOpacity(value / 100);
+}
+
+function calUpdateBoundsDisplay() {
+  if (!calBounds) return;
+  const sw = calBounds.getSouthWest();
+  const ne = calBounds.getNorthEast();
+  document.getElementById('cal-bounds').textContent =
+    `[[${Math.round(sw.lat)}, ${Math.round(sw.lng)}], [${Math.round(ne.lat)}, ${Math.round(ne.lng)}]]`;
+}
+
+function calCopyBounds() {
+  // Copy just the current overlay bounds
+  const text = document.getElementById('cal-bounds').textContent;
+  navigator.clipboard.writeText(text).then(() => {
+    showToast('Bounds copied to clipboard');
+  }).catch(() => {
+    const el = document.getElementById('cal-bounds');
+    const range = document.createRange();
+    range.selectNodeContents(el);
+    window.getSelection().removeAllRanges();
+    window.getSelection().addRange(range);
+    showToast('Select and copy the bounds manually');
+  });
+}
+
+function calExportConfig() {
+  // Build the full config from current state (including any calibrated bounds)
+  const config = {};
+  for (const [region, maps] of Object.entries(localMapsConfig)) {
+    config[region] = maps.map(cfg => {
+      const savedBounds = loadLocalMapBounds(region, cfg.name);
+      return {
+        name: cfg.name,
+        image: cfg.image,
+        bounds: savedBounds || cfg.bounds,
+        minZoom: cfg.minZoom,
+      };
+    });
+  }
+
+  const jsonStr = JSON.stringify(config, null, 2);
+
+  // Download as JSON
+  const blob1 = new Blob([jsonStr], { type: 'application/json' });
+  const a1 = document.createElement('a');
+  a1.href = URL.createObjectURL(blob1);
+  a1.download = 'local_maps.json';
+  a1.click();
+
+  // Also download as JS wrapper
+  const jsContent = '// Local map overlay configuration\nwindow.LOCAL_MAPS_DATA = ' + jsonStr + ';\n';
+  const blob2 = new Blob([jsContent], { type: 'text/javascript' });
+  const a2 = document.createElement('a');
+  a2.href = URL.createObjectURL(blob2);
+  a2.download = 'local_maps.js';
+  setTimeout(() => a2.click(), 100);
+
+  showToast('Exported local_maps.json + local_maps.js — put both in data/');
+}
+
+
+// ═══════════════════════════════════════════════
+// ██ LOCAL DETAIL MAPS
+// ═══════════════════════════════════════════════
+
+function loadLocalMaps(region) {
+  // Remove existing overlays
+  localMapOverlays.forEach(o => {
+    if (o.layer) map.removeLayer(o.layer);
+  });
+  localMapOverlays = [];
+
+  const maps = localMapsConfig[region] || [];
+  maps.forEach(cfg => {
+    // Use saved calibrated bounds if available, otherwise use JSON config
+    const savedBounds = loadLocalMapBounds(region, cfg.name);
+    const bounds = savedBounds || cfg.bounds;
+
+    const layer = L.imageOverlay(cfg.image, bounds, {
+      opacity: 1,
+      interactive: false,
+      zIndex: 500,
+    });
+    localMapOverlays.push({ layer, config: { ...cfg, bounds }, visible: false });
+  });
+
+  // Apply initial visibility based on current zoom
+  updateLocalMapVisibility();
+}
+
+// Local maps trigger only when the viewport center is within the CENTER of the
+// overlay (inner LOCAL_MAP_TRIGGER fraction of its footprint), not just anywhere
+// inside it — so zooming around a town's outskirts doesn't pop the overlay over
+// the detail you're inspecting.
+const LOCAL_MAP_TRIGGER = 0.5;  // 1.0 = whole footprint, 0.5 = inner half, smaller = tighter
+
+function updateLocalMapVisibility() {
+  if (!showLocalMaps) return;
+  const zoom = map.getZoom();
+  const center = map.getCenter();
+
+  localMapOverlays.forEach(o => {
+    // Skip the overlay currently being calibrated
+    if (calActiveOverlay && o === calActiveOverlay) return;
+
+    // Show only if zoom is high enough AND the viewport center is inside the
+    // overlay's centered trigger zone (its footprint shrunk by LOCAL_MAP_TRIGGER).
+    const b = L.latLngBounds(o.config.bounds[0], o.config.bounds[1]);
+    const c = b.getCenter();
+    const halfLat = (b.getNorth() - b.getSouth()) / 2 * LOCAL_MAP_TRIGGER;
+    const halfLng = (b.getEast() - b.getWest()) / 2 * LOCAL_MAP_TRIGGER;
+    const triggerZone = L.latLngBounds(
+      [c.lat - halfLat, c.lng - halfLng],
+      [c.lat + halfLat, c.lng + halfLng]
+    );
+    const shouldShow = zoom >= o.config.minZoom && triggerZone.contains(center);
+
+    if (shouldShow) {
+      if (!o.visible) {
+        o.layer.addTo(map);
+        o.visible = true;
+      }
+    } else {
+      if (o.visible) {
+        map.removeLayer(o.layer);
+        o.visible = false;
+      }
+    }
+  });
+  updateSettlementLabelVisibility();
+}
+
+function toggleLocalMaps() {
+  showLocalMaps = document.getElementById('toggle-local-maps').checked;
+  if (showLocalMaps) {
+    updateLocalMapVisibility();
+  } else {
+    localMapOverlays.forEach(o => {
+      if (o.visible) {
+        map.removeLayer(o.layer);
+        o.visible = false;
+      }
+    });
+    updateSettlementLabelVisibility();
+  }
+}
+
+
 // ═══════════════════════════════════════════════
 // ██ SETTLEMENT LABELS
 // ═══════════════════════════════════════════════
 
 let showSettlementLabels = true;
+let settlementLabelMarkers = [];  // { marker, x, y } — for show/hide over local maps
 
 function renderSettlementLabels(region) {
   if (settlementLabelLayer) {
     map.removeLayer(settlementLabelLayer);
   }
   settlementLabelLayer = L.layerGroup();
+  settlementLabelMarkers = [];
 
   const labels = (typeof SETTLEMENT_LABELS !== 'undefined') ? SETTLEMENT_LABELS[region] : null;
   if (!labels) return;
 
+  const positions = loadLabelPositions(region);
+
   labels.forEach(label => {
+    // Use a saved (dragged) position if one exists, else the data coordinate.
+    const pos = positions[label.name] || { x: label.x, y: label.y };
     const icon = L.divIcon({
-      className: 'settlement-label',
-      html: label.name,
+      className: 'settlement-label' + (labelEditing ? ' label-draggable' : ''),
+      html: `<span class="sl-name">${label.name}</span>`,
       iconSize: null,
       iconAnchor: [0, 0],
     });
-    L.marker([label.y, label.x], { icon, interactive: false, zIndexOffset: -1000 })
-      .addTo(settlementLabelLayer);
+    const marker = L.marker([pos.y, pos.x], {
+      icon,
+      interactive: labelEditing,
+      draggable: labelEditing,
+      zIndexOffset: labelEditing ? 10000 : -1000,
+    });
+    if (labelEditing) {
+      marker.on('dragend', () => {
+        const ll = marker.getLatLng();
+        const x = Math.round(ll.lng), y = Math.round(ll.lat);
+        saveLabelPosition(region, label.name, x, y);
+        showToast(`${label.name} → X:${x} Y:${y}`);
+      });
+    }
+    marker.addTo(settlementLabelLayer);
+    settlementLabelMarkers.push({ marker, x: pos.x, y: pos.y });
   });
 
-  if (showSettlementLabels) {
+  if (showSettlementLabels || labelEditing) {
     settlementLabelLayer.addTo(map);
   }
+  updateLabelScale();
+  updateSettlementLabelVisibility();
+}
+
+// QOL: hide a settlement name once the local detail map for that town is showing
+// (its coordinate falls inside a visible overlay's bounds), so the floating name
+// doesn't sit on top of the detailed map. Stays visible while positioning labels.
+function updateSettlementLabelVisibility() {
+  if (!settlementLabelMarkers.length) return;
+  const coveredBounds = labelEditing ? [] : localMapOverlays
+    .filter(o => o.visible)
+    .map(o => L.latLngBounds(o.config.bounds[0], o.config.bounds[1]));
+  settlementLabelMarkers.forEach(({ marker, x, y }) => {
+    const el = marker.getElement();
+    if (!el) return;
+    const covered = coveredBounds.some(b => b.contains([y, x]));
+    el.style.display = covered ? 'none' : '';
+  });
+}
+
+// Settlement names render at base size up to LABEL_GROW_FROM_ZOOM, then grow as
+// you zoom in so they stay readable against the detailed map (capped so they
+// never get huge). Applied via the --label-scale var on the inner .sl-name span.
+const LABEL_GROW_FROM_ZOOM = 3.5;  // at/below this zoom, names are base size (×1)
+const LABEL_GROW_RATE = 0.45;      // higher = grows faster as you zoom in
+const LABEL_MAX_SCALE = 2.6;       // cap on how large names can get
+function updateLabelScale() {
+  if (!map) return;
+  const raw = Math.pow(2, (map.getZoom() - LABEL_GROW_FROM_ZOOM) * LABEL_GROW_RATE);
+  const s = Math.min(LABEL_MAX_SCALE, Math.max(1, raw));
+  document.documentElement.style.setProperty('--label-scale', s.toFixed(4));
 }
 
 function toggleSettlementLabels() {
   const cb = document.getElementById('toggle-labels');
   showSettlementLabels = cb ? cb.checked : !showSettlementLabels;
   if (!settlementLabelLayer) return;
-  if (showSettlementLabels) {
+  if (showSettlementLabels || labelEditing) {
     settlementLabelLayer.addTo(map);
+    updateSettlementLabelVisibility();
   } else {
     map.removeLayer(settlementLabelLayer);
   }
 }
 
+// ── Settlement-name position editing (drag-to-place) ──
+const LABEL_POS_KEY = 'kcd2_label_positions';
+
+function loadLabelPositions(region) {
+  try {
+    const saved = JSON.parse(localStorage.getItem(LABEL_POS_KEY) || '{}');
+    return saved[region] || {};
+  } catch (e) { return {}; }
+}
+
+function saveLabelPosition(region, name, x, y) {
+  try {
+    const saved = JSON.parse(localStorage.getItem(LABEL_POS_KEY) || '{}');
+    if (!saved[region]) saved[region] = {};
+    saved[region][name] = { x, y };
+    localStorage.setItem(LABEL_POS_KEY, JSON.stringify(saved));
+  } catch (e) { console.error('Failed to save label position:', e); }
+}
+
+function labelEditOpen() {
+  if (!ensureSoleTool('label-edit-panel')) return;
+  document.getElementById('label-edit-panel').classList.add('active');
+  if (!showSettlementLabels) {
+    document.getElementById('toggle-labels').checked = true;
+    toggleSettlementLabels();
+  }
+}
+
+function labelEditClose() {
+  if (labelEditing) labelEditToggle();  // leave drag mode cleanly
+  document.getElementById('label-edit-panel').classList.remove('active');
+}
+
+function labelEditToggle() {
+  labelEditing = !labelEditing;
+  const btn = document.getElementById('label-edit-toggle');
+  if (btn) {
+    btn.textContent = labelEditing ? '■ Stop Editing' : '✥ Start Editing';
+    btn.classList.toggle('btn-primary', labelEditing);
+    btn.classList.toggle('btn-secondary', !labelEditing);
+  }
+  if (labelEditing && !showSettlementLabels) {
+    document.getElementById('toggle-labels').checked = true;
+    showSettlementLabels = true;
+  }
+  renderSettlementLabels(currentRegion);
+  showToast(labelEditing ? 'Drag each name onto its spot' : 'Editing off');
+}
+
+async function labelEditReset() {
+  if (!(await showConfirm(`Reset all settlement-name positions for ${currentRegion} to their original coordinates? This clears your drags for this region.`, {title:'Reset positions', confirmText:'Reset', danger:true}))) return;
+  try {
+    const saved = JSON.parse(localStorage.getItem(LABEL_POS_KEY) || '{}');
+    delete saved[currentRegion];
+    localStorage.setItem(LABEL_POS_KEY, JSON.stringify(saved));
+  } catch (e) {}
+  renderSettlementLabels(currentRegion);
+  showToast(`Positions reset for ${currentRegion}`);
+}
+
+function labelEditExport() {
+  if (typeof SETTLEMENT_LABELS === 'undefined') return;
+  // Merge saved drag positions into the full label set, per region.
+  const out = {};
+  for (const region of Object.keys(SETTLEMENT_LABELS)) {
+    const positions = loadLabelPositions(region);
+    out[region] = SETTLEMENT_LABELS[region].map(l => {
+      const p = positions[l.name];
+      return { name: l.name, x: p ? p.x : l.x, y: p ? p.y : l.y };
+    });
+  }
+  const jsonStr = JSON.stringify(out, null, 2);
+
+  // JS wrapper matching data/settlement_labels.js
+  const jsContent =
+    '// Settlement labels — positions adjusted via the in-app Position Settlement Names tool\n' +
+    'const SETTLEMENT_LABELS = ' + jsonStr + ';\n' +
+    "if (typeof window !== 'undefined') window.SETTLEMENT_LABELS = SETTLEMENT_LABELS;\n";
+
+  labelDownload('settlement_labels.js', jsContent, 'text/javascript');
+  setTimeout(() => labelDownload('settlement_labels.json', jsonStr, 'application/json'), 120);
+  showToast('Exported settlement_labels.js + .json — put both in data/');
+}
+
+function labelDownload(filename, text, mime) {
+  const blob = new Blob([text], { type: mime });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = filename;
+  a.click();
+}
 
 // ═══════════════════════════════════════════════
 // ██ LOCAL STORAGE
@@ -2152,16 +3612,29 @@ function toggleMarkerDiscovered(key, btnId) {
       btn.classList.remove('completed');
       btn.textContent = btn.dataset.undoneLabel;
     }
-    if (marker) marker.setOpacity(1.0);
+    if (marker) {
+      marker.setOpacity(1.0);
+      if (marker._icon) marker._icon.style.pointerEvents = '';
+    }
   } else {
     set.add(key);
     if (btn) {
       btn.classList.add('completed');
       btn.textContent = btn.dataset.doneLabel;
     }
-    if (marker) marker.setOpacity(0.5);
+    if (marker) {
+      if (hideDiscovered) {
+        marker.setOpacity(0);
+        if (marker._icon) marker._icon.style.pointerEvents = 'none';
+        marker.closePopup();
+      } else {
+        marker.setOpacity(0.5);
+      }
+    }
   }
   saveDiscoveredToStorage();
+  // Refresh sidebar progress stats
+  renderCategoryList(document.getElementById('search-input')?.value || '');
 }
 
 
@@ -2185,6 +3658,33 @@ function showToast(message) {
   toast.classList.add('show');
   setTimeout(() => toast.classList.remove('show'), 2500);
 }
+
+// Themed confirm dialog — returns a Promise<boolean>. Replaces window.confirm().
+let _confirmResolve = null;
+function showConfirm(message, { title = 'Are you sure?', confirmText = 'Confirm', danger = false } = {}) {
+  return new Promise(resolve => {
+    _confirmResolve = resolve;
+    document.getElementById('confirm-title').textContent = title;
+    document.getElementById('confirm-message').textContent = message;
+    const ok = document.getElementById('confirm-ok');
+    ok.textContent = confirmText;
+    ok.classList.toggle('btn-danger', danger);
+    ok.classList.toggle('btn-primary', !danger);
+    document.getElementById('confirm-modal').classList.add('show');
+    ok.focus();
+  });
+}
+function _confirmClose(result) {
+  document.getElementById('confirm-modal').classList.remove('show');
+  const r = _confirmResolve; _confirmResolve = null;
+  if (r) r(result);
+}
+// Esc closes the confirm dialog (cancels)
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape' && document.getElementById('confirm-modal').classList.contains('show')) {
+    _confirmClose(false);
+  }
+});
 
 
 // ═══════════════════════════════════════════════

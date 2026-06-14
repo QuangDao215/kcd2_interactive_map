@@ -1,0 +1,145 @@
+// Local map overlay configuration
+window.LOCAL_MAPS_DATA = {
+    "kuttenberg": [
+        {
+            "name": "Kuttenberg",
+            "image": "maps/local/kutna_hora.png",
+            "bounds": [[3420, 8319], [6061, 11186]],
+            "minZoom": 5.5
+        },
+        {
+            "name": "Suchdol",
+            "image": "maps/local/suchdol.png",
+            "bounds": [[1202, 1660], [2376, 2852]],
+            "minZoom": 5.5
+        },
+        {
+            "name": "Raborsch",
+            "image": "maps/local/ratbor.png",
+            "bounds": [[3275, 2209], [4583, 3535]],
+            "minZoom": 5.5
+        },
+        {
+            "name": "Bohunowitz",
+            "image": "maps/local/bohounovice.png",
+            "bounds": [[3611, 3348], [4614, 4240]],
+            "minZoom": 6.0
+        },
+        {
+            "name": "Devil's Den",
+            "image": "maps/local/certovka.png",
+            "bounds": [[4283,5732], [5057,6516]],
+            "minZoom": 5.5
+        },
+        {
+            "name": "Horschan",
+            "image": "maps/local/horany.png",
+            "bounds": [[3190, 5556], [4398, 6778]],
+            "minZoom": 5.5
+        },
+        {
+            "name": "Grund",
+            "image": "maps/local/grunta.png",
+            "bounds": [[1679, 6903], [3036, 8066]],
+            "minZoom": 5.5
+        },
+        {
+            "name": "Sigismund's Camp",
+            "image": "maps/local/opatovice.png",
+            "bounds": [[2886, 3927], [4282, 4991]],
+            "minZoom": 5.5
+        },
+        {
+            "name": "Wysoka",
+            "image": "maps/local/vysoka.png",
+            "bounds": [[-160, 2592], [991, 3530]],
+            "minZoom": 5.5
+        },
+        {
+            "name": "Malesov",
+            "image": "maps/local/malesov.png",
+            "bounds": [[8521, 5946], [9659, 7082]],
+            "minZoom": 5.5
+        },
+        {
+            "name": "Miskowitz",
+            "image": "maps/local/miskovice.png",
+            "bounds": [[4485, 4775], [5847, 6093]],
+            "minZoom": 5.5
+        },
+        {
+            "name": "Bylany",
+            "image": "maps/local/bylany.png",
+            "bounds": [[5667, 6619], [6801, 7778]],
+            "minZoom": 5.5
+        },
+        {
+            "name": "Pschitoky",
+            "image": "maps/local/pritoky.png",
+            "bounds": [[3834, 6381], [4933, 7314]],
+            "minZoom": 5.5
+        },
+        {
+            "name": "Old Kutna",
+            "image": "maps/local/stara_kutna.png",
+            "bounds": [[3197, 7819], [4208, 9032]],
+            "minZoom": 5.5
+        },
+        {
+            "name": "Monastery (Interior)",
+            "image": "maps/local/klaster_interior.png",
+            "bounds": [[2447, 2885], [3414, 3944]],
+            "minZoom": 5.5
+        },
+    ],
+    "trosky": [
+        {
+            "name": "Nomad's Camp",
+            "image": "maps/local/nomad_camp.png",
+            "bounds": [[2316, 880], [3011, 1705]],
+            "minZoom": 5.5
+        },
+        {
+            "name": "Semine",
+            "image": "maps/local/semin.png",
+            "bounds": [[1539, 1725], [2665, 3032]], 
+            "minZoom": 5.5
+        },
+        {
+            "name": "Nebakov",
+            "image": "maps/local/nebakov.png",
+            "bounds": [[707, 2829], [1739, 3981]],
+            "minZoom": 5.5
+        },
+        {
+            "name": "Zhelejov",
+            "image": "maps/local/zelejov.png",
+            "bounds": [[2479, 2141], [3786, 3464]],
+            "minZoom": 5.5
+        },
+        {
+            "name": "Tachov",
+            "image": "maps/local/tachov.png",
+            "bounds": [[3501, 2698], [4806, 4021]],
+            "minZoom": 5.5
+        },
+        {
+            "name": "Troskowitz",
+            "image": "maps/local/troskovice.png",
+            "bounds": [[2523, 3632], [3833, 5295]],
+            "minZoom": 5.5
+        },
+        {
+            "name": "Apollonia",
+            "image": "maps/local/apolena.png",
+            "bounds": [[2876, 4966], [4645, 5958]],
+            "minZoom": 5.5
+        },
+        {
+            "name": "Trosky Castle",
+            "image": "maps/local/trosky.png",
+            "bounds": [[3886, 3998], [4898, 5318]],
+            "minZoom": 5.5
+        }
+    ]
+  };

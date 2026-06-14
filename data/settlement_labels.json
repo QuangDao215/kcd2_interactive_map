@@ -1,5 +1,4 @@
-// Settlement labels — positions adjusted via the in-app Position Settlement Names tool
-const SETTLEMENT_LABELS = {
+{
   "trosky": [
     {
       "name": "Apollonia",
@@ -119,5 +118,4 @@ const SETTLEMENT_LABELS = {
       "y": 4254
     }
   ]
-};
-if (typeof window !== 'undefined') window.SETTLEMENT_LABELS = SETTLEMENT_LABELS;
+}
