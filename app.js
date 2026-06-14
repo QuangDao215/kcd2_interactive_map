@@ -445,8 +445,9 @@ async function loadRegion(region) {
   // Apply hide-discovered state if active
   if (hideDiscovered) applyHideDiscovered();
 
-  // Keep the Edit Markers counter in sync (e.g. after a region switch)
+  // Keep the Edit Markers counter + overall game-completion bar in sync
   if (typeof updateMarkerEditStatus === 'function') updateMarkerEditStatus();
+  if (typeof updateGameProgress === 'function') updateGameProgress();
 }
 
 function switchRegion(region) {
@@ -563,7 +564,11 @@ function addMarkerDelete(region, key) {
 // Base markers for a region with local renames applied and deletions removed.
 // Returns fresh copies so the pristine allMarkerData is never mutated.
 function getEditedMarkers(region) {
-  const base = (allMarkerData[region] && allMarkerData[region].markers) || [];
+  // Use the loaded region data, else the script-tag global (so progress can be
+  // counted for a region the user hasn't opened yet).
+  const g = window['MARKER_DATA_' + region.toUpperCase()];
+  const base = (allMarkerData[region] && allMarkerData[region].markers)
+    || (g && g.markers) || [];
   const edits = loadMarkerEdits(region);
   const deletes = new Set(loadMarkerDeletes(region));
   const out = [];
@@ -631,6 +636,7 @@ function deletePoiMarker(key) {
     addMarkerDelete(currentRegion, key);
     renderCategoryList(document.getElementById('search-input')?.value || '');
     updateMarkerEditStatus();
+    updateGameProgress();
     showToast('Marker deleted');
   });
 }
@@ -1719,6 +1725,8 @@ async function clearProgress() {
   // Restore all markers to full opacity
   Object.values(markersByKey).forEach(marker => marker.setOpacity(1.0));
 
+  renderCategoryList(document.getElementById('search-input')?.value || '');
+  updateGameProgress();
   showToast('All progress cleared');
 }
 
@@ -2491,6 +2499,30 @@ function isMarkerDiscovered(markerData) {
   return set ? set.has(getMarkerKey(markerData)) : false;
 }
 
+// Whole-game completion = discovered / total across BOTH regions over all
+// PROGRESS_CATEGORIES (quests + collectibles), including custom markers.
+function computeGameProgress() {
+  let total = 0, done = 0;
+  ['trosky', 'kuttenberg'].forEach(region => {
+    const set = discoveredMarkers[region] || new Set();
+    const markers = [...getEditedMarkers(region), ...(userMarkers[region] || [])];
+    markers.forEach(m => {
+      if (!PROGRESS_CATEGORIES.has(m.category)) return;
+      total++;
+      if (set.has(getMarkerKey(m))) done++;
+    });
+  });
+  return { total, done, pct: total ? Math.round(done / total * 100) : 0 };
+}
+function updateGameProgress() {
+  const fill = document.getElementById('gp-fill');
+  if (!fill) return;
+  const { total, done, pct } = computeGameProgress();
+  fill.style.width = pct + '%';
+  document.getElementById('gp-pct').textContent = pct + '%';
+  document.getElementById('gp-detail').textContent = `${done.toLocaleString()} / ${total.toLocaleString()} found`;
+}
+
 function toggleMarkerDiscovered(key, btnId) {
   if (!discoveredMarkers[currentRegion]) {
     discoveredMarkers[currentRegion] = new Set();
@@ -2525,8 +2557,9 @@ function toggleMarkerDiscovered(key, btnId) {
     }
   }
   saveDiscoveredToStorage();
-  // Refresh sidebar progress stats
+  // Refresh sidebar progress stats + overall game completion
   renderCategoryList(document.getElementById('search-input')?.value || '');
+  updateGameProgress();
 }
 
 
