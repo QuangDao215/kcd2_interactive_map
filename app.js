@@ -2230,6 +2230,8 @@ const SETTLEMENT_BANNERS = {
   "Opatowitz": "opatovice", "Pschitoky": "pritoky", "Raborsch": "ratbor",
   "Sigismund's Camp": "zikmund_camp", "Suchdol": "suchdol", "Wysoka": "vysoka",
 };
+// Per-town crest height override (px); others use the CSS default (28px).
+const SETTLEMENT_BANNER_SIZE = { "Kuttenberg": 36 };
 
 function renderSettlementLabels(region) {
   if (settlementLabelLayer) {
@@ -2247,7 +2249,9 @@ function renderSettlementLabels(region) {
     // Use a saved (dragged) position if one exists, else the data coordinate.
     const pos = positions[label.name] || { x: label.x, y: label.y };
     const crest = SETTLEMENT_BANNERS[label.name];
-    const crestHtml = crest ? `<img class="sl-crest" src="banners/${crest}.png" alt="" onerror="this.style.display='none'">` : '';
+    const crestPx = SETTLEMENT_BANNER_SIZE[label.name];
+    const crestStyle = crestPx ? ` style="height:${crestPx}px"` : '';
+    const crestHtml = crest ? `<img class="sl-crest"${crestStyle} src="banners/${crest}.png" alt="" onerror="this.style.display='none'">` : '';
     const icon = L.divIcon({
       className: 'settlement-label' + (labelEditing ? ' label-draggable' : ''),
       html: `<span class="sl-stack">${crestHtml}<span class="sl-name">${label.name}</span></span>`,
