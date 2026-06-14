@@ -31,7 +31,7 @@ E:\kcd2_map\  (repo root)
 ├── maps/
 │   ├── trosky/map.png               # 6144×6144 stitched world map
 │   ├── kuttenberg/map.png           # 12288×10240 (Reddit source: j5vhvv3hslie1.jpeg)
-│   └── local/                       # Local detail map PNGs (23 maps)
+│   └── local/                       # Local detail maps: 23 .webp (committed) + .png sources (git-ignored)
 │       ├── kutna_hora.png           # 8192×8192 (4×4 grid)
 │       ├── troskovice.png           # 4096×4096 (2×2 grid)
 │       ├── nomad_camp.png           # 2048×2048 (1×1 single tile)
@@ -193,9 +193,10 @@ py = 0.0334*x + -0.9963*y + 9800.12
 - flyToMarker from My Markers sidebar list (with real icons)
 
 ### Import/Export
-- **Export All / Import All**: single backup file (**v2**) with custom markers + progress +
-  **label positions (`kcd2_label_positions`) + active category filters** + version/date.
-  Import is backward-compatible with v1 backups and rebuilds the view via `loadRegion`.
+- **Export All / Import All**: single backup file (**v3**) with custom markers + progress +
+  **label positions (`kcd2_label_positions`) + active category filters + marker edits/deletes
+  (`kcd2_marker_edits`/`kcd2_marker_deletes`)** + version/date. Import is backward-compatible
+  with v1/v2 backups and rebuilds the view via `loadRegion`.
 - Separate Export/Import for markers and progress individually
 - Import All handles ID conflict resolution (resets nextUserMarkerId)
 
@@ -262,8 +263,7 @@ crop_banner.py    → (LEGACY) cropped banner textures — banners removed, labe
 ### Medium Priority
 - [ ] Mobile responsiveness (sidebar covers map on phones)
 - [ ] More detailed marker descriptions (chest contents, NPC inventories)
-- [ ] Fold `kcd2_marker_edits`/`kcd2_marker_deletes` into Export All backup (offered, not yet done)
-- [ ] Large assets (`maps/local/` ≈ 534 MB) are git-ignored — decide on Git LFS / CDN for deploy
+- [ ] Add cache-busting query to data-file fetches (returning visitors get stale markers/config after deploy)
 
 ### Low Priority
 - [ ] Keyboard shortcuts (`/` to focus search; Esc already closes the confirm dialog)
@@ -274,6 +274,9 @@ crop_banner.py    → (LEGACY) cropped banner textures — banners removed, labe
 - [x] Legend overlay · keyboard focus rings · themed confirm dialogs · OG/meta tags
 - [x] Split monolith into index.html + style.css + app.js
 - [x] Banner labels removed → plain text; clustering trialed → reverted
+- [x] Town crests above settlement names; overall + per-region Game Completion bar
+- [x] Edit Markers dev tool (rename/delete, Save-to-data via File System Access API)
+- [x] Local maps optimized PNG→WebP (468 MB → 60 MB) — deployable on GitHub Pages
 
 ---
 
