@@ -94,7 +94,7 @@ const CATEGORY_GROUPS = [
   { name: "Materials", collapsed: true, categories: [
     "loot_alchemy_mat", "loot_blacksmithing", "loot_herb"
   ]},
-  { name: "NPCs", collapsed: false, categories: [
+  { name: "NPCs", collapsed: true, categories: [
     "apothecary", "armourer", "baker", "barber", "baths", "blacksmith",
     "butchery", "cobbler", "fisherman", "grocer", "gunsmith", "herbalist",
     "horse_trader", "huntsman", "miller", "saddler", "scribe", "shield_painter",
