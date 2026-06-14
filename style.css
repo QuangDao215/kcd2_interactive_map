@@ -769,13 +769,28 @@
     background: rgba(0,0,0,0.35);
     border-radius: 3px;
   }
-  /* Inner span grows the name as you zoom in so it stays readable at high zoom
-     (driven by --label-scale from updateLabelScale). Lives on the span, NOT the
-     marker root, so it doesn't clobber Leaflet's positioning transform. */
-  .settlement-label .sl-name {
+  /* The crest+name stack grows with zoom (--label-scale from updateLabelScale).
+     The transform lives here, NOT on the marker root, so it doesn't clobber
+     Leaflet's positioning transform. Anchored at the name's left edge so the
+     user's calibrated name positions stay put; the crest floats above. */
+  .settlement-label .sl-stack {
+    position: relative;
     display: inline-block;
     transform-origin: left center;
     transform: scale(var(--label-scale, 1));
+  }
+  .settlement-label .sl-name { display: inline-block; }
+  /* Town crest, centered just above the name */
+  .settlement-label .sl-crest {
+    position: absolute;
+    left: 50%;
+    bottom: 100%;
+    transform: translateX(-50%);
+    height: 28px;
+    width: auto;
+    margin-bottom: 2px;
+    pointer-events: none;
+    filter: drop-shadow(0 1px 2px rgba(0,0,0,0.7));
   }
 
   /* ── Legend overlay ── */

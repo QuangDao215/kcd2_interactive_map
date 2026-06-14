@@ -2216,6 +2216,21 @@ function toggleLocalMaps() {
 let showSettlementLabels = true;
 let settlementLabelMarkers = [];  // { marker, x, y } — for show/hide over local maps
 
+// Town crest accompanying each settlement name → banners/<file>.png.
+// Kept separate from SETTLEMENT_LABELS so the positioning tool's export doesn't drop it.
+const SETTLEMENT_BANNERS = {
+  // Trosky
+  "Apollonia": "apolena", "Nebakov Fortress": "nebakov", "Nomads' Camp": "nomad_camp",
+  "Semine": "semin", "Tachov": "tachov", "Troskowitz": "troskovice",
+  "Trosky Castle": "trosky", "Zhelejov": "zelejov",
+  // Kuttenberg
+  "Bohunowitz": "bohounovice", "Bylany": "bylany", "Devil's Den": "certovka",
+  "Grund": "grunta", "Horschan": "horany", "Kuttenberg": "kutna_hora",
+  "Maleshov": "malesov", "Miskowitz": "miskovice", "Old Kutna": "stara_kutna",
+  "Opatowitz": "opatovice", "Pschitoky": "pritoky", "Raborsch": "ratbor",
+  "Sigismund's Camp": "zikmund_camp", "Suchdol": "suchdol", "Wysoka": "vysoka",
+};
+
 function renderSettlementLabels(region) {
   if (settlementLabelLayer) {
     map.removeLayer(settlementLabelLayer);
@@ -2231,9 +2246,11 @@ function renderSettlementLabels(region) {
   labels.forEach(label => {
     // Use a saved (dragged) position if one exists, else the data coordinate.
     const pos = positions[label.name] || { x: label.x, y: label.y };
+    const crest = SETTLEMENT_BANNERS[label.name];
+    const crestHtml = crest ? `<img class="sl-crest" src="banners/${crest}.png" alt="" onerror="this.style.display='none'">` : '';
     const icon = L.divIcon({
       className: 'settlement-label' + (labelEditing ? ' label-draggable' : ''),
-      html: `<span class="sl-name">${label.name}</span>`,
+      html: `<span class="sl-stack">${crestHtml}<span class="sl-name">${label.name}</span></span>`,
       iconSize: null,
       iconAnchor: [0, 0],
     });
