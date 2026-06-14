@@ -158,8 +158,6 @@ function categoryGroupColor(catId) {
 // ═══════════════════════════════════════════════
 // ██ CUSTOM CRS FOR TILE LAYERS
 // ═══════════════════════════════════════════════
-// ██ CUSTOM CRS FOR TILE LAYERS
-// ═══════════════════════════════════════════════
 // Transformation (1, 0, -1, mapHeight): flips lat so positive lat goes UP
 // (matching default L.CRS.Simple convention) but offsets by mapHeight so all
 // pixel y values stay non-negative within the image bounds. This preserves
@@ -179,6 +177,18 @@ function makeMapCRS(maxZoom, mapHeight) {
 }
 
 
+// Cache-busting: reuse the ?v= version stamped on our data <script> tags in
+// index.html so fetch()ed JSON uses the same query string (single source of
+// truth = the HTML). Returning visitors then get fresh data after each deploy.
+const DATA_VERSION = (() => {
+  const s = document.querySelector('script[src*="icon_map.js"]');
+  const m = s && (s.getAttribute('src') || '').match(/[?&]v=([^&]+)/);
+  return m ? m[1] : '';
+})();
+function withVersion(url) {
+  return DATA_VERSION ? url + (url.includes('?') ? '&' : '?') + 'v=' + DATA_VERSION : url;
+}
+
 async function init() {
   // Restore state
   currentRegion = localStorage.getItem(CONFIG.storageKeys.lastRegion) || 'trosky';
@@ -189,7 +199,7 @@ async function init() {
   // Load local maps config
   try {
     if (window.location.protocol !== 'file:') {
-      const resp = await fetch('data/local_maps.json');
+      const resp = await fetch(withVersion('data/local_maps.json'));
       if (resp.ok) localMapsConfig = await resp.json();
     }
   } catch (e) {
@@ -373,7 +383,7 @@ async function loadRegion(region, opts = {}) {
     // Only try fetch on http/https (file:// protocol blocks fetch via CORS)
     if (window.location.protocol !== 'file:') {
       try {
-        const resp = await fetch(regionCfg.markers);
+        const resp = await fetch(withVersion(regionCfg.markers));
         if (!resp.ok) throw new Error(`HTTP ${resp.status}: ${resp.statusText}`);
         allMarkerData[region] = await resp.json();
         console.log(`[KCD2 Map] Loaded ${region} via fetch: ${allMarkerData[region].markers?.length || 0} markers`);
@@ -396,10 +406,13 @@ async function loadRegion(region, opts = {}) {
     }
   }
 
-  // Merge categories (use trosky as the master list)
+  // Merge categories (use trosky as the master list). Clone the array so the
+  // runtime augmentation below (EXTRA_CATEGORIES + group fallbacks) does NOT
+  // mutate the pristine base in allMarkerData — otherwise Save-to-data would
+  // bake those placeholder categories into the JSON, bloating it on every save.
   const regionData = allMarkerData[region];
   if (regionData.categories && regionData.categories.length > 0) {
-    categories = regionData.categories;
+    categories = regionData.categories.slice();
   }
 
   // Ensure extra categories exist (not in marker JSON but needed for manual markers)

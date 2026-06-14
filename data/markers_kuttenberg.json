@@ -136,25 +136,25 @@
     },
     {
       "id": "hunting_boar",
-      "name": "Boar Hunting Spot",
+      "name": "Hunting Spot (Boar)",
       "icon": "🐗",
       "color": "#5d7b3a"
     },
     {
       "id": "hunting_deer",
-      "name": "Roe Deer Hunting Spot",
+      "name": "Hunting Spot (Roe Deer)",
       "icon": "🦌",
       "color": "#5d7b3a"
     },
     {
       "id": "hunting_spot",
-      "name": "Deer Hunting Spot",
+      "name": "Hunting Spot (Deer)",
       "icon": "🦌",
       "color": "#5d7b3a"
     },
     {
       "id": "hunting_wolf",
-      "name": "Wolf Hunting Spot",
+      "name": "Hunting Spot (Wolf)",
       "icon": "🐺",
       "color": "#5d7b3a"
     },
@@ -475,102 +475,6 @@
       "name": "Woodland Garden",
       "icon": "🌱",
       "color": "#2ecc71"
-    },
-    {
-      "id": "barber",
-      "name": "Barber",
-      "icon": "💈",
-      "color": "#c9a84c"
-    },
-    {
-      "id": "fist_fight_arena",
-      "name": "Fist Fight Arena",
-      "icon": "👊",
-      "color": "#c9a84c"
-    },
-    {
-      "id": "loot_armour_belt",
-      "name": "Armour Belt",
-      "icon": "📦",
-      "color": "#c9a84c"
-    },
-    {
-      "id": "loot_armour_pouch",
-      "name": "Armour Pouch",
-      "icon": "📦",
-      "color": "#c9a84c"
-    },
-    {
-      "id": "blacksmith",
-      "name": "Blacksmith",
-      "icon": "📦",
-      "color": "#c9a84c"
-    },
-    {
-      "id": "miller",
-      "name": "Miller",
-      "icon": "📦",
-      "color": "#c9a84c"
-    },
-    {
-      "id": "shield_painter",
-      "name": "Shield Painter",
-      "icon": "📦",
-      "color": "#c9a84c"
-    },
-    {
-      "id": "tanner",
-      "name": "Tanner",
-      "icon": "📦",
-      "color": "#c9a84c"
-    },
-    {
-      "id": "loot_poison",
-      "name": "Poison",
-      "icon": "📦",
-      "color": "#c9a84c"
-    },
-    {
-      "id": "loot_tack",
-      "name": "Tack",
-      "icon": "📦",
-      "color": "#c9a84c"
-    },
-    {
-      "id": "beehive",
-      "name": "Beehive",
-      "icon": "📦",
-      "color": "#c9a84c"
-    },
-    {
-      "id": "conc_cross",
-      "name": "Conc Cross",
-      "icon": "📦",
-      "color": "#c9a84c"
-    },
-    {
-      "id": "dog",
-      "name": "Dog",
-      "icon": "📦",
-      "color": "#c9a84c"
-    },
-    {
-      "id": "home",
-      "name": "Home",
-      "icon": "📦",
-      "color": "#c9a84c"
-    },
-    {
-      "id": "selling_chest",
-      "name": "Selling Chest",
-      "icon": "📦",
-      "color": "#c9a84c"
-    },
-    {
-      "id": "fast_travel_level",
-      "name": "Level Transition",
-      "icon": "🚪",
-      "color": "#5a9ec9"
     }
   ],
   "markers": [
