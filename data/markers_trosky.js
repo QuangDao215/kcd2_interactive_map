@@ -1,3 +1,4 @@
+// Marker data for trosky — edited via the in-app Edit Markers tool
 window.MARKER_DATA_TROSKY = {
   "region": "trosky",
   "coordinate_system": "pixel",
@@ -5,482 +6,578 @@ window.MARKER_DATA_TROSKY = {
     {
       "id": "alchemy_bench",
       "name": "Alchemy Bench",
-      "icon": "\u2697\ufe0f",
+      "icon": "⚗️",
       "color": "#8e44ad"
     },
     {
       "id": "apothecary",
       "name": "Apothecary",
-      "icon": "\ud83d\udc8a",
+      "icon": "💊",
       "color": "#16a085"
     },
     {
       "id": "archery_range",
       "name": "Archery Range",
-      "icon": "\ud83c\udfaf",
+      "icon": "🎯",
       "color": "#e67e22"
     },
     {
       "id": "bandit_camp",
       "name": "Enemy Camp",
-      "icon": "\ud83d\udc80",
+      "icon": "💀",
       "color": "#e74c3c"
     },
     {
       "id": "baths",
       "name": "Bathhouse",
-      "icon": "\ud83d\udec1",
+      "icon": "🛁",
       "color": "#3498db"
     },
     {
       "id": "smithy",
       "name": "Smithy",
-      "icon": "\u2692\ufe0f",
+      "icon": "⚒️",
       "color": "#8b7355"
     },
     {
       "id": "butchery",
       "name": "Butchery",
-      "icon": "\ud83e\udd69",
+      "icon": "🥩",
       "color": "#c0392b"
     },
     {
       "id": "camp",
       "name": "Camp",
-      "icon": "\ud83c\udfd5\ufe0f",
+      "icon": "🏕️",
       "color": "#95a5a6"
     },
     {
       "id": "cart_stash",
       "name": "Cart Stash",
-      "icon": "\ud83d\uded2",
+      "icon": "🛒",
       "color": "#8b6914"
     },
     {
       "id": "cobbler",
       "name": "Cobbler",
-      "icon": "\ud83d\udc62",
+      "icon": "👢",
       "color": "#6d4c41"
     },
     {
       "id": "combat_arena",
       "name": "Combat Arena",
-      "icon": "\ud83d\udc4a",
+      "icon": "👊",
       "color": "#e74c3c"
     },
     {
       "id": "dice_table",
       "name": "Dice Table",
-      "icon": "\ud83c\udfb2",
+      "icon": "🎲",
       "color": "#f39c12"
     },
     {
       "id": "drying_rack",
       "name": "Drying Rack",
-      "icon": "\ud83e\uddfa",
+      "icon": "🧺",
       "color": "#b8860b"
     },
     {
       "id": "fast_travel",
       "name": "Fast Travel",
-      "icon": "\ud83c\udfc1",
+      "icon": "🏁",
       "color": "#4a90d9"
     },
     {
       "id": "grave",
       "name": "Grave",
-      "icon": "\ud83e\udea6",
+      "icon": "🪦",
       "color": "#7f8c8d"
     },
     {
       "id": "grocer",
       "name": "Grocer",
-      "icon": "\ud83e\udd6c",
+      "icon": "🥬",
       "color": "#27ae60"
     },
     {
       "id": "herbalist",
       "name": "Herbalist",
-      "icon": "\ud83c\udf3f",
+      "icon": "🌿",
       "color": "#27ae60"
     },
     {
       "id": "horse_trader",
       "name": "Horse Trader",
-      "icon": "\ud83d\udc34",
+      "icon": "🐴",
       "color": "#8b6914"
     },
     {
       "id": "hunting_boar",
-      "name": "Hunting Spot (Boar)",
-      "icon": "\ud83d\udc17",
+      "name": "Boar Hunting Spot",
+      "icon": "🐗",
       "color": "#5d7b3a"
     },
     {
       "id": "hunting_deer",
-      "name": "Hunting Spot (Roe Deer)",
-      "icon": "\ud83e\udd8c",
+      "name": "Roe Deer Hunting Spot",
+      "icon": "🦌",
       "color": "#5d7b3a"
     },
     {
       "id": "hunting_spot",
-      "name": "Hunting Spot (Deer)",
-      "icon": "\ud83e\udd8c",
+      "name": "Deer Hunting Spot",
+      "icon": "🦌",
       "color": "#5d7b3a"
     },
     {
       "id": "hunting_wolf",
-      "name": "Hunting Spot (Wolf)",
-      "icon": "\ud83d\udc3a",
+      "name": "Wolf Hunting Spot",
+      "icon": "🐺",
       "color": "#5d7b3a"
     },
     {
       "id": "huntsman",
       "name": "Huntsman",
-      "icon": "\ud83c\udff9",
+      "icon": "🏹",
       "color": "#5d7b3a"
     },
     {
       "id": "indulgence_box",
       "name": "Indulgence Box",
-      "icon": "\ud83d\udce6",
+      "icon": "📦",
       "color": "#d4a564"
     },
     {
       "id": "interesting_site",
       "name": "Interesting Site",
-      "icon": "\u2b50",
+      "icon": "⭐",
       "color": "#f1c40f"
     },
     {
       "id": "loot_alchemy_mat",
       "name": "Alchemy Material",
-      "icon": "\u2697\ufe0f",
+      "icon": "⚗️",
       "color": "#8e44ad"
     },
     {
       "id": "loot_ammo",
       "name": "Ammo / Arrows",
-      "icon": "\u27a1\ufe0f",
+      "icon": "➡️",
       "color": "#8d6e63"
     },
     {
       "id": "loot_armour_arms",
       "name": "Arm Armour",
-      "icon": "\ud83e\udde4",
+      "icon": "🧤",
       "color": "#795548"
     },
     {
       "id": "loot_armour_belt",
       "name": "Belt",
-      "icon": "\ud83d\udd17",
+      "icon": "🔗",
       "color": "#8d6e63"
     },
     {
       "id": "loot_armour_body",
       "name": "Body Armour",
-      "icon": "\ud83e\uddba",
+      "icon": "🦺",
       "color": "#8b7355"
     },
     {
       "id": "loot_armour_head",
       "name": "Head Armour",
-      "icon": "\u26d1\ufe0f",
+      "icon": "⛑️",
       "color": "#7a8b99"
     },
     {
       "id": "loot_armour_jewellery",
       "name": "Jewellery",
-      "icon": "\ud83d\udc8d",
+      "icon": "💍",
       "color": "#c9a84c"
     },
     {
       "id": "loot_armour_legs",
       "name": "Leg Armour",
-      "icon": "\ud83d\udc62",
+      "icon": "👢",
       "color": "#6d4c41"
     },
     {
       "id": "loot_armour_pouch",
       "name": "Pouch",
-      "icon": "\ud83d\udc5d",
+      "icon": "👝",
       "color": "#a0522d"
     },
     {
       "id": "loot_badge",
       "name": "Gambling Badge",
-      "icon": "\ud83c\udfc5",
+      "icon": "🏅",
       "color": "#c9a84c"
     },
     {
       "id": "loot_blacksmithing",
       "name": "Blacksmithing Material",
-      "icon": "\u2692\ufe0f",
+      "icon": "⚒️",
       "color": "#8b7355"
     },
     {
       "id": "loot_bow",
       "name": "Bow",
-      "icon": "\ud83c\udff9",
+      "icon": "🏹",
       "color": "#5d7b3a"
     },
     {
       "id": "loot_bridle",
       "name": "Bridle",
-      "icon": "\ud83d\udc34",
+      "icon": "🐴",
       "color": "#795548"
     },
     {
       "id": "loot_dagger",
       "name": "Dagger",
-      "icon": "\ud83d\udde1\ufe0f",
+      "icon": "🗡️",
       "color": "#607d8b"
     },
     {
       "id": "loot_dice",
       "name": "Dice",
-      "icon": "\ud83c\udfb2",
+      "icon": "🎲",
       "color": "#f39c12"
     },
     {
       "id": "loot_food",
       "name": "Food",
-      "icon": "\ud83c\udf56",
+      "icon": "🍖",
       "color": "#c0392b"
     },
     {
       "id": "loot_heavy_weapon",
       "name": "Heavy Weapon",
-      "icon": "\ud83e\ude93",
+      "icon": "🪓",
       "color": "#795548"
     },
     {
       "id": "loot_herb",
       "name": "Herb",
-      "icon": "\ud83c\udf3f",
+      "icon": "🌿",
       "color": "#27ae60"
     },
     {
       "id": "loot_horseshoe",
       "name": "Horseshoe",
-      "icon": "\ud83d\udc34",
+      "icon": "🐴",
       "color": "#607d8b"
     },
     {
       "id": "loot_letter",
       "name": "Letter",
-      "icon": "\u2709\ufe0f",
+      "icon": "✉️",
       "color": "#bdc3c7"
     },
     {
       "id": "loot_lore_book",
       "name": "Lore Book",
-      "icon": "\ud83d\udcd6",
+      "icon": "📖",
       "color": "#8b6914"
     },
     {
       "id": "loot_map",
       "name": "Treasure Map",
-      "icon": "\ud83d\uddfa\ufe0f",
+      "icon": "🗺️",
       "color": "#d4a564"
     },
     {
       "id": "loot_misc",
       "name": "Miscellaneous",
-      "icon": "\ud83d\udce6",
+      "icon": "📦",
       "color": "#95a5a6"
     },
     {
       "id": "loot_poison",
       "name": "Poison",
-      "icon": "\u2620\ufe0f",
+      "icon": "☠️",
       "color": "#8e44ad"
     },
     {
       "id": "loot_polearm",
       "name": "Polearm",
-      "icon": "\ud83d\udd31",
+      "icon": "🔱",
       "color": "#6d4c41"
     },
     {
       "id": "loot_potion",
       "name": "Potion",
-      "icon": "\ud83e\uddea",
+      "icon": "🧪",
       "color": "#16a085"
     },
     {
       "id": "loot_recipe",
       "name": "Recipe",
-      "icon": "\ud83d\udccb",
+      "icon": "📋",
       "color": "#e67e22"
     },
     {
       "id": "loot_saddle",
       "name": "Saddle",
-      "icon": "\ud83d\udc34",
+      "icon": "🐴",
       "color": "#a0522d"
     },
     {
       "id": "loot_shield",
       "name": "Shield",
-      "icon": "\ud83d\udee1\ufe0f",
+      "icon": "🛡️",
       "color": "#7a8b99"
     },
     {
       "id": "loot_skill_book",
       "name": "Skill Book",
-      "icon": "\ud83d\udcd8",
+      "icon": "📘",
       "color": "#2980b9"
     },
     {
       "id": "loot_sword",
       "name": "Sword",
-      "icon": "\u2694\ufe0f",
+      "icon": "⚔️",
       "color": "#8b4513"
     },
     {
       "id": "loot_tack",
       "name": "Horse Tack",
-      "icon": "\ud83d\udc34",
+      "icon": "🐴",
       "color": "#8b6914"
     },
     {
       "id": "loot_usable",
       "name": "Usable Item",
-      "icon": "\ud83d\udd11",
+      "icon": "🔑",
       "color": "#7f8c8d"
     },
     {
       "id": "loot_utility",
       "name": "Utility Kit",
-      "icon": "\ud83e\uddf0",
+      "icon": "🧰",
       "color": "#607d8b"
     },
     {
       "id": "lootable_corpse",
       "name": "Lootable Corpse",
-      "icon": "\ud83d\udc80",
+      "icon": "💀",
       "color": "#7f8c8d"
     },
     {
       "id": "miller",
       "name": "Miller",
-      "icon": "\ud83c\udf3e",
+      "icon": "🌾",
       "color": "#daa520"
     },
     {
       "id": "nest",
       "name": "Nest",
-      "icon": "\ud83e\udeba",
+      "icon": "🪺",
       "color": "#8d6e63"
     },
     {
       "id": "player_bed",
       "name": "Player Bed",
-      "icon": "\ud83d\udecf\ufe0f",
+      "icon": "🛏️",
       "color": "#4a90d9"
     },
     {
       "id": "quest_main",
       "name": "Main Quest",
-      "icon": "\u2757",
+      "icon": "❗",
       "color": "#e74c3c"
     },
     {
       "id": "quest_side",
       "name": "Side Quest",
-      "icon": "\u2753",
+      "icon": "❓",
       "color": "#3498db"
     },
     {
       "id": "quest_task",
       "name": "Task / Activity",
-      "icon": "\ud83d\udcdd",
+      "icon": "📝",
       "color": "#e67e22"
     },
     {
       "id": "saddler",
       "name": "Saddler",
-      "icon": "\ud83d\udc0e",
+      "icon": "🐎",
       "color": "#a0522d"
     },
     {
       "id": "scribe",
       "name": "Scribe",
-      "icon": "\ud83d\udcdc",
+      "icon": "📜",
       "color": "#7f8c8d"
     },
     {
       "id": "sharpening_wheel",
       "name": "Sharpening Wheel",
-      "icon": "\ud83d\udd27",
+      "icon": "🔧",
       "color": "#95a5a6"
     },
     {
       "id": "shrine",
       "name": "Shrine",
-      "icon": "\u26ea",
+      "icon": "⛪",
       "color": "#bdc3c7"
     },
     {
       "id": "skill_trainer",
       "name": "Skill Teacher",
-      "icon": "\ud83d\udcd6",
+      "icon": "📖",
       "color": "#3498db"
     },
     {
       "id": "smokehouse",
       "name": "Smokehouse",
-      "icon": "\ud83d\udd25",
+      "icon": "🔥",
       "color": "#d35400"
     },
     {
       "id": "tailor",
       "name": "Tailor",
-      "icon": "\ud83e\uddf5",
+      "icon": "🧵",
       "color": "#9b59b6"
     },
     {
       "id": "tanner",
       "name": "Tanner",
-      "icon": "\ud83e\udd8c",
+      "icon": "🦌",
       "color": "#795548"
     },
     {
       "id": "tavern",
       "name": "Tavern / Inn",
-      "icon": "\ud83c\udf7a",
+      "icon": "🍺",
       "color": "#c9a84c"
     },
     {
       "id": "trader",
       "name": "Trader / Shop",
-      "icon": "\ud83c\udfea",
+      "icon": "🏪",
       "color": "#27ae60"
     },
     {
       "id": "underground",
       "name": "Underground Entrance",
-      "icon": "\ud83d\udd73\ufe0f",
+      "icon": "🕳️",
       "color": "#34495e"
     },
     {
       "id": "unknown",
       "name": "Unknown",
-      "icon": "\u2753",
+      "icon": "❓",
       "color": "#95a5a6"
     },
     {
       "id": "washing",
       "name": "Washing",
-      "icon": "\ud83d\udc55",
+      "icon": "👕",
       "color": "#3498db"
     },
     {
       "id": "woodland_garden",
       "name": "Woodland Garden",
-      "icon": "\ud83c\udf31",
+      "icon": "🌱",
       "color": "#2ecc71"
+    },
+    {
+      "id": "barber",
+      "name": "Barber",
+      "icon": "💈",
+      "color": "#c9a84c"
+    },
+    {
+      "id": "fast_travel_level",
+      "name": "Level Transition",
+      "icon": "🚪",
+      "color": "#5a9ec9"
+    },
+    {
+      "id": "fist_fight_arena",
+      "name": "Fist Fight Arena",
+      "icon": "👊",
+      "color": "#c9a84c"
+    },
+    {
+      "id": "armourer",
+      "name": "Armourer",
+      "icon": "📦",
+      "color": "#c9a84c"
+    },
+    {
+      "id": "baker",
+      "name": "Baker",
+      "icon": "📦",
+      "color": "#c9a84c"
+    },
+    {
+      "id": "blacksmith",
+      "name": "Blacksmith",
+      "icon": "📦",
+      "color": "#c9a84c"
+    },
+    {
+      "id": "fisherman",
+      "name": "Fisherman",
+      "icon": "📦",
+      "color": "#c9a84c"
+    },
+    {
+      "id": "gunsmith",
+      "name": "Gunsmith",
+      "icon": "📦",
+      "color": "#c9a84c"
+    },
+    {
+      "id": "shield_painter",
+      "name": "Shield Painter",
+      "icon": "📦",
+      "color": "#c9a84c"
+    },
+    {
+      "id": "weaponsmith",
+      "name": "Weaponsmith",
+      "icon": "📦",
+      "color": "#c9a84c"
+    },
+    {
+      "id": "beehive",
+      "name": "Beehive",
+      "icon": "📦",
+      "color": "#c9a84c"
+    },
+    {
+      "id": "conc_cross",
+      "name": "Conc Cross",
+      "icon": "📦",
+      "color": "#c9a84c"
+    },
+    {
+      "id": "dog",
+      "name": "Dog",
+      "icon": "📦",
+      "color": "#c9a84c"
+    },
+    {
+      "id": "home",
+      "name": "Home",
+      "icon": "📦",
+      "color": "#c9a84c"
+    },
+    {
+      "id": "lodgings",
+      "name": "Lodgings",
+      "icon": "📦",
+      "color": "#c9a84c"
+    },
+    {
+      "id": "selling_chest",
+      "name": "Selling Chest",
+      "icon": "📦",
+      "color": "#c9a84c"
     }
   ],
   "markers": [
@@ -500,7 +597,7 @@ window.MARKER_DATA_TROSKY = {
       "label_key": "@ui_maplegend_poachersCamp"
     },
     {
-      "name": "Tvid Animal Spawn Hunting Spot Poi 2",
+      "name": "Deer Hunting Spot",
       "category": "hunting_spot",
       "description": "",
       "world_x": 1471.98,
@@ -544,7 +641,7 @@ window.MARKER_DATA_TROSKY = {
       "label_key": "@ui_maplegend_beeHives"
     },
     {
-      "name": "Tapo Animal Spawn Hunting Spot Poi 6",
+      "name": "Roe Deer Hunting Spot",
       "category": "hunting_deer",
       "description": "",
       "world_x": 2878.45,
@@ -603,7 +700,7 @@ window.MARKER_DATA_TROSKY = {
       "label_key": "@ui_maplegend_apothecaryEmerich"
     },
     {
-      "name": "Tsem Animal Spawn Hunting Spot Poi 1",
+      "name": "Roe Deer Hunting Spot",
       "category": "hunting_deer",
       "description": "",
       "world_x": 1854.38,
@@ -636,7 +733,7 @@ window.MARKER_DATA_TROSKY = {
       "category": "interesting_site",
       "description": "",
       "world_x": 2617.64,
-      "world_y": 2672.0,
+      "world_y": 2672,
       "world_z": 133.31,
       "x": 4917,
       "y": 4490,
@@ -676,7 +773,7 @@ window.MARKER_DATA_TROSKY = {
       "is_discoverable": true
     },
     {
-      "name": "Tneb Animal Spawn Hunting Spot Poi 10",
+      "name": "Boar Hunting Spot",
       "category": "hunting_boar",
       "description": "",
       "world_x": 1906.21,
@@ -720,7 +817,7 @@ window.MARKER_DATA_TROSKY = {
       "label_key": "@ui_maplegend_charcoalBurnersCamp"
     },
     {
-      "name": "Tpod Animal Spawn Hunting Spot Poi 6",
+      "name": "Boar Hunting Spot",
       "category": "hunting_boar",
       "description": "",
       "world_x": 1489.87,
@@ -749,7 +846,7 @@ window.MARKER_DATA_TROSKY = {
       "label_key": "@ui_maplegend_hiddenTreasure"
     },
     {
-      "name": "Tzel Animal Spawn Hunting Spot Poi 1",
+      "name": "Deer Hunting Spot",
       "category": "hunting_spot",
       "description": "",
       "world_x": 1967.89,
@@ -793,7 +890,7 @@ window.MARKER_DATA_TROSKY = {
       "label_key": "@ui_maplegend_enemyCumanCamp"
     },
     {
-      "name": "Tkrc Animal Spawn Hunting Spot Poi 1",
+      "name": "Deer Hunting Spot",
       "category": "hunting_spot",
       "description": "",
       "world_x": 1019.42,
@@ -822,7 +919,7 @@ window.MARKER_DATA_TROSKY = {
       "label_key": "@ui_maplegend_poachersCamp"
     },
     {
-      "name": "Tneb Animal Spawn Hunting Spot Poi 2",
+      "name": "Boar Hunting Spot",
       "category": "hunting_boar",
       "description": "",
       "world_x": 2629.55,
@@ -855,7 +952,7 @@ window.MARKER_DATA_TROSKY = {
       "description": "",
       "world_x": 2315.08,
       "world_y": 2022.25,
-      "world_z": 104.0,
+      "world_z": 104,
       "x": 4216,
       "y": 2979,
       "poi_type_name": "hunter",
@@ -910,7 +1007,7 @@ window.MARKER_DATA_TROSKY = {
       "label_key": "@ui_maplegend_vodniksHut"
     },
     {
-      "name": "Tkrc Animal Spawn Hunting Spot Poi 2",
+      "name": "Deer Hunting Spot",
       "category": "hunting_spot",
       "description": "",
       "world_x": 960.44,
@@ -988,7 +1085,7 @@ window.MARKER_DATA_TROSKY = {
       "category": "interesting_site",
       "description": "",
       "world_x": 2102.7,
-      "world_y": 2169.0,
+      "world_y": 2169,
       "world_z": 109.62,
       "x": 3723,
       "y": 3315,
@@ -1074,7 +1171,7 @@ window.MARKER_DATA_TROSKY = {
       "label_key": "@ui_maplegend_vostateksHiddenBooze"
     },
     {
-      "name": "Wolf hunting spot",
+      "name": "Deer Hunting Spot",
       "category": "hunting_spot",
       "description": "",
       "world_x": 1791.35,
@@ -1118,12 +1215,12 @@ window.MARKER_DATA_TROSKY = {
       "label_key": "@ui_maplegend_zelejovsPool"
     },
     {
-      "name": "Tkop Animal Spawn Hunting Spot Poi 2",
+      "name": "Roe Deer Hunting Spot",
       "category": "hunting_deer",
       "description": "",
       "world_x": 2300.99,
       "world_y": 3145.01,
-      "world_z": 72.0,
+      "world_z": 72,
       "x": 4182,
       "y": 5579,
       "poi_type_name": "huntingSpotRoeDeer",
@@ -1177,7 +1274,7 @@ window.MARKER_DATA_TROSKY = {
       "label_key": "@ui_maplegend_crashedCart"
     },
     {
-      "name": "Wolf hunting spot",
+      "name": "Wolf Hunting Spot",
       "category": "hunting_wolf",
       "description": "",
       "world_x": 1920.02,
@@ -1326,7 +1423,7 @@ window.MARKER_DATA_TROSKY = {
       "label_key": "@ui_maplegend_tailorBartosek"
     },
     {
-      "name": "Tsla Animal Spawn Hunting Spot Poi 4",
+      "name": "Wolf Hunting Spot",
       "category": "hunting_wolf",
       "description": "",
       "world_x": 2937.48,
@@ -1405,7 +1502,7 @@ window.MARKER_DATA_TROSKY = {
       "description": "",
       "world_x": 2193.02,
       "world_y": 1331.35,
-      "world_z": 51.0,
+      "world_z": 51,
       "x": 3934,
       "y": 1376,
       "poi_type_name": "campEnemy",
@@ -1460,7 +1557,7 @@ window.MARKER_DATA_TROSKY = {
       "label_key": "@ui_maplegend_unearthedCorpseAndWolfes"
     },
     {
-      "name": "Ttkc Animal Spawn Hunting Spot Poi 9",
+      "name": "Roe Deer Hunting Spot",
       "category": "hunting_deer",
       "description": "",
       "world_x": 2265.01,
@@ -1607,7 +1704,7 @@ window.MARKER_DATA_TROSKY = {
       "is_discoverable": true
     },
     {
-      "name": "Tvid Animal Spawn Hunting Spot Poi 7",
+      "name": "Wolf Hunting Spot",
       "category": "hunting_wolf",
       "description": "",
       "world_x": 1621.67,
@@ -1651,7 +1748,7 @@ window.MARKER_DATA_TROSKY = {
       "label_key": "@ui_maplegend_banditNearTachov"
     },
     {
-      "name": "Tvez Animal Spawn Hunting Spot Poi 1",
+      "name": "Roe Deer Hunting Spot",
       "category": "hunting_deer",
       "description": "",
       "world_x": 1003.48,
@@ -1724,7 +1821,7 @@ window.MARKER_DATA_TROSKY = {
       "label_key": "@ui_maplegend_vantagePoint"
     },
     {
-      "name": "Tkop Animal Spawn Hunting Spot Poi 3",
+      "name": "Roe Deer Hunting Spot",
       "category": "hunting_deer",
       "description": "",
       "world_x": 2583.49,
@@ -1767,7 +1864,7 @@ window.MARKER_DATA_TROSKY = {
       "is_discoverable": true
     },
     {
-      "name": "Wolf hunting spot",
+      "name": "Roe Deer Hunting Spot",
       "category": "hunting_deer",
       "description": "",
       "world_x": 2130.98,
@@ -1781,7 +1878,7 @@ window.MARKER_DATA_TROSKY = {
       "is_discoverable": true
     },
     {
-      "name": "Tvez Animal Spawn Hunting Spot Poi 6",
+      "name": "Wolf Hunting Spot",
       "category": "hunting_wolf",
       "description": "",
       "world_x": 1160.62,
@@ -1795,7 +1892,7 @@ window.MARKER_DATA_TROSKY = {
       "is_discoverable": true
     },
     {
-      "name": "Tvid Animal Spawn Hunting Spot Poi 5",
+      "name": "Deer Hunting Spot",
       "category": "hunting_spot",
       "description": "",
       "world_x": 1312.74,
@@ -1824,7 +1921,7 @@ window.MARKER_DATA_TROSKY = {
       "label_key": "@ui_maplegend_benchUnderTrosky"
     },
     {
-      "name": "Tsla Animal Spawn Hunting Spot Poi 1",
+      "name": "Deer Hunting Spot",
       "category": "hunting_spot",
       "description": "",
       "world_x": 2857.79,
@@ -1870,7 +1967,7 @@ window.MARKER_DATA_TROSKY = {
       "category": "interesting_site",
       "description": "",
       "world_x": 1376.23,
-      "world_y": 2463.0,
+      "world_y": 2463,
       "world_z": 53.72,
       "x": 2038,
       "y": 3982,
@@ -1940,7 +2037,7 @@ window.MARKER_DATA_TROSKY = {
       "label_key": "@ui_maplegend_drownedMen"
     },
     {
-      "name": "Ttkc Animal Spawn Hunting Spot Poi 6",
+      "name": "Deer Hunting Spot",
       "category": "hunting_spot",
       "description": "",
       "world_x": 2636.72,
@@ -1954,12 +2051,12 @@ window.MARKER_DATA_TROSKY = {
       "is_discoverable": true
     },
     {
-      "name": "Tzel Animal Spawn Hunting Spot Poi 9",
+      "name": "Boar Hunting Spot",
       "category": "hunting_boar",
       "description": "",
-      "world_x": 1603.0,
-      "world_y": 2071.0,
-      "world_z": 15.0,
+      "world_x": 1603,
+      "world_y": 2071,
+      "world_z": 15,
       "x": 2564,
       "y": 3079,
       "poi_type_name": "huntingSpotBoar",
@@ -1988,7 +2085,7 @@ window.MARKER_DATA_TROSKY = {
       "description": "",
       "world_x": 1831.05,
       "world_y": 2958.94,
-      "world_z": 59.0,
+      "world_z": 59,
       "x": 3092,
       "y": 5139,
       "poi_type_name": "campEnemy",
@@ -1997,7 +2094,7 @@ window.MARKER_DATA_TROSKY = {
       "is_discoverable": true
     },
     {
-      "name": "Tpod Animal Spawn Hunting Spot Poi 1",
+      "name": "Deer Hunting Spot",
       "category": "hunting_spot",
       "description": "",
       "world_x": 652.62,
@@ -2070,7 +2167,7 @@ window.MARKER_DATA_TROSKY = {
       "label_key": "@ui_maplegend_unearthedCorpses"
     },
     {
-      "name": "Ttac Animal Spawn Hunting Spot Poi 4",
+      "name": "Roe Deer Hunting Spot",
       "category": "hunting_deer",
       "description": "",
       "world_x": 2140.31,
@@ -2117,7 +2214,7 @@ window.MARKER_DATA_TROSKY = {
       "name": "Lapkovsky Tabor Kopanina",
       "category": "bandit_camp",
       "description": "",
-      "world_x": 2390.0,
+      "world_x": 2390,
       "world_y": 3016.5,
       "world_z": 100.52,
       "x": 4389,
@@ -2215,7 +2312,7 @@ window.MARKER_DATA_TROSKY = {
       "is_discoverable": true
     },
     {
-      "name": "Tvez Animal Spawn Hunting Spot Poi 2",
+      "name": "Boar Hunting Spot",
       "category": "hunting_boar",
       "description": "",
       "world_x": 838.97,
@@ -2259,7 +2356,7 @@ window.MARKER_DATA_TROSKY = {
       "label_key": "@ui_maplegend_blacksmithOsina"
     },
     {
-      "name": "Wolf hunting spot",
+      "name": "Wolf Hunting Spot",
       "category": "hunting_wolf",
       "description": "",
       "world_x": 719.12,
@@ -2365,7 +2462,7 @@ window.MARKER_DATA_TROSKY = {
       "name": "Lazne Zelejov",
       "category": "baths",
       "description": "",
-      "world_x": 1653.0,
+      "world_x": 1653,
       "world_y": 2191.83,
       "world_z": 34.04,
       "x": 2680,
@@ -2376,7 +2473,7 @@ window.MARKER_DATA_TROSKY = {
       "is_discoverable": true
     },
     {
-      "name": "Tvid Animal Spawn Hunting Spot Poi 1",
+      "name": "Deer Hunting Spot",
       "category": "hunting_spot",
       "description": "",
       "world_x": 1581.74,
@@ -2420,7 +2517,7 @@ window.MARKER_DATA_TROSKY = {
       "label_key": "@ui_maplegend_roadsideCamp"
     },
     {
-      "name": "Tvid Animal Spawn Hunting Spot Poi 3",
+      "name": "Deer Hunting Spot",
       "category": "hunting_spot",
       "description": "",
       "world_x": 1598.14,
@@ -2437,7 +2534,7 @@ window.MARKER_DATA_TROSKY = {
       "name": "The Lair",
       "category": "interesting_site",
       "description": "",
-      "world_x": 1332.0,
+      "world_x": 1332,
       "world_y": 1276.55,
       "world_z": 19.12,
       "x": 1936,
@@ -2464,7 +2561,7 @@ window.MARKER_DATA_TROSKY = {
       "label_key": "@ui_maplegend_roadsideCamp"
     },
     {
-      "name": "Tsla Animal Spawn Hunting Spot Poi 2",
+      "name": "Roe Deer Hunting Spot",
       "category": "hunting_deer",
       "description": "",
       "world_x": 2763.42,
@@ -2478,7 +2575,7 @@ window.MARKER_DATA_TROSKY = {
       "is_discoverable": true
     },
     {
-      "name": "Tzda Animal Spawn Hunting Spot Poi 7",
+      "name": "Roe Deer Hunting Spot",
       "category": "hunting_deer",
       "description": "",
       "world_x": 1979.75,
@@ -2521,7 +2618,7 @@ window.MARKER_DATA_TROSKY = {
       "label_key": "@ui_maplegend_seminLittlePond"
     },
     {
-      "name": "Tzda Animal Spawn Hunting Spot Poi 2",
+      "name": "Deer Hunting Spot",
       "category": "hunting_spot",
       "description": "",
       "world_x": 2446.49,
@@ -2610,7 +2707,7 @@ window.MARKER_DATA_TROSKY = {
       "label_key": "@ui_maplegend_herbalistAranka"
     },
     {
-      "name": "Tkop Animal Spawn Hunting Spot Poi 1",
+      "name": "Deer Hunting Spot",
       "category": "hunting_spot",
       "description": "",
       "world_x": 2424.79,
@@ -2624,7 +2721,7 @@ window.MARKER_DATA_TROSKY = {
       "is_discoverable": true
     },
     {
-      "name": "Ttkc Animal Spawn Hunting Spot Poi 10",
+      "name": "Boar Hunting Spot",
       "category": "hunting_boar",
       "description": "",
       "world_x": 2590.21,
@@ -2638,7 +2735,7 @@ window.MARKER_DATA_TROSKY = {
       "is_discoverable": true
     },
     {
-      "name": "Wolf hunting spot",
+      "name": "Roe Deer Hunting Spot",
       "category": "hunting_deer",
       "description": "",
       "world_x": 2102.01,
@@ -2756,7 +2853,7 @@ window.MARKER_DATA_TROSKY = {
       "is_discoverable": true
     },
     {
-      "name": "Tsem Animal Spawn Hunting Spot Poi 5",
+      "name": "Boar Hunting Spot",
       "category": "hunting_boar",
       "description": "",
       "world_x": 1822.09,
@@ -2775,7 +2872,7 @@ window.MARKER_DATA_TROSKY = {
       "description": "",
       "world_x": 871.08,
       "world_y": 1712.29,
-      "world_z": 42.0,
+      "world_z": 42,
       "x": 867,
       "y": 2234,
       "poi_type_name": "generalPoi",
@@ -2889,7 +2986,7 @@ window.MARKER_DATA_TROSKY = {
       "label_key": "@ui_maplegend_skeletonWithTreasure"
     },
     {
-      "name": "Tapo Animal Spawn Hunting Spot Poi 2",
+      "name": "Deer Hunting Spot",
       "category": "hunting_spot",
       "description": "",
       "world_x": 3049.29,
@@ -3082,12 +3179,12 @@ window.MARKER_DATA_TROSKY = {
       "label_key": "@ui_maplegend_apothecarysGarden"
     },
     {
-      "name": "Tapo Animal Spawn Hunting Spot Poi 1",
+      "name": "Deer Hunting Spot",
       "category": "hunting_spot",
       "description": "",
       "world_x": 2876.99,
       "world_y": 2473.33,
-      "world_z": 90.0,
+      "world_z": 90,
       "x": 5519,
       "y": 4034,
       "poi_type_name": "huntingSpotDeer",
@@ -3096,7 +3193,7 @@ window.MARKER_DATA_TROSKY = {
       "is_discoverable": true
     },
     {
-      "name": "Tpod Animal Spawn Hunting Spot Poi 2",
+      "name": "Deer Hunting Spot",
       "category": "hunting_spot",
       "description": "",
       "world_x": 1530.46,
@@ -3125,7 +3222,7 @@ window.MARKER_DATA_TROSKY = {
       "label_key": "@ui_maplegend_roadsideCamp"
     },
     {
-      "name": "Ttac Animal Spawn Hunting Spot Poi 3",
+      "name": "Boar Hunting Spot",
       "category": "hunting_boar",
       "description": "",
       "world_x": 1723.71,
@@ -3154,7 +3251,7 @@ window.MARKER_DATA_TROSKY = {
       "label_key": "@ui_maplegend_blacksmithRadovan"
     },
     {
-      "name": "Tvid Animal Spawn Hunting Spot Poi 6",
+      "name": "Roe Deer Hunting Spot",
       "category": "hunting_deer",
       "description": "",
       "world_x": 1626.55,
@@ -3168,7 +3265,7 @@ window.MARKER_DATA_TROSKY = {
       "is_discoverable": true
     },
     {
-      "name": "Tsla Animal Spawn Hunting Spot Poi 3",
+      "name": "Roe Deer Hunting Spot",
       "category": "hunting_deer",
       "description": "",
       "world_x": 2693.33,
@@ -3271,7 +3368,7 @@ window.MARKER_DATA_TROSKY = {
       "label_key": "@ui_maplegend_skeletonInWetlands"
     },
     {
-      "name": "Tsem Animal Spawn Hunting Spot Poi 6",
+      "name": "Roe Deer Hunting Spot",
       "category": "hunting_deer",
       "description": "",
       "world_x": 1717.77,
@@ -3419,7 +3516,7 @@ window.MARKER_DATA_TROSKY = {
       "label_key": "@ui_maplegend_zizkasWatch"
     },
     {
-      "name": "Tapo Animal Spawn Hunting Spot Poi 11",
+      "name": "Roe Deer Hunting Spot",
       "category": "hunting_deer",
       "description": "",
       "world_x": 2716.84,
@@ -3433,7 +3530,7 @@ window.MARKER_DATA_TROSKY = {
       "is_discoverable": true
     },
     {
-      "name": "Tapo Animal Spawn Hunting Spot Poi 16",
+      "name": "Roe Deer Hunting Spot",
       "category": "hunting_deer",
       "description": "",
       "world_x": 2708.83,
@@ -3447,7 +3544,7 @@ window.MARKER_DATA_TROSKY = {
       "is_discoverable": true
     },
     {
-      "name": "Tzel Animal Spawn Hunting Spot Poi 8",
+      "name": "Roe Deer Hunting Spot",
       "category": "hunting_deer",
       "description": "",
       "world_x": 1923.44,
@@ -3491,7 +3588,7 @@ window.MARKER_DATA_TROSKY = {
       "label_key": "@ui_maplegend_oldGrave"
     },
     {
-      "name": "Tneb Animal Spawn Hunting Spot Poi 1",
+      "name": "Deer Hunting Spot",
       "category": "hunting_spot",
       "description": "",
       "world_x": 2051.57,
@@ -3534,7 +3631,7 @@ window.MARKER_DATA_TROSKY = {
       "is_discoverable": true
     },
     {
-      "name": "Tkrc Animal Spawn Hunting Spot Poi 3",
+      "name": "Boar Hunting Spot",
       "category": "hunting_boar",
       "description": "",
       "world_x": 1203.7,
@@ -3577,7 +3674,7 @@ window.MARKER_DATA_TROSKY = {
       "is_discoverable": true
     },
     {
-      "name": "Tvid Animal Spawn Hunting Spot Poi 4",
+      "name": "Boar Hunting Spot",
       "category": "hunting_boar",
       "description": "",
       "world_x": 1486.02,
@@ -3591,7 +3688,7 @@ window.MARKER_DATA_TROSKY = {
       "is_discoverable": true
     },
     {
-      "name": "Tzda Animal Spawn Hunting Spot Poi 6",
+      "name": "Roe Deer Hunting Spot",
       "category": "hunting_deer",
       "description": "",
       "world_x": 2098.12,
@@ -4077,7 +4174,7 @@ window.MARKER_DATA_TROSKY = {
       "category": "nest",
       "description": "",
       "world_x": 2137.72,
-      "world_y": 2180.0,
+      "world_y": 2180,
       "world_z": 128.88,
       "x": 3804,
       "y": 3341,
@@ -4105,7 +4202,7 @@ window.MARKER_DATA_TROSKY = {
       "category": "nest",
       "description": "",
       "world_x": 1525.18,
-      "world_y": 1185.0,
+      "world_y": 1185,
       "world_z": 18.91,
       "x": 2385,
       "y": 1025,
@@ -4400,7 +4497,7 @@ window.MARKER_DATA_TROSKY = {
       "description": "",
       "world_x": 1376.7,
       "world_y": 3057.2,
-      "world_z": 76.0,
+      "world_z": 76,
       "x": 2039,
       "y": 5359,
       "poi_type_name": "nest",
@@ -5113,7 +5210,7 @@ window.MARKER_DATA_TROSKY = {
       "category": "nest",
       "description": "",
       "world_x": 1734.75,
-      "world_y": 2899.0,
+      "world_y": 2899,
       "world_z": 81.27,
       "x": 2869,
       "y": 4999,
@@ -5898,7 +5995,7 @@ window.MARKER_DATA_TROSKY = {
       "description": "",
       "world_x": 2884.95,
       "world_y": 2416.17,
-      "world_z": 99.0,
+      "world_z": 99,
       "x": 5538,
       "y": 3902,
       "poi_type_name": "nest",
@@ -6219,7 +6316,7 @@ window.MARKER_DATA_TROSKY = {
       "category": "nest",
       "description": "",
       "world_x": 2605.98,
-      "world_y": 2058.0,
+      "world_y": 2058,
       "world_z": 120.86,
       "x": 4891,
       "y": 3066,
@@ -6806,7 +6903,7 @@ window.MARKER_DATA_TROSKY = {
       "name": "Nest",
       "category": "nest",
       "description": "",
-      "world_x": 1763.0,
+      "world_x": 1763,
       "world_y": 2051.37,
       "world_z": 46.29,
       "x": 2935,
@@ -7086,7 +7183,7 @@ window.MARKER_DATA_TROSKY = {
       "name": "Nest",
       "category": "nest",
       "description": "",
-      "world_x": 1939.0,
+      "world_x": 1939,
       "world_y": 2305.32,
       "world_z": 90.88,
       "x": 3343,
@@ -7508,7 +7605,7 @@ window.MARKER_DATA_TROSKY = {
       "description": "",
       "world_x": 2366.32,
       "world_y": 2078.28,
-      "world_z": 117.0,
+      "world_z": 117,
       "x": 4335,
       "y": 3109,
       "poi_type_name": "nest",
@@ -7856,7 +7953,7 @@ window.MARKER_DATA_TROSKY = {
       "name": "Nest",
       "category": "nest",
       "description": "",
-      "world_x": 2191.0,
+      "world_x": 2191,
       "world_y": 1702.85,
       "world_z": 50.58,
       "x": 3928,
@@ -8021,7 +8118,7 @@ window.MARKER_DATA_TROSKY = {
       "is_discoverable": true
     },
     {
-      "name": "Dice Table \u2014 Tachov",
+      "name": "Dice Table",
       "category": "dice_table",
       "description": "",
       "world_x": 2002.29,
@@ -8035,7 +8132,7 @@ window.MARKER_DATA_TROSKY = {
       "is_discoverable": true
     },
     {
-      "name": "Dice Table \u2014 Main",
+      "name": "Dice Table",
       "category": "dice_table",
       "description": "",
       "world_x": 2329.32,
@@ -8049,7 +8146,7 @@ window.MARKER_DATA_TROSKY = {
       "is_discoverable": true
     },
     {
-      "name": "Dice Table \u2014 Zelejov",
+      "name": "Dice Table",
       "category": "dice_table",
       "description": "",
       "world_x": 1653.89,
@@ -8063,7 +8160,7 @@ window.MARKER_DATA_TROSKY = {
       "is_discoverable": true
     },
     {
-      "name": "Dice Table \u2014 Trosky",
+      "name": "Dice Table",
       "category": "dice_table",
       "description": "",
       "world_x": 2381.1,
@@ -8077,7 +8174,7 @@ window.MARKER_DATA_TROSKY = {
       "is_discoverable": true
     },
     {
-      "name": "Dice Table \u2014 Trosky",
+      "name": "Dice Table",
       "category": "dice_table",
       "description": "",
       "world_x": 2515.38,
@@ -8091,7 +8188,7 @@ window.MARKER_DATA_TROSKY = {
       "is_discoverable": true
     },
     {
-      "name": "Dice Table \u2014 Trosky",
+      "name": "Dice Table",
       "category": "dice_table",
       "description": "",
       "world_x": 2364.39,
@@ -8105,7 +8202,7 @@ window.MARKER_DATA_TROSKY = {
       "is_discoverable": true
     },
     {
-      "name": "Dice Table \u2014 Vezicko",
+      "name": "Dice Table",
       "category": "dice_table",
       "description": "",
       "world_x": 1083.04,
@@ -8119,7 +8216,7 @@ window.MARKER_DATA_TROSKY = {
       "is_discoverable": true
     },
     {
-      "name": "Sharpening Wheel \u2014 Zelejov",
+      "name": "Sharpening Wheel",
       "category": "sharpening_wheel",
       "description": "",
       "world_x": 1761.89,
@@ -8133,7 +8230,7 @@ window.MARKER_DATA_TROSKY = {
       "is_discoverable": true
     },
     {
-      "name": "Sharpening Wheel \u2014 Podseminsko",
+      "name": "Sharpening Wheel",
       "category": "sharpening_wheel",
       "description": "",
       "world_x": 1120.41,
@@ -8147,7 +8244,7 @@ window.MARKER_DATA_TROSKY = {
       "is_discoverable": true
     },
     {
-      "name": "Sharpening Wheel \u2014 Trosky",
+      "name": "Sharpening Wheel",
       "category": "sharpening_wheel",
       "description": "",
       "world_x": 2415.87,
@@ -8161,7 +8258,7 @@ window.MARKER_DATA_TROSKY = {
       "is_discoverable": true
     },
     {
-      "name": "Sharpening Wheel \u2014 Troskovice",
+      "name": "Sharpening Wheel",
       "category": "sharpening_wheel",
       "description": "",
       "world_x": 2463.22,
@@ -8175,7 +8272,7 @@ window.MARKER_DATA_TROSKY = {
       "is_discoverable": true
     },
     {
-      "name": "Sharpening Wheel \u2014 Vidlak",
+      "name": "Sharpening Wheel",
       "category": "sharpening_wheel",
       "description": "",
       "world_x": 1237.31,
@@ -8189,7 +8286,7 @@ window.MARKER_DATA_TROSKY = {
       "is_discoverable": true
     },
     {
-      "name": "Sharpening Wheel \u2014 Tachov",
+      "name": "Sharpening Wheel",
       "category": "sharpening_wheel",
       "description": "",
       "world_x": 1997.66,
@@ -8203,7 +8300,7 @@ window.MARKER_DATA_TROSKY = {
       "is_discoverable": true
     },
     {
-      "name": "Sharpening Wheel \u2014 Nebakov",
+      "name": "Sharpening Wheel",
       "category": "sharpening_wheel",
       "description": "",
       "world_x": 1887.73,
@@ -8217,7 +8314,7 @@ window.MARKER_DATA_TROSKY = {
       "is_discoverable": true
     },
     {
-      "name": "Sharpening Wheel \u2014 Trosky",
+      "name": "Sharpening Wheel",
       "category": "sharpening_wheel",
       "description": "",
       "world_x": 2386.16,
@@ -8231,7 +8328,7 @@ window.MARKER_DATA_TROSKY = {
       "is_discoverable": true
     },
     {
-      "name": "Sharpening Wheel \u2014 Troskovice",
+      "name": "Sharpening Wheel",
       "category": "sharpening_wheel",
       "description": "",
       "world_x": 2309.28,
@@ -8245,7 +8342,7 @@ window.MARKER_DATA_TROSKY = {
       "is_discoverable": true
     },
     {
-      "name": "Sharpening Wheel \u2014 Troskovice",
+      "name": "Sharpening Wheel",
       "category": "sharpening_wheel",
       "description": "",
       "world_x": 2310.67,
@@ -8259,7 +8356,7 @@ window.MARKER_DATA_TROSKY = {
       "is_discoverable": true
     },
     {
-      "name": "Sharpening Wheel \u2014 Nebakov",
+      "name": "Sharpening Wheel",
       "category": "sharpening_wheel",
       "description": "",
       "world_x": 2063.95,
@@ -8273,7 +8370,7 @@ window.MARKER_DATA_TROSKY = {
       "is_discoverable": true
     },
     {
-      "name": "Sharpening Wheel \u2014 Trosky",
+      "name": "Sharpening Wheel",
       "category": "sharpening_wheel",
       "description": "",
       "world_x": 2506.7,
@@ -8287,7 +8384,7 @@ window.MARKER_DATA_TROSKY = {
       "is_discoverable": true
     },
     {
-      "name": "Alchemy Bench \u2014 Vezicko",
+      "name": "Alchemy Bench",
       "category": "alchemy_bench",
       "description": "",
       "world_x": 1502.62,
@@ -8301,7 +8398,7 @@ window.MARKER_DATA_TROSKY = {
       "is_discoverable": true
     },
     {
-      "name": "Alchemy Bench \u2014 Troskovice",
+      "name": "Alchemy Bench",
       "category": "alchemy_bench",
       "description": "",
       "world_x": 2299.56,
@@ -8315,7 +8412,7 @@ window.MARKER_DATA_TROSKY = {
       "is_discoverable": true
     },
     {
-      "name": "Alchemy Bench \u2014 Trosky",
+      "name": "Alchemy Bench",
       "category": "alchemy_bench",
       "description": "",
       "world_x": 2380.63,
@@ -8329,7 +8426,7 @@ window.MARKER_DATA_TROSKY = {
       "is_discoverable": true
     },
     {
-      "name": "Alchemy Bench \u2014 Troskovice",
+      "name": "Alchemy Bench",
       "category": "alchemy_bench",
       "description": "",
       "world_x": 2271.01,
@@ -8343,7 +8440,7 @@ window.MARKER_DATA_TROSKY = {
       "is_discoverable": true
     },
     {
-      "name": "Alchemy Bench \u2014 Kopanina",
+      "name": "Alchemy Bench",
       "category": "alchemy_bench",
       "description": "",
       "world_x": 2275.79,
@@ -8357,7 +8454,7 @@ window.MARKER_DATA_TROSKY = {
       "is_discoverable": true
     },
     {
-      "name": "Indulgence Box \u2014 Troskovice",
+      "name": "Indulgence Box",
       "category": "indulgence_box",
       "description": "",
       "world_x": 2311.69,
@@ -8371,7 +8468,7 @@ window.MARKER_DATA_TROSKY = {
       "is_discoverable": true
     },
     {
-      "name": "Indulgence Box \u2014 Trosky",
+      "name": "Indulgence Box",
       "category": "indulgence_box",
       "description": "",
       "world_x": 2382.62,
@@ -8385,7 +8482,7 @@ window.MARKER_DATA_TROSKY = {
       "is_discoverable": true
     },
     {
-      "name": "Smokehouse \u2014 Zelejov",
+      "name": "Smokehouse",
       "category": "smokehouse",
       "description": "",
       "world_x": 1642.65,
@@ -8399,7 +8496,7 @@ window.MARKER_DATA_TROSKY = {
       "is_discoverable": true
     },
     {
-      "name": "Smokehouse \u2014 Troskovice",
+      "name": "Smokehouse",
       "category": "smokehouse",
       "description": "",
       "world_x": 2455.26,
@@ -8413,7 +8510,7 @@ window.MARKER_DATA_TROSKY = {
       "is_discoverable": true
     },
     {
-      "name": "Smokehouse \u2014 Podseminsko",
+      "name": "Smokehouse",
       "category": "smokehouse",
       "description": "",
       "world_x": 1116.06,
@@ -8427,7 +8524,7 @@ window.MARKER_DATA_TROSKY = {
       "is_discoverable": true
     },
     {
-      "name": "Smokehouse \u2014 Semin",
+      "name": "Smokehouse",
       "category": "smokehouse",
       "description": "",
       "world_x": 1497.33,
@@ -8441,7 +8538,7 @@ window.MARKER_DATA_TROSKY = {
       "is_discoverable": true
     },
     {
-      "name": "Smokehouse \u2014 Vidlak",
+      "name": "Smokehouse",
       "category": "smokehouse",
       "description": "",
       "world_x": 1407.72,
@@ -8455,7 +8552,7 @@ window.MARKER_DATA_TROSKY = {
       "is_discoverable": true
     },
     {
-      "name": "Smokehouse \u2014 Nebakov",
+      "name": "Smokehouse",
       "category": "smokehouse",
       "description": "",
       "world_x": 2058.2,
@@ -8469,7 +8566,7 @@ window.MARKER_DATA_TROSKY = {
       "is_discoverable": true
     },
     {
-      "name": "Smokehouse \u2014 Troskovice",
+      "name": "Smokehouse",
       "category": "smokehouse",
       "description": "",
       "world_x": 2329.63,
@@ -8483,7 +8580,7 @@ window.MARKER_DATA_TROSKY = {
       "is_discoverable": true
     },
     {
-      "name": "Smokehouse \u2014 Tachov",
+      "name": "Smokehouse",
       "category": "smokehouse",
       "description": "",
       "world_x": 2002.14,
@@ -8497,7 +8594,7 @@ window.MARKER_DATA_TROSKY = {
       "is_discoverable": true
     },
     {
-      "name": "Smokehouse \u2014 Semin",
+      "name": "Smokehouse",
       "category": "smokehouse",
       "description": "",
       "world_x": 1448.94,
@@ -8511,7 +8608,7 @@ window.MARKER_DATA_TROSKY = {
       "is_discoverable": true
     },
     {
-      "name": "Smokehouse \u2014 Tachov",
+      "name": "Smokehouse",
       "category": "smokehouse",
       "description": "",
       "world_x": 2038.4,
@@ -8525,7 +8622,7 @@ window.MARKER_DATA_TROSKY = {
       "is_discoverable": true
     },
     {
-      "name": "Smokehouse \u2014 Vidlak",
+      "name": "Smokehouse",
       "category": "smokehouse",
       "description": "",
       "world_x": 1229.39,
@@ -8539,7 +8636,7 @@ window.MARKER_DATA_TROSKY = {
       "is_discoverable": true
     },
     {
-      "name": "Smokehouse \u2014 Zelejov",
+      "name": "Smokehouse",
       "category": "smokehouse",
       "description": "",
       "world_x": 1795.36,
@@ -8553,7 +8650,7 @@ window.MARKER_DATA_TROSKY = {
       "is_discoverable": true
     },
     {
-      "name": "Drying Rack \u2014 Zelejov",
+      "name": "Drying Rack",
       "category": "drying_rack",
       "description": "",
       "world_x": 1642.04,
@@ -8567,7 +8664,7 @@ window.MARKER_DATA_TROSKY = {
       "is_discoverable": true
     },
     {
-      "name": "Drying Rack \u2014 Zelejov",
+      "name": "Drying Rack",
       "category": "drying_rack",
       "description": "",
       "world_x": 1652.33,
@@ -8581,7 +8678,7 @@ window.MARKER_DATA_TROSKY = {
       "is_discoverable": true
     },
     {
-      "name": "Drying Rack \u2014 Semin",
+      "name": "Drying Rack",
       "category": "drying_rack",
       "description": "",
       "world_x": 1453.34,
@@ -8595,7 +8692,7 @@ window.MARKER_DATA_TROSKY = {
       "is_discoverable": true
     },
     {
-      "name": "Drying Rack \u2014 Nebakov",
+      "name": "Drying Rack",
       "category": "drying_rack",
       "description": "",
       "world_x": 2116.74,
@@ -8609,7 +8706,7 @@ window.MARKER_DATA_TROSKY = {
       "is_discoverable": true
     },
     {
-      "name": "Drying Rack \u2014 Semin",
+      "name": "Drying Rack",
       "category": "drying_rack",
       "description": "",
       "world_x": 1474.06,
@@ -8623,7 +8720,7 @@ window.MARKER_DATA_TROSKY = {
       "is_discoverable": true
     },
     {
-      "name": "Drying Rack \u2014 Semin",
+      "name": "Drying Rack",
       "category": "drying_rack",
       "description": "",
       "world_x": 1418.35,
@@ -8637,7 +8734,7 @@ window.MARKER_DATA_TROSKY = {
       "is_discoverable": true
     },
     {
-      "name": "Drying Rack \u2014 Zelejov",
+      "name": "Drying Rack",
       "category": "drying_rack",
       "description": "",
       "world_x": 1718.3,
@@ -8651,7 +8748,7 @@ window.MARKER_DATA_TROSKY = {
       "is_discoverable": true
     },
     {
-      "name": "Drying Rack \u2014 Troskovice",
+      "name": "Drying Rack",
       "category": "drying_rack",
       "description": "",
       "world_x": 2259.24,
@@ -8665,7 +8762,7 @@ window.MARKER_DATA_TROSKY = {
       "is_discoverable": true
     },
     {
-      "name": "Drying Rack \u2014 Tachov",
+      "name": "Drying Rack",
       "category": "drying_rack",
       "description": "",
       "world_x": 1992.75,
@@ -8679,7 +8776,7 @@ window.MARKER_DATA_TROSKY = {
       "is_discoverable": true
     },
     {
-      "name": "Drying Rack \u2014 Slatejov",
+      "name": "Drying Rack",
       "category": "drying_rack",
       "description": "",
       "world_x": 2525.86,
@@ -8693,7 +8790,7 @@ window.MARKER_DATA_TROSKY = {
       "is_discoverable": true
     },
     {
-      "name": "Drying Rack \u2014 Podseminsko",
+      "name": "Drying Rack",
       "category": "drying_rack",
       "description": "",
       "world_x": 1128.45,
@@ -8707,7 +8804,7 @@ window.MARKER_DATA_TROSKY = {
       "is_discoverable": true
     },
     {
-      "name": "Drying Rack \u2014 Troskovice",
+      "name": "Drying Rack",
       "category": "drying_rack",
       "description": "",
       "world_x": 2274.98,
@@ -8721,7 +8818,7 @@ window.MARKER_DATA_TROSKY = {
       "is_discoverable": true
     },
     {
-      "name": "Drying Rack \u2014 Troskovice",
+      "name": "Drying Rack",
       "category": "drying_rack",
       "description": "",
       "world_x": 2353.31,
@@ -8735,7 +8832,7 @@ window.MARKER_DATA_TROSKY = {
       "is_discoverable": true
     },
     {
-      "name": "Drying Rack \u2014 Zdar",
+      "name": "Drying Rack",
       "category": "drying_rack",
       "description": "",
       "world_x": 1420.88,
@@ -8749,7 +8846,7 @@ window.MARKER_DATA_TROSKY = {
       "is_discoverable": true
     },
     {
-      "name": "Drying Rack \u2014 Troskovice",
+      "name": "Drying Rack",
       "category": "drying_rack",
       "description": "",
       "world_x": 2409.35,
@@ -8763,7 +8860,7 @@ window.MARKER_DATA_TROSKY = {
       "is_discoverable": true
     },
     {
-      "name": "Drying Rack \u2014 Vidlak",
+      "name": "Drying Rack",
       "category": "drying_rack",
       "description": "",
       "world_x": 1287.77,
@@ -8777,7 +8874,7 @@ window.MARKER_DATA_TROSKY = {
       "is_discoverable": true
     },
     {
-      "name": "Drying Rack \u2014 Zelejov",
+      "name": "Drying Rack",
       "category": "drying_rack",
       "description": "",
       "world_x": 1751.8,
@@ -8791,7 +8888,7 @@ window.MARKER_DATA_TROSKY = {
       "is_discoverable": true
     },
     {
-      "name": "Drying Rack \u2014 Troskovice",
+      "name": "Drying Rack",
       "category": "drying_rack",
       "description": "",
       "world_x": 2395.92,
@@ -8805,7 +8902,7 @@ window.MARKER_DATA_TROSKY = {
       "is_discoverable": true
     },
     {
-      "name": "Drying Rack \u2014 Zelejov",
+      "name": "Drying Rack",
       "category": "drying_rack",
       "description": "",
       "world_x": 1803.66,
@@ -8819,7 +8916,7 @@ window.MARKER_DATA_TROSKY = {
       "is_discoverable": true
     },
     {
-      "name": "Drying Rack \u2014 Tachov",
+      "name": "Drying Rack",
       "category": "drying_rack",
       "description": "",
       "world_x": 1973.59,
@@ -8833,7 +8930,7 @@ window.MARKER_DATA_TROSKY = {
       "is_discoverable": true
     },
     {
-      "name": "Drying Rack \u2014 Slatejov",
+      "name": "Drying Rack",
       "category": "drying_rack",
       "description": "",
       "world_x": 2548.67,
@@ -8847,10 +8944,10 @@ window.MARKER_DATA_TROSKY = {
       "is_discoverable": true
     },
     {
-      "name": "Drying Rack \u2014 Zelejov",
+      "name": "Drying Rack",
       "category": "drying_rack",
       "description": "",
-      "world_x": 1752.0,
+      "world_x": 1752,
       "world_y": 1996.01,
       "world_z": 42.43,
       "x": 2910,
@@ -8861,7 +8958,7 @@ window.MARKER_DATA_TROSKY = {
       "is_discoverable": true
     },
     {
-      "name": "Drying Rack \u2014 Zdar",
+      "name": "Drying Rack",
       "category": "drying_rack",
       "description": "",
       "world_x": 2029.51,
@@ -8875,7 +8972,7 @@ window.MARKER_DATA_TROSKY = {
       "is_discoverable": true
     },
     {
-      "name": "Drying Rack \u2014 Zdar",
+      "name": "Drying Rack",
       "category": "drying_rack",
       "description": "",
       "world_x": 2434.59,
@@ -8889,7 +8986,7 @@ window.MARKER_DATA_TROSKY = {
       "is_discoverable": true
     },
     {
-      "name": "Cart Stash \u2014 Apolena",
+      "name": "Cart Stash",
       "category": "cart_stash",
       "description": "",
       "world_x": 2723.19,
@@ -8903,7 +9000,7 @@ window.MARKER_DATA_TROSKY = {
       "is_discoverable": true
     },
     {
-      "name": "Cart Stash \u2014 Troskovice",
+      "name": "Cart Stash",
       "category": "cart_stash",
       "description": "",
       "world_x": 2311.32,
@@ -8917,7 +9014,7 @@ window.MARKER_DATA_TROSKY = {
       "is_discoverable": true
     },
     {
-      "name": "Cart Stash \u2014 Zdar",
+      "name": "Cart Stash",
       "category": "cart_stash",
       "description": "",
       "world_x": 2037.97,
@@ -8931,7 +9028,7 @@ window.MARKER_DATA_TROSKY = {
       "is_discoverable": true
     },
     {
-      "name": "Lootable Corpse \u2014 Zdar",
+      "name": "Lootable Corpse",
       "category": "lootable_corpse",
       "description": "",
       "world_x": 2183.89,
@@ -8945,7 +9042,7 @@ window.MARKER_DATA_TROSKY = {
       "is_discoverable": true
     },
     {
-      "name": "Lootable Corpse \u2014 Nebakov",
+      "name": "Lootable Corpse",
       "category": "lootable_corpse",
       "description": "",
       "world_x": 1928.44,
@@ -8959,7 +9056,7 @@ window.MARKER_DATA_TROSKY = {
       "is_discoverable": true
     },
     {
-      "name": "Lootable Corpse \u2014 Nebakov",
+      "name": "Lootable Corpse",
       "category": "lootable_corpse",
       "description": "",
       "world_x": 2204.34,
@@ -8973,7 +9070,7 @@ window.MARKER_DATA_TROSKY = {
       "is_discoverable": true
     },
     {
-      "name": "Lootable Corpse \u2014 Zdar",
+      "name": "Lootable Corpse",
       "category": "lootable_corpse",
       "description": "",
       "world_x": 2182.96,
@@ -8987,7 +9084,7 @@ window.MARKER_DATA_TROSKY = {
       "is_discoverable": true
     },
     {
-      "name": "Lootable Corpse \u2014 Podseminsko",
+      "name": "Lootable Corpse",
       "category": "lootable_corpse",
       "description": "",
       "world_x": 582.75,
@@ -9001,7 +9098,7 @@ window.MARKER_DATA_TROSKY = {
       "is_discoverable": true
     },
     {
-      "name": "Lootable Corpse \u2014 Podseminsko",
+      "name": "Lootable Corpse",
       "category": "lootable_corpse",
       "description": "",
       "world_x": 586.62,
@@ -9015,7 +9112,7 @@ window.MARKER_DATA_TROSKY = {
       "is_discoverable": true
     },
     {
-      "name": "Lootable Corpse \u2014 Kopanina",
+      "name": "Lootable Corpse",
       "category": "lootable_corpse",
       "description": "",
       "world_x": 2371.44,
@@ -9029,7 +9126,7 @@ window.MARKER_DATA_TROSKY = {
       "is_discoverable": true
     },
     {
-      "name": "Lootable Corpse \u2014 Slatejov",
+      "name": "Lootable Corpse",
       "category": "lootable_corpse",
       "description": "",
       "world_x": 2652.45,
@@ -9043,7 +9140,7 @@ window.MARKER_DATA_TROSKY = {
       "is_discoverable": true
     },
     {
-      "name": "Lootable Corpse \u2014 Podseminsko",
+      "name": "Lootable Corpse",
       "category": "lootable_corpse",
       "description": "",
       "world_x": 588.04,
@@ -9057,7 +9154,7 @@ window.MARKER_DATA_TROSKY = {
       "is_discoverable": true
     },
     {
-      "name": "Lootable Corpse \u2014 Kopanina",
+      "name": "Lootable Corpse",
       "category": "lootable_corpse",
       "description": "",
       "world_x": 2368.61,
@@ -9071,7 +9168,7 @@ window.MARKER_DATA_TROSKY = {
       "is_discoverable": true
     },
     {
-      "name": "Lootable Corpse \u2014 Nebakov",
+      "name": "Lootable Corpse",
       "category": "lootable_corpse",
       "description": "",
       "world_x": 1916.62,
@@ -9085,7 +9182,7 @@ window.MARKER_DATA_TROSKY = {
       "is_discoverable": true
     },
     {
-      "name": "Lootable Corpse \u2014 Podseminsko",
+      "name": "Lootable Corpse",
       "category": "lootable_corpse",
       "description": "",
       "world_x": 582.02,
@@ -9099,7 +9196,7 @@ window.MARKER_DATA_TROSKY = {
       "is_discoverable": true
     },
     {
-      "name": "Lootable Corpse \u2014 Nebakov",
+      "name": "Lootable Corpse",
       "category": "lootable_corpse",
       "description": "",
       "world_x": 1921.49,
@@ -9113,7 +9210,7 @@ window.MARKER_DATA_TROSKY = {
       "is_discoverable": true
     },
     {
-      "name": "Lootable Corpse \u2014 Podseminsko",
+      "name": "Lootable Corpse",
       "category": "lootable_corpse",
       "description": "",
       "world_x": 580.12,
@@ -9127,7 +9224,7 @@ window.MARKER_DATA_TROSKY = {
       "is_discoverable": true
     },
     {
-      "name": "Lootable Corpse \u2014 Kopanina",
+      "name": "Lootable Corpse",
       "category": "lootable_corpse",
       "description": "",
       "world_x": 2373.44,
@@ -9141,7 +9238,7 @@ window.MARKER_DATA_TROSKY = {
       "is_discoverable": true
     },
     {
-      "name": "Lootable Corpse \u2014 Poi",
+      "name": "Lootable Corpse",
       "category": "lootable_corpse",
       "description": "",
       "world_x": 1964.39,
@@ -15377,7 +15474,7 @@ window.MARKER_DATA_TROSKY = {
       "gg_icon": "/images/map-marker-icon/15/252880/lepiota_icon-d59370b4.png.png"
     },
     {
-      "name": "Sketch \u2013 Carpenter's axe",
+      "name": "Sketch – Carpenter's axe",
       "category": "loot_recipe",
       "description": "",
       "x": 1215,
@@ -17468,7 +17565,7 @@ window.MARKER_DATA_TROSKY = {
       "gg_icon": "/images/map-marker-icon/15/252447/tunicshort05_m09_d_icon-ca5f9a63.png.png"
     },
     {
-      "name": "Sketch \u2013 Executioner's axe",
+      "name": "Sketch – Executioner's axe",
       "category": "loot_recipe",
       "description": "",
       "x": 3954,
@@ -21684,7 +21781,7 @@ window.MARKER_DATA_TROSKY = {
       "gg_icon": "/images/map-marker-icon/15/252673/spurs01_m01_c_icon-e6d12640.png.png"
     },
     {
-      "name": "Sketch \u2013 Work axe",
+      "name": "Sketch – Work axe",
       "category": "loot_recipe",
       "description": "",
       "x": 1662,
@@ -21735,7 +21832,7 @@ window.MARKER_DATA_TROSKY = {
       "gg_icon": "/images/map-marker-icon/15/253186/recipe_alchemy_icon-dc355668.png.png"
     },
     {
-      "name": "Sketch \u2013 Common longsword",
+      "name": "Sketch – Common longsword",
       "category": "loot_recipe",
       "description": "",
       "x": 4197,
@@ -21803,7 +21900,7 @@ window.MARKER_DATA_TROSKY = {
       "gg_icon": "/images/map-marker-icon/15/253201/recipe_alchemy_icon-dc355668.png.png"
     },
     {
-      "name": "Sketch \u2013 Knight's longsword",
+      "name": "Sketch – Knight's longsword",
       "category": "loot_recipe",
       "description": "",
       "x": 3465,
@@ -22381,7 +22478,7 @@ window.MARKER_DATA_TROSKY = {
       "gg_icon": "/images/map-marker-icon/15/253127/lorebook_adorned_03_icon-72297bd7.png.png"
     },
     {
-      "name": "Sketch \u2013 Basilard",
+      "name": "Sketch – Basilard",
       "category": "loot_recipe",
       "description": "",
       "x": 5141,
@@ -23469,7 +23566,7 @@ window.MARKER_DATA_TROSKY = {
       "gg_icon": "/images/map-marker-icon/15/316069/shrine_icon_result-29ff5ae5.png.png"
     },
     {
-      "name": "Sketch \u2013 Farmer's horseshoes",
+      "name": "Sketch – Farmer's horseshoes",
       "category": "loot_recipe",
       "description": "",
       "x": 4427,
@@ -23588,8 +23685,8 @@ window.MARKER_DATA_TROSKY = {
       "gg_icon": "/images/map-marker-icon/15/252651/necklace_tin_cross_icon-1eb82f1b.png.png"
     },
     {
-      "name": "Kuttenberg region",
-      "category": "fast_travel",
+      "name": "Kuttenberg Region",
+      "category": "fast_travel_level",
       "description": "",
       "x": 4983,
       "y": 1854,
@@ -24098,7 +24195,7 @@ window.MARKER_DATA_TROSKY = {
       "gg_icon": "/images/map-marker-icon/15/253125/lorebook_adorned_04_icon-5c2a9f98.png.png"
     },
     {
-      "name": "Sketch \u2013 Broad longsword",
+      "name": "Sketch – Broad longsword",
       "category": "loot_recipe",
       "description": "",
       "x": 4519,
@@ -24504,6 +24601,717 @@ window.MARKER_DATA_TROSKY = {
       "source": "gamerguides",
       "gg_marker_id": 205665,
       "gg_icon": "/images/map-marker-icon/15/254004/money_icon-5c505d87.png.png"
+    },
+    {
+      "name": "Blacksmith Radovan",
+      "category": "skill_trainer",
+      "description": "",
+      "x": 3470,
+      "y": 4080,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Weak Saviour Schnapps",
+      "category": "loot_potion",
+      "description": "",
+      "x": 5232,
+      "y": 4028,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Dried Belladonna",
+      "category": "loot_alchemy_mat",
+      "description": "",
+      "x": 5234,
+      "y": 4036,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Silver Cross With Insignia",
+      "category": "loot_armour_jewellery",
+      "description": "",
+      "x": 5343,
+      "y": 3935,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Diary of Knight Konrad",
+      "category": "loot_lore_book",
+      "description": "",
+      "x": 5216,
+      "y": 4042,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Sketch - Broad Sword",
+      "category": "loot_recipe",
+      "description": "",
+      "x": 5222,
+      "y": 4042,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Even Die",
+      "category": "loot_dice",
+      "description": "",
+      "x": 5229,
+      "y": 4042,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Tengri Set",
+      "category": "interesting_site",
+      "description": "",
+      "x": 1391,
+      "y": 2127,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Sketch - Falchion",
+      "category": "loot_recipe",
+      "description": "",
+      "x": 2581,
+      "y": 1840,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Chest",
+      "category": "interesting_site",
+      "description": "",
+      "x": 4177,
+      "y": 2966,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Captain Gnarly",
+      "category": "skill_trainer",
+      "description": "",
+      "x": 2574,
+      "y": 1810,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Barber Fiala",
+      "category": "barber",
+      "description": "",
+      "x": 2721,
+      "y": 3373,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Jar",
+      "category": "loot_armour_jewellery",
+      "description": "",
+      "x": 2783,
+      "y": 3433,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Selection of Amorous Poetry",
+      "category": "loot_lore_book",
+      "description": "",
+      "x": 3569,
+      "y": 4085,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Miller Kreyzl",
+      "category": "skill_trainer",
+      "description": "",
+      "x": 1494,
+      "y": 1527,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Olbram",
+      "category": "skill_trainer",
+      "description": "",
+      "x": 2887,
+      "y": 2910,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Beware of Burkhard!",
+      "category": "loot_letter",
+      "description": "",
+      "x": 4197,
+      "y": 3050,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Fist Fight Arena",
+      "category": "fist_fight_arena",
+      "description": "",
+      "x": 1416,
+      "y": 1612,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Bowmen's Brew Recipe",
+      "category": "loot_recipe",
+      "description": "",
+      "x": 5220,
+      "y": 4035,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Recipe for Buck's Blood",
+      "category": "loot_recipe",
+      "description": "",
+      "x": 4191,
+      "y": 3053,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Bohumir",
+      "category": "huntsman",
+      "description": "",
+      "x": 4440,
+      "y": 4109,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Loot Bag",
+      "category": "loot_misc",
+      "description": "",
+      "x": 1064,
+      "y": 2405,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Shared Altar",
+      "category": "interesting_site",
+      "description": "",
+      "x": 1081,
+      "y": 2591,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Vasko",
+      "category": "skill_trainer",
+      "description": "",
+      "x": 1249,
+      "y": 2725,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Map of the Zhelejov Marshes",
+      "category": "loot_letter",
+      "description": "",
+      "x": 2471,
+      "y": 3284,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Enemy Camp",
+      "category": "bandit_camp",
+      "description": "",
+      "x": 977,
+      "y": 2911,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Bonnie",
+      "category": "skill_trainer",
+      "description": "",
+      "x": 1929,
+      "y": 1215,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Loot Bag",
+      "category": "interesting_site",
+      "description": "",
+      "x": 3289,
+      "y": 1476,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Brunswick’s Armor Set",
+      "category": "interesting_site",
+      "description": "",
+      "x": 3294,
+      "y": 5246,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Aranka",
+      "category": "skill_trainer",
+      "description": "",
+      "x": 1360,
+      "y": 2810,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Hidden Treasure",
+      "category": "interesting_site",
+      "description": "",
+      "x": 1527,
+      "y": 5229,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Straight sword guard",
+      "category": "loot_misc",
+      "description": "",
+      "x": 1794,
+      "y": 4714,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Work axe",
+      "category": "loot_heavy_weapon",
+      "description": "",
+      "x": 1828,
+      "y": 4702,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Recipe for Lullaby Potion",
+      "category": "loot_recipe",
+      "description": "",
+      "x": 2648,
+      "y": 1878,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Guildsman Janek",
+      "category": "skill_trainer",
+      "description": "",
+      "x": 2187,
+      "y": 1858,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Most Faithful Friend I",
+      "category": "loot_skill_book",
+      "description": "",
+      "x": 3573,
+      "y": 1844,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Most Faithful Friend II",
+      "category": "loot_skill_book",
+      "description": "",
+      "x": 3568,
+      "y": 1845,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Woodsman's Journal I",
+      "category": "loot_skill_book",
+      "description": "",
+      "x": 3570,
+      "y": 1839,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Aqua Vitalis recipe",
+      "category": "loot_recipe",
+      "description": "",
+      "x": 3565,
+      "y": 1839,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Bandit Camp",
+      "category": "bandit_camp",
+      "description": "",
+      "x": 2375,
+      "y": 687,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Gules",
+      "category": "skill_trainer",
+      "description": "",
+      "x": 2638,
+      "y": 1885,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Bandit Camp",
+      "category": "bandit_camp",
+      "description": "",
+      "x": 5080,
+      "y": 4697,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "On the Prince Electors",
+      "category": "loot_lore_book",
+      "description": "",
+      "x": 4346,
+      "y": 4243,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "The Czech Campaign to Lombardy II",
+      "category": "loot_lore_book",
+      "description": "",
+      "x": 4341,
+      "y": 4246,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Ye Wicked Blacksmiths",
+      "category": "loot_lore_book",
+      "description": "",
+      "x": 4346,
+      "y": 4250,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "King Sigismund of Hungary",
+      "category": "loot_lore_book",
+      "description": "",
+      "x": 4380,
+      "y": 4267,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "On St. Wenceslas",
+      "category": "loot_lore_book",
+      "description": "",
+      "x": 4356,
+      "y": 4254,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Breviarium Romanum",
+      "category": "loot_lore_book",
+      "description": "",
+      "x": 4392,
+      "y": 4288,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "On Saint Wilgefortis",
+      "category": "loot_lore_book",
+      "description": "",
+      "x": 4388,
+      "y": 4293,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "The Czech Campaign to Lombardy II",
+      "category": "loot_lore_book",
+      "description": "",
+      "x": 4393,
+      "y": 4292,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Beware of Burkhard!",
+      "category": "loot_letter",
+      "description": "",
+      "x": 4389,
+      "y": 4299,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Letter to unkown servant",
+      "category": "loot_letter",
+      "description": "",
+      "x": 4365,
+      "y": 4218,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Recipe for Fox potion",
+      "category": "loot_recipe",
+      "description": "",
+      "x": 4359,
+      "y": 4218,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "On heraldy",
+      "category": "loot_skill_book",
+      "description": "",
+      "x": 4376,
+      "y": 4270,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Monastic Rule of Saint Benedict II",
+      "category": "loot_lore_book",
+      "description": "",
+      "x": 4384,
+      "y": 4230,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Painted die",
+      "category": "loot_dice",
+      "description": "",
+      "x": 4380,
+      "y": 4226,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Ockham's Razor",
+      "category": "loot_dagger",
+      "description": "",
+      "x": 4514,
+      "y": 4359,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Selection of amorous poetry",
+      "category": "loot_lore_book",
+      "description": "",
+      "x": 4502,
+      "y": 4338,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Master's Studies I",
+      "category": "loot_skill_book",
+      "description": "",
+      "x": 4497,
+      "y": 4357,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Recipe for Lullaby potion",
+      "category": "loot_recipe",
+      "description": "",
+      "x": 4499,
+      "y": 4352,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "The Czech Campaign to Lombardy I",
+      "category": "loot_lore_book",
+      "description": "",
+      "x": 4531,
+      "y": 4389,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Father Nicodemus",
+      "category": "skill_trainer",
+      "description": "",
+      "x": 4608,
+      "y": 4333,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Cobbler's kit",
+      "category": "loot_utility",
+      "description": "",
+      "x": 4509,
+      "y": 4402,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Dice Table",
+      "category": "dice_table",
+      "description": "",
+      "x": 4411,
+      "y": 4468,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Scrap metal",
+      "category": "loot_blacksmithing",
+      "description": "",
+      "x": 4655,
+      "y": 4278,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Toledo steel",
+      "category": "loot_blacksmithing",
+      "description": "",
+      "x": 4654,
+      "y": 4273,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Armourer's kit",
+      "category": "loot_utility",
+      "description": "",
+      "x": 4648,
+      "y": 4275,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Dice table",
+      "category": "dice_table",
+      "description": "",
+      "x": 4695,
+      "y": 4267,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Trosky Castle - Inner Gate",
+      "category": "fast_travel",
+      "description": "",
+      "x": 4410,
+      "y": 4324,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Sharpening Wheel",
+      "category": "sharpening_wheel",
+      "description": "",
+      "x": 2633,
+      "y": 1850,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Skull Crusher I",
+      "category": "loot_skill_book",
+      "description": "",
+      "x": 4383,
+      "y": 4241,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Letter from Sokol of Lamberg",
+      "category": "loot_letter",
+      "description": "",
+      "x": 3255,
+      "y": 1104,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Letter from an unkown noble",
+      "category": "loot_letter",
+      "description": "",
+      "x": 3247,
+      "y": 1093,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Smithy",
+      "category": "smithy",
+      "description": "",
+      "x": 3216,
+      "y": 1125,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Dice",
+      "category": "dice_table",
+      "description": "",
+      "x": 3232,
+      "y": 1116,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Achery Range",
+      "category": "archery_range",
+      "description": "",
+      "x": 3285,
+      "y": 1062,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Itsvan's cross",
+      "category": "interesting_site",
+      "description": "",
+      "x": 4326,
+      "y": 4197,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Blacksmith Osina",
+      "category": "blacksmith",
+      "description": "",
+      "x": 4435,
+      "y": 4304,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Master Voyta",
+      "category": "shield_painter",
+      "description": "",
+      "x": 4355,
+      "y": 4272,
+      "is_discoverable": true,
+      "source": "manual"
     }
   ],
   "calibration": {

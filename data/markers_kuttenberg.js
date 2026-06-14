@@ -1,3 +1,4 @@
+// Marker data for kuttenberg — edited via the in-app Edit Markers tool
 window.MARKER_DATA_KUTTENBERG = {
   "region": "kuttenberg",
   "coordinate_system": "pixel",
@@ -5,476 +6,572 @@ window.MARKER_DATA_KUTTENBERG = {
     {
       "id": "alchemy_bench",
       "name": "Alchemy Bench",
-      "icon": "\u2697\ufe0f",
+      "icon": "⚗️",
       "color": "#8e44ad"
     },
     {
       "id": "apothecary",
       "name": "Apothecary",
-      "icon": "\ud83d\udc8a",
+      "icon": "💊",
       "color": "#16a085"
     },
     {
       "id": "archery_range",
       "name": "Archery Range",
-      "icon": "\ud83c\udfaf",
+      "icon": "🎯",
       "color": "#e67e22"
     },
     {
       "id": "armourer",
       "name": "Armourer",
-      "icon": "\ud83d\udee1\ufe0f",
+      "icon": "🛡️",
       "color": "#7a8b99"
     },
     {
       "id": "baker",
       "name": "Baker / Bakery",
-      "icon": "\ud83c\udf5e",
+      "icon": "🍞",
       "color": "#d4a564"
     },
     {
       "id": "bandit_camp",
       "name": "Enemy Camp",
-      "icon": "\ud83d\udc80",
+      "icon": "💀",
       "color": "#e74c3c"
     },
     {
       "id": "baths",
       "name": "Bathhouse",
-      "icon": "\ud83d\udec1",
+      "icon": "🛁",
       "color": "#3498db"
     },
     {
       "id": "smithy",
       "name": "Smithy",
-      "icon": "\u2692\ufe0f",
+      "icon": "⚒️",
       "color": "#8b7355"
     },
     {
       "id": "butchery",
       "name": "Butchery",
-      "icon": "\ud83e\udd69",
+      "icon": "🥩",
       "color": "#c0392b"
     },
     {
       "id": "camp",
       "name": "Camp",
-      "icon": "\ud83c\udfd5\ufe0f",
+      "icon": "🏕️",
       "color": "#95a5a6"
     },
     {
       "id": "cart_stash",
       "name": "Cart Stash",
-      "icon": "\ud83d\uded2",
+      "icon": "🛒",
       "color": "#8b6914"
     },
     {
       "id": "cobbler",
       "name": "Cobbler",
-      "icon": "\ud83d\udc62",
+      "icon": "👢",
       "color": "#6d4c41"
     },
     {
       "id": "combat_arena",
       "name": "Combat Arena",
-      "icon": "\ud83d\udc4a",
+      "icon": "👊",
       "color": "#e74c3c"
     },
     {
       "id": "dice_table",
       "name": "Dice Table",
-      "icon": "\ud83c\udfb2",
+      "icon": "🎲",
       "color": "#f39c12"
     },
     {
       "id": "drying_rack",
       "name": "Drying Rack",
-      "icon": "\ud83e\uddfa",
+      "icon": "🧺",
       "color": "#b8860b"
     },
     {
       "id": "fast_travel",
       "name": "Fast Travel",
-      "icon": "\ud83c\udfc1",
+      "icon": "🏁",
       "color": "#4a90d9"
     },
     {
       "id": "fisherman",
       "name": "Fisherman",
-      "icon": "\ud83d\udc1f",
+      "icon": "🐟",
       "color": "#2980b9"
     },
     {
       "id": "grave",
       "name": "Grave",
-      "icon": "\ud83e\udea6",
+      "icon": "🪦",
       "color": "#7f8c8d"
     },
     {
       "id": "grocer",
       "name": "Grocer",
-      "icon": "\ud83e\udd6c",
+      "icon": "🥬",
       "color": "#27ae60"
     },
     {
       "id": "gunsmith",
       "name": "Gunsmith",
-      "icon": "\ud83d\udd2b",
+      "icon": "🔫",
       "color": "#7f8c8d"
     },
     {
       "id": "herbalist",
       "name": "Herbalist",
-      "icon": "\ud83c\udf3f",
+      "icon": "🌿",
       "color": "#27ae60"
     },
     {
       "id": "horse_trader",
       "name": "Horse Trader",
-      "icon": "\ud83d\udc34",
+      "icon": "🐴",
       "color": "#8b6914"
     },
     {
       "id": "hunting_boar",
-      "name": "Hunting Spot (Boar)",
-      "icon": "\ud83d\udc17",
+      "name": "Boar Hunting Spot",
+      "icon": "🐗",
       "color": "#5d7b3a"
     },
     {
       "id": "hunting_deer",
-      "name": "Hunting Spot (Roe Deer)",
-      "icon": "\ud83e\udd8c",
+      "name": "Roe Deer Hunting Spot",
+      "icon": "🦌",
       "color": "#5d7b3a"
     },
     {
       "id": "hunting_spot",
-      "name": "Hunting Spot (Deer)",
-      "icon": "\ud83e\udd8c",
+      "name": "Deer Hunting Spot",
+      "icon": "🦌",
       "color": "#5d7b3a"
     },
     {
       "id": "hunting_wolf",
-      "name": "Hunting Spot (Wolf)",
-      "icon": "\ud83d\udc3a",
+      "name": "Wolf Hunting Spot",
+      "icon": "🐺",
       "color": "#5d7b3a"
     },
     {
       "id": "huntsman",
       "name": "Huntsman",
-      "icon": "\ud83c\udff9",
+      "icon": "🏹",
       "color": "#5d7b3a"
     },
     {
       "id": "indulgence_box",
       "name": "Indulgence Box",
-      "icon": "\ud83d\udce6",
+      "icon": "📦",
       "color": "#d4a564"
     },
     {
       "id": "interesting_site",
       "name": "Interesting Site",
-      "icon": "\u2b50",
+      "icon": "⭐",
       "color": "#f1c40f"
     },
     {
       "id": "lodgings",
       "name": "Lodgings",
-      "icon": "\ud83d\udecf\ufe0f",
+      "icon": "🛏️",
       "color": "#9b59b6"
     },
     {
       "id": "loot_alchemy_mat",
       "name": "Alchemy Material",
-      "icon": "\u2697\ufe0f",
+      "icon": "⚗️",
       "color": "#8e44ad"
     },
     {
       "id": "loot_ammo",
       "name": "Ammo / Arrows",
-      "icon": "\u27a1\ufe0f",
+      "icon": "➡️",
       "color": "#8d6e63"
     },
     {
       "id": "loot_armour_arms",
       "name": "Arm Armour",
-      "icon": "\ud83e\udde4",
+      "icon": "🧤",
       "color": "#795548"
     },
     {
       "id": "loot_armour_body",
       "name": "Body Armour",
-      "icon": "\ud83e\uddba",
+      "icon": "🦺",
       "color": "#8b7355"
     },
     {
       "id": "loot_armour_head",
       "name": "Head Armour",
-      "icon": "\u26d1\ufe0f",
+      "icon": "⛑️",
       "color": "#7a8b99"
     },
     {
       "id": "loot_armour_jewellery",
       "name": "Jewellery",
-      "icon": "\ud83d\udc8d",
+      "icon": "💍",
       "color": "#c9a84c"
     },
     {
       "id": "loot_armour_legs",
       "name": "Leg Armour",
-      "icon": "\ud83d\udc62",
+      "icon": "👢",
       "color": "#6d4c41"
     },
     {
       "id": "loot_badge",
       "name": "Gambling Badge",
-      "icon": "\ud83c\udfc5",
+      "icon": "🏅",
       "color": "#c9a84c"
     },
     {
       "id": "loot_blacksmithing",
       "name": "Blacksmithing Material",
-      "icon": "\u2692\ufe0f",
+      "icon": "⚒️",
       "color": "#8b7355"
     },
     {
       "id": "loot_bow",
       "name": "Bow",
-      "icon": "\ud83c\udff9",
+      "icon": "🏹",
       "color": "#5d7b3a"
     },
     {
       "id": "loot_bridle",
       "name": "Bridle",
-      "icon": "\ud83d\udc34",
+      "icon": "🐴",
       "color": "#795548"
     },
     {
       "id": "loot_dagger",
       "name": "Dagger",
-      "icon": "\ud83d\udde1\ufe0f",
+      "icon": "🗡️",
       "color": "#607d8b"
     },
     {
       "id": "loot_dice",
       "name": "Dice",
-      "icon": "\ud83c\udfb2",
+      "icon": "🎲",
       "color": "#f39c12"
     },
     {
       "id": "loot_food",
       "name": "Food",
-      "icon": "\ud83c\udf56",
+      "icon": "🍖",
       "color": "#c0392b"
     },
     {
       "id": "loot_heavy_weapon",
       "name": "Heavy Weapon",
-      "icon": "\ud83e\ude93",
+      "icon": "🪓",
       "color": "#795548"
     },
     {
       "id": "loot_herb",
       "name": "Herb",
-      "icon": "\ud83c\udf3f",
+      "icon": "🌿",
       "color": "#27ae60"
     },
     {
       "id": "loot_horseshoe",
       "name": "Horseshoe",
-      "icon": "\ud83d\udc34",
+      "icon": "🐴",
       "color": "#607d8b"
     },
     {
       "id": "loot_letter",
       "name": "Letter",
-      "icon": "\u2709\ufe0f",
+      "icon": "✉️",
       "color": "#bdc3c7"
     },
     {
       "id": "loot_lore_book",
       "name": "Lore Book",
-      "icon": "\ud83d\udcd6",
+      "icon": "📖",
       "color": "#8b6914"
     },
     {
       "id": "loot_map",
       "name": "Treasure Map",
-      "icon": "\ud83d\uddfa\ufe0f",
+      "icon": "🗺️",
       "color": "#d4a564"
     },
     {
       "id": "loot_misc",
       "name": "Miscellaneous",
-      "icon": "\ud83d\udce6",
+      "icon": "📦",
       "color": "#95a5a6"
     },
     {
       "id": "loot_polearm",
       "name": "Polearm",
-      "icon": "\ud83d\udd31",
+      "icon": "🔱",
       "color": "#6d4c41"
     },
     {
       "id": "loot_potion",
       "name": "Potion",
-      "icon": "\ud83e\uddea",
+      "icon": "🧪",
       "color": "#16a085"
     },
     {
       "id": "loot_recipe",
       "name": "Recipe",
-      "icon": "\ud83d\udccb",
+      "icon": "📋",
       "color": "#e67e22"
     },
     {
       "id": "loot_saddle",
       "name": "Saddle",
-      "icon": "\ud83d\udc34",
+      "icon": "🐴",
       "color": "#a0522d"
     },
     {
       "id": "loot_shield",
       "name": "Shield",
-      "icon": "\ud83d\udee1\ufe0f",
+      "icon": "🛡️",
       "color": "#7a8b99"
     },
     {
       "id": "loot_skill_book",
       "name": "Skill Book",
-      "icon": "\ud83d\udcd8",
+      "icon": "📘",
       "color": "#2980b9"
     },
     {
       "id": "loot_sword",
       "name": "Sword",
-      "icon": "\u2694\ufe0f",
+      "icon": "⚔️",
       "color": "#8b4513"
     },
     {
       "id": "loot_usable",
       "name": "Usable Item",
-      "icon": "\ud83d\udd11",
+      "icon": "🔑",
       "color": "#7f8c8d"
     },
     {
       "id": "loot_utility",
       "name": "Utility Kit",
-      "icon": "\ud83e\uddf0",
+      "icon": "🧰",
       "color": "#607d8b"
     },
     {
       "id": "lootable_corpse",
       "name": "Lootable Corpse",
-      "icon": "\ud83d\udc80",
+      "icon": "💀",
       "color": "#7f8c8d"
     },
     {
       "id": "nest",
       "name": "Nest",
-      "icon": "\ud83e\udeba",
+      "icon": "🪺",
       "color": "#8d6e63"
     },
     {
       "id": "player_bed",
       "name": "Player Bed",
-      "icon": "\ud83d\udecf\ufe0f",
+      "icon": "🛏️",
       "color": "#4a90d9"
     },
     {
       "id": "quest_main",
       "name": "Main Quest",
-      "icon": "\u2757",
+      "icon": "❗",
       "color": "#e74c3c"
     },
     {
       "id": "quest_side",
       "name": "Side Quest",
-      "icon": "\u2753",
+      "icon": "❓",
       "color": "#3498db"
     },
     {
       "id": "quest_task",
       "name": "Task / Activity",
-      "icon": "\ud83d\udcdd",
+      "icon": "📝",
       "color": "#e67e22"
     },
     {
       "id": "saddler",
       "name": "Saddler",
-      "icon": "\ud83d\udc0e",
+      "icon": "🐎",
       "color": "#a0522d"
     },
     {
       "id": "scribe",
       "name": "Scribe",
-      "icon": "\ud83d\udcdc",
+      "icon": "📜",
       "color": "#7f8c8d"
     },
     {
       "id": "sharpening_wheel",
       "name": "Sharpening Wheel",
-      "icon": "\ud83d\udd27",
+      "icon": "🔧",
       "color": "#95a5a6"
     },
     {
       "id": "shrine",
       "name": "Shrine",
-      "icon": "\u26ea",
+      "icon": "⛪",
       "color": "#bdc3c7"
     },
     {
       "id": "skill_trainer",
       "name": "Skill Teacher",
-      "icon": "\ud83d\udcd6",
+      "icon": "📖",
       "color": "#3498db"
     },
     {
       "id": "smokehouse",
       "name": "Smokehouse",
-      "icon": "\ud83d\udd25",
+      "icon": "🔥",
       "color": "#d35400"
     },
     {
       "id": "tailor",
       "name": "Tailor",
-      "icon": "\ud83e\uddf5",
+      "icon": "🧵",
       "color": "#9b59b6"
     },
     {
       "id": "tavern",
       "name": "Tavern / Inn",
-      "icon": "\ud83c\udf7a",
+      "icon": "🍺",
       "color": "#c9a84c"
     },
     {
       "id": "trader",
       "name": "Trader / Shop",
-      "icon": "\ud83c\udfea",
+      "icon": "🏪",
       "color": "#27ae60"
     },
     {
       "id": "underground",
       "name": "Underground Entrance",
-      "icon": "\ud83d\udd73\ufe0f",
+      "icon": "🕳️",
       "color": "#34495e"
     },
     {
       "id": "washing",
       "name": "Washing",
-      "icon": "\ud83d\udc55",
+      "icon": "👕",
       "color": "#3498db"
     },
     {
       "id": "weaponsmith",
       "name": "Weaponsmith",
-      "icon": "\u2694\ufe0f",
+      "icon": "⚔️",
       "color": "#8b4513"
     },
     {
       "id": "woodland_garden",
       "name": "Woodland Garden",
-      "icon": "\ud83c\udf31",
+      "icon": "🌱",
       "color": "#2ecc71"
+    },
+    {
+      "id": "barber",
+      "name": "Barber",
+      "icon": "💈",
+      "color": "#c9a84c"
+    },
+    {
+      "id": "fist_fight_arena",
+      "name": "Fist Fight Arena",
+      "icon": "👊",
+      "color": "#c9a84c"
+    },
+    {
+      "id": "loot_armour_belt",
+      "name": "Armour Belt",
+      "icon": "📦",
+      "color": "#c9a84c"
+    },
+    {
+      "id": "loot_armour_pouch",
+      "name": "Armour Pouch",
+      "icon": "📦",
+      "color": "#c9a84c"
+    },
+    {
+      "id": "blacksmith",
+      "name": "Blacksmith",
+      "icon": "📦",
+      "color": "#c9a84c"
+    },
+    {
+      "id": "miller",
+      "name": "Miller",
+      "icon": "📦",
+      "color": "#c9a84c"
+    },
+    {
+      "id": "shield_painter",
+      "name": "Shield Painter",
+      "icon": "📦",
+      "color": "#c9a84c"
+    },
+    {
+      "id": "tanner",
+      "name": "Tanner",
+      "icon": "📦",
+      "color": "#c9a84c"
+    },
+    {
+      "id": "loot_poison",
+      "name": "Poison",
+      "icon": "📦",
+      "color": "#c9a84c"
+    },
+    {
+      "id": "loot_tack",
+      "name": "Tack",
+      "icon": "📦",
+      "color": "#c9a84c"
+    },
+    {
+      "id": "beehive",
+      "name": "Beehive",
+      "icon": "📦",
+      "color": "#c9a84c"
+    },
+    {
+      "id": "conc_cross",
+      "name": "Conc Cross",
+      "icon": "📦",
+      "color": "#c9a84c"
+    },
+    {
+      "id": "dog",
+      "name": "Dog",
+      "icon": "📦",
+      "color": "#c9a84c"
+    },
+    {
+      "id": "home",
+      "name": "Home",
+      "icon": "📦",
+      "color": "#c9a84c"
+    },
+    {
+      "id": "selling_chest",
+      "name": "Selling Chest",
+      "icon": "📦",
+      "color": "#c9a84c"
+    },
+    {
+      "id": "fast_travel_level",
+      "name": "Level Transition",
+      "icon": "🚪",
+      "color": "#5a9ec9"
     }
   ],
   "markers": [
@@ -508,7 +605,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Kvlc Animal Spawn Hunting Spot Poi 3",
+      "name": "Wolf Hunting Spot",
       "category": "hunting_wolf",
       "description": "",
       "world_x": 2385.28,
@@ -570,7 +667,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "category": "interesting_site",
       "description": "",
       "world_x": 2196.2,
-      "world_y": 3281.0,
+      "world_y": 3281,
       "world_z": 105.78,
       "x": 4520,
       "y": 8214,
@@ -595,7 +692,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Kcer Animal Spawn Hunting Spot Poi 1",
+      "name": "Deer Hunting Spot",
       "category": "hunting_spot",
       "description": "",
       "world_x": 2820.46,
@@ -668,7 +765,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Krat Fast Travel Ratiborice Poi 1",
+      "name": "Raborsch",
       "category": "fast_travel",
       "description": "",
       "world_x": 1579.36,
@@ -784,12 +881,12 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Knab Animal Spawn Hunting Spot Poi 4",
+      "name": "Deer Hunting Spot",
       "category": "hunting_spot",
       "description": "",
       "world_x": 2222.71,
       "world_y": 795.22,
-      "world_z": 62.0,
+      "world_z": 62,
       "x": 8287,
       "y": 4515,
       "poi_type_name": "huntingSpotDeer",
@@ -842,7 +939,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "label_key": "@ui_maplegend_kuttenbergDefender"
     },
     {
-      "name": "Krab Animal Spawn Hunting Spot Poi 3",
+      "name": "Deer Hunting Spot",
       "category": "hunting_spot",
       "description": "",
       "world_x": 729.9,
@@ -901,7 +998,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "label_key": "@ui_maplegend_charcoalBurnersCamp"
     },
     {
-      "name": "Kmal Animal Spawn Hunting Spot Poi 5",
+      "name": "Deer Hunting Spot",
       "category": "hunting_spot",
       "description": "",
       "world_x": 921.3,
@@ -930,7 +1027,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "label_key": "@ui_maplegend_murderedSheppard"
     },
     {
-      "name": "Klor Animal Spawn Hunting Spot Poi 4",
+      "name": "Wolf Hunting Spot",
       "category": "hunting_wolf",
       "description": "",
       "world_x": 3856.99,
@@ -989,7 +1086,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "label_key": "@ui_maplegend_unfinishedCavalry"
     },
     {
-      "name": "Kmal Animal Spawn Hunting Spot Poi 2",
+      "name": "Boar Hunting Spot",
       "category": "hunting_boar",
       "description": "",
       "world_x": 642.61,
@@ -1017,7 +1114,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Kkut Fast Travel River Poi 1",
+      "name": "River",
       "category": "fast_travel",
       "description": "",
       "world_x": 2988.5,
@@ -1104,7 +1201,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Kkut Fast Travel Ceska Poi 1",
+      "name": "Ceska",
       "category": "fast_travel",
       "description": "",
       "world_x": 3182.2,
@@ -1146,7 +1243,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Ksus Animal Spawn Hunting Spot Poi 5",
+      "name": "Roe Deer Hunting Spot",
       "category": "hunting_deer",
       "description": "",
       "world_x": 3391.98,
@@ -1217,7 +1314,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Kbyl Fast Travel Bylany Poi 1",
+      "name": "Bylany",
       "category": "fast_travel",
       "description": "",
       "world_x": 1699.29,
@@ -1231,7 +1328,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Kvlc Animal Spawn Hunting Spot Poi 1",
+      "name": "Wolf Hunting Spot",
       "category": "hunting_wolf",
       "description": "",
       "world_x": 1994.6,
@@ -1259,7 +1356,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Ksuc Animal Spawn Hunting Spot Poi 3",
+      "name": "Deer Hunting Spot",
       "category": "hunting_spot",
       "description": "",
       "world_x": 752.13,
@@ -1273,7 +1370,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Knab Animal Spawn Hunting Spot Poi 9",
+      "name": "Roe Deer Hunting Spot",
       "category": "hunting_deer",
       "description": "",
       "world_x": 1881.89,
@@ -1302,10 +1399,10 @@ window.MARKER_DATA_KUTTENBERG = {
       "label_key": "@ui_maplegend_shoemakerVejmola"
     },
     {
-      "name": "Ksuc Animal Spawn Hunting Spot Poi 1",
+      "name": "Boar Hunting Spot",
       "category": "hunting_boar",
       "description": "",
-      "world_x": 737.0,
+      "world_x": 737,
       "world_y": 3691.04,
       "world_z": 116.86,
       "x": 1725,
@@ -1344,7 +1441,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Kboh Animal Spawn Hunting Spot Poi 3",
+      "name": "Deer Hunting Spot",
       "category": "hunting_spot",
       "description": "",
       "world_x": 2306.27,
@@ -1373,7 +1470,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "label_key": "@ui_maplabel_malesovCarpenter"
     },
     {
-      "name": "Ksuc Fast Travel Suchdol Poi 1",
+      "name": "Suchdol",
       "category": "fast_travel",
       "description": "",
       "world_x": 698.24,
@@ -1387,7 +1484,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Kcer Animal Spawn Hunting Spot Poi 2",
+      "name": "Boar Hunting Spot",
       "category": "hunting_boar",
       "description": "",
       "world_x": 2643.28,
@@ -1416,7 +1513,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "label_key": "@ui_maplegend_hiddenChest"
     },
     {
-      "name": "Kmez Animal Spawn Hunting Spot Poi 2",
+      "name": "Roe Deer Hunting Spot",
       "category": "hunting_deer",
       "description": "",
       "world_x": 406.42,
@@ -1430,7 +1527,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Kmal Animal Spawn Hunting Spot Poi 3",
+      "name": "Deer Hunting Spot",
       "category": "hunting_spot",
       "description": "",
       "world_x": 389.28,
@@ -1487,7 +1584,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Kopa Animal Spawn Hunting Spot Poi 1",
+      "name": "Boar Hunting Spot",
       "category": "hunting_boar",
       "description": "",
       "world_x": 2123.47,
@@ -1515,7 +1612,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Ksuc Animal Spawn Hunting Spot Poi 2",
+      "name": "Deer Hunting Spot",
       "category": "hunting_spot",
       "description": "",
       "world_x": 702.31,
@@ -1606,7 +1703,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "category": "grocer",
       "description": "",
       "world_x": 3146.16,
-      "world_y": 796.0,
+      "world_y": 796,
       "world_z": 55.35,
       "x": 9665,
       "y": 5903,
@@ -1616,7 +1713,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Kmal Animal Spawn Hunting Spot Poi 4",
+      "name": "Deer Hunting Spot",
       "category": "hunting_spot",
       "description": "",
       "world_x": 319.35,
@@ -1704,7 +1801,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "label_key": "@ui_maplegend_secretShrine"
     },
     {
-      "name": "Kstr Fast Travel Stara Lhota Poi 1",
+      "name": "Stara Lhota",
       "category": "fast_travel",
       "description": "",
       "world_x": 627.49,
@@ -1732,7 +1829,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Kmal Animal Spawn Hunting Spot Poi 9",
+      "name": "Wolf Hunting Spot",
       "category": "hunting_wolf",
       "description": "",
       "world_x": 667.24,
@@ -1746,7 +1843,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Ksta Animal Spawn Hunting Spot Poi 1",
+      "name": "Boar Hunting Spot",
       "category": "hunting_boar",
       "description": "",
       "world_x": 3263.36,
@@ -1760,7 +1857,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Krat Animal Spawn Hunting Spot Poi 6",
+      "name": "Boar Hunting Spot",
       "category": "hunting_boar",
       "description": "",
       "world_x": 1246.95,
@@ -1774,7 +1871,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Kmez Animal Spawn Hunting Spot Poi 7",
+      "name": "Boar Hunting Spot",
       "category": "hunting_boar",
       "description": "",
       "world_x": 517.5,
@@ -1874,7 +1971,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "label_key": "@ui_maplegend_blackHorsePub"
     },
     {
-      "name": "Ksus Animal Spawn Hunting Spot Poi 3",
+      "name": "Deer Hunting Spot",
       "category": "hunting_spot",
       "description": "",
       "world_x": 3662.67,
@@ -2093,7 +2190,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Kmez Animal Spawn Hunting Spot Poi 4",
+      "name": "Roe Deer Hunting Spot",
       "category": "hunting_deer",
       "description": "",
       "world_x": 894.67,
@@ -2280,7 +2377,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Knab Animal Spawn Hunting Spot Poi 10",
+      "name": "Wolf Hunting Spot",
       "category": "hunting_wolf",
       "description": "",
       "world_x": 2090.48,
@@ -2294,7 +2391,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Kboh Animal Spawn Hunting Spot Poi 1",
+      "name": "Boar Hunting Spot",
       "category": "hunting_boar",
       "description": "",
       "world_x": 1820.89,
@@ -2322,7 +2419,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Kkop Animal Spawn Hunting Spot Poi 12",
+      "name": "Wolf Hunting Spot",
       "category": "hunting_wolf",
       "description": "",
       "world_x": 787.51,
@@ -2380,7 +2477,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Kmez Animal Spawn Hunting Spot Poi 1",
+      "name": "Deer Hunting Spot",
       "category": "hunting_spot",
       "description": "",
       "world_x": 390.9,
@@ -2394,7 +2491,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Krab Animal Spawn Hunting Spot Poi 4",
+      "name": "Roe Deer Hunting Spot",
       "category": "hunting_deer",
       "description": "",
       "world_x": 368.77,
@@ -2422,7 +2519,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Kkut Fast Travel Vinna Poi 1",
+      "name": "Vinna",
       "category": "fast_travel",
       "description": "",
       "world_x": 2967.93,
@@ -2436,7 +2533,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Krat Animal Spawn Hunting Spot Poi 3",
+      "name": "Roe Deer Hunting Spot",
       "category": "hunting_deer",
       "description": "",
       "world_x": 1357.78,
@@ -2450,7 +2547,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Kvys Animal Spawn Hunting Spot Poi 8",
+      "name": "Roe Deer Hunting Spot",
       "category": "hunting_deer",
       "description": "",
       "world_x": 447.09,
@@ -2494,7 +2591,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "label_key": "@ui_maplegend_burnoutHousehold"
     },
     {
-      "name": "Knab Animal Spawn Hunting Spot Poi 3",
+      "name": "Boar Hunting Spot",
       "category": "hunting_boar",
       "description": "",
       "world_x": 2056.53,
@@ -2523,7 +2620,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "label_key": "@ui_maplegend_kutenbergUnderground"
     },
     {
-      "name": "Kmez Animal Spawn Hunting Spot Poi 5",
+      "name": "Deer Hunting Spot",
       "category": "hunting_spot",
       "description": "",
       "world_x": 1014.79,
@@ -2567,7 +2664,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "label_key": "@ui_maplegend_poachersStash"
     },
     {
-      "name": "Knab Animal Spawn Hunting Spot Poi 2",
+      "name": "Boar Hunting Spot",
       "category": "hunting_boar",
       "description": "",
       "world_x": 2194.6,
@@ -2596,7 +2693,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "label_key": "@ui_maplegend_abandonedCamp"
     },
     {
-      "name": "Kvrc Animal Spawn Hunting Spot Poi 2",
+      "name": "Roe Deer Hunting Spot",
       "category": "hunting_deer",
       "description": "",
       "world_x": 2004.54,
@@ -2610,7 +2707,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Kboh Animal Spawn Hunting Spot Poi 4",
+      "name": "Wolf Hunting Spot",
       "category": "hunting_wolf",
       "description": "",
       "world_x": 2115.82,
@@ -2624,7 +2721,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Kvys Animal Spawn Hunting Spot Poi 6",
+      "name": "Deer Hunting Spot",
       "category": "hunting_spot",
       "description": "",
       "world_x": 272.14,
@@ -2638,7 +2735,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Krat Animal Spawn Hunting Spot Poi 1",
+      "name": "Deer Hunting Spot",
       "category": "hunting_spot",
       "description": "",
       "world_x": 1298.33,
@@ -2681,7 +2778,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Khor Animal Spawn Hunting Spot Poi 1",
+      "name": "Roe Deer Hunting Spot",
       "category": "hunting_deer",
       "description": "",
       "world_x": 2739.51,
@@ -2695,7 +2792,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Khor Fast Travel Horany Poi 1",
+      "name": "Horschan",
       "category": "fast_travel",
       "description": "",
       "world_x": 2617.06,
@@ -2709,7 +2806,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Knab Animal Spawn Hunting Spot Poi 1",
+      "name": "Boar Hunting Spot",
       "category": "hunting_boar",
       "description": "",
       "world_x": 2363.09,
@@ -2726,7 +2823,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "name": "Sigismunds Watch Camp",
       "category": "bandit_camp",
       "description": "",
-      "world_x": 1889.0,
+      "world_x": 1889,
       "world_y": 2974.23,
       "world_z": 147.23,
       "x": 4521,
@@ -2768,7 +2865,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "label_key": "@ui_maplegend_burnedForest"
     },
     {
-      "name": "Knab Animal Spawn Hunting Spot Poi 7",
+      "name": "Roe Deer Hunting Spot",
       "category": "hunting_deer",
       "description": "",
       "world_x": 1972.1,
@@ -2782,7 +2879,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Kbyl Animal Spawn Hunting Spot Poi 20",
+      "name": "Roe Deer Hunting Spot",
       "category": "hunting_deer",
       "description": "",
       "world_x": 1735.6,
@@ -2825,7 +2922,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Krat Animal Spawn Hunting Spot Poi 2",
+      "name": "Roe Deer Hunting Spot",
       "category": "hunting_deer",
       "description": "",
       "world_x": 1144.75,
@@ -2867,7 +2964,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Ksus Animal Spawn Hunting Spot Poi 7",
+      "name": "Wolf Hunting Spot",
       "category": "hunting_wolf",
       "description": "",
       "world_x": 3818.53,
@@ -2896,7 +2993,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "label_key": "@ui_maplegend_desertersCamp"
     },
     {
-      "name": "Kmal Animal Spawn Hunting Spot Poi 8",
+      "name": "Roe Deer Hunting Spot",
       "category": "hunting_deer",
       "description": "",
       "world_x": 954.29,
@@ -2940,7 +3037,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "label_key": "@ui_maplegend_roadsideCamp"
     },
     {
-      "name": "Kkut Fast Travel Radnicni Poi 1",
+      "name": "Radnicni",
       "category": "fast_travel",
       "description": "",
       "world_x": 3168.46,
@@ -2999,7 +3096,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "label_key": "@ui_maplabel_gamekeeperMalesov"
     },
     {
-      "name": "Kcer Fast Travel Certovka Poi 1",
+      "name": "Devil's Den",
       "category": "fast_travel",
       "description": "",
       "world_x": 2905.09,
@@ -3013,7 +3110,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Ksed Animal Spawn Hunting Spot Poi 1",
+      "name": "Roe Deer Hunting Spot",
       "category": "hunting_deer",
       "description": "",
       "world_x": 3487.97,
@@ -3100,7 +3197,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "label_key": "@ui_maplegend_abandonedSmithy"
     },
     {
-      "name": "Ksta Animal Spawn Hunting Spot Poi 2",
+      "name": "Roe Deer Hunting Spot",
       "category": "hunting_deer",
       "description": "",
       "world_x": 2835.45,
@@ -3188,7 +3285,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "label_key": "@ui_maplegend_minerWithShop"
     },
     {
-      "name": "Kvrc Animal Spawn Hunting Spot Poi 5",
+      "name": "Roe Deer Hunting Spot",
       "category": "hunting_deer",
       "description": "",
       "world_x": 1309.66,
@@ -3202,7 +3299,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Kvlc Animal Spawn Hunting Spot Poi 2",
+      "name": "Wolf Hunting Spot",
       "category": "hunting_wolf",
       "description": "",
       "world_x": 2159.5,
@@ -3234,7 +3331,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "name": "Plague Graves",
       "category": "grave",
       "description": "",
-      "world_x": 1918.0,
+      "world_x": 1918,
       "world_y": 3476.54,
       "world_z": 109.97,
       "x": 3811,
@@ -3246,8 +3343,8 @@ window.MARKER_DATA_KUTTENBERG = {
       "label_key": "@ui_maplegend_plagueGraves"
     },
     {
-      "name": "Ksuc Fast Travel Trosecko Poi 1",
-      "category": "fast_travel",
+      "name": "Trosky Region",
+      "category": "fast_travel_level",
       "description": "",
       "world_x": 439.8,
       "world_y": 3729.46,
@@ -3275,7 +3372,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Kzik Fast Travel Army Camp Poi 1",
+      "name": "Sigismund's Camp",
       "category": "fast_travel",
       "description": "",
       "world_x": 1577.65,
@@ -3319,7 +3416,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "label_key": "@ui_maplegend_fishermansCamp"
     },
     {
-      "name": "Knab Animal Spawn Hunting Spot Poi 5",
+      "name": "Deer Hunting Spot",
       "category": "hunting_spot",
       "description": "",
       "world_x": 1954.33,
@@ -3367,7 +3464,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "description": "",
       "world_x": 2102.53,
       "world_y": 1343.01,
-      "world_z": 101.0,
+      "world_z": 101,
       "x": 7286,
       "y": 5159,
       "poi_type_name": "generalPoi",
@@ -3451,7 +3548,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "label_key": "@ui_maplegend_mezholezy"
     },
     {
-      "name": "Kopa Fast Travel Opatovice Poi 1",
+      "name": "Opatowitz",
       "category": "fast_travel",
       "description": "",
       "world_x": 1789.8,
@@ -3465,7 +3562,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Kpri Fast Travel Pritoky Poi 1",
+      "name": "Pschitoky",
       "category": "fast_travel",
       "description": "",
       "world_x": 2301.5,
@@ -3479,7 +3576,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Poi12",
+      "name": "Wysoka",
       "category": "fast_travel",
       "description": "",
       "world_x": 425.87,
@@ -3580,7 +3677,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Kpri Animal Spawn Hunting Spot Poi 1",
+      "name": "Roe Deer Hunting Spot",
       "category": "hunting_deer",
       "description": "",
       "world_x": 2156.01,
@@ -3666,7 +3763,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Knab Animal Spawn Hunting Spot Poi 6",
+      "name": "Roe Deer Hunting Spot",
       "category": "hunting_deer",
       "description": "",
       "world_x": 2293.05,
@@ -3708,7 +3805,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Kgru Animal Spawn Hunting Spot Poi 2",
+      "name": "Roe Deer Hunting Spot",
       "category": "hunting_deer",
       "description": "",
       "world_x": 3174.35,
@@ -3751,7 +3848,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "label_key": "@ui_maplegend_cartInPool"
     },
     {
-      "name": "Kroz Animal Spawn Hunting Spot Poi 2",
+      "name": "Roe Deer Hunting Spot",
       "category": "hunting_deer",
       "description": "",
       "world_x": 1001.57,
@@ -3794,7 +3891,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Ksus Animal Spawn Hunting Spot Poi 4",
+      "name": "Roe Deer Hunting Spot",
       "category": "hunting_deer",
       "description": "",
       "world_x": 3469.75,
@@ -3852,7 +3949,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "label_key": "@ui_maplegend_caveInUnderground"
     },
     {
-      "name": "Kkut Fast Travel Chmelna Poi 1",
+      "name": "Chmelna",
       "category": "fast_travel",
       "description": "",
       "world_x": 3168.45,
@@ -3866,7 +3963,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Krat Animal Spawn Hunting Spot Poi 4",
+      "name": "Roe Deer Hunting Spot",
       "category": "hunting_deer",
       "description": "",
       "world_x": 946.55,
@@ -3894,7 +3991,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Kmis Fast Travel Miskovice Poi 1",
+      "name": "Miskowitz",
       "category": "fast_travel",
       "description": "",
       "world_x": 1554.66,
@@ -3908,7 +4005,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Kvrc Animal Spawn Hunting Spot Poi 3",
+      "name": "Deer Hunting Spot",
       "category": "hunting_spot",
       "description": "",
       "world_x": 1554.76,
@@ -3952,7 +4049,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "label_key": "@ui_maplegend_wineBarrells"
     },
     {
-      "name": "Kroz Animal Spawn Hunting Spot Poi 1",
+      "name": "Boar Hunting Spot",
       "category": "hunting_boar",
       "description": "",
       "world_x": 821.43,
@@ -3994,7 +4091,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Kvrc Fast Travel Danemark Poi 1",
+      "name": "Danemark",
       "category": "fast_travel",
       "description": "",
       "world_x": 1589.79,
@@ -4051,7 +4148,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "label_key": "@ui_maplegend_herbalGarden"
     },
     {
-      "name": "Kboh Animal Spawn Hunting Spot Poi 2",
+      "name": "Roe Deer Hunting Spot",
       "category": "hunting_deer",
       "description": "",
       "world_x": 1670.77,
@@ -4094,7 +4191,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "label_key": "@ui_maplegend_cavedInMine"
     },
     {
-      "name": "Poi7",
+      "name": "Maleshov",
       "category": "fast_travel",
       "description": "",
       "world_x": 555.8,
@@ -4108,7 +4205,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Kbyl Animal Spawn Hunting Spot Poi 21",
+      "name": "Deer Hunting Spot",
       "category": "hunting_spot",
       "description": "",
       "world_x": 1379.2,
@@ -4125,7 +4222,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "name": "Poi9",
       "category": "smithy",
       "description": "",
-      "world_x": 2923.0,
+      "world_x": 2923,
       "world_y": 882.16,
       "world_z": 67.7,
       "x": 9202,
@@ -4136,7 +4233,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Kpri Animal Spawn Hunting Spot Poi 2",
+      "name": "Roe Deer Hunting Spot",
       "category": "hunting_deer",
       "description": "",
       "world_x": 2160.02,
@@ -4150,7 +4247,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Kboh Fast Travel Bohounovice Poi 1",
+      "name": "Bohunowitz",
       "category": "fast_travel",
       "description": "",
       "world_x": 1993.4,
@@ -4193,7 +4290,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Kgru Fast Travel Grunta Poi 1",
+      "name": "Grund",
       "category": "fast_travel",
       "description": "",
       "world_x": 3215.91,
@@ -4278,7 +4375,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Krab Animal Spawn Hunting Spot Poi 5",
+      "name": "Roe Deer Hunting Spot",
       "category": "hunting_deer",
       "description": "",
       "world_x": 799.52,
@@ -4292,7 +4389,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Kvrc Animal Spawn Hunting Spot Poi 4",
+      "name": "Wolf Hunting Spot",
       "category": "hunting_wolf",
       "description": "",
       "world_x": 1298.35,
@@ -4306,7 +4403,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Kkuk Animal Spawn Hunting Spot Poi 3",
+      "name": "Boar Hunting Spot",
       "category": "hunting_boar",
       "description": "",
       "world_x": 2729.96,
@@ -4320,7 +4417,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Kgru Animal Spawn Hunting Spot Poi 1",
+      "name": "Boar Hunting Spot",
       "category": "hunting_boar",
       "description": "",
       "world_x": 3550.79,
@@ -4348,7 +4445,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Kmal Animal Spawn Hunting Spot Poi 1",
+      "name": "Boar Hunting Spot",
       "category": "hunting_boar",
       "description": "",
       "world_x": 268.16,
@@ -4390,7 +4487,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Kvrc Animal Spawn Hunting Spot Poi 7",
+      "name": "Boar Hunting Spot",
       "category": "hunting_boar",
       "description": "",
       "world_x": 2004.06,
@@ -4505,7 +4602,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "label_key": "@ui_maplegend_stallWithBeverage"
     },
     {
-      "name": "Kkuk Animal Spawn Hunting Spot Poi 1",
+      "name": "Roe Deer Hunting Spot",
       "category": "hunting_deer",
       "description": "",
       "world_x": 3152.67,
@@ -4592,7 +4689,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "label_key": "@ui_maplegend_minerWithShop"
     },
     {
-      "name": "Klor Animal Spawn Hunting Spot Poi 3",
+      "name": "Deer Hunting Spot",
       "category": "hunting_spot",
       "description": "",
       "world_x": 3904.44,
@@ -4606,7 +4703,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Ksus Animal Spawn Hunting Spot Poi 2",
+      "name": "Deer Hunting Spot",
       "category": "hunting_spot",
       "description": "",
       "world_x": 3739.66,
@@ -4695,7 +4792,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "label_key": "@ui_maplegend_herbalGarden"
     },
     {
-      "name": "Kkop Animal Spawn Hunting Spot Poi 3",
+      "name": "Roe Deer Hunting Spot",
       "category": "hunting_deer",
       "description": "",
       "world_x": 947.06,
@@ -4739,7 +4836,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "label_key": "@ui_maplegend_pubDira"
     },
     {
-      "name": "Krat Animal Spawn Hunting Spot Poi 5",
+      "name": "Boar Hunting Spot",
       "category": "hunting_boar",
       "description": "",
       "world_x": 895.81,
@@ -4767,7 +4864,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Kkop Animal Spawn Hunting Spot Poi 4",
+      "name": "Deer Hunting Spot",
       "category": "hunting_spot",
       "description": "",
       "world_x": 816.75,
@@ -4781,7 +4878,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Kvrc Animal Spawn Hunting Spot Poi 6",
+      "name": "Boar Hunting Spot",
       "category": "hunting_boar",
       "description": "",
       "world_x": 1728.19,
@@ -4795,7 +4892,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Kbyl Animal Spawn Hunting Spot Poi 22",
+      "name": "Boar Hunting Spot",
       "category": "hunting_boar",
       "description": "",
       "world_x": 1807.66,
@@ -4809,7 +4906,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Kmis Animal Spawn Hunting Spot Poi 1",
+      "name": "Roe Deer Hunting Spot",
       "category": "hunting_deer",
       "description": "",
       "world_x": 1585.26,
@@ -4823,7 +4920,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Kvrc Animal Spawn Hunting Spot Poi 1",
+      "name": "Wolf Hunting Spot",
       "category": "hunting_wolf",
       "description": "",
       "world_x": 1986.53,
@@ -4852,7 +4949,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "label_key": "@ui_maplegend_remnantsOfCaravan"
     },
     {
-      "name": "Kmez Animal Spawn Hunting Spot Poi 3",
+      "name": "Roe Deer Hunting Spot",
       "category": "hunting_deer",
       "description": "",
       "world_x": 487.49,
@@ -4954,7 +5051,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "label_key": "@ui_maplegend_plunderedHouse"
     },
     {
-      "name": "Kmez Animal Spawn Hunting Spot Poi 6",
+      "name": "Boar Hunting Spot",
       "category": "hunting_boar",
       "description": "",
       "world_x": 405.8,
@@ -4968,7 +5065,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Kmal Animal Spawn Hunting Spot Poi 6",
+      "name": "Roe Deer Hunting Spot",
       "category": "hunting_deer",
       "description": "",
       "world_x": 448.49,
@@ -5010,7 +5107,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Krab Animal Spawn Hunting Spot Poi 1",
+      "name": "Boar Hunting Spot",
       "category": "hunting_boar",
       "description": "",
       "world_x": 226.62,
@@ -5024,7 +5121,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Krab Animal Spawn Hunting Spot Poi 2",
+      "name": "Boar Hunting Spot",
       "category": "hunting_boar",
       "description": "",
       "world_x": 670.3,
@@ -5053,7 +5150,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "label_key": "@ui_maplegend_hangedMan"
     },
     {
-      "name": "Ksus Animal Spawn Hunting Spot Poi 1",
+      "name": "Boar Hunting Spot",
       "category": "hunting_boar",
       "description": "",
       "world_x": 3671.47,
@@ -5100,7 +5197,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "name": "Fountain on Vintners' Street",
       "category": "interesting_site",
       "description": "",
-      "world_x": 2988.0,
+      "world_x": 2988,
       "world_y": 863.89,
       "world_z": 66.43,
       "x": 9327,
@@ -5929,7 +6026,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "category": "nest",
       "description": "",
       "world_x": 884.74,
-      "world_y": 485.0,
+      "world_y": 485,
       "world_z": 119.37,
       "x": 6754,
       "y": 2041,
@@ -7386,7 +7483,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "description": "",
       "world_x": 1478.94,
       "world_y": 312.83,
-      "world_z": 69.0,
+      "world_z": 69,
       "x": 7899,
       "y": 2674,
       "poi_type_name": "nest",
@@ -7899,7 +7996,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Dice Table \u2014 Pritoky",
+      "name": "Dice Table",
       "category": "dice_table",
       "description": "",
       "world_x": 2180.2,
@@ -7913,7 +8010,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Dice Table \u2014 Horansko",
+      "name": "Dice Table",
       "category": "dice_table",
       "description": "",
       "world_x": 2931.77,
@@ -7927,7 +8024,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Dice Table \u2014 Kutna Hora",
+      "name": "Dice Table",
       "category": "dice_table",
       "description": "",
       "world_x": 3223.69,
@@ -7941,7 +8038,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Dice Table \u2014 Stara Kutna",
+      "name": "Dice Table",
       "category": "dice_table",
       "description": "",
       "world_x": 2735.31,
@@ -7955,7 +8052,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Dice Table \u2014 Grunta",
+      "name": "Dice Table",
       "category": "dice_table",
       "description": "",
       "world_x": 3197.78,
@@ -7969,7 +8066,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Dice Table \u2014 Kutna Hora",
+      "name": "Dice Table",
       "category": "dice_table",
       "description": "",
       "world_x": 2942.35,
@@ -7983,7 +8080,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Dice Table \u2014 Kutna Hora",
+      "name": "Dice Table",
       "category": "dice_table",
       "description": "",
       "world_x": 2896.15,
@@ -7997,7 +8094,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Dice Table \u2014 Certovka",
+      "name": "Dice Table",
       "category": "dice_table",
       "description": "",
       "world_x": 2925.18,
@@ -8011,12 +8108,12 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Dice Table \u2014 Kutna Hora",
+      "name": "Dice Table",
       "category": "dice_table",
       "description": "",
       "world_x": 3000.74,
       "world_y": 777.11,
-      "world_z": 58.0,
+      "world_z": 58,
       "x": 9476,
       "y": 5656,
       "poi_type_name": "dice_table",
@@ -8025,7 +8122,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Dice Table \u2014 Kutna Hora",
+      "name": "Dice Table",
       "category": "dice_table",
       "description": "",
       "world_x": 2981.23,
@@ -8039,7 +8136,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Dice Table \u2014 Ratboricko",
+      "name": "Dice Table",
       "category": "dice_table",
       "description": "",
       "world_x": 1439.43,
@@ -8053,7 +8150,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Dice Table \u2014 Pritoky",
+      "name": "Dice Table",
       "category": "dice_table",
       "description": "",
       "world_x": 2284.75,
@@ -8067,7 +8164,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Dice Table \u2014 Mezholezsko",
+      "name": "Dice Table",
       "category": "dice_table",
       "description": "",
       "world_x": 861.21,
@@ -8081,7 +8178,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Dice Table \u2014 Horansko",
+      "name": "Dice Table",
       "category": "dice_table",
       "description": "",
       "world_x": 2935.11,
@@ -8095,7 +8192,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Dice Table \u2014 Stara Kutna",
+      "name": "Dice Table",
       "category": "dice_table",
       "description": "",
       "world_x": 2744.06,
@@ -8109,7 +8206,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Dice Table \u2014 Kutna Hora",
+      "name": "Dice Table",
       "category": "dice_table",
       "description": "",
       "world_x": 3207.2,
@@ -8123,7 +8220,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Dice Table \u2014 Kutna Hora",
+      "name": "Dice Table",
       "category": "dice_table",
       "description": "",
       "world_x": 3051.72,
@@ -8137,7 +8234,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Dice Table \u2014 Kutna Hora",
+      "name": "Dice Table",
       "category": "dice_table",
       "description": "",
       "world_x": 3140.57,
@@ -8151,7 +8248,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Dice Table \u2014 Kutna Hora",
+      "name": "Dice Table",
       "category": "dice_table",
       "description": "",
       "world_x": 2898.66,
@@ -8165,7 +8262,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Dice Table \u2014 Certovka",
+      "name": "Dice Table",
       "category": "dice_table",
       "description": "",
       "world_x": 2919.67,
@@ -8179,7 +8276,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Dice Table \u2014 Malesov",
+      "name": "Dice Table",
       "category": "dice_table",
       "description": "",
       "world_x": 458.05,
@@ -8193,7 +8290,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Dice Table \u2014 Kutna Hora",
+      "name": "Dice Table",
       "category": "dice_table",
       "description": "",
       "world_x": 3050.39,
@@ -8207,7 +8304,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Dice Table \u2014 Kutna Hora",
+      "name": "Dice Table",
       "category": "dice_table",
       "description": "",
       "world_x": 2935.33,
@@ -8221,7 +8318,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Dice Table \u2014 Pritoky",
+      "name": "Dice Table",
       "category": "dice_table",
       "description": "",
       "world_x": 2263.98,
@@ -8235,7 +8332,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Dice Table \u2014 Kutna Hora",
+      "name": "Dice Table",
       "category": "dice_table",
       "description": "",
       "world_x": 3123.84,
@@ -8249,7 +8346,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Dice Table \u2014 Miskovicko",
+      "name": "Dice Table",
       "category": "dice_table",
       "description": "",
       "world_x": 1560.44,
@@ -8263,7 +8360,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Dice Table \u2014 Kutna Hora",
+      "name": "Dice Table",
       "category": "dice_table",
       "description": "",
       "world_x": 3242.4,
@@ -8277,7 +8374,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Dice Table \u2014 Kutna Hora",
+      "name": "Dice Table",
       "category": "dice_table",
       "description": "",
       "world_x": 3142.22,
@@ -8291,7 +8388,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Dice Table \u2014 Kutna Hora",
+      "name": "Dice Table",
       "category": "dice_table",
       "description": "",
       "world_x": 3219.35,
@@ -8305,7 +8402,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Dice Table \u2014 Kutna Hora",
+      "name": "Dice Table",
       "category": "dice_table",
       "description": "",
       "world_x": 3199.88,
@@ -8319,7 +8416,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Dice Table \u2014 Kutna Hora",
+      "name": "Dice Table",
       "category": "dice_table",
       "description": "",
       "world_x": 2932.44,
@@ -8333,7 +8430,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Dice Table \u2014 Grunta",
+      "name": "Dice Table",
       "category": "dice_table",
       "description": "",
       "world_x": 3194.24,
@@ -8347,11 +8444,11 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Dice Table \u2014 Kutna Hora",
+      "name": "Dice Table",
       "category": "dice_table",
       "description": "",
       "world_x": 3094.56,
-      "world_y": 873.0,
+      "world_y": 873,
       "world_z": 57.63,
       "x": 9472,
       "y": 5941,
@@ -8361,7 +8458,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Dice Table \u2014 Kutna Hora",
+      "name": "Dice Table",
       "category": "dice_table",
       "description": "",
       "world_x": 3202.85,
@@ -8375,7 +8472,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Dice Table \u2014 Certovka",
+      "name": "Dice Table",
       "category": "dice_table",
       "description": "",
       "world_x": 2927.03,
@@ -8389,7 +8486,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Dice Table \u2014 Bylansko",
+      "name": "Dice Table",
       "category": "dice_table",
       "description": "",
       "world_x": 1759.76,
@@ -8403,7 +8500,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Dice Table \u2014 Kutna Hora",
+      "name": "Dice Table",
       "category": "dice_table",
       "description": "",
       "world_x": 3099.59,
@@ -8417,7 +8514,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Dice Table \u2014 Kutna Hora",
+      "name": "Dice Table",
       "category": "dice_table",
       "description": "",
       "world_x": 3037.06,
@@ -8431,7 +8528,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Dice Table \u2014 Stara Kutna",
+      "name": "Dice Table",
       "category": "dice_table",
       "description": "",
       "world_x": 2721.45,
@@ -8445,7 +8542,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Dice Table \u2014 Pritoky",
+      "name": "Dice Table",
       "category": "dice_table",
       "description": "",
       "world_x": 2184.11,
@@ -8459,7 +8556,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Dice Table \u2014 Suchdol",
+      "name": "Dice Table",
       "category": "dice_table",
       "description": "",
       "world_x": 767.54,
@@ -8473,7 +8570,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Dice Table \u2014 Kutna Hora",
+      "name": "Dice Table",
       "category": "dice_table",
       "description": "",
       "world_x": 2935.61,
@@ -8487,7 +8584,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Sharpening Wheel \u2014 Kutna Hora",
+      "name": "Sharpening Wheel",
       "category": "sharpening_wheel",
       "description": "",
       "world_x": 3112.54,
@@ -8501,7 +8598,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Sharpening Wheel \u2014 Kutna Hora",
+      "name": "Sharpening Wheel",
       "category": "sharpening_wheel",
       "description": "",
       "world_x": 2940.47,
@@ -8515,7 +8612,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Sharpening Wheel \u2014 Kutna Hora",
+      "name": "Sharpening Wheel",
       "category": "sharpening_wheel",
       "description": "",
       "world_x": 2944.09,
@@ -8529,7 +8626,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Sharpening Wheel \u2014 Ratboricko",
+      "name": "Sharpening Wheel",
       "category": "sharpening_wheel",
       "description": "",
       "world_x": 1621.31,
@@ -8543,7 +8640,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Sharpening Wheel \u2014 Kutna Hora",
+      "name": "Sharpening Wheel",
       "category": "sharpening_wheel",
       "description": "",
       "world_x": 3153.35,
@@ -8557,7 +8654,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Sharpening Wheel \u2014 Pritoky",
+      "name": "Sharpening Wheel",
       "category": "sharpening_wheel",
       "description": "",
       "world_x": 2265.72,
@@ -8571,7 +8668,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Sharpening Wheel \u2014 Miskovicko",
+      "name": "Sharpening Wheel",
       "category": "sharpening_wheel",
       "description": "",
       "world_x": 1548.47,
@@ -8585,7 +8682,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Sharpening Wheel \u2014 Kutna Hora",
+      "name": "Sharpening Wheel",
       "category": "sharpening_wheel",
       "description": "",
       "world_x": 2943.73,
@@ -8599,7 +8696,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Sharpening Wheel \u2014 Kutna Hora",
+      "name": "Sharpening Wheel",
       "category": "sharpening_wheel",
       "description": "",
       "world_x": 3222.01,
@@ -8613,7 +8710,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Sharpening Wheel \u2014 Kutna Hora",
+      "name": "Sharpening Wheel",
       "category": "sharpening_wheel",
       "description": "",
       "world_x": 2922.42,
@@ -8627,7 +8724,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Sharpening Wheel \u2014 Certovka",
+      "name": "Sharpening Wheel",
       "category": "sharpening_wheel",
       "description": "",
       "world_x": 2926.55,
@@ -8655,10 +8752,10 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Sharpening Wheel \u2014 Kutna Hora",
+      "name": "Sharpening Wheel",
       "category": "sharpening_wheel",
       "description": "",
-      "world_x": 3243.0,
+      "world_x": 3243,
       "world_y": 667.62,
       "world_z": 50.54,
       "x": 10002,
@@ -8669,7 +8766,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Sharpening Wheel \u2014 Mezholezsko",
+      "name": "Sharpening Wheel",
       "category": "sharpening_wheel",
       "description": "",
       "world_x": 868.56,
@@ -8683,7 +8780,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Sharpening Wheel \u2014 Kutna Hora",
+      "name": "Sharpening Wheel",
       "category": "sharpening_wheel",
       "description": "",
       "world_x": 3116.02,
@@ -8697,7 +8794,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Sharpening Wheel \u2014 Kutna Hora",
+      "name": "Sharpening Wheel",
       "category": "sharpening_wheel",
       "description": "",
       "world_x": 3120.72,
@@ -8711,7 +8808,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Sharpening Wheel \u2014 Malesov",
+      "name": "Sharpening Wheel",
       "category": "sharpening_wheel",
       "description": "",
       "world_x": 454.94,
@@ -8725,7 +8822,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Sharpening Wheel \u2014 Kutna Hora",
+      "name": "Sharpening Wheel",
       "category": "sharpening_wheel",
       "description": "",
       "world_x": 3096.25,
@@ -8739,7 +8836,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Alchemy Bench \u2014 Suchdol",
+      "name": "Alchemy Bench",
       "category": "alchemy_bench",
       "description": "",
       "world_x": 733.36,
@@ -8753,7 +8850,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Alchemy Bench \u2014 Kutna Hora",
+      "name": "Alchemy Bench",
       "category": "alchemy_bench",
       "description": "",
       "world_x": 3302.31,
@@ -8767,7 +8864,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Alchemy Bench \u2014 Certovka",
+      "name": "Alchemy Bench",
       "category": "alchemy_bench",
       "description": "",
       "world_x": 2963.6,
@@ -8781,7 +8878,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Alchemy Bench \u2014 Pritoky",
+      "name": "Alchemy Bench",
       "category": "alchemy_bench",
       "description": "",
       "world_x": 2303.44,
@@ -8795,7 +8892,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Alchemy Bench \u2014 Pritoky",
+      "name": "Alchemy Bench",
       "category": "alchemy_bench",
       "description": "",
       "world_x": 2151.12,
@@ -8809,7 +8906,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Alchemy Bench \u2014 Kutna Hora",
+      "name": "Alchemy Bench",
       "category": "alchemy_bench",
       "description": "",
       "world_x": 3098.78,
@@ -8823,7 +8920,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Alchemy Bench \u2014 Kutna Hora",
+      "name": "Alchemy Bench",
       "category": "alchemy_bench",
       "description": "",
       "world_x": 3032.63,
@@ -8837,7 +8934,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Alchemy Bench \u2014 Rabstejnsko",
+      "name": "Alchemy Bench",
       "category": "alchemy_bench",
       "description": "",
       "world_x": 672.4,
@@ -8851,7 +8948,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Indulgence Box \u2014 Grunta",
+      "name": "Indulgence Box",
       "category": "indulgence_box",
       "description": "",
       "world_x": 3154.66,
@@ -8865,7 +8962,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Indulgence Box \u2014 Stara Kutna",
+      "name": "Indulgence Box",
       "category": "indulgence_box",
       "description": "",
       "world_x": 3070.61,
@@ -8879,7 +8976,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Indulgence Box \u2014 Sedlcko",
+      "name": "Indulgence Box",
       "category": "indulgence_box",
       "description": "",
       "world_x": 3890.45,
@@ -8893,7 +8990,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Indulgence Box \u2014 Ratboricko",
+      "name": "Indulgence Box",
       "category": "indulgence_box",
       "description": "",
       "world_x": 1591.49,
@@ -8907,7 +9004,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Indulgence Box \u2014 Suchdol",
+      "name": "Indulgence Box",
       "category": "indulgence_box",
       "description": "",
       "world_x": 764.25,
@@ -8991,7 +9088,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Smokehouse \u2014 Vysoka",
+      "name": "Smokehouse",
       "category": "smokehouse",
       "description": "",
       "world_x": 383.02,
@@ -9005,7 +9102,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Smokehouse \u2014 Grunta",
+      "name": "Smokehouse",
       "category": "smokehouse",
       "description": "",
       "world_x": 3179.21,
@@ -9019,7 +9116,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Smokehouse \u2014 Vrchlicko",
+      "name": "Smokehouse",
       "category": "smokehouse",
       "description": "",
       "world_x": 1583.54,
@@ -9033,7 +9130,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Smokehouse \u2014 Suchdol",
+      "name": "Smokehouse",
       "category": "smokehouse",
       "description": "",
       "world_x": 543.35,
@@ -9047,7 +9144,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Smokehouse \u2014 Kutna Hora",
+      "name": "Smokehouse",
       "category": "smokehouse",
       "description": "",
       "world_x": 3294.24,
@@ -9061,7 +9158,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Smokehouse \u2014 Pritoky",
+      "name": "Smokehouse",
       "category": "smokehouse",
       "description": "",
       "world_x": 2297.35,
@@ -9075,7 +9172,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Smokehouse \u2014 Rabstejnsko",
+      "name": "Smokehouse",
       "category": "smokehouse",
       "description": "",
       "world_x": 663.06,
@@ -9089,7 +9186,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Smokehouse \u2014 Suchdol",
+      "name": "Smokehouse",
       "category": "smokehouse",
       "description": "",
       "world_x": 637.4,
@@ -9103,10 +9200,10 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Smokehouse \u2014 Suchdol",
+      "name": "Smokehouse",
       "category": "smokehouse",
       "description": "",
-      "world_x": 539.0,
+      "world_x": 539,
       "world_y": 3251.64,
       "world_z": 147.83,
       "x": 2089,
@@ -9117,7 +9214,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Smokehouse \u2014 Ratboricko",
+      "name": "Smokehouse",
       "category": "smokehouse",
       "description": "",
       "world_x": 1621.63,
@@ -9131,7 +9228,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Smokehouse \u2014 Miskovicko",
+      "name": "Smokehouse",
       "category": "smokehouse",
       "description": "",
       "world_x": 1544.64,
@@ -9145,7 +9242,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Smokehouse \u2014 Miskovicko",
+      "name": "Smokehouse",
       "category": "smokehouse",
       "description": "",
       "world_x": 1575.64,
@@ -9159,7 +9256,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Smokehouse \u2014 Pritoky",
+      "name": "Smokehouse",
       "category": "smokehouse",
       "description": "",
       "world_x": 2363.62,
@@ -9173,7 +9270,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Smokehouse \u2014 Bylansko",
+      "name": "Smokehouse",
       "category": "smokehouse",
       "description": "",
       "world_x": 1741.35,
@@ -9187,7 +9284,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Smokehouse \u2014 Vysoka",
+      "name": "Smokehouse",
       "category": "smokehouse",
       "description": "",
       "world_x": 416.48,
@@ -9201,7 +9298,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Smokehouse \u2014 Bohounovice",
+      "name": "Smokehouse",
       "category": "smokehouse",
       "description": "",
       "world_x": 2019.66,
@@ -9215,7 +9312,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Smokehouse \u2014 Bylansko",
+      "name": "Smokehouse",
       "category": "smokehouse",
       "description": "",
       "world_x": 1722.62,
@@ -9229,7 +9326,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Smokehouse \u2014 Bylansko",
+      "name": "Smokehouse",
       "category": "smokehouse",
       "description": "",
       "world_x": 1663.59,
@@ -9243,7 +9340,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Smokehouse \u2014 Pritoky",
+      "name": "Smokehouse",
       "category": "smokehouse",
       "description": "",
       "world_x": 2187.2,
@@ -9257,7 +9354,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Smokehouse \u2014 Kutna Hora",
+      "name": "Smokehouse",
       "category": "smokehouse",
       "description": "",
       "world_x": 3330.99,
@@ -9271,7 +9368,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Smokehouse \u2014 Horansko",
+      "name": "Smokehouse",
       "category": "smokehouse",
       "description": "",
       "world_x": 2558.52,
@@ -9285,7 +9382,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Smokehouse \u2014 Ratboricko",
+      "name": "Smokehouse",
       "category": "smokehouse",
       "description": "",
       "world_x": 1634.86,
@@ -9299,7 +9396,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Drying Rack \u2014 Pritoky",
+      "name": "Drying Rack",
       "category": "drying_rack",
       "description": "",
       "world_x": 2150.83,
@@ -9313,7 +9410,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Drying Rack \u2014 Suchdol",
+      "name": "Drying Rack",
       "category": "drying_rack",
       "description": "",
       "world_x": 562.48,
@@ -9327,7 +9424,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Drying Rack \u2014 Vysoka",
+      "name": "Drying Rack",
       "category": "drying_rack",
       "description": "",
       "world_x": 420.89,
@@ -9341,7 +9438,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Drying Rack \u2014 Rabstejnsko",
+      "name": "Drying Rack",
       "category": "drying_rack",
       "description": "",
       "world_x": 613.43,
@@ -9355,7 +9452,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Drying Rack \u2014 Vysoka",
+      "name": "Drying Rack",
       "category": "drying_rack",
       "description": "",
       "world_x": 426.1,
@@ -9369,7 +9466,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Drying Rack \u2014 Miskovicko",
+      "name": "Drying Rack",
       "category": "drying_rack",
       "description": "",
       "world_x": 1475.53,
@@ -9383,7 +9480,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Drying Rack \u2014 Bylansko",
+      "name": "Drying Rack",
       "category": "drying_rack",
       "description": "",
       "world_x": 1724.96,
@@ -9397,7 +9494,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Drying Rack \u2014 Grunta",
+      "name": "Drying Rack",
       "category": "drying_rack",
       "description": "",
       "world_x": 3199.04,
@@ -9411,7 +9508,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Drying Rack \u2014 Malesov",
+      "name": "Drying Rack",
       "category": "drying_rack",
       "description": "",
       "world_x": 591.54,
@@ -9425,7 +9522,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Drying Rack \u2014 Bylansko",
+      "name": "Drying Rack",
       "category": "drying_rack",
       "description": "",
       "world_x": 1671.73,
@@ -9439,7 +9536,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Drying Rack \u2014 Suchdol",
+      "name": "Drying Rack",
       "category": "drying_rack",
       "description": "",
       "world_x": 629.84,
@@ -9453,7 +9550,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Drying Rack \u2014 Suchdol",
+      "name": "Drying Rack",
       "category": "drying_rack",
       "description": "",
       "world_x": 645.72,
@@ -9467,7 +9564,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Drying Rack \u2014 Certovka",
+      "name": "Drying Rack",
       "category": "drying_rack",
       "description": "",
       "world_x": 2914.84,
@@ -9481,7 +9578,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Drying Rack \u2014 Miskovicko",
+      "name": "Drying Rack",
       "category": "drying_rack",
       "description": "",
       "world_x": 1481.46,
@@ -9495,7 +9592,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Drying Rack \u2014 Pritoky",
+      "name": "Drying Rack",
       "category": "drying_rack",
       "description": "",
       "world_x": 2153.82,
@@ -9509,7 +9606,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Drying Rack \u2014 Grunta",
+      "name": "Drying Rack",
       "category": "drying_rack",
       "description": "",
       "world_x": 3252.09,
@@ -9523,7 +9620,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Drying Rack \u2014 Grunta",
+      "name": "Drying Rack",
       "category": "drying_rack",
       "description": "",
       "world_x": 3226.94,
@@ -9537,7 +9634,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Drying Rack \u2014 Bohounovice",
+      "name": "Drying Rack",
       "category": "drying_rack",
       "description": "",
       "world_x": 1974.46,
@@ -9551,7 +9648,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Drying Rack \u2014 Miskovicko",
+      "name": "Drying Rack",
       "category": "drying_rack",
       "description": "",
       "world_x": 1556.92,
@@ -9565,7 +9662,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Drying Rack \u2014 Ratboricko",
+      "name": "Drying Rack",
       "category": "drying_rack",
       "description": "",
       "world_x": 1603.83,
@@ -9579,7 +9676,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Drying Rack \u2014 Bylansko",
+      "name": "Drying Rack",
       "category": "drying_rack",
       "description": "",
       "world_x": 1774.98,
@@ -9593,7 +9690,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Drying Rack \u2014 Ratboricko",
+      "name": "Drying Rack",
       "category": "drying_rack",
       "description": "",
       "world_x": 1584.21,
@@ -9607,7 +9704,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Drying Rack \u2014 Bylansko",
+      "name": "Drying Rack",
       "category": "drying_rack",
       "description": "",
       "world_x": 1292.84,
@@ -9621,7 +9718,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Drying Rack \u2014 Vysoka",
+      "name": "Drying Rack",
       "category": "drying_rack",
       "description": "",
       "world_x": 422.58,
@@ -9635,7 +9732,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Drying Rack \u2014 Suchdol",
+      "name": "Drying Rack",
       "category": "drying_rack",
       "description": "",
       "world_x": 582.78,
@@ -9649,7 +9746,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Drying Rack \u2014 Kutna Hora",
+      "name": "Drying Rack",
       "category": "drying_rack",
       "description": "",
       "world_x": 3203.29,
@@ -9663,7 +9760,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Drying Rack \u2014 Kutna Hora",
+      "name": "Drying Rack",
       "category": "drying_rack",
       "description": "",
       "world_x": 3213.98,
@@ -9677,7 +9774,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Drying Rack \u2014 Rabstejnsko",
+      "name": "Drying Rack",
       "category": "drying_rack",
       "description": "",
       "world_x": 675.81,
@@ -9691,7 +9788,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Drying Rack \u2014 Opatovicko",
+      "name": "Drying Rack",
       "category": "drying_rack",
       "description": "",
       "world_x": 1886.3,
@@ -9705,11 +9802,11 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Drying Rack \u2014 Malesov",
+      "name": "Drying Rack",
       "category": "drying_rack",
       "description": "",
       "world_x": 412.94,
-      "world_y": 730.0,
+      "world_y": 730,
       "world_z": 114.92,
       "x": 5682,
       "y": 1701,
@@ -9719,7 +9816,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Drying Rack \u2014 Pritoky",
+      "name": "Drying Rack",
       "category": "drying_rack",
       "description": "",
       "world_x": 2357.17,
@@ -9733,7 +9830,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Drying Rack \u2014 Grunta",
+      "name": "Drying Rack",
       "category": "drying_rack",
       "description": "",
       "world_x": 3228.25,
@@ -9747,7 +9844,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Drying Rack \u2014 Kutna Hora",
+      "name": "Drying Rack",
       "category": "drying_rack",
       "description": "",
       "world_x": 2905.69,
@@ -9761,7 +9858,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Drying Rack \u2014 Vrchlicko",
+      "name": "Drying Rack",
       "category": "drying_rack",
       "description": "",
       "world_x": 1557.91,
@@ -9775,7 +9872,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Drying Rack \u2014 Rabstejnsko",
+      "name": "Drying Rack",
       "category": "drying_rack",
       "description": "",
       "world_x": 975.86,
@@ -9803,7 +9900,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Drying Rack \u2014 Pritoky",
+      "name": "Drying Rack",
       "category": "drying_rack",
       "description": "",
       "world_x": 2298.66,
@@ -9817,7 +9914,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Drying Rack \u2014 Bohounovice",
+      "name": "Drying Rack",
       "category": "drying_rack",
       "description": "",
       "world_x": 2001.58,
@@ -9831,7 +9928,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Drying Rack \u2014 Pritoky",
+      "name": "Drying Rack",
       "category": "drying_rack",
       "description": "",
       "world_x": 2309.07,
@@ -9845,7 +9942,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Drying Rack \u2014 Suchdol",
+      "name": "Drying Rack",
       "category": "drying_rack",
       "description": "",
       "world_x": 530.13,
@@ -9859,7 +9956,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Drying Rack \u2014 Vysoka",
+      "name": "Drying Rack",
       "category": "drying_rack",
       "description": "",
       "world_x": 380.88,
@@ -9873,7 +9970,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Drying Rack \u2014 Bylansko",
+      "name": "Drying Rack",
       "category": "drying_rack",
       "description": "",
       "world_x": 1637.37,
@@ -9887,7 +9984,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Drying Rack \u2014 Miskovicko",
+      "name": "Drying Rack",
       "category": "drying_rack",
       "description": "",
       "world_x": 1558.2,
@@ -9901,7 +9998,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Drying Rack \u2014 Malesov",
+      "name": "Drying Rack",
       "category": "drying_rack",
       "description": "",
       "world_x": 446.92,
@@ -9915,7 +10012,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Drying Rack \u2014 Stara Kutna",
+      "name": "Drying Rack",
       "category": "drying_rack",
       "description": "",
       "world_x": 3087.79,
@@ -9929,7 +10026,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Drying Rack \u2014 Kutna Hora",
+      "name": "Drying Rack",
       "category": "drying_rack",
       "description": "",
       "world_x": 3044.54,
@@ -9943,7 +10040,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Cart Stash \u2014 Sedlcko",
+      "name": "Cart Stash",
       "category": "cart_stash",
       "description": "",
       "world_x": 3996.77,
@@ -9957,7 +10054,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Cart Stash \u2014 Kutna Hora",
+      "name": "Cart Stash",
       "category": "cart_stash",
       "description": "",
       "world_x": 3080.91,
@@ -9971,7 +10068,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Cart Stash \u2014 Kutna Hora",
+      "name": "Cart Stash",
       "category": "cart_stash",
       "description": "",
       "world_x": 3086.02,
@@ -9985,7 +10082,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Lootable Corpse \u2014 Sedlcko",
+      "name": "Lootable Corpse",
       "category": "lootable_corpse",
       "description": "",
       "world_x": 3992.38,
@@ -9999,7 +10096,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Lootable Corpse \u2014 Poi",
+      "name": "Lootable Corpse",
       "category": "lootable_corpse",
       "description": "",
       "world_x": 807.46,
@@ -10013,7 +10110,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Lootable Corpse \u2014 Micro",
+      "name": "Lootable Corpse",
       "category": "lootable_corpse",
       "description": "",
       "world_x": 3424.13,
@@ -10041,7 +10138,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Lootable Corpse \u2014 Poi",
+      "name": "Lootable Corpse",
       "category": "lootable_corpse",
       "description": "",
       "world_x": 2290.31,
@@ -10055,7 +10152,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Lootable Corpse \u2014 Poi",
+      "name": "Lootable Corpse",
       "category": "lootable_corpse",
       "description": "",
       "world_x": 714.71,
@@ -15135,7 +15232,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "gg_icon": "/images/map-marker-icon/15/252702/spurs01_m02_c_icon-72aaa5c1.png.png"
     },
     {
-      "name": "Sketch \u2013 Racing horseshoes",
+      "name": "Sketch – Racing horseshoes",
       "category": "loot_recipe",
       "description": "",
       "x": 9221,
@@ -15152,7 +15249,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "gg_icon": "/images/map-marker-icon/15/253162/recipe_smith_icon-fb36808f.png.png"
     },
     {
-      "name": "Sketch \u2013 Carpenter's axe",
+      "name": "Sketch – Carpenter's axe",
       "category": "loot_recipe",
       "description": "",
       "x": 9855,
@@ -15169,7 +15266,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "gg_icon": "/images/map-marker-icon/15/253164/recipe_smith_icon-fb36808f.png.png"
     },
     {
-      "name": "Sketch \u2013 Falchion",
+      "name": "Sketch – Falchion",
       "category": "loot_recipe",
       "description": "",
       "x": 2270,
@@ -15186,7 +15283,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "gg_icon": "/images/map-marker-icon/15/253166/recipe_smith_icon-fb36808f.png.png"
     },
     {
-      "name": "Sketch \u2013 Work axe",
+      "name": "Sketch – Work axe",
       "category": "loot_recipe",
       "description": "",
       "x": 9480,
@@ -15271,7 +15368,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "gg_icon": "/images/map-marker-icon/15/253188/recipe_alchemy_icon-dc355668.png.png"
     },
     {
-      "name": "Sketch \u2013 Hunting sword",
+      "name": "Sketch – Hunting sword",
       "category": "loot_recipe",
       "description": "",
       "x": 5166,
@@ -17770,7 +17867,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "gg_icon": "/images/map-marker-icon/15/252627/kettlehat01_m03_e2_icon-3927f79e.png.png"
     },
     {
-      "name": "Bascinet with bret\u00e8che",
+      "name": "Bascinet with bretèche",
       "category": "loot_armour_head",
       "description": "",
       "x": 9808,
@@ -17787,7 +17884,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "gg_icon": "/images/map-marker-icon/15/252634/bascinetopen03_m01_c3_icon-8872e0ac.png.png"
     },
     {
-      "name": "Bascinet with bret\u00e8che",
+      "name": "Bascinet with bretèche",
       "category": "loot_armour_head",
       "description": "",
       "x": 9395,
@@ -17804,7 +17901,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "gg_icon": "/images/map-marker-icon/15/252634/bascinetopen03_m01_c3_icon-8872e0ac.png.png"
     },
     {
-      "name": "Bascinet with bret\u00e8che",
+      "name": "Bascinet with bretèche",
       "category": "loot_armour_head",
       "description": "",
       "x": 9395,
@@ -17821,7 +17918,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "gg_icon": "/images/map-marker-icon/15/252634/bascinetopen03_m01_c3_icon-8872e0ac.png.png"
     },
     {
-      "name": "Bascinet with bret\u00e8che",
+      "name": "Bascinet with bretèche",
       "category": "loot_armour_head",
       "description": "",
       "x": 9381,
@@ -17838,7 +17935,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "gg_icon": "/images/map-marker-icon/15/252634/bascinetopen03_m01_c3_icon-8872e0ac.png.png"
     },
     {
-      "name": "Bascinet with bret\u00e8che",
+      "name": "Bascinet with bretèche",
       "category": "loot_armour_head",
       "description": "",
       "x": 9400,
@@ -17855,7 +17952,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "gg_icon": "/images/map-marker-icon/15/252634/bascinetopen03_m01_c3_icon-8872e0ac.png.png"
     },
     {
-      "name": "Bascinet with bret\u00e8che",
+      "name": "Bascinet with bretèche",
       "category": "loot_armour_head",
       "description": "",
       "x": 9722,
@@ -17872,7 +17969,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "gg_icon": "/images/map-marker-icon/15/252634/bascinetopen03_m01_c3_icon-8872e0ac.png.png"
     },
     {
-      "name": "Bascinet with bret\u00e8che",
+      "name": "Bascinet with bretèche",
       "category": "loot_armour_head",
       "description": "",
       "x": 9833,
@@ -20303,7 +20400,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "gg_icon": "/images/map-marker-icon/15/254019/key_general_icon-696361d2.png.png"
     },
     {
-      "name": "Sketch \u2013 Common sabre",
+      "name": "Sketch – Common sabre",
       "category": "loot_recipe",
       "description": "",
       "x": 5673,
@@ -21442,7 +21539,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "gg_icon": "/images/map-marker-icon/15/253125/lorebook_adorned_04_icon-5c2a9f98.png.png"
     },
     {
-      "name": "K\u00f6nigshof Manuscript",
+      "name": "Königshof Manuscript",
       "category": "loot_lore_book",
       "description": "",
       "x": 6302,
@@ -21663,7 +21760,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "gg_icon": "/images/map-marker-icon/15/253652/warsaddle03_m05_icon-72ece223.png.png"
     },
     {
-      "name": "Sketch \u2013 Broadsword",
+      "name": "Sketch – Broadsword",
       "category": "loot_recipe",
       "description": "",
       "x": 6428,
@@ -21680,7 +21777,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "gg_icon": "/images/map-marker-icon/15/253170/recipe_smith_icon-fb36808f.png.png"
     },
     {
-      "name": "Sketch \u2013 Cuman shashka",
+      "name": "Sketch – Cuman shashka",
       "category": "loot_recipe",
       "description": "",
       "x": 6417,
@@ -23091,7 +23188,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "gg_icon": "/images/map-marker-icon/15/253844/loot_silverchalice_icon-902b9a36.png.png"
     },
     {
-      "name": "Sketch \u2013 Horseman's pick",
+      "name": "Sketch – Horseman's pick",
       "category": "loot_recipe",
       "description": "",
       "x": 7703,
@@ -23159,7 +23256,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "gg_icon": "/images/map-marker-icon/15/252942/potion_marigold_icon-0d2154d7.png.png"
     },
     {
-      "name": "Sketch \u2013 Noble's sword",
+      "name": "Sketch – Noble's sword",
       "category": "loot_recipe",
       "description": "",
       "x": 7668,
@@ -24366,7 +24463,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "gg_icon": "/images/map-marker-icon/15/254004/money_icon-5c505d87.png.png"
     },
     {
-      "name": "Sketch \u2013 Broadsword",
+      "name": "Sketch – Broadsword",
       "category": "loot_recipe",
       "description": "",
       "x": 2287,
@@ -24910,7 +25007,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "gg_icon": "/images/map-marker-icon/15/252665/legsbrigandine01_m05_c2_icon-629682ec.png.png"
     },
     {
-      "name": "Sketch \u2013 Knight's axe",
+      "name": "Sketch – Knight's axe",
       "category": "loot_recipe",
       "description": "",
       "x": 9952,
@@ -26389,7 +26486,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "gg_icon": "/images/map-marker-icon/15/252291/warhammerraven_icon-6c84a0eb.png.png"
     },
     {
-      "name": "Sketch \u2013 Ataman's sabre",
+      "name": "Sketch – Ataman's sabre",
       "category": "loot_recipe",
       "description": "",
       "x": 4418,
@@ -27069,7 +27166,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "gg_icon": "/images/map-marker-icon/15/316073/sharpeningwheel_icon_result-5beba061.png.png"
     },
     {
-      "name": "Sketch \u2013 Ataman's sabre",
+      "name": "Sketch – Ataman's sabre",
       "category": "loot_recipe",
       "description": "",
       "x": 9811,
@@ -28497,7 +28594,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "gg_icon": "/images/map-marker-icon/15/253389/quest_main_red_started_icon_result-841c595d-841c595d.png.png"
     },
     {
-      "name": "So it begins\u2026",
+      "name": "So it begins…",
       "category": "quest_main",
       "description": "",
       "x": 2298,
@@ -29245,7 +29342,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "gg_icon": "/images/map-marker-icon/15/252419/shortswordbasilard_icon-8446a0e3.png.png"
     },
     {
-      "name": "Sketch \u2013 Horseman's pick",
+      "name": "Sketch – Horseman's pick",
       "category": "loot_recipe",
       "description": "",
       "x": 4676,
@@ -29600,6 +29697,852 @@ window.MARKER_DATA_KUTTENBERG = {
       "source": "gamerguides",
       "gg_marker_id": 205663,
       "gg_icon": "/images/map-marker-icon/15/252248/arrow_enh_piercing_icon-b88ad4d7.png.png"
+    },
+    {
+      "name": "Gamekeeper's letter",
+      "category": "loot_letter",
+      "description": "",
+      "x": 2251,
+      "y": 6126,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "The Art of Demosthenes IV",
+      "category": "loot_skill_book",
+      "description": "",
+      "x": 2247,
+      "y": 6106,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Prayer to Saint Wenceslas",
+      "category": "loot_lore_book",
+      "description": "",
+      "x": 2238,
+      "y": 6108,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Letter from Bishop Thomas III.",
+      "category": "loot_letter",
+      "description": "",
+      "x": 2238,
+      "y": 6115,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Wenceslas IV",
+      "category": "loot_lore_book",
+      "description": "",
+      "x": 2281,
+      "y": 6134,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Plectrude",
+      "category": "loot_lore_book",
+      "description": "",
+      "x": 2294,
+      "y": 6172,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Tomyris, Queen of the Massagetae",
+      "category": "loot_lore_book",
+      "description": "",
+      "x": 2290,
+      "y": 6164,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Recipe for Painkiller brew",
+      "category": "loot_recipe",
+      "description": "",
+      "x": 2263,
+      "y": 6123,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Bowman's brew recipe",
+      "category": "loot_recipe",
+      "description": "",
+      "x": 2189,
+      "y": 6157,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Smithy",
+      "category": "smithy",
+      "description": "",
+      "x": 2311,
+      "y": 6267,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Punches, Kicks and a Few Slaps II",
+      "category": "loot_skill_book",
+      "description": "",
+      "x": 6057,
+      "y": 8699,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Blackssmith Kovar",
+      "category": "blacksmith",
+      "description": "",
+      "x": 7502,
+      "y": 8289,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Matthew's camp",
+      "category": "bandit_camp",
+      "description": "",
+      "x": 4088,
+      "y": 5232,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "A collection of somewhat bawdy poems",
+      "category": "loot_lore_book",
+      "description": "",
+      "x": 6118,
+      "y": 8764,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Smithy",
+      "category": "smithy",
+      "description": "",
+      "x": 6097,
+      "y": 8823,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Apothecary",
+      "category": "apothecary",
+      "description": "",
+      "x": 6254,
+      "y": 8764,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Smithy",
+      "category": "smithy",
+      "description": "",
+      "x": 2245,
+      "y": 5874,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Blacksmith",
+      "category": "blacksmith",
+      "description": "",
+      "x": 2247,
+      "y": 5880,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Grocer",
+      "category": "grocer",
+      "description": "",
+      "x": 2139,
+      "y": 5838,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Dice",
+      "category": "dice_table",
+      "description": "",
+      "x": 2147,
+      "y": 5805,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Innkeeper Slivka",
+      "category": "skill_trainer",
+      "description": "",
+      "x": 2139,
+      "y": 5801,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Tavern",
+      "category": "tavern",
+      "description": "",
+      "x": 2181,
+      "y": 5748,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Grocer",
+      "category": "grocer",
+      "description": "",
+      "x": 2102,
+      "y": 5778,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Saint Antiochus' die",
+      "category": "loot_dice",
+      "description": "",
+      "x": 2227,
+      "y": 7682,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Weak saviour schnapps",
+      "category": "loot_potion",
+      "description": "",
+      "x": 4228,
+      "y": 7138,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Blacksmith",
+      "category": "blacksmith",
+      "description": "",
+      "x": 5587,
+      "y": 5200,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Drying rack",
+      "category": "drying_rack",
+      "description": "",
+      "x": 2049,
+      "y": 5651,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Smokehouse",
+      "category": "smokehouse",
+      "description": "",
+      "x": 2060,
+      "y": 5750,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Blacksmith kit",
+      "category": "loot_utility",
+      "description": "",
+      "x": 5411,
+      "y": 6559,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Padded coil - black",
+      "category": "loot_armour_head",
+      "description": "",
+      "x": 6436,
+      "y": 6585,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Reminiscence point",
+      "category": "interesting_site",
+      "description": "",
+      "x": 5824,
+      "y": 6577,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Reminiscence point",
+      "category": "interesting_site",
+      "description": "",
+      "x": 2030,
+      "y": 7014,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Smithy",
+      "category": "smithy",
+      "description": "",
+      "x": 7140,
+      "y": 7749,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Shrine",
+      "category": "shrine",
+      "description": "",
+      "x": 7166,
+      "y": 7742,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Reminiscence point",
+      "category": "interesting_site",
+      "description": "",
+      "x": 8862,
+      "y": 7664,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Reminiscence point",
+      "category": "interesting_site",
+      "description": "",
+      "x": 8954,
+      "y": 4854,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Reminiscence point",
+      "category": "interesting_site",
+      "description": "",
+      "x": 6802,
+      "y": 5775,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Reminiscence point",
+      "category": "interesting_site",
+      "description": "",
+      "x": 10438,
+      "y": 5748,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Reminiscence point",
+      "category": "interesting_site",
+      "description": "",
+      "x": 9239,
+      "y": 3709,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Reminiscence point",
+      "category": "interesting_site",
+      "description": "",
+      "x": 6257,
+      "y": 6977,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Reminiscence point",
+      "category": "interesting_site",
+      "description": "",
+      "x": 10469,
+      "y": 7625,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Reminiscence point",
+      "category": "interesting_site",
+      "description": "",
+      "x": 9578,
+      "y": 6888,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Trader",
+      "category": "trader",
+      "description": "",
+      "x": 4551,
+      "y": 6616,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Sharpening wheel",
+      "category": "sharpening_wheel",
+      "description": "",
+      "x": 4558,
+      "y": 6615,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Jezhek of Holohlavy",
+      "category": "skill_trainer",
+      "description": "",
+      "x": 7097,
+      "y": 5548,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Baths",
+      "category": "baths",
+      "description": "",
+      "x": 4551,
+      "y": 6809,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Dice",
+      "category": "dice_table",
+      "description": "",
+      "x": 4408,
+      "y": 6790,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Smithy",
+      "category": "smithy",
+      "description": "",
+      "x": 4393,
+      "y": 6766,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Blacksmith",
+      "category": "blacksmith",
+      "description": "",
+      "x": 4382,
+      "y": 6770,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Dice",
+      "category": "dice_table",
+      "description": "",
+      "x": 4394,
+      "y": 6721,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Armourer",
+      "category": "armourer",
+      "description": "",
+      "x": 4494,
+      "y": 6663,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Smithy",
+      "category": "smithy",
+      "description": "",
+      "x": 4505,
+      "y": 6664,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Field chapel",
+      "category": "interesting_site",
+      "description": "",
+      "x": 4367,
+      "y": 6643,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Indulgence chest",
+      "category": "indulgence_box",
+      "description": "",
+      "x": 4378,
+      "y": 6643,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "On the Cumans",
+      "category": "loot_lore_book",
+      "description": "",
+      "x": 4682,
+      "y": 7115,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Sketch - Cuman fokos",
+      "category": "loot_recipe",
+      "description": "",
+      "x": 4686,
+      "y": 7113,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Spectacles",
+      "category": "loot_armour_head",
+      "description": "",
+      "x": 4678,
+      "y": 7111,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Weak lullaby potion",
+      "category": "loot_potion",
+      "description": "",
+      "x": 2689,
+      "y": 4730,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Groschen",
+      "category": "loot_usable",
+      "description": "",
+      "x": 2697,
+      "y": 4727,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Nest",
+      "category": "nest",
+      "description": "",
+      "x": 3152,
+      "y": 4350,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Nest",
+      "category": "nest",
+      "description": "",
+      "x": 3111,
+      "y": 4261,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Digestive potion",
+      "category": "loot_potion",
+      "description": "",
+      "x": 3048,
+      "y": 4264,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Nest",
+      "category": "nest",
+      "description": "",
+      "x": 3019,
+      "y": 4290,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Recipe for Buck's Blood",
+      "category": "loot_recipe",
+      "description": "",
+      "x": 5088,
+      "y": 4908,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Konigshof Manuscript",
+      "category": "loot_lore_book",
+      "description": "",
+      "x": 9552,
+      "y": 5786,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Miller Hermann",
+      "category": "skill_trainer",
+      "description": "",
+      "x": 8144,
+      "y": 2684,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Barber Stibor",
+      "category": "barber",
+      "description": "",
+      "x": 9294,
+      "y": 5564,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Shrine",
+      "category": "shrine",
+      "description": "",
+      "x": 9699,
+      "y": 5814,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Shrine",
+      "category": "shrine",
+      "description": "",
+      "x": 10069,
+      "y": 5421,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Master Nary",
+      "category": "skill_trainer",
+      "description": "",
+      "x": 10308,
+      "y": 5331,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Your Forge",
+      "category": "fast_travel",
+      "description": "",
+      "x": 10138,
+      "y": 5510,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Shrine",
+      "category": "shrine",
+      "description": "",
+      "x": 10026,
+      "y": 5331,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Old key",
+      "category": "loot_usable",
+      "description": "",
+      "x": 8437,
+      "y": 6969,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Kingfisher Bathhouse",
+      "category": "baths",
+      "description": "",
+      "x": 10073,
+      "y": 5294,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Fist Fight Arena",
+      "category": "fist_fight_arena",
+      "description": "",
+      "x": 10362,
+      "y": 5472,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Drying rack",
+      "category": "drying_rack",
+      "description": "",
+      "x": 10294,
+      "y": 5491,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Skull Crushers IV",
+      "category": "loot_skill_book",
+      "description": "",
+      "x": 9403,
+      "y": 5235,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "On Prague",
+      "category": "loot_lore_book",
+      "description": "",
+      "x": 9827,
+      "y": 6776,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Recipe for Lethean Water",
+      "category": "loot_recipe",
+      "description": "",
+      "x": 9814,
+      "y": 6772,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Nail in the Coffin",
+      "category": "quest_task",
+      "description": "",
+      "x": 5456,
+      "y": 5322,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Father Anthony",
+      "category": "skill_trainer",
+      "description": "",
+      "x": 3010,
+      "y": 4394,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "King's die",
+      "category": "loot_dice",
+      "description": "",
+      "x": 4449,
+      "y": 6765,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Gold Resurrection badge",
+      "category": "loot_badge",
+      "description": "",
+      "x": 4449,
+      "y": 6770,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Groschen",
+      "category": "loot_usable",
+      "description": "",
+      "x": 4453,
+      "y": 6767,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Engraved silver ring",
+      "category": "loot_armour_jewellery",
+      "description": "",
+      "x": 4555,
+      "y": 6840,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Groschen",
+      "category": "loot_usable",
+      "description": "",
+      "x": 4547,
+      "y": 6846,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Gradigger Frantishek",
+      "category": "skill_trainer",
+      "description": "",
+      "x": 9314,
+      "y": 6094,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Life in the Saddle II",
+      "category": "loot_skill_book",
+      "description": "",
+      "x": 7690,
+      "y": 8206,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Prayer to Saint Wenceslas",
+      "category": "loot_lore_book",
+      "description": "",
+      "x": 7652,
+      "y": 8092,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "How Good Mead is Brewed",
+      "category": "loot_lore_book",
+      "description": "",
+      "x": 7691,
+      "y": 8043,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "The Peculiar Siege of Prague",
+      "category": "loot_lore_book",
+      "description": "",
+      "x": 7612,
+      "y": 8009,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Fable of the Fox and the Pitcher",
+      "category": "loot_lore_book",
+      "description": "",
+      "x": 7667,
+      "y": 8168,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Ius regale montanorum II",
+      "category": "loot_lore_book",
+      "description": "",
+      "x": 7122,
+      "y": 7725,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "As Quite as a Cat II",
+      "category": "loot_skill_book",
+      "description": "",
+      "x": 7764,
+      "y": 8100,
+      "is_discoverable": true,
+      "source": "manual"
     }
   ],
   "calibration": {
