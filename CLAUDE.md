@@ -11,7 +11,9 @@ Repository: `QuangDao215/kcd2_interactive_map` on GitHub Pages.
 
 ```
 E:\kcd2_map\  (repo root)
-├── index.html                       # Main map viewer (Leaflet.js, ~3100 lines)
+├── index.html                       # Page shell + markup only (~290 lines)
+├── style.css                        # All styles (extracted from index.html)
+├── app.js                           # All app logic (extracted; one global classic script)
 ├── main_icon.png                    # Favicon (game icon)
 ├── README.md, LICENSE, .gitignore
 │
@@ -21,7 +23,8 @@ E:\kcd2_map\  (repo root)
 │   ├── markers_kuttenberg.json      # Kuttenberg region POI markers
 │   ├── markers_kuttenberg.js        # Script-tag fallback wrapper
 │   ├── icon_map.js                  # Maps category IDs → icon PNG paths
-│   ├── settlement_labels.js         # Settlement name positions per region
+│   ├── settlement_labels.js         # Settlement name positions per region (+ .json)
+│   ├── settlement_labels.json       # Plain JSON copy
 │   ├── local_maps.json              # Local detail map overlay config (bounds, minZoom)
 │   └── local_maps.js                # Script-tag fallback for local_maps.json
 │
@@ -37,9 +40,7 @@ E:\kcd2_map\  (repo root)
 ├── icons/
 │   ├── *.png                        # Map POI icons (32×32 with 2px border)
 │   ├── items/*.png                  # Item/loot icons
-│   ├── map_label_left.png           # Banner texture left cap (cropped)
-│   ├── map_label_middle.png         # Banner texture middle (repeating, cropped)
-│   └── map_label_right.png          # Banner texture right cap (cropped)
+│   └── map_label_*.png              # LEGACY banner caps — unused (labels are plain text now)
 │
 ├── tiles/
 │   ├── trosky/{z}/{x}/{y}.webp      # Tile pyramid (max zoom 5)
@@ -95,11 +96,17 @@ py = 0.0334*x + -0.9963*y + 9800.12
 ```
 
 ### Settlement Labels
-- Trosky: 8 labels, Kuttenberg: 16 labels (from ui_map_label.xml)
-- English names verified against wiki
-- 3-part banner textures from game: map_label_left.png + map_label_middle.png (repeating) + map_label_right.png
-- Banner images cropped to visible ribbon area via `crop_banner.py`
-- Adjustable via in-app "Adjust Banner Style" tool (dynamic CSS stylesheet)
+- Trosky: 8 labels, Kuttenberg: 15 labels (from ui_map_label.xml); English names verified vs wiki
+- **Plain text** (gold `#e8d5a3`, Segoe UI, multi-direction text-shadow). A 3-part
+  scroll-banner design was built and then **rejected** (it obscured map detail) — reverted
+  to plain text. The banner caps (`icons/map_label_*.png`) and `crop_banner.py` are now legacy/unused.
+- Names **grow as you zoom in** (`updateLabelScale`: base size at/below zoom 3.5, capped ~2.6×),
+  applied via an inner `.sl-name` span so Leaflet's positioning transform on the marker root
+  isn't clobbered.
+- A name **auto-hides** when its town's local-map overlay is showing (geometric: the name's
+  coord lies inside a visible overlay's bounds) — see `updateSettlementLabelVisibility`.
+- Positions are drag-calibrated via **Tools → Position Settlement Names**, saved to localStorage
+  (`kcd2_label_positions`), and baked into `data/settlement_labels.{js,json}`.
 
 ### Local Detail Maps
 - 23 unique local maps extracted from game DDS files
@@ -107,7 +114,9 @@ py = 0.0334*x + -0.9963*y + 9800.12
 - Reconstruction: header[:128 or 148] + largest mip only, patch mipMapCount=1
 - **Column-major** stitching was wrong → **row-major** is correct
 - Config stored in `data/local_maps.json` + `data/local_maps.js` (script-tag fallback)
-- Visibility: viewport-center containment check + zoom threshold (minZoom: 5.5)
+- Visibility: zoom ≥ minZoom (5.5) AND the viewport center is within the overlay's **centered
+  inner trigger zone** (`LOCAL_MAP_TRIGGER = 0.5`, inner 50%) — so panning a town's outskirts
+  doesn't pop the overlay over the detail you're inspecting
 - Calibration tool: Tools → Calibrate Local Map → select map → drag to move, scale % to resize → Export Config downloads both JSON+JS
 - Calibrated bounds persist in localStorage + exportable to JSON files
 
@@ -167,7 +176,7 @@ py = 0.0334*x + -0.9963*y + 9800.12
 ### Search
 - Type 2+ chars to search markers by name across all categories
 - Dropdown with real icons, click → flyTo + open popup
-- Also filters category checkboxes simultaneously
+- Also filters the category list simultaneously; shows a "No markers found" empty state
 - Click outside to close results
 
 ### Progress Tracking
@@ -184,7 +193,9 @@ py = 0.0334*x + -0.9963*y + 9800.12
 - flyToMarker from My Markers sidebar list (with real icons)
 
 ### Import/Export
-- **Export All / Import All**: single backup file with markers + progress + version/date
+- **Export All / Import All**: single backup file (**v2**) with custom markers + progress +
+  **label positions (`kcd2_label_positions`) + active category filters** + version/date.
+  Import is backward-compatible with v1 backups and rebuilds the view via `loadRegion`.
 - Separate Export/Import for markers and progress individually
 - Import All handles ID conflict resolution (resets nextUserMarkerId)
 
@@ -195,13 +206,24 @@ py = 0.0334*x + -0.9963*y + 9800.12
 - Loading URL with marker → flies to it and opens popup
 
 ### Map Options
-- Settlement names toggle
-- Hide discovered toggle
-- Detail maps toggle (local map overlays)
+- Toggle **switches** (not checkboxes): Settlement names · Detail maps · Hide discovered
+
+### Map Markers (rendering)
+- Per-category icons get a subtle **group-coloured glow** (`GROUP_COLORS` → `--glow` on the img)
+  that brightens on hover; **hover tooltips** show the marker name.
+- **Legend** overlay (🗝 button, bottom-left) lists every icon grouped + colour-titled.
+- Category on/off uses **toggle switches** at both the **group** header and **per-category** level.
+- Marker **clustering** (Leaflet.markercluster) was trialed and **removed** — the user prefers
+  authentic individual markers (like the in-game map). Don't re-add without asking.
 
 ### Developer Tools (in Tools tab)
-- Calibrate Local Map: select from dropdown → drag to move, scale % to resize → Export Config
-- Adjust Banner Style: live sliders for height, offset, font size, spacing, color, cap width (uses dynamic stylesheet to avoid Leaflet conflicts)
+- **Only one tool panel open at a time** (`ensureSoleTool`; others flash if you try to open a second)
+- **Calibrate Local Map**: select from dropdown → drag to move, scale % to resize → Export Config (JSON+JS)
+- **Position Settlement Names**: Start → drag each name → auto-saves to localStorage → Export `settlement_labels.{js,json}`
+- **Edit Markers** (dev-phase, for cleaning false POI data): Start → click a marker to rename/delete;
+  live "unsaved changes" counter; **Save to data/** writes `markers_<region>.{js,json}` straight into
+  `data/` via the File System Access API (Chrome/Edge + localhost, one-time folder grant), with a Download
+  fallback. Persists to `kcd2_marker_edits` / `kcd2_marker_deletes`; Reset restores from base data.
 
 ---
 
@@ -217,7 +239,7 @@ merge_gamerguides.py → fill gaps with community data
 build_markers.py  → regenerate .js wrappers from .json
 generate_tiles.py → slice map into Leaflet tile pyramid (WebP)
 process_local_maps.py → reconstruct split DDS local maps, stitch grids
-crop_banner.py    → crop banner textures to visible ribbon area
+crop_banner.py    → (LEGACY) cropped banner textures — banners removed, labels are plain text
 ```
 
 ---
@@ -234,20 +256,24 @@ crop_banner.py    → crop banner textures to visible ribbon area
 
 ### High Priority
 - [ ] Kuttenberg calibration correction (same approach as Trosky 9-point correction — find ground-truth points, compute correction transform)
-- [ ] Banner text position still needs fine-tuning via the Adjust Banner Style tool
 - [ ] Verify all 23 local map calibrations are accurate in-game
+- [ ] Use the Edit Markers tool to clean false-info POI markers (the reason it was built)
 
 ### Medium Priority
 - [ ] Mobile responsiveness (sidebar covers map on phones)
-- [ ] Marker clustering at low zoom levels (Leaflet.markercluster)
 - [ ] More detailed marker descriptions (chest contents, NPC inventories)
+- [ ] Fold `kcd2_marker_edits`/`kcd2_marker_deletes` into Export All backup (offered, not yet done)
+- [ ] Large assets (`maps/local/` ≈ 534 MB) are git-ignored — decide on Git LFS / CDN for deploy
 
 ### Low Priority
-- [ ] Keyboard shortcuts (Escape to close popups, / to focus search)
-- [ ] Fullscreen button
-- [ ] Reset view button
-- [ ] Service worker for offline support
-- [ ] Legend overlay showing all icon meanings
+- [ ] Keyboard shortcuts (`/` to focus search; Esc already closes the confirm dialog)
+- [ ] Fullscreen button · Reset view button
+- [ ] PWA / service worker for offline support (would need to vendor Leaflet locally)
+
+### Done (was pending)
+- [x] Legend overlay · keyboard focus rings · themed confirm dialogs · OG/meta tags
+- [x] Split monolith into index.html + style.css + app.js
+- [x] Banner labels removed → plain text; clustering trialed → reverted
 
 ---
 
@@ -267,11 +293,14 @@ function makeMapCRS(maxZoom, mapHeight) {
 - `kcd2_last_region` — last viewed region
 - `kcd2_user_markers` — custom markers `{trosky: [...], kuttenberg: [...]}`
 - `kcd2_discovered_markers` — discovered sets `{trosky: [...], kuttenberg: [...]}`
-- `kcd2_active_categories` — enabled category checkboxes
+- `kcd2_active_categories` — enabled category toggles
 - `kcd2_local_map_bounds` — calibrated local map bounds (temporary override)
+- `kcd2_label_positions` — drag-calibrated settlement-name positions per region
+- `kcd2_marker_edits` — Edit Markers tool: POI renames `{region: {"cat:x:y": {name}}}`
+- `kcd2_marker_deletes` — Edit Markers tool: deleted POI keys `{region: ["cat:x:y"]}`
 
 ### File Protocol Fallback
-All data files have both `.json` (fetched via HTTP) and `.js` (loaded via `<script>` tag) versions. The JS wrappers set `window.MARKERS_TROSKY`, `window.MARKERS_KUTTENBERG`, `window.SETTLEMENT_LABELS`, `window.LOCAL_MAPS_DATA`, `window.ICON_MAP` globals. The init function tries fetch first, falls back to globals for `file://` protocol.
+Data files have both `.json` (fetched via HTTP) and `.js` (loaded via `<script>` tag) versions. The JS wrappers set globals: `window.MARKER_DATA_TROSKY`, `window.MARKER_DATA_KUTTENBERG`, `SETTLEMENT_LABELS` (also on `window`), `window.LOCAL_MAPS_DATA`, `window.ICON_MAP`. Markers/local-maps try fetch first, fall back to the globals for `file://`; settlement labels load only via the `<script>` tag.
 
 ### Split DDS Reconstruction (CryEngine)
 ```
