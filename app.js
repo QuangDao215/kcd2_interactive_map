@@ -112,7 +112,7 @@ const CATEGORY_GROUPS = [
     "loot_ammo", "loot_bow", "loot_dagger", "loot_heavy_weapon",
     "loot_polearm", "loot_shield", "loot_sword"
   ]},
-  { name: "Points of Interest", collapsed: false, categories: [
+  { name: "Points of Interest", collapsed: true, categories: [
     "alchemy_bench", "archery_range", "bandit_camp", "beehive",
     "camp", "cart_stash", "combat_arena", "conc_cross", "dice_table",
     "dog", "drying_rack", "fast_travel", "fist_fight_arena", "grave", "home",
@@ -943,7 +943,7 @@ function renderCategoryList(filter = '') {
 
   // Render ungrouped categories at the bottom (if any)
   if (ungroupedCats.length > 0) {
-    if (collapsedGroups['Other'] === undefined) collapsedGroups['Other'] = false;
+    if (collapsedGroups['Other'] === undefined) collapsedGroups['Other'] = true;
     const otherExpanded = filter ? true : !collapsedGroups['Other'];
     const otherClass = otherExpanded ? 'expanded' : '';
     const otherTotal = ungroupedCats.reduce((sum, cat) =>
