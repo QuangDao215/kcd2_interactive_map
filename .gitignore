@@ -27,8 +27,9 @@ icons/*
 icons/items/*
 !icons/items/
 
-# Large map assets & local backups/scratch — keep out of git
-maps/local/
+# Local detail maps: ship the optimized .webp, keep the huge .png sources out
+maps/local/*.png
+# Other large/scratch dirs — keep out of git
 maps_backup/
 data_backup/
 reports/
