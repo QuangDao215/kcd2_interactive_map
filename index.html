@@ -171,6 +171,7 @@
 <div id="map-container">
   <button id="toggle-sidebar" onclick="toggleSidebar()" aria-label="Toggle sidebar" title="Toggle sidebar">☰</button>
   <div id="map"></div>
+  <div id="zoom-display">Zoom 0</div>
   <div id="coords-display">X: 0 &nbsp; Y: 0</div>
   <button id="legend-btn" onclick="toggleLegend()" title="Show icon legend">🗝️ Legend</button>
   <div id="legend-panel"><div id="legend-content"></div></div>
@@ -265,6 +266,14 @@
   <button id="marker-edit-toggle" class="btn btn-secondary" style="width:100%;margin-bottom:8px;" onclick="markerEditToggle()">✥ Start Editing</button>
   <div id="marker-edit-status" class="me-status">No unsaved changes</div>
   <button class="btn btn-primary" style="width:100%;margin-bottom:6px;" onclick="markerEditSaveToData()">💾 Save changes to data/ folder</button>
+  <div style="border-top:1px solid rgba(255,255,255,0.08);margin:10px 0 8px;padding-top:8px;">
+    <p style="color:var(--text-muted);margin:0 0 6px;line-height:1.5;font-size:12px;">
+      <b>Embed My Markers</b> bakes the markers you added by right-clicking into the
+      database for this region — turning your in-game finds into permanent, shareable POIs.
+    </p>
+    <div id="promote-status" class="me-status">No custom markers</div>
+    <button class="btn btn-primary" style="width:100%;" onclick="promoteUserMarkers()">⬆ Embed My Markers into data/</button>
+  </div>
   <div class="cal-actions">
     <button class="btn btn-secondary" onclick="markerEditReset()">↺ Reset</button>
     <button class="btn btn-secondary" onclick="markerEditExport()">⤓ Download</button>

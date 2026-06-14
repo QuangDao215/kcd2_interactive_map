@@ -41,7 +41,7 @@ window.ICON_MAP = {
   "home":             "icons/home_icon.png",
   "hotel":            "icons/hotel_icon.png",
   "fast_travel":      "icons/fastTravel_icon.png",
-  "caravan":          "icons/fastTravelLevel_icon.png",
+  "fast_travel_level": "icons/fastTravelLevel_icon.png",
   "combat_arena":     "icons/fightArena_icon.png",
   "fist_fight_arena": "icons/fistFightArena_icon.png",
   "archery_range":    "icons/archeryArena_icon.png",

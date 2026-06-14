@@ -493,9 +493,9 @@
   #toggle-sidebar:hover { background: var(--bg-hover); color: var(--text-primary); }
 
   /* ── Coordinates Display ── */
-  #coords-display {
+  #coords-display,
+  #zoom-display {
     position: absolute;
-    bottom: 8px;
     right: 8px;
     z-index: 1001;
     padding: 4px 10px;
@@ -507,6 +507,8 @@
     font-family: 'Source Sans 3', monospace;
     pointer-events: none;
   }
+  #coords-display { bottom: 8px; }
+  #zoom-display { bottom: 38px; }    /* sits just above the coords pill */
 
   /* ── Custom Popup Styles ── */
   .leaflet-popup-content-wrapper {
