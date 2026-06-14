@@ -2503,24 +2503,36 @@ function isMarkerDiscovered(markerData) {
 // PROGRESS_CATEGORIES (quests + collectibles), including custom markers.
 function computeGameProgress() {
   let total = 0, done = 0;
+  const regions = {};
   ['trosky', 'kuttenberg'].forEach(region => {
     const set = discoveredMarkers[region] || new Set();
     const markers = [...getEditedMarkers(region), ...(userMarkers[region] || [])];
+    let rTotal = 0, rDone = 0;
     markers.forEach(m => {
       if (!PROGRESS_CATEGORIES.has(m.category)) return;
-      total++;
-      if (set.has(getMarkerKey(m))) done++;
+      rTotal++;
+      if (set.has(getMarkerKey(m))) rDone++;
     });
+    regions[region] = { total: rTotal, done: rDone, pct: rTotal ? Math.round(rDone / rTotal * 100) : 0 };
+    total += rTotal; done += rDone;
   });
-  return { total, done, pct: total ? Math.round(done / total * 100) : 0 };
+  return { total, done, pct: total ? Math.round(done / total * 100) : 0, regions };
 }
 function updateGameProgress() {
   const fill = document.getElementById('gp-fill');
   if (!fill) return;
-  const { total, done, pct } = computeGameProgress();
-  fill.style.width = pct + '%';
-  document.getElementById('gp-pct').textContent = pct + '%';
-  document.getElementById('gp-detail').textContent = `${done.toLocaleString()} / ${total.toLocaleString()} found`;
+  const p = computeGameProgress();
+  fill.style.width = p.pct + '%';
+  document.getElementById('gp-pct').textContent = p.pct + '%';
+  document.getElementById('gp-detail').textContent = `${p.done.toLocaleString()} / ${p.total.toLocaleString()} found`;
+  ['trosky', 'kuttenberg'].forEach(region => {
+    const rf = document.getElementById('gp-' + region + '-fill');
+    const rp = document.getElementById('gp-' + region + '-pct');
+    const row = document.getElementById('gp-' + region + '-row');
+    if (rf) rf.style.width = p.regions[region].pct + '%';
+    if (rp) rp.textContent = p.regions[region].pct + '%';
+    if (row) row.classList.toggle('active', region === currentRegion);
+  });
 }
 
 function toggleMarkerDiscovered(key, btnId) {

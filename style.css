@@ -122,6 +122,15 @@
     border-radius: 5px; transition: width 0.4s ease;
   }
   .game-progress .gp-detail { font-size: 10px; color: var(--text-muted); margin-top: 4px; text-align: right; }
+  /* Per-region breakdown */
+  .game-progress .gp-regions { margin-top: 8px; display: flex; flex-direction: column; gap: 5px; }
+  .game-progress .gp-region { display: flex; align-items: center; gap: 8px; }
+  .game-progress .gpr-name { font-size: 11px; color: var(--text-secondary); width: 72px; flex-shrink: 0; }
+  .game-progress .gp-region.active .gpr-name { color: var(--accent); font-weight: 600; }
+  .game-progress .gpr-bar { flex: 1; height: 5px; background: var(--bg-dark); border: 1px solid var(--border); border-radius: 3px; overflow: hidden; }
+  .game-progress .gpr-fill { display: block; height: 100%; width: 0%; background: var(--accent-dim); border-radius: 3px; transition: width 0.4s ease; }
+  .game-progress .gp-region.active .gpr-fill { background: var(--accent); }
+  .game-progress .gpr-pct { font-size: 10px; color: var(--text-muted); width: 30px; text-align: right; flex-shrink: 0; }
 
   /* ── Sidebar Tabs ── */
   .sidebar-tabs {
