@@ -1735,12 +1735,14 @@ async function clearProgress() {
 
 function exportAll() {
   const allData = {
-    version: 2,
+    version: 3,
     exportDate: new Date().toISOString(),
     userMarkers: userMarkers,
     discoveredMarkers: {},
-    labelPositions: {},                  // v2: settlement-name drag positions
-    activeCategories: [...activeCategories], // v2: which category filters are on
+    labelPositions: {},                      // settlement-name drag positions
+    activeCategories: [...activeCategories],  // which category filters are on
+    markerEdits: {},                          // v3: POI renames (Edit Markers tool)
+    markerDeletes: {},                        // v3: POI deletions (Edit Markers tool)
   };
 
   // Serialize discovered markers (Sets → Arrays)
@@ -1748,14 +1750,18 @@ function exportAll() {
     allData.discoveredMarkers[region] = Array.from(set);
   });
 
-  // Settlement-name positions (stored separately in localStorage)
+  // State stored separately in localStorage
   try { allData.labelPositions = JSON.parse(localStorage.getItem(LABEL_POS_KEY) || '{}'); } catch (e) {}
+  try { allData.markerEdits = JSON.parse(localStorage.getItem(MARKER_EDIT_KEY) || '{}'); } catch (e) {}
+  try { allData.markerDeletes = JSON.parse(localStorage.getItem(MARKER_DELETE_KEY) || '{}'); } catch (e) {}
 
   const totalMarkers = Object.values(userMarkers).reduce((sum, arr) => sum + arr.length, 0);
   const totalDiscovered = Object.values(allData.discoveredMarkers).reduce((sum, arr) => sum + arr.length, 0);
   const totalLabelPos = Object.values(allData.labelPositions).reduce((sum, obj) => sum + Object.keys(obj || {}).length, 0);
+  const totalMarkerEdits = Object.values(allData.markerEdits).reduce((s, o) => s + Object.keys(o || {}).length, 0)
+    + Object.values(allData.markerDeletes).reduce((s, a) => s + (a ? a.length : 0), 0);
 
-  if (totalMarkers === 0 && totalDiscovered === 0 && totalLabelPos === 0) {
+  if (totalMarkers === 0 && totalDiscovered === 0 && totalLabelPos === 0 && totalMarkerEdits === 0) {
     showToast('No data to export');
     return;
   }
@@ -1794,7 +1800,7 @@ async function importAll() {
     if (!raw) { showToast('No data to import'); return; }
     const data = JSON.parse(raw);
 
-    if (!(await showConfirm('This will replace all your current markers, progress, settlement-name positions, and category filters. Continue?', {title:'Import all data', confirmText:'Replace'}))) return;
+    if (!(await showConfirm('This will replace all your current markers, progress, settlement-name positions, category filters, and marker edits. Continue?', {title:'Import all data', confirmText:'Replace'}))) return;
 
     let markerCount = 0;
     let discoveredCount = 0;
@@ -1837,8 +1843,16 @@ async function importAll() {
       saveActiveCategoriesFromStorage();
     }
 
-    // Rebuild the whole view so markers, progress, category filters and label
-    // positions all reflect the imported state.
+    // Restore POI marker renames/deletions (v3+ backups)
+    if (data.markerEdits && typeof data.markerEdits === 'object') {
+      localStorage.setItem(MARKER_EDIT_KEY, JSON.stringify(data.markerEdits));
+    }
+    if (data.markerDeletes && typeof data.markerDeletes === 'object') {
+      localStorage.setItem(MARKER_DELETE_KEY, JSON.stringify(data.markerDeletes));
+    }
+
+    // Rebuild the whole view so markers, progress, category filters, label
+    // positions and marker edits all reflect the imported state.
     await loadRegion(currentRegion);
 
     closeImportAllModal();
