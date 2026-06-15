@@ -479,7 +479,7 @@
   ],
   "markers": [
     {
-      "name": "Bee Hives",
+      "name": "Bee hives",
       "category": "interesting_site",
       "description": "",
       "world_x": 1859.32,
@@ -727,7 +727,7 @@
       "label_key": "@ui_maplegend_hromovyKamen_hiddenStash"
     },
     {
-      "name": "Zelinar Ratbor3",
+      "name": "Grocer",
       "category": "grocer",
       "description": "",
       "world_x": 1624.96,
@@ -770,7 +770,7 @@
       "label_key": "@ui_maplegend_burnedCamp"
     },
     {
-      "name": "Svec Ratbor",
+      "name": "Cobbler",
       "category": "cobbler",
       "description": "",
       "world_x": 1602.69,
@@ -1090,7 +1090,7 @@
       "label_key": "@ui_maplegend_priestAntonin"
     },
     {
-      "name": "Reznik Ratbor",
+      "name": "Butcher",
       "category": "butchery",
       "description": "",
       "world_x": 1619.09,
@@ -1644,7 +1644,7 @@
       "is_discoverable": true
     },
     {
-      "name": "Bee Hives",
+      "name": "Bee hives",
       "category": "interesting_site",
       "description": "",
       "world_x": 1855.64,
@@ -2881,7 +2881,7 @@
       "is_discoverable": true
     },
     {
-      "name": "Deserters Camp",
+      "name": "Deserters' camp",
       "category": "bandit_camp",
       "description": "",
       "world_x": 2295.12,
@@ -2969,7 +2969,7 @@
       "label_key": "@ui_maplegend_beeFool"
     },
     {
-      "name": "Buried Stash",
+      "name": "Buried stash",
       "category": "interesting_site",
       "description": "",
       "world_x": 2068.07,
@@ -3304,7 +3304,7 @@
       "label_key": "@ui_maplegend_oldGamekeepersHouse"
     },
     {
-      "name": "Fishermans Camp",
+      "name": "Fishermen's camp",
       "category": "interesting_site",
       "description": "",
       "world_x": 1905.86,
@@ -5038,7 +5038,7 @@
       "is_discoverable": true
     },
     {
-      "name": "Hanged Man",
+      "name": "Hanged man",
       "category": "interesting_site",
       "description": "",
       "world_x": 2321.41,
