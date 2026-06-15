@@ -1,18 +1,24 @@
 #!/bin/sh
-# Auto-regenerate the data/*.js fallback wrappers from their .json sources so the
-# file:// script-tag fallbacks can never silently drift from the JSON.
-#
-# Active via:  git config core.hooksPath tools/hooks   (run once per clone)
-# Runs only when a data/markers_*.json is staged.
-
-git diff --cached --name-only | grep -q '^data/markers_.*\.json$' || exit 0
+# Pre-commit guard for the data + generated files.
+# Enable once per clone:  git config core.hooksPath tools/hooks
 
 PY=python
 command -v python >/dev/null 2>&1 || PY=python3
 
-echo "[pre-commit] markers JSON changed — regenerating .js wrappers..."
-if ! "$PY" tools/build_markers.py; then
-  echo "[pre-commit] build_markers.py failed — aborting commit so .js can't drift." >&2
+# 1) Validate marker data — block the commit on any ERROR (warnings are allowed).
+if ! out=$("$PY" tools/validate_data.py 2>&1); then
+  echo "$out" >&2
+  echo "[pre-commit] data validation failed — fix the ERRORs above (commit aborted)." >&2
   exit 1
 fi
-git add data/markers_trosky.js data/markers_kuttenberg.js
+
+# 2) If a marker JSON is staged, regenerate the .js fallbacks and re-stage them so
+#    the file:// script-tag fallback can never silently drift from the JSON.
+if git diff --cached --name-only | grep -q '^data/markers_.*\.json$'; then
+  echo "[pre-commit] markers JSON changed — regenerating .js wrappers..."
+  if ! "$PY" tools/build_markers.py; then
+    echo "[pre-commit] build_markers.py failed — aborting commit so .js can't drift." >&2
+    exit 1
+  fi
+  git add data/markers_trosky.js data/markers_kuttenberg.js
+fi
