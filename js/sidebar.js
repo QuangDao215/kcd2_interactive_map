@@ -9,7 +9,6 @@ function renderCategoryList(filter = '') {
     ...(userMarkers[currentRegion] || []),
   ];
   const filterLower = filter.toLowerCase();
-  const iconMap = window.ICON_MAP || {};
 
   // Initialize collapsed state from defaults on first render
   if (Object.keys(collapsedGroups).length === 0) {
@@ -28,115 +27,73 @@ function renderCategoryList(filter = '') {
 
   let html = '';
 
-  // Render each group
+  // Render each named group, then the trailing "Other" bucket of ungrouped cats
   CATEGORY_GROUPS.forEach(group => {
-    // Get categories in this group that exist in current data
     const groupCats = group.categories
       .map(id => categories.find(c => c.id === id))
       .filter(cat => cat && (!filter || cat.name.toLowerCase().includes(filterLower)));
-
-    if (groupCats.length === 0) return; // Skip empty groups
-
-    // Calculate group totals and discovered counts (only for progress-trackable categories)
-    const groupTotal = groupCats.reduce((sum, cat) =>
-      sum + regionMarkers.filter(m => m.category === cat.id).length, 0);
-    const progressCats = groupCats.filter(cat => PROGRESS_CATEGORIES.has(cat.id));
-    const progressTotal = progressCats.reduce((sum, cat) =>
-      sum + regionMarkers.filter(m => m.category === cat.id).length, 0);
-    const progressDiscovered = progressCats.reduce((sum, cat) =>
-      sum + regionMarkers.filter(m => m.category === cat.id && isMarkerDiscovered(m)).length, 0);
-    const groupActiveCount = groupCats.filter(cat => activeCategories.has(cat.id)).length;
-    const hasProgress = progressTotal > 0;
-    const groupPct = progressTotal > 0 ? Math.round(progressDiscovered / progressTotal * 100) : 0;
-
-    const isExpanded = filter ? true : !collapsedGroups[group.name]; // Expand all when searching
-    const expandedClass = isExpanded ? 'expanded' : '';
-
-    html += `<div class="cat-group">`;
-    html += `<div class="cat-group-header ${expandedClass}" onclick="toggleGroup('${group.name}')">`;
-    html += `  <span class="group-arrow">▶</span>`;
-    html += `  <span class="group-name">${group.name}</span>`;
-    html += hasProgress
-      ? `  <span class="group-progress">${progressDiscovered}/${progressTotal} (${groupPct}%)</span>`
-      : `  <span class="group-progress">${groupTotal}</span>`;
-    html += `  <button class="group-toggle-all${groupActiveCount === groupCats.length ? ' on' : ''}" aria-label="Toggle all ${group.name}" onclick="event.stopPropagation();toggleGroupCategories('${group.name}', ${groupActiveCount < groupCats.length})"></button>`;
-    html += `</div>`;
-    html += `<div class="cat-group-children ${expandedClass}">`;
-
-    groupCats.forEach(cat => {
-      const catMarkers = regionMarkers.filter(m => m.category === cat.id);
-      const count = catMarkers.length;
-      const trackable = PROGRESS_CATEGORIES.has(cat.id);
-      const discovered = trackable ? catMarkers.filter(m => isMarkerDiscovered(m)).length : 0;
-      const active = activeCategories.has(cat.id);
-      const iconHtml = iconMap[cat.id]
-        ? `<img src="${iconMap[cat.id]}" style="width:20px;height:20px;object-fit:contain;" alt="">`
-        : cat.icon;
-      const statsHtml = trackable
-        ? `<span class="cat-progress"><span class="done">${discovered}</span>/${count}</span>`
-        : `<span class="cat-progress">${count}</span>`;
-      html += `
-        <div class="category-item ${active ? 'active' : ''}" onclick="toggleCategory('${cat.id}')">
-          <span class="cat-icon">${iconHtml}</span>
-          <span class="cat-name">${cat.name}</span>
-          ${statsHtml}
-          <span class="cat-toggle"></span>
-        </div>`;
-    });
-
-    html += `</div></div>`;
+    if (groupCats.length === 0) return;
+    const expanded = filter ? true : !collapsedGroups[group.name];
+    html += renderCategoryGroupHtml(group.name, groupCats, regionMarkers, expanded,
+      on => `toggleGroupCategories('${group.name}', ${on})`);
   });
 
-  // Render ungrouped categories at the bottom (if any)
   if (ungroupedCats.length > 0) {
     if (collapsedGroups['Other'] === undefined) collapsedGroups['Other'] = true;
-    const otherExpanded = filter ? true : !collapsedGroups['Other'];
-    const otherClass = otherExpanded ? 'expanded' : '';
-    const otherTotal = ungroupedCats.reduce((sum, cat) =>
-      sum + regionMarkers.filter(m => m.category === cat.id).length, 0);
-    const otherProgressCats = ungroupedCats.filter(cat => PROGRESS_CATEGORIES.has(cat.id));
-    const otherProgressTotal = otherProgressCats.reduce((sum, cat) =>
-      sum + regionMarkers.filter(m => m.category === cat.id).length, 0);
-    const otherDiscovered = otherProgressCats.reduce((sum, cat) =>
-      sum + regionMarkers.filter(m => m.category === cat.id && isMarkerDiscovered(m)).length, 0);
-    const otherActiveCount = ungroupedCats.filter(cat => activeCategories.has(cat.id)).length;
-    const otherHasProgress = otherProgressTotal > 0;
-    const otherPct = otherProgressTotal > 0 ? Math.round(otherDiscovered / otherProgressTotal * 100) : 0;
-
-    html += `<div class="cat-group">`;
-    html += `<div class="cat-group-header ${otherClass}" onclick="toggleGroup('Other')">`;
-    html += `  <span class="group-arrow">▶</span>`;
-    html += `  <span class="group-name">Other</span>`;
-    html += otherHasProgress
-      ? `  <span class="group-progress">${otherDiscovered}/${otherProgressTotal} (${otherPct}%)</span>`
-      : `  <span class="group-progress">${otherTotal}</span>`;
-    html += `  <button class="group-toggle-all${otherActiveCount === ungroupedCats.length ? ' on' : ''}" aria-label="Toggle all Other" onclick="event.stopPropagation();toggleOtherCategories(${otherActiveCount < ungroupedCats.length})"></button>`;
-    html += `</div>`;
-    html += `<div class="cat-group-children ${otherClass}">`;
-    ungroupedCats.forEach(cat => {
-      const catMarkers = regionMarkers.filter(m => m.category === cat.id);
-      const count = catMarkers.length;
-      const trackable = PROGRESS_CATEGORIES.has(cat.id);
-      const discovered = trackable ? catMarkers.filter(m => isMarkerDiscovered(m)).length : 0;
-      const active = activeCategories.has(cat.id);
-      const iconHtml = iconMap[cat.id]
-        ? `<img src="${iconMap[cat.id]}" style="width:20px;height:20px;object-fit:contain;" alt="">`
-        : cat.icon;
-      const statsHtml = trackable
-        ? `<span class="cat-progress"><span class="done">${discovered}</span>/${count}</span>`
-        : `<span class="cat-progress">${count}</span>`;
-      html += `
-        <div class="category-item ${active ? 'active' : ''}" onclick="toggleCategory('${cat.id}')">
-          <span class="cat-icon">${iconHtml}</span>
-          <span class="cat-name">${cat.name}</span>
-          ${statsHtml}
-          <span class="cat-toggle"></span>
-        </div>`;
-    });
-    html += `</div></div>`;
+    const expanded = filter ? true : !collapsedGroups['Other'];
+    html += renderCategoryGroupHtml('Other', ungroupedCats, regionMarkers, expanded,
+      on => `toggleOtherCategories(${on})`);
   }
 
   list.innerHTML = html;
+}
+
+// Render one collapsible group box (header + category rows). Shared by the named
+// CATEGORY_GROUPS and the trailing "Other" bucket. toggleAllAttr(shouldEnable)
+// returns the group toggle-all onclick (differs per group type).
+function renderCategoryGroupHtml(groupName, cats, regionMarkers, expanded, toggleAllAttr) {
+  const iconMap = window.ICON_MAP || {};
+  const total = cats.reduce((s, c) => s + regionMarkers.filter(m => m.category === c.id).length, 0);
+  const progressCats = cats.filter(c => PROGRESS_CATEGORIES.has(c.id));
+  const progressTotal = progressCats.reduce((s, c) => s + regionMarkers.filter(m => m.category === c.id).length, 0);
+  const discovered = progressCats.reduce((s, c) => s + regionMarkers.filter(m => m.category === c.id && isMarkerDiscovered(m)).length, 0);
+  const activeCount = cats.filter(c => activeCategories.has(c.id)).length;
+  const pct = progressTotal > 0 ? Math.round(discovered / progressTotal * 100) : 0;
+  const cls = expanded ? 'expanded' : '';
+  const progressHtml = progressTotal > 0
+    ? `<span class="group-progress">${discovered}/${progressTotal} (${pct}%)</span>`
+    : `<span class="group-progress">${total}</span>`;
+
+  let html = `<div class="cat-group">`;
+  html += `<div class="cat-group-header ${cls}" onclick="toggleGroup('${groupName}')">`;
+  html += `  <span class="group-arrow">▶</span>`;
+  html += `  <span class="group-name">${groupName}</span>`;
+  html += `  ${progressHtml}`;
+  html += `  <button class="group-toggle-all${activeCount === cats.length ? ' on' : ''}" aria-label="Toggle all ${groupName}" onclick="event.stopPropagation();${toggleAllAttr(activeCount < cats.length)}"></button>`;
+  html += `</div>`;
+  html += `<div class="cat-group-children ${cls}">`;
+  cats.forEach(cat => {
+    const catMarkers = regionMarkers.filter(m => m.category === cat.id);
+    const count = catMarkers.length;
+    const trackable = PROGRESS_CATEGORIES.has(cat.id);
+    const dcount = trackable ? catMarkers.filter(m => isMarkerDiscovered(m)).length : 0;
+    const active = activeCategories.has(cat.id);
+    const iconHtml = iconMap[cat.id]
+      ? `<img src="${iconMap[cat.id]}" style="width:20px;height:20px;object-fit:contain;" alt="">`
+      : cat.icon;
+    const statsHtml = trackable
+      ? `<span class="cat-progress"><span class="done">${dcount}</span>/${count}</span>`
+      : `<span class="cat-progress">${count}</span>`;
+    html += `
+      <div class="category-item ${active ? 'active' : ''}" onclick="toggleCategory('${cat.id}')">
+        <span class="cat-icon">${iconHtml}</span>
+        <span class="cat-name">${cat.name}</span>
+        ${statsHtml}
+        <span class="cat-toggle"></span>
+      </div>`;
+  });
+  html += `</div></div>`;
+  return html;
 }
 
 function toggleGroup(groupName) {

@@ -81,16 +81,16 @@ function calClose() {
 
 function saveLocalMapBounds(region, name, bounds) {
   try {
-    const saved = JSON.parse(localStorage.getItem('kcd2_local_map_bounds') || '{}');
+    const saved = JSON.parse(localStorage.getItem(CONFIG.storageKeys.localMapBounds) || '{}');
     if (!saved[region]) saved[region] = {};
     saved[region][name] = bounds;
-    localStorage.setItem('kcd2_local_map_bounds', JSON.stringify(saved));
+    localStorage.setItem(CONFIG.storageKeys.localMapBounds, JSON.stringify(saved));
   } catch (e) { console.error('Failed to save local map bounds:', e); }
 }
 
 function loadLocalMapBounds(region, name) {
   try {
-    const saved = JSON.parse(localStorage.getItem('kcd2_local_map_bounds') || '{}');
+    const saved = JSON.parse(localStorage.getItem(CONFIG.storageKeys.localMapBounds) || '{}');
     return saved[region]?.[name] || null;
   } catch (e) { return null; }
 }

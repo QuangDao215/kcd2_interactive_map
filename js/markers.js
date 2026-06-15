@@ -83,8 +83,8 @@ function addPoiMarker(markerData) {
 
 // ── POI marker editing (Edit Markers tool) ──
 let markerEditing = false;
-const MARKER_EDIT_KEY = 'kcd2_marker_edits';
-const MARKER_DELETE_KEY = 'kcd2_marker_deletes';
+const MARKER_EDIT_KEY = CONFIG.storageKeys.markerEdits;
+const MARKER_DELETE_KEY = CONFIG.storageKeys.markerDeletes;
 
 function loadMarkerEdits(region) {
   try { return (JSON.parse(localStorage.getItem(MARKER_EDIT_KEY) || '{}'))[region] || {}; }
@@ -308,7 +308,7 @@ let dataDirHandle = null;
 // only has to be picked once (a FileSystemDirectoryHandle is structured-
 // cloneable; localStorage can't hold it). On a later visit the browser asks for
 // a single "allow" click instead of making you re-navigate the folder tree.
-const DIR_IDB = { db: 'kcd2-fs', store: 'handles', key: 'dataDir' };
+const DIR_IDB = CONFIG.dirHandleStore;
 function idbOpen() {
   return new Promise((resolve, reject) => {
     const req = indexedDB.open(DIR_IDB.db, 1);

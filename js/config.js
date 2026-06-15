@@ -21,13 +21,19 @@ const CONFIG = {
     },
   },
 
-  // localStorage keys
+  // Single source of truth for every persisted key (localStorage + IndexedDB).
   storageKeys: {
     userMarkers: 'kcd2_user_markers',
     activeCategories: 'kcd2_active_categories',
     lastRegion: 'kcd2_last_region',
     discoveredMarkers: 'kcd2_discovered_markers',
-  }
+    markerEdits: 'kcd2_marker_edits',
+    markerDeletes: 'kcd2_marker_deletes',
+    labelPositions: 'kcd2_label_positions',
+    localMapBounds: 'kcd2_local_map_bounds',
+  },
+  // IndexedDB store for the remembered data/ folder handle (File System Access API).
+  dirHandleStore: { db: 'kcd2-fs', store: 'handles', key: 'dataDir' },
 };
 
 

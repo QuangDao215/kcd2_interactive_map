@@ -11,15 +11,7 @@ function onRightClick(e) {
   if (tempMarker) map.removeLayer(tempMarker);
 
   // Category options with real icons (sorted alphabetically)
-  const iconMap = window.ICON_MAP || {};
-  const sortedCats = [...categories].sort((a, b) => a.name.localeCompare(b.name));
-  const catItems = sortedCats.map(c => {
-    const iconSrc = iconMap[c.id] || '';
-    const iconHtml = iconSrc
-      ? `<img src="${iconSrc}" onerror="this.style.display='none'">`
-      : `<span style="width:20px;text-align:center">${c.icon || '📦'}</span>`;
-    return `<div class="icon-dropdown-item" data-value="${c.id}" onclick="selectCategory('${c.id}', '${c.name.replace(/'/g, "\\'")}', '${iconSrc}')">${iconHtml} ${c.name}</div>`;
-  }).join('');
+  const catItems = buildCategoryDropdownItems();
 
   const formHtml = `
     <div class="marker-form">
@@ -54,6 +46,19 @@ function onRightClick(e) {
   }).addTo(map);
 
   tempMarker.bindPopup(formHtml, { maxWidth: 300, closeOnClick: false, autoClose: false }).openPopup();
+}
+
+// The <div.icon-dropdown-item> rows for every category, sorted by name — shared
+// by the add-marker and edit-marker forms.
+function buildCategoryDropdownItems() {
+  const iconMap = window.ICON_MAP || {};
+  return [...categories].sort((a, b) => a.name.localeCompare(b.name)).map(c => {
+    const iconSrc = iconMap[c.id] || '';
+    const iconHtml = iconSrc
+      ? `<img src="${iconSrc}" onerror="this.style.display='none'">`
+      : `<span style="width:20px;text-align:center">${c.icon || '📦'}</span>`;
+    return `<div class="icon-dropdown-item" data-value="${c.id}" onclick="selectCategory('${c.id}', '${c.name.replace(/'/g, "\\'")}', '${iconSrc}')">${iconHtml} ${c.name}</div>`;
+  }).join('');
 }
 
 function toggleCatDropdown() {
@@ -158,7 +163,6 @@ function editUserMarker(id) {
 
   // Build edit form with icon dropdown
   const iconMap = window.ICON_MAP || {};
-  const sortedCats = [...categories].sort((a, b) => a.name.localeCompare(b.name));
   const currentCat = categories.find(c => c.id === markerData.category);
   const currentIconSrc = iconMap[markerData.category] || '';
   const currentCatName = currentCat ? currentCat.name : 'Custom';
@@ -166,13 +170,7 @@ function editUserMarker(id) {
     ? `<img src="${currentIconSrc}" style="width:20px;height:20px;image-rendering:pixelated">`
     : `<span style="width:20px;text-align:center">${currentCat?.icon || '📌'}</span>`;
 
-  const catItems = sortedCats.map(c => {
-    const iconSrc = iconMap[c.id] || '';
-    const iconHtml = iconSrc
-      ? `<img src="${iconSrc}" onerror="this.style.display='none'">`
-      : `<span style="width:20px;text-align:center">${c.icon || '📦'}</span>`;
-    return `<div class="icon-dropdown-item" data-value="${c.id}" onclick="selectCategory('${c.id}', '${c.name.replace(/'/g, "\\'")}', '${iconSrc}')">${iconHtml} ${c.name}</div>`;
-  }).join('');
+  const catItems = buildCategoryDropdownItems();
 
   const editHtml = `
     <div class="marker-form">

@@ -114,7 +114,7 @@ function toggleSettlementLabels() {
 }
 
 // ── Settlement-name position editing (drag-to-place) ──
-const LABEL_POS_KEY = 'kcd2_label_positions';
+const LABEL_POS_KEY = CONFIG.storageKeys.labelPositions;
 
 function loadLabelPositions(region) {
   try {
