@@ -104,6 +104,7 @@ function mergeMarkerEdit(region, key, patch) {
 }
 function saveMarkerEdit(region, key, name) { mergeMarkerEdit(region, key, { name }); }
 function saveMarkerMove(region, key, x, y) { mergeMarkerEdit(region, key, { x, y }); }
+function saveMarkerCategory(region, key, category) { mergeMarkerEdit(region, key, { category }); }
 function addMarkerDelete(region, key) {
   try {
     const all = JSON.parse(localStorage.getItem(MARKER_DELETE_KEY) || '{}');
@@ -132,6 +133,7 @@ function getEditedMarkers(region) {
     if (e) {
       if (e.name != null) nm.name = e.name;
       if (e.x != null && e.y != null) { nm.x = e.x; nm.y = e.y; }
+      if (e.category != null) nm.category = e.category;
     }
     out.push(nm);
   });
@@ -142,10 +144,15 @@ function getEditedMarkers(region) {
 function poiPopupHtml(markerData, cat, markerKey, btnId, doneLabel, undoneLabel) {
   if (markerEditing) {
     const safeName = escapeHtml(markerData.name);
+    const catOptions = [...categories].sort((a, b) => a.name.localeCompare(b.name))
+      .map(c => `<option value="${c.id}"${c.id === markerData.category ? ' selected' : ''}>${escapeHtml(c.name)}</option>`)
+      .join('');
     return `<div class="popup-category">${cat.name}</div>
       <div class="marker-form" style="min-width:210px;">
         <label>Marker name</label>
         <input type="text" id="poi-edit-name" value="${safeName}">
+        <label style="margin-top:6px;">Category</label>
+        <select id="poi-edit-cat">${catOptions}</select>
         <div class="popup-coords" style="margin-top:6px;">X: ${markerData.x} &nbsp; Y: ${markerData.y}</div>
         <div style="color:var(--text-muted);font-size:11px;margin-top:4px;">✥ Drag the marker on the map to reposition it.</div>
         <div class="form-actions">
@@ -170,15 +177,30 @@ function savePoiMarkerName(key) {
   const newName = input.value.trim();
   if (!newName) { showToast('Name cannot be empty'); return; }
   const marker = markersByKey[key];
+  const catSel = document.getElementById('poi-edit-cat');
+  const newCat = catSel ? catSel.value : null;
+  const oldCat = marker && marker._poi ? marker._poi.category : null;
+  const catChanged = newCat && newCat !== oldCat;
+
   if (marker) {
     if (marker._poi) marker._poi.name = newName;
     if (marker.getTooltip()) marker.setTooltipContent(escapeHtml(newName));
     marker.closePopup();
   }
   saveMarkerEdit(currentRegion, key, newName);
-  renderCategoryList(document.getElementById('search-input')?.value || '');
+
+  if (catChanged) {
+    saveMarkerCategory(currentRegion, key, newCat);
+    // Keep the marker visible after it moves to the new category's layer.
+    if (!activeCategories.has(newCat)) { activeCategories.add(newCat); saveActiveCategoriesFromStorage(); }
+    // Changing category moves layers + swaps the icon — rebuild (view preserved).
+    loadRegion(currentRegion, { preserveView: true });
+  } else {
+    renderCategoryList(document.getElementById('search-input')?.value || '');
+  }
   updateMarkerEditStatus();
-  showToast(`Renamed to "${newName}"`);
+  const catName = (categories.find(c => c.id === newCat) || {}).name || newCat;
+  showToast(catChanged ? `Renamed & moved to "${catName}"` : `Renamed to "${newName}"`);
 }
 
 function deletePoiMarker(key) {
@@ -202,15 +224,19 @@ function deletePoiMarker(key) {
 // ── Edit Markers tool ──
 function markerEditCounts(region) {
   const edits = loadMarkerEdits(region);
-  let renamed = 0, moved = 0;
-  Object.values(edits).forEach(e => { if (e && e.name != null) renamed++; if (e && e.x != null) moved++; });
-  return { renamed, moved, deleted: loadMarkerDeletes(region).length };
+  let renamed = 0, moved = 0, recat = 0;
+  Object.values(edits).forEach(e => {
+    if (e && e.name != null) renamed++;
+    if (e && e.x != null) moved++;
+    if (e && e.category != null) recat++;
+  });
+  return { renamed, moved, recat, deleted: loadMarkerDeletes(region).length };
 }
 function updateMarkerEditStatus() {
   const el = document.getElementById('marker-edit-status');
   if (!el) return;
-  const { renamed, moved, deleted } = markerEditCounts(currentRegion);
-  const total = renamed + moved + deleted;
+  const { renamed, moved, recat, deleted } = markerEditCounts(currentRegion);
+  const total = renamed + moved + recat + deleted;
   if (total === 0) {
     el.className = 'me-status';
     el.textContent = `No unsaved changes for ${currentRegion}`;
@@ -218,6 +244,7 @@ function updateMarkerEditStatus() {
     const parts = [];
     if (renamed) parts.push(`${renamed} renamed`);
     if (moved) parts.push(`${moved} moved`);
+    if (recat) parts.push(`${recat} recategorized`);
     if (deleted) parts.push(`${deleted} deleted`);
     el.className = 'me-status active';
     el.textContent = `${total} unsaved change${total > 1 ? 's' : ''} (${parts.join(' · ')})`;
@@ -267,8 +294,8 @@ function markerEditExport() {
   const { jsonStr, jsStr } = buildMarkerFiles(region);
   markerDownload(`markers_${region}.json`, jsonStr, 'application/json');
   setTimeout(() => markerDownload(`markers_${region}.js`, jsStr, 'text/javascript'), 120);
-  const { renamed, moved, deleted } = markerEditCounts(region);
-  showToast(`Downloaded markers_${region}.{js,json} (${renamed} renamed, ${moved} moved, ${deleted} deleted) — move both into data/`);
+  const { renamed, moved, recat, deleted } = markerEditCounts(region);
+  showToast(`Downloaded markers_${region}.{js,json} (${renamed} renamed, ${moved} moved, ${recat} recategorized, ${deleted} deleted) — move both into data/`);
 }
 function markerDownload(filename, text, mime) {
   const blob = new Blob([text], { type: mime });
@@ -371,8 +398,8 @@ async function writeFileToDir(dirHandle, name, contents) {
 }
 async function markerEditSaveToData() {
   const region = currentRegion;
-  const { renamed, moved, deleted } = markerEditCounts(region);
-  if (renamed + moved + deleted === 0) { showToast(`No unsaved changes for ${region}`); return; }
+  const { renamed, moved, recat, deleted } = markerEditCounts(region);
+  if (renamed + moved + recat + deleted === 0) { showToast(`No unsaved changes for ${region}`); return; }
   if (!window.showDirectoryPicker) {
     showToast('Direct save needs Chrome/Edge over http://localhost — downloading instead');
     markerEditExport();
@@ -390,7 +417,7 @@ async function markerEditSaveToData() {
     clearRegionMarkerEdits(region);
     await loadRegion(region, { preserveView: true });  // rebuild so moved keys re-base cleanly
     updateMarkerEditStatus();
-    showToast(`Saved markers_${region}.{js,json} to data/ ✓ (${renamed} renamed, ${moved} moved, ${deleted} deleted)`);
+    showToast(`Saved markers_${region}.{js,json} to data/ ✓ (${renamed} renamed, ${moved} moved, ${recat} recategorized, ${deleted} deleted)`);
   } catch (e) {
     if (e && e.name === 'AbortError') return; // user cancelled the picker
     console.error('Save to data/ failed:', e);

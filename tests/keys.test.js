@@ -53,6 +53,13 @@ const TEST = `
   eq('rename applies', a.name, 'A2');
   eq('identity stable after move', getMarkerKey(a), 'shrine:10:20');
 
+  // Category change: applies the new category but keeps the original identity key
+  localStorage.setItem('kcd2_marker_edits', JSON.stringify({ trosky: { 'shrine:10:20': { name:'A2', x:11, y:21, category:'nest' } } }));
+  const a2 = getEditedMarkers('trosky').find(m => m._baseKey === 'shrine:10:20');
+  eq('category override applies', a2.category, 'nest');
+  eq('identity stable after recategorize', getMarkerKey(a2), 'shrine:10:20');
+  localStorage.setItem('kcd2_marker_edits', JSON.stringify({ trosky: { 'shrine:10:20': { name:'A2', x:11, y:21 } } }));
+
   // Delete removes the marker
   localStorage.setItem('kcd2_marker_deletes', JSON.stringify({ trosky: ['grave:30:40'] }));
   eq('delete removes marker', getEditedMarkers('trosky').some(m => m._baseKey === 'grave:30:40'), false);
