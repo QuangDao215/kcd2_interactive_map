@@ -11,9 +11,21 @@ Repository: `QuangDao215/kcd2_interactive_map` on GitHub Pages.
 
 ```
 E:\kcd2_map\  (repo root)
-├── index.html                       # Page shell + markup only (~290 lines)
+├── index.html                       # Page shell + markup only (~330 lines)
 ├── style.css                        # All styles (extracted from index.html)
-├── app.js                           # All app logic (extracted; one global classic script)
+├── js/                              # App logic, split from the old app.js into
+│   │                                #   ordered classic scripts (shared global scope,
+│   │                                #   loaded in this order — see index.html):
+│   ├── config.js                    #   CONFIG, state, category groups, constants
+│   ├── map.js                       #   CRS, region load, cache-busting (DATA_VERSION)
+│   ├── markers.js                   #   POI markers + Edit Markers tool + Save/Embed
+│   ├── sidebar.js                   #   category list / progress / search / legend
+│   ├── user-markers.js              #   custom (right-click) markers
+│   ├── import-export.js             #   backup v3 import/export
+│   ├── local-maps.js                #   detail-map overlays + calibration tool
+│   ├── labels.js                    #   settlement-name labels
+│   ├── storage.js                   #   localStorage + getMarkerKey/discovered
+│   └── main.js                      #   UI helpers + init()
 ├── main_icon.png                    # Favicon (game icon)
 ├── README.md, LICENSE, .gitignore
 │
@@ -46,19 +58,33 @@ E:\kcd2_map\  (repo root)
 │   ├── trosky/{z}/{x}/{y}.webp      # Tile pyramid (max zoom 5)
 │   └── kuttenberg/{z}/{x}/{y}.webp  # Tile pyramid (max zoom 6)
 │
-└── tools/                           # Dev/build scripts (Python)
-    ├── extract_pois.py              # Extract POIs from game XML
-    ├── calibrate_markers.py         # World→pixel coordinate transform
-    ├── merge_gamerguides.py         # Fill gaps with community data
-    ├── build_markers.py             # Regenerate .js from .json
-    ├── generate_tiles.py            # Slice map into Leaflet tile pyramid (WebP)
-    ├── stitch_maps.py               # Stitch game map tiles (with background fill)
-    ├── process_local_maps.py        # Reconstruct split DDS, stitch local maps
-    ├── convert_dds_to_png.py        # Convert DDS files to PNG
-    ├── crop_banner.py               # Crop banner textures to visible ribbon
-    ├── resize_icons.py              # Resize icons to 32×32 with padding
-    └── apply_trosky_correction.py   # Apply 9-point affine correction
+├── tools/                           # Dev/build scripts (Python)
+│   ├── extract_pois.py              # Extract POIs from game XML
+│   ├── calibrate_markers.py         # World→pixel coordinate transform
+│   ├── merge_gamerguides.py         # Fill gaps with community data
+│   ├── build_markers.py             # Regenerate marker .js from .json
+│   ├── generate_tiles.py            # Slice map into Leaflet tile pyramid (WebP)
+│   ├── stitch_maps.py               # Stitch game map tiles (with background fill)
+│   ├── process_local_maps.py        # Reconstruct split DDS, stitch local maps
+│   ├── convert_dds_to_png.py        # Convert DDS files to PNG
+│   ├── crop_banner.py               # Crop banner textures to visible ribbon
+│   ├── resize_icons.py              # Resize icons to 32×32 with padding
+│   ├── apply_trosky_correction.py   # Apply 9-point affine correction
+│   ├── rename_hunting_spots.py      # Clean hunting-spot names from poi_type_name
+│   ├── strip_location_suffix.py     # Drop redundant " — <place>" name suffixes
+│   ├── rename_fast_travel.py        # Fast-travel point names (English-localized)
+│   ├── clean_baked_categories.py    # Restore clean categories from data_backup
+│   ├── split_app.py                 # One-time app.js → js/ split (round-trip checked)
+│   └── hooks/pre-commit             # Auto-regenerates marker .js from .json on commit
+│
+├── eslint.config.mjs                # ESLint (run: npx eslint js/) — real-bug rules
+└── tests/keys.test.js               # node test for marker-key logic (11 assertions)
 ```
+
+> **Dev workflow:** edit `data/markers_*.json` then commit — the `tools/hooks/pre-commit`
+> hook regenerates the `.js` fallbacks (enable once via `git config core.hooksPath tools/hooks`).
+> Lint with `npx eslint js/`; test the key logic with `node tests/keys.test.js`.
+> Data files load with a `?v=` cache-buster (in `index.html`); **bump it on every deploy**.
 
 ---
 
@@ -275,8 +301,11 @@ crop_banner.py    → (LEGACY) cropped banner textures — banners removed, labe
 - [x] Split monolith into index.html + style.css + app.js
 - [x] Banner labels removed → plain text; clustering trialed → reverted
 - [x] Town crests above settlement names; overall + per-region Game Completion bar
-- [x] Edit Markers dev tool (rename/delete, Save-to-data via File System Access API)
+- [x] Edit Markers dev tool (rename/delete, **drag-to-reposition**, Save-to-data, Embed My Markers)
 - [x] Local maps optimized PNG→WebP (468 MB → 60 MB) — deployable on GitHub Pages
+- [x] Level-transition marker type (`fast_travel_level`); zoom-level indicator; remembered data/ folder
+- [x] Marker-name cleanup pass (hunting spots, location suffixes, fast-travel points)
+- [x] Maintainability pass: `app.js` → `js/` modules · cache-busting · pre-commit `.js` sync · ESLint · key tests
 
 ---
 
