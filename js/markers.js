@@ -36,7 +36,7 @@ function addPoiMarker(markerData) {
 
   const icon = createMarkerIcon(cat.icon, cat.color, 28, cat.id, categoryGroupColor(cat.id));
   const marker = L.marker([markerData.y, markerData.x], { icon, draggable: true });
-  marker.bindTooltip(markerData.name, { direction: 'top', offset: [0, -16], opacity: 0.95, className: 'poi-tooltip' });
+  marker.bindTooltip(escapeHtml(markerData.name), { direction: 'top', offset: [0, -16], opacity: 0.95, className: 'poi-tooltip' });
 
   const markerKey = getMarkerKey(markerData);
   const isItem = ITEM_CATEGORIES.has(markerData.category);
@@ -141,7 +141,7 @@ function getEditedMarkers(region) {
 // Popup content — normal view, or an inline edit form when the tool is active.
 function poiPopupHtml(markerData, cat, markerKey, btnId, doneLabel, undoneLabel) {
   if (markerEditing) {
-    const safeName = (markerData.name || '').replace(/"/g, '&quot;');
+    const safeName = escapeHtml(markerData.name);
     return `<div class="popup-category">${cat.name}</div>
       <div class="marker-form" style="min-width:210px;">
         <label>Marker name</label>
@@ -155,9 +155,9 @@ function poiPopupHtml(markerData, cat, markerKey, btnId, doneLabel, undoneLabel)
       </div>`;
   }
   const discovered = isMarkerDiscovered(markerData);
-  return `<div class="popup-title">${markerData.name}</div>
+  return `<div class="popup-title">${escapeHtml(markerData.name)}</div>
     <div class="popup-category">${cat.name}</div>
-    ${markerData.description ? `<div class="popup-desc">${markerData.description}</div>` : ''}
+    ${markerData.description ? `<div class="popup-desc">${escapeHtml(markerData.description)}</div>` : ''}
     <div class="popup-coords">X: ${markerData.x} &nbsp; Y: ${markerData.y}</div>
     <button class="popup-progress-btn${discovered ? ' completed' : ''}" id="${btnId}"
       data-done-label="${doneLabel}" data-undone-label="${undoneLabel}"
@@ -172,7 +172,7 @@ function savePoiMarkerName(key) {
   const marker = markersByKey[key];
   if (marker) {
     if (marker._poi) marker._poi.name = newName;
-    if (marker.getTooltip()) marker.setTooltipContent(newName);
+    if (marker.getTooltip()) marker.setTooltipContent(escapeHtml(newName));
     marker.closePopup();
   }
   saveMarkerEdit(currentRegion, key, newName);
@@ -509,9 +509,9 @@ function addUserMarkerToMap(markerData) {
   });
 
   const popupHtml = `
-    <div class="popup-title">${markerData.name || 'Custom Marker'}</div>
+    <div class="popup-title">${escapeHtml(markerData.name) || 'Custom Marker'}</div>
     <div class="popup-category">${cat ? cat.name : 'Custom'} — User Marker</div>
-    ${markerData.description ? `<div class="popup-desc">${markerData.description}</div>` : ''}
+    ${markerData.description ? `<div class="popup-desc">${escapeHtml(markerData.description)}</div>` : ''}
     <div class="popup-coords">X: ${markerData.x} &nbsp; Y: ${markerData.y}</div>
     <button class="popup-progress-btn" id="${btnId}"
       data-done-label="${doneLabel}" data-undone-label="${undoneLabel}"
@@ -542,9 +542,9 @@ function addUserMarkerToMap(markerData) {
     // Update popup with new coords (keep discover button)
     const newBtnId = `prog-user-${getMarkerKey(markerData).replace(/[^a-zA-Z0-9]/g, '_')}`;
     const newPopup = `
-      <div class="popup-title">${markerData.name || 'Custom Marker'}</div>
+      <div class="popup-title">${escapeHtml(markerData.name) || 'Custom Marker'}</div>
       <div class="popup-category">${cat ? cat.name : 'Custom'} — User Marker</div>
-      ${markerData.description ? `<div class="popup-desc">${markerData.description}</div>` : ''}
+      ${markerData.description ? `<div class="popup-desc">${escapeHtml(markerData.description)}</div>` : ''}
       <div class="popup-coords">X: ${markerData.x} &nbsp; Y: ${markerData.y}</div>
       <button class="popup-progress-btn" id="${newBtnId}"
         data-done-label="${doneLabel}" data-undone-label="${undoneLabel}"

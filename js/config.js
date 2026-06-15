@@ -36,6 +36,14 @@ const CONFIG = {
   dirHandleStore: { db: 'kcd2-fs', store: 'handles', key: 'dataDir' },
 };
 
+// Escape user-controlled text before inserting into innerHTML / Leaflet tooltips.
+// Custom marker names/descriptions are user-entered and can be embedded into the
+// shared DB, so they must never be treated as markup.
+function escapeHtml(s) {
+  return String(s == null ? '' : s).replace(/[&<>"']/g, (c) =>
+    ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+}
+
 
 // ═══════════════════════════════════════════════
 // ██ STATE

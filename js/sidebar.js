@@ -247,7 +247,7 @@ function onSearchInput(query) {
     return `<div class="search-result-item" onclick="searchResultClick(${m.x}, ${m.y}, '${getMarkerKey(m)}')">
       ${iconHtml}
       <div>
-        <div class="sr-name">${m.name}</div>
+        <div class="sr-name">${escapeHtml(m.name)}</div>
         <div class="sr-cat">${catName}${tag} — (${m.x}, ${m.y})</div>
       </div>
     </div>`;

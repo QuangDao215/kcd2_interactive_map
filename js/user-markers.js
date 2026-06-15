@@ -176,7 +176,7 @@ function editUserMarker(id) {
     <div class="marker-form">
       <h3>Edit Marker</h3>
       <label>Name</label>
-      <input type="text" id="edit-marker-name" value="${(markerData.name || '').replace(/"/g, '&quot;')}">
+      <input type="text" id="edit-marker-name" value="${escapeHtml(markerData.name)}">
       <label>Category</label>
       <input type="hidden" id="new-marker-cat" value="${markerData.category}">
       <div class="icon-dropdown" id="cat-dropdown">
@@ -192,7 +192,7 @@ function editUserMarker(id) {
         </div>
       </div>
       <label>Description</label>
-      <textarea id="edit-marker-desc">${markerData.description || ''}</textarea>
+      <textarea id="edit-marker-desc">${escapeHtml(markerData.description)}</textarea>
       <div class="form-actions">
         <button class="btn btn-cancel" onclick="cancelEditMarker(${id})">Cancel</button>
         <button class="btn btn-save" onclick="saveEditedMarker(${id})">Save</button>
@@ -310,7 +310,7 @@ function renderMyMarkersList() {
       <div class="my-marker-item" onclick="flyToMarker(${m.x}, ${m.y})">
         <span class="mm-icon">${iconHtml}</span>
         <div class="mm-info">
-          <div class="mm-name">${m.name}</div>
+          <div class="mm-name">${escapeHtml(m.name)}</div>
           <div class="mm-coords">X: ${m.x} Y: ${m.y}</div>
         </div>
         <button class="mm-delete" onclick="event.stopPropagation();deleteUserMarker(${m.id})" title="Delete">✕</button>
