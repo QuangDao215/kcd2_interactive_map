@@ -116,13 +116,13 @@ function exportProgress() {
 }
 
 function showImportProgressModal() {
-  document.getElementById('import-progress-modal').classList.add('active');
+  document.getElementById('import-progress-modal').classList.add('show');
   document.getElementById('import-progress-data').value = '';
   document.getElementById('import-progress-file').value = '';
 }
 
 function closeImportProgressModal() {
-  document.getElementById('import-progress-modal').classList.remove('active');
+  document.getElementById('import-progress-modal').classList.remove('show');
 }
 
 function loadImportProgressFile(event) {
@@ -155,15 +155,9 @@ function importProgress() {
 
     saveDiscoveredToStorage();
 
-    // Update opacity for current region markers
-    Object.entries(markersByKey).forEach(([key, marker]) => {
-      const set = discoveredMarkers[currentRegion];
-      if (set && set.has(key)) {
-        marker.setOpacity(0.5);
-      } else {
-        marker.setOpacity(1.0);
-      }
-    });
+    // Refresh marker opacity, honouring the current "Hide discovered" toggle
+    // (the inline 0.5 loop ignored it, leaving hidden markers visible).
+    applyHideDiscovered();
 
     closeImportProgressModal();
     showToast(`Imported ${count} discovered markers`);
@@ -238,13 +232,13 @@ function exportAll() {
 }
 
 function showImportAllModal() {
-  document.getElementById('import-all-modal').classList.add('active');
+  document.getElementById('import-all-modal').classList.add('show');
   document.getElementById('import-all-data').value = '';
   document.getElementById('import-all-file').value = '';
 }
 
 function closeImportAllModal() {
-  document.getElementById('import-all-modal').classList.remove('active');
+  document.getElementById('import-all-modal').classList.remove('show');
 }
 
 function loadImportAllFile(event) {
@@ -262,6 +256,15 @@ async function importAll() {
     const raw = document.getElementById('import-all-data').value.trim();
     if (!raw) { showToast('No data to import'); return; }
     const data = JSON.parse(raw);
+
+    // Guard against a parseable-but-wrong file silently wiping everything:
+    // require at least one recognized backup key before the destructive replace.
+    const KNOWN_KEYS = ['userMarkers', 'discoveredMarkers', 'labelPositions',
+      'activeCategories', 'markerEdits', 'markerDeletes'];
+    if (!data || typeof data !== 'object' || !KNOWN_KEYS.some(k => k in data)) {
+      showToast('Unrecognized backup file — nothing imported');
+      return;
+    }
 
     if (!(await showConfirm('This will replace all your current markers, progress, settlement-name positions, category filters, and marker edits. Continue?', {title:'Import all data', confirmText:'Replace'}))) return;
 

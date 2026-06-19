@@ -272,7 +272,7 @@ function searchResultClick(x, y, markerKey) {
   }
 
   // Fly to marker and open popup
-  flyToMarker(x, y);
+  flyToMarker(x, y, markerKey);
 
   // Update URL with marker permalink
   updateHashWithMarker(markerKey);

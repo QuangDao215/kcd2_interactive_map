@@ -33,10 +33,10 @@ function loadActiveCategoriesFromStorage() {
     if (saved) {
       activeCategories = new Set(JSON.parse(saved));
     } else {
-      activeCategories = new Set(['city', 'fast_travel']);
+      activeCategories = new Set(DEFAULT_ACTIVE_CATEGORIES);
     }
   } catch (e) {
-    activeCategories = new Set(['city', 'fast_travel']);
+    activeCategories = new Set(DEFAULT_ACTIVE_CATEGORIES);
   }
 }
 

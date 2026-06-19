@@ -111,7 +111,7 @@ const CATEGORY_GROUPS = [
   { name: "NPCs", collapsed: true, categories: [
     "apothecary", "armourer", "baker", "barber", "baths", "blacksmith",
     "butchery", "cobbler", "fisherman", "grocer", "gunsmith", "herbalist",
-    "horse_trader", "huntsman", "miller", "saddler", "scribe", "shield_painter",
+    "horse_trader", "hotel", "huntsman", "miller", "saddler", "scribe", "shield_painter",
     "skill_trainer", "smithy", "tailor", "tanner", "tavern", "trader", "weaponsmith"
   ]},
   { name: "Poisons", collapsed: true, categories: ["loot_poison"] },
@@ -137,6 +137,13 @@ const CATEGORY_GROUPS = [
     "sharpening_wheel", "shrine", "smokehouse", "underground", "washing",
     "woodland_garden"
   ]},
+];
+
+// Categories enabled on a visitor's very first load (before they have a saved
+// filter set). Picks a useful, non-flooding starter view of where-to-go +
+// quests. NOTE: must be REAL category ids (the old 'city' default was a no-op).
+const DEFAULT_ACTIVE_CATEGORIES = [
+  "fast_travel", "interesting_site", "quest_main", "quest_side",
 ];
 
 // Per-group accent colours — used to tint marker glows and the legend group

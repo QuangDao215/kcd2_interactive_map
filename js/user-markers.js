@@ -266,17 +266,22 @@ function cancelEditMarker(id) {
   addUserMarkerToMap(markerData);
 }
 
-function flyToMarker(x, y) {
+function flyToMarker(x, y, markerKey) {
   // Use a zoom level near the tile pyramid max for clear detail
   const targetZoom = Math.max(map.getMaxZoom() - 1, map.getZoom());
   map.flyTo([y, x], targetZoom, { duration: 0.6 });
 
-  // After the fly animation completes, open the popup of the marker at this location
-  const targetKey = `${x}:${y}`;
+  // After the fly animation completes, open the target marker's popup.
+  // Prefer an exact key lookup; otherwise fall back to a boundary-safe
+  // coordinate match — ":x:y" so e.g. flyTo 5,6 can't match "shrine:15:6".
   setTimeout(() => {
+    if (markerKey && markersByKey[markerKey]) {
+      markersByKey[markerKey].openPopup();
+      return;
+    }
+    const suffix = `:${x}:${y}`;
     for (const [key, marker] of Object.entries(markersByKey)) {
-      // Match by coordinates (key format: "category:x:y")
-      if (key.endsWith(targetKey)) {
+      if (key.endsWith(suffix)) {
         marker.openPopup();
         return;
       }
@@ -307,7 +312,7 @@ function renderMyMarkersList() {
       ? `<img src="${iconSrc}" style="width:20px;height:20px;image-rendering:pixelated">`
       : `<span>${cat ? cat.icon : '📌'}</span>`;
     return `
-      <div class="my-marker-item" onclick="flyToMarker(${m.x}, ${m.y})">
+      <div class="my-marker-item" onclick="flyToMarker(${m.x}, ${m.y}, '${getMarkerKey(m)}')">
         <span class="mm-icon">${iconHtml}</span>
         <div class="mm-info">
           <div class="mm-name">${escapeHtml(m.name)}</div>
