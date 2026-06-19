@@ -448,8 +448,14 @@
     },
     {
       "id": "tavern",
-      "name": "Tavern / Inn",
+      "name": "Tavern",
       "icon": "🍺",
+      "color": "#c9a84c"
+    },
+    {
+      "id": "hotel",
+      "name": "Inn",
+      "icon": "🛏️",
       "color": "#c9a84c"
     },
     {
@@ -663,7 +669,7 @@
     },
     {
       "name": "Zajezdni Hostinec Zelejov",
-      "category": "tavern",
+      "category": "hotel",
       "description": "",
       "world_x": 1650.6,
       "world_y": 2155.25,
@@ -25213,6 +25219,60 @@
       "description": "",
       "x": 4355,
       "y": 4272,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Horses for Courses",
+      "category": "quest_side",
+      "description": "",
+      "x": 1318,
+      "y": 2621,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "A Sketchy Situation",
+      "category": "quest_side",
+      "description": "",
+      "x": 4936,
+      "y": 3854,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Source of Inspiration",
+      "category": "quest_side",
+      "description": "",
+      "x": 4349,
+      "y": 4275,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Chiaroscuro",
+      "category": "quest_side",
+      "description": "",
+      "x": 4345,
+      "y": 4272,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Portrait in Red",
+      "category": "quest_side",
+      "description": "",
+      "x": 4349,
+      "y": 4270,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "The Lion's Crest",
+      "category": "quest_side",
+      "description": "",
+      "x": 4190,
+      "y": 3065,
       "is_discoverable": true,
       "source": "manual"
     }

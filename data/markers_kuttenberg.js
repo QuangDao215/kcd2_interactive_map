@@ -442,8 +442,14 @@ window.MARKER_DATA_KUTTENBERG = {
     },
     {
       "id": "tavern",
-      "name": "Tavern / Inn",
+      "name": "Tavern",
       "icon": "\ud83c\udf7a",
+      "color": "#c9a84c"
+    },
+    {
+      "id": "hotel",
+      "name": "Inn",
+      "icon": "\ud83d\udecf\ufe0f",
       "color": "#c9a84c"
     },
     {
@@ -755,7 +761,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Burned Camp",
+      "name": "Burnt down camp",
       "category": "interesting_site",
       "description": "",
       "world_x": 3425.09,
@@ -1161,7 +1167,7 @@ window.MARKER_DATA_KUTTENBERG = {
     },
     {
       "name": "Zajezdni Hostinec Pritoky",
-      "category": "tavern",
+      "category": "hotel",
       "description": "",
       "world_x": 2179.47,
       "world_y": 1516.82,
@@ -1587,7 +1593,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Burned Stash",
+      "name": "Burnt-down hideout",
       "category": "interesting_site",
       "description": "",
       "world_x": 3461.97,
@@ -2008,7 +2014,7 @@ window.MARKER_DATA_KUTTENBERG = {
     },
     {
       "name": "Inn Certovka",
-      "category": "tavern",
+      "category": "hotel",
       "description": "",
       "world_x": 2914.4,
       "world_y": 2924.45,
@@ -2465,7 +2471,7 @@ window.MARKER_DATA_KUTTENBERG = {
     },
     {
       "name": "Noose Pub",
-      "category": "tavern",
+      "category": "hotel",
       "description": "",
       "world_x": 3159.09,
       "world_y": 648.29,
@@ -2753,7 +2759,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "label_key": "@ui_maplegend_roadsideCamp"
     },
     {
-      "name": "Burned Forest",
+      "name": "Burnt down forest",
       "category": "interesting_site",
       "description": "",
       "world_x": 3456.12,
@@ -3129,7 +3135,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "label_key": "@ui_maplegend_mothersGrave"
     },
     {
-      "name": "Childs Grave",
+      "name": "Child's grave",
       "category": "interesting_site",
       "description": "",
       "world_x": 4034.8,
@@ -3261,7 +3267,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "label_key": "ui_level_fasttravel_trosecko"
     },
     {
-      "name": "Puskar Chmelna",
+      "name": "Gunsmith Prokop Eldris",
       "category": "gunsmith",
       "description": "",
       "world_x": 3122.05,
@@ -3922,7 +3928,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Burned Trap",
+      "name": "Burnt down trap",
       "category": "interesting_site",
       "description": "",
       "world_x": 3464.99,
@@ -4477,7 +4483,7 @@ window.MARKER_DATA_KUTTENBERG = {
     },
     {
       "name": "Zajezdni Hostinec Stara Kutna",
-      "category": "tavern",
+      "category": "hotel",
       "description": "",
       "world_x": 2730.45,
       "world_y": 1138.05,
@@ -4520,7 +4526,7 @@ window.MARKER_DATA_KUTTENBERG = {
     },
     {
       "name": "Emperor Charles Pub",
-      "category": "tavern",
+      "category": "hotel",
       "description": "",
       "world_x": 3095.29,
       "world_y": 872.06,
@@ -4725,7 +4731,7 @@ window.MARKER_DATA_KUTTENBERG = {
     },
     {
       "name": "Pub Dira",
-      "category": "tavern",
+      "category": "hotel",
       "description": "",
       "world_x": 3204.17,
       "world_y": 449.35,
@@ -7972,20 +7978,6 @@ window.MARKER_DATA_KUTTENBERG = {
       "name": "Dice Table",
       "category": "dice_table",
       "description": "",
-      "world_x": 2942.35,
-      "world_y": 769.69,
-      "world_z": 63.32,
-      "x": 9400,
-      "y": 5557,
-      "poi_type_name": "dice_table",
-      "poi_type_id": "_entity_dice_table",
-      "is_fast_travel": false,
-      "is_discoverable": true
-    },
-    {
-      "name": "Dice Table",
-      "category": "dice_table",
-      "description": "",
       "world_x": 2896.15,
       "world_y": 869.8,
       "world_z": 69.14,
@@ -10072,8 +10064,8 @@ window.MARKER_DATA_KUTTENBERG = {
       "name": "Sedletz Monastery",
       "category": "fast_travel",
       "description": "",
-      "x": 10897,
-      "y": 6984,
+      "x": 10872,
+      "y": 6973,
       "world_x": 0,
       "world_y": 0,
       "world_z": 0,
@@ -10679,23 +10671,6 @@ window.MARKER_DATA_KUTTENBERG = {
       "source": "gamerguides",
       "gg_marker_id": 202332,
       "gg_icon": "/images/map-marker-icon/15/252307/polearmspear_icon-3e49620c.png.png"
-    },
-    {
-      "name": "Shrine",
-      "category": "shrine",
-      "description": "",
-      "x": 10484,
-      "y": 5223,
-      "world_x": 0,
-      "world_y": 0,
-      "world_z": 0,
-      "poi_type_name": "gg_import_shrine",
-      "poi_type_id": "_gg_db-50317",
-      "is_fast_travel": false,
-      "is_discoverable": true,
-      "source": "gamerguides",
-      "gg_marker_id": 202333,
-      "gg_icon": "/images/map-marker-icon/15/316069/shrine_icon_result-29ff5ae5.png.png"
     },
     {
       "name": "Map of Kuttenberg underground",
@@ -11988,23 +11963,6 @@ window.MARKER_DATA_KUTTENBERG = {
       "source": "gamerguides",
       "gg_marker_id": 202890,
       "gg_icon": "/images/map-marker-icon/15/253527/daggercommon_icon-3603133f.png.png"
-    },
-    {
-      "name": "Torch",
-      "category": "loot_dagger",
-      "description": "",
-      "x": 10973,
-      "y": 7052,
-      "world_x": 0,
-      "world_y": 0,
-      "world_z": 0,
-      "poi_type_name": "gg_import_loot_dagger",
-      "poi_type_id": "_gg_db-45992",
-      "is_fast_travel": false,
-      "is_discoverable": true,
-      "source": "gamerguides",
-      "gg_marker_id": 202908,
-      "gg_icon": "/images/map-marker-icon/15/253528/torch_icon-a8266133.png.png"
     },
     {
       "name": "Bloody knife",
@@ -13469,23 +13427,6 @@ window.MARKER_DATA_KUTTENBERG = {
       "gg_icon": "/images/map-marker-icon/15/252350/shieldkite_gcech_d_icon-e5e4db78.png.png"
     },
     {
-      "name": "Butcher guild knight shield",
-      "category": "loot_shield",
-      "description": "",
-      "x": 9388,
-      "y": 5581,
-      "world_x": 0,
-      "world_y": 0,
-      "world_z": 0,
-      "poi_type_name": "gg_import_loot_shield",
-      "poi_type_id": "_gg_db-45977",
-      "is_fast_travel": false,
-      "is_discoverable": true,
-      "source": "gamerguides",
-      "gg_marker_id": 203426,
-      "gg_icon": "/images/map-marker-icon/15/252350/shieldkite_gcech_d_icon-e5e4db78.png.png"
-    },
-    {
       "name": "Kuttenberg knight shield",
       "category": "loot_shield",
       "description": "",
@@ -13569,23 +13510,6 @@ window.MARKER_DATA_KUTTENBERG = {
       "source": "gamerguides",
       "gg_marker_id": 203458,
       "gg_icon": "/images/map-marker-icon/15/252359/shieldkite_gcech_a_icon-2b9c72ab.png.png"
-    },
-    {
-      "name": "Kuttenberg heater shield",
-      "category": "loot_shield",
-      "description": "",
-      "x": 9394,
-      "y": 5571,
-      "world_x": 0,
-      "world_y": 0,
-      "world_z": 0,
-      "poi_type_name": "gg_import_loot_shield",
-      "poi_type_id": "_gg_db-45977",
-      "is_fast_travel": false,
-      "is_discoverable": true,
-      "source": "gamerguides",
-      "gg_marker_id": 203482,
-      "gg_icon": "/images/map-marker-icon/15/252369/shieldheater_tourney_b_icon-dc5f4e57.png.png"
     },
     {
       "name": "Baker guild knight shield",
@@ -15898,23 +15822,6 @@ window.MARKER_DATA_KUTTENBERG = {
       "source": "gamerguides",
       "gg_marker_id": 204048,
       "gg_icon": "/images/map-marker-icon/15/252363/shieldheater_sigismund_a_icon-84db0ef6.png.png"
-    },
-    {
-      "name": "Kuttenberg heater shield",
-      "category": "loot_shield",
-      "description": "",
-      "x": 9388,
-      "y": 5571,
-      "world_x": 0,
-      "world_y": 0,
-      "world_z": 0,
-      "poi_type_name": "gg_import_loot_shield",
-      "poi_type_id": "_gg_db-45977",
-      "is_fast_travel": false,
-      "is_discoverable": true,
-      "source": "gamerguides",
-      "gg_marker_id": 204052,
-      "gg_icon": "/images/map-marker-icon/15/252369/shieldheater_tourney_b_icon-dc5f4e57.png.png"
     },
     {
       "name": "Guild Longsword",
@@ -25522,125 +25429,6 @@ window.MARKER_DATA_KUTTENBERG = {
       "gg_icon": "/images/map-marker-icon/15/253058/lorebook_embellished_01_icon-5a6eef98.png.png"
     },
     {
-      "name": "Gemstone ring",
-      "category": "loot_armour_jewellery",
-      "description": "",
-      "x": 9372,
-      "y": 5616,
-      "world_x": 0,
-      "world_y": 0,
-      "world_z": 0,
-      "poi_type_name": "gg_import_loot_armour_jewellery",
-      "poi_type_id": "_gg_db-45957",
-      "is_fast_travel": false,
-      "is_discoverable": true,
-      "source": "gamerguides",
-      "gg_marker_id": 205227,
-      "gg_icon": "/images/map-marker-icon/15/252643/ring_gem_icon-d5365f73.png.png"
-    },
-    {
-      "name": "Silver cross with insignia",
-      "category": "loot_armour_jewellery",
-      "description": "",
-      "x": 9379,
-      "y": 5616,
-      "world_x": 0,
-      "world_y": 0,
-      "world_z": 0,
-      "poi_type_name": "gg_import_loot_armour_jewellery",
-      "poi_type_id": "_gg_db-45957",
-      "is_fast_travel": false,
-      "is_discoverable": true,
-      "source": "gamerguides",
-      "gg_marker_id": 205228,
-      "gg_icon": "/images/map-marker-icon/15/252644/necklace_silver_cross_insignia_icon-761ddec1.png.png"
-    },
-    {
-      "name": "Silver cross with insignia",
-      "category": "loot_armour_jewellery",
-      "description": "",
-      "x": 9372,
-      "y": 5608,
-      "world_x": 0,
-      "world_y": 0,
-      "world_z": 0,
-      "poi_type_name": "gg_import_loot_armour_jewellery",
-      "poi_type_id": "_gg_db-45957",
-      "is_fast_travel": false,
-      "is_discoverable": true,
-      "source": "gamerguides",
-      "gg_marker_id": 205229,
-      "gg_icon": "/images/map-marker-icon/15/252644/necklace_silver_cross_insignia_icon-761ddec1.png.png"
-    },
-    {
-      "name": "Silver cross with insignia",
-      "category": "loot_armour_jewellery",
-      "description": "",
-      "x": 9379,
-      "y": 5608,
-      "world_x": 0,
-      "world_y": 0,
-      "world_z": 0,
-      "poi_type_name": "gg_import_loot_armour_jewellery",
-      "poi_type_id": "_gg_db-45957",
-      "is_fast_travel": false,
-      "is_discoverable": true,
-      "source": "gamerguides",
-      "gg_marker_id": 205230,
-      "gg_icon": "/images/map-marker-icon/15/252644/necklace_silver_cross_insignia_icon-761ddec1.png.png"
-    },
-    {
-      "name": "Duelling longsword",
-      "category": "loot_sword",
-      "description": "",
-      "x": 9376,
-      "y": 5587,
-      "world_x": 0,
-      "world_y": 0,
-      "world_z": 0,
-      "poi_type_name": "gg_import_loot_sword",
-      "poi_type_id": "_gg_db-45974",
-      "is_fast_travel": false,
-      "is_discoverable": true,
-      "source": "gamerguides",
-      "gg_marker_id": 205231,
-      "gg_icon": "/images/map-marker-icon/15/252378/longswordduel_icon-0750ffb7.png.png"
-    },
-    {
-      "name": "Bell-shaped bascinet",
-      "category": "loot_armour_head",
-      "description": "",
-      "x": 9376,
-      "y": 5596,
-      "world_x": 0,
-      "world_y": 0,
-      "world_z": 0,
-      "poi_type_name": "gg_import_loot_armour_head",
-      "poi_type_id": "_gg_db-45954",
-      "is_fast_travel": false,
-      "is_discoverable": true,
-      "source": "gamerguides",
-      "gg_marker_id": 205232,
-      "gg_icon": "/images/map-marker-icon/15/252607/bascinetopen02_m03_c3_icon-08ccd10e.png.png"
-    },
-    {
-      "name": "Riding cuirass",
-      "category": "loot_armour_body",
-      "description": "",
-      "x": 9370,
-      "y": 5596,
-      "world_x": 0,
-      "world_y": 0,
-      "world_z": 0,
-      "poi_type_name": "gg_import_loot_armour_body",
-      "poi_type_id": "_gg_db-45953",
-      "is_fast_travel": false,
-      "is_discoverable": true,
-      "source": "gamerguides",
-      "gg_marker_id": 205233,
-      "gg_icon": "/images/map-marker-icon/15/252519/cuirass05_m01_b4_icon-edc36af8.png.png"
-    },
-    {
       "name": "The Art of the Sword III",
       "category": "loot_skill_book",
       "description": "",
@@ -30444,6 +30232,249 @@ window.MARKER_DATA_KUTTENBERG = {
       "description": "",
       "x": 7764,
       "y": 8100,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Laundry",
+      "category": "washing",
+      "description": "",
+      "x": 10080,
+      "y": 5237,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Sharpening wheel",
+      "category": "sharpening_wheel",
+      "description": "",
+      "x": 10171,
+      "y": 5530,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Smithy",
+      "category": "smithy",
+      "description": "",
+      "x": 10163,
+      "y": 5531,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Selling chest",
+      "category": "selling_chest",
+      "description": "",
+      "x": 10161,
+      "y": 5522,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Bed",
+      "category": "player_bed",
+      "description": "",
+      "x": 10168,
+      "y": 5527,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Laundry",
+      "category": "washing",
+      "description": "",
+      "x": 10201,
+      "y": 5551,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Miner Lazar",
+      "category": "skill_trainer",
+      "description": "",
+      "x": 9088,
+      "y": 5531,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Lovarian horseshoes",
+      "category": "loot_horseshoe",
+      "description": "",
+      "x": 8874,
+      "y": 7542,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Three Crusader Kings",
+      "category": "loot_lore_book",
+      "description": "",
+      "x": 9393,
+      "y": 5577,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Dice",
+      "category": "dice_table",
+      "description": "",
+      "x": 10219,
+      "y": 5553,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Smokehouse",
+      "category": "smokehouse",
+      "description": "",
+      "x": 10231,
+      "y": 5554,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Apothecary Oswald Towart",
+      "category": "skill_trainer",
+      "description": "",
+      "x": 9505,
+      "y": 5779,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Shield painter",
+      "category": "shield_painter",
+      "description": "",
+      "x": 9442,
+      "y": 5842,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Alchemy bench",
+      "category": "alchemy_bench",
+      "description": "",
+      "x": 10216,
+      "y": 5543,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Shrine",
+      "category": "shrine",
+      "description": "",
+      "x": 10162,
+      "y": 5526,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "The Night-Mare",
+      "category": "quest_side",
+      "description": "",
+      "x": 9438,
+      "y": 5849,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Man Proposes",
+      "category": "quest_side",
+      "description": "",
+      "x": 9444,
+      "y": 5854,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Adept",
+      "category": "quest_side",
+      "description": "",
+      "x": 10189,
+      "y": 5516,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Magdalena\u2019s Axe",
+      "category": "quest_side",
+      "description": "",
+      "x": 10186,
+      "y": 5537,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "The Master\u2019s Game",
+      "category": "quest_side",
+      "description": "",
+      "x": 10184,
+      "y": 5546,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Klaus\u2019 Introduction",
+      "category": "quest_side",
+      "description": "",
+      "x": 9581,
+      "y": 5816,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Martin\u2019s Dream",
+      "category": "quest_side",
+      "description": "",
+      "x": 9585,
+      "y": 5815,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "The Royal Physician",
+      "category": "quest_side",
+      "description": "",
+      "x": 2279,
+      "y": 6205,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Key to the Sedletz mortuary",
+      "category": "loot_usable",
+      "description": "",
+      "x": 10972,
+      "y": 7066,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Monastic Rule of Saint Benedict I",
+      "category": "loot_lore_book",
+      "description": "",
+      "x": 10888,
+      "y": 7109,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Dagger of Astarte",
+      "category": "loot_dagger",
+      "description": "",
+      "x": 10882,
+      "y": 7122,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Weapon stub",
+      "category": "loot_sword",
+      "description": "",
+      "x": 11237,
+      "y": 7026,
       "is_discoverable": true,
       "source": "manual"
     }
