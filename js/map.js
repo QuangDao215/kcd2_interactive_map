@@ -37,6 +37,7 @@ function withVersion(url) {
 }
 
 async function init() {
+  const _introStart = performance.now();
   // Restore state
   currentRegion = localStorage.getItem(CONFIG.storageKeys.lastRegion) || 'trosky';
   loadUserMarkersFromStorage();
@@ -79,6 +80,7 @@ async function init() {
   try { savedTab = localStorage.getItem(CONFIG.storageKeys.activeTab); } catch (e) { /* ignore */ }
   if (savedTab) switchTab(savedTab);
   maybeShowMapHint();
+  scheduleIntroDismiss(_introStart);
 }
 
 function attachMapEventHandlers() {

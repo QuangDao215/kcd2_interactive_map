@@ -133,6 +133,8 @@ function toggleMarkerDiscovered(key, btnId) {
     if (btn) {
       btn.classList.add('completed');
       btn.textContent = btn.dataset.doneLabel;
+      // "Press the wax seal" — restart the stamp animation.
+      btn.classList.remove('stamp'); void btn.offsetWidth; btn.classList.add('stamp');
     }
     if (marker) {
       if (hideDiscovered) {

@@ -122,8 +122,27 @@ function maybeShowMapHint() {
 }
 
 
+// ── Cinematic intro overlay ──
+function dismissIntro() {
+  const o = document.getElementById('intro-overlay');
+  if (o) o.classList.add('done');
+}
+// Fade the intro once the map is ready. First visit lingers long enough to read
+// the crest; return visits get just a brief themed veil over the load.
+function scheduleIntroDismiss(startedAt) {
+  let seen = false;
+  try { seen = localStorage.getItem('kcd2_splash_seen') === '1'; } catch (e) { /* private mode */ }
+  try { localStorage.setItem('kcd2_splash_seen', '1'); } catch (e) { /* private mode */ }
+  const minShow = seen ? 550 : 1600;
+  const elapsed = (typeof startedAt === 'number') ? (performance.now() - startedAt) : minShow;
+  setTimeout(dismissIntro, Math.max(0, minShow - elapsed));
+}
+
+
 // ═══════════════════════════════════════════════
 // ██ INIT
 // ═══════════════════════════════════════════════
 
 window.addEventListener('DOMContentLoaded', init);
+// Safety net: never let the intro overlay get stuck if init throws mid-load.
+window.addEventListener('DOMContentLoaded', () => setTimeout(dismissIntro, 4000));
