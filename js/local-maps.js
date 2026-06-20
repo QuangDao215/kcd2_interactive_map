@@ -322,8 +322,8 @@ const LOCAL_MAP_TRIGGER = 0.5;  // 1.0 = whole footprint, 0.5 = inner half, smal
 // is footprint × 2^(z − regionMaxZoom); we solve for the zoom at which it reaches a
 // target. Region-aware so the same on-screen trigger stays reachable in both regions
 // (Trosky's max zoom is lower than Kuttenberg's). Calibrated so Devil's Den (~779px
-// footprint in Kuttenberg, native max zoom 6) triggers at zoom 7.5.
-const LOCAL_MAP_TARGET_PX = 2203;   // 779 × 2^1.5 → Devil's Den = 7.5
+// footprint in Kuttenberg, native max zoom 6) triggers at zoom 7.0.
+const LOCAL_MAP_TARGET_PX = 1558;   // 779 × 2^1.0 → Devil's Den = 7.0
 function adaptiveLocalMapMinZoom(bounds, regionMaxZoom) {
   const width = Math.abs(bounds[1][1] - bounds[0][1]);
   const height = Math.abs(bounds[1][0] - bounds[0][0]);
