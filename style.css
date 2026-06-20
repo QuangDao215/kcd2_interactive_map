@@ -245,34 +245,30 @@
     min-width: 24px;
     text-align: right;
   }
-  /* Group-level toggle switch (toggles every category in the group at once) */
-  .cat-group-header .group-toggle-all {
-    position: relative;
-    width: 30px; height: 16px;
-    border-radius: 8px;
-    border: 1px solid var(--border);
-    background: var(--bg-dark);
-    flex-shrink: 0;
-    cursor: pointer;
-    padding: 0;
+  /* ── Shared toggle-switch component (group / category / map-option) ──
+     Track + knob, sized via --sw-w / --sw-h. The three call sites trigger the
+     shared "on" appearance via their own class / checkbox. */
+  .switch {
+    position: relative; flex-shrink: 0; cursor: pointer; padding: 0;
+    width: var(--sw-w, 30px); height: var(--sw-h, 16px);
+    border-radius: 999px; border: 1px solid var(--border); background: var(--bg-dark);
     transition: background 0.15s, border-color 0.15s;
   }
-  .cat-group-header .group-toggle-all::after {
-    content: '';
-    position: absolute;
-    top: 2px; left: 2px;
-    width: 10px; height: 10px;
-    border-radius: 50%;
-    background: var(--text-muted);
+  .switch::after {
+    content: ''; position: absolute; top: 2px; left: 2px;
+    width: calc(var(--sw-h, 16px) - 6px); height: calc(var(--sw-h, 16px) - 6px);
+    border-radius: 50%; background: var(--text-muted);
     transition: left 0.15s, background 0.15s;
   }
-  .cat-group-header .group-toggle-all.on {
-    background: var(--accent-dim);
-    border-color: var(--accent);
+  .group-toggle-all.on,
+  .category-item.active .cat-toggle,
+  .map-option input:checked + .mo-switch {
+    background: var(--accent-dim); border-color: var(--accent);
   }
-  .cat-group-header .group-toggle-all.on::after {
-    left: 16px;
-    background: var(--bg-dark);
+  .group-toggle-all.on::after,
+  .category-item.active .cat-toggle::after,
+  .map-option input:checked + .mo-switch::after {
+    left: calc(var(--sw-w, 30px) - var(--sw-h, 16px) + 2px); background: var(--bg-dark);
   }
   .cat-group-children { display: none; padding-left: 8px; }
   .cat-group-children.expanded { display: block; }
@@ -305,33 +301,7 @@
     min-width: 20px;
     text-align: right;
   }
-  /* Per-category toggle switch (replaces the old checkbox — clearer on/off) */
-  .category-item .cat-toggle {
-    position: relative;
-    width: 30px; height: 16px;
-    border-radius: 8px;
-    border: 1px solid var(--border);
-    background: var(--bg-dark);
-    flex-shrink: 0;
-    transition: background 0.15s, border-color 0.15s;
-  }
-  .category-item .cat-toggle::after {
-    content: '';
-    position: absolute;
-    top: 2px; left: 2px;
-    width: 10px; height: 10px;
-    border-radius: 50%;
-    background: var(--text-muted);
-    transition: left 0.15s, background 0.15s;
-  }
-  .category-item.active .cat-toggle {
-    background: var(--accent-dim);
-    border-color: var(--accent);
-  }
-  .category-item.active .cat-toggle::after {
-    left: 16px;
-    background: var(--bg-dark);
-  }
+  /* .cat-toggle uses the shared .switch component (track/knob/on-state above). */
 
   /* ── Search ── */
   .search-box {
@@ -590,37 +560,19 @@
   .popup-action-btn.danger:hover { color: var(--danger); border-color: var(--danger); background: rgba(179,68,68,0.1); }
 
   /* ── Local Map Calibration Panel ── */
-  #calibration-panel {
-    display: none; position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%);
-    z-index: 2000; background: var(--bg-panel); border: 1px solid var(--border);
-    border-radius: 8px; padding: 12px 16px; min-width: 320px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.5); font-size: 12px;
+  /* ── Tool panels (Calibrate / Position Names / Edit Markers) — shared chrome ── */
+  .tool-panel {
+    display: none; position: absolute; bottom: 40px; z-index: 2000;
+    background: var(--bg-panel); border: 1px solid var(--border); border-radius: 8px;
+    padding: 12px 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.5); font-size: 12px;
   }
-  #calibration-panel.active { display: block; }
-  #calibration-panel h3 { margin: 0 0 8px; font-size: 14px; color: var(--accent-dim); }
-
-  /* ── Settlement Name Positioning Panel ── */
-  #label-edit-panel {
-    display: none; position: absolute; bottom: 40px; right: 20px;
-    z-index: 2000; background: var(--bg-panel); border: 1px solid var(--border);
-    border-radius: 8px; padding: 12px 16px; min-width: 280px; max-width: 320px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.5); font-size: 12px;
-  }
-  #label-edit-panel.active { display: block; }
-  #label-edit-panel h3 { margin: 0 0 8px; font-size: 14px; color: var(--accent-dim); }
-  #label-edit-panel .cal-actions { display: flex; gap: 6px; margin-top: 8px; }
-  #label-edit-panel .cal-actions button { flex: 1; }
-  /* Marker Edit panel (same layout as the others) */
-  #marker-edit-panel {
-    display: none; position: absolute; bottom: 40px; right: 20px;
-    z-index: 2000; background: var(--bg-panel); border: 1px solid var(--border);
-    border-radius: 8px; padding: 12px 16px; min-width: 280px; max-width: 320px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.5); font-size: 12px;
-  }
-  #marker-edit-panel.active { display: block; }
-  #marker-edit-panel h3 { margin: 0 0 8px; font-size: 14px; color: var(--accent-dim); }
-  #marker-edit-panel .cal-actions { display: flex; gap: 6px; margin-top: 8px; }
-  #marker-edit-panel .cal-actions button { flex: 1; }
+  .tool-panel.active { display: block; }
+  .tool-panel h3 { margin: 0 0 8px; font-size: 14px; color: var(--accent-dim); }
+  .tool-panel .cal-actions { display: flex; gap: 6px; margin-top: 8px; }
+  .tool-panel .cal-actions button { flex: 1; }
+  /* Per-panel position/size deltas */
+  #calibration-panel { left: 50%; transform: translateX(-50%); min-width: 320px; }
+  #label-edit-panel, #marker-edit-panel { right: 20px; min-width: 280px; max-width: 320px; }
   #marker-edit-panel .me-status {
     font-size: 11px; color: var(--text-muted); margin: 0 0 8px;
     padding: 5px 8px; background: var(--bg-dark); border-radius: 4px; text-align: center;
@@ -631,13 +583,11 @@
     0%, 100% { box-shadow: 0 4px 20px rgba(0,0,0,0.5); }
     20%, 60% { box-shadow: 0 0 0 2px var(--accent), 0 4px 24px rgba(0,0,0,0.6); }
   }
-  #calibration-panel.tool-flash, #label-edit-panel.tool-flash, #marker-edit-panel.tool-flash { animation: toolFlash 0.5s ease 2; }
+  .tool-panel.tool-flash { animation: toolFlash 0.5s ease 2; }
   #calibration-panel .cal-row { display: flex; align-items: center; gap: 8px; margin: 6px 0; }
   #calibration-panel .cal-row label { width: 60px; color: var(--text-secondary); }
   #calibration-panel input[type=range] { flex: 1; accent-color: var(--accent); }
   #calibration-panel .cal-bounds { font-family: monospace; font-size: 11px; color: var(--text-muted); padding: 6px; background: var(--bg-dark); border-radius: 4px; margin: 8px 0; word-break: break-all; }
-  #calibration-panel .cal-actions { display: flex; gap: 6px; margin-top: 8px; }
-  #calibration-panel .cal-actions button { flex: 1; }
 
   /* ── Marker Add Form (popup) ── */
   .marker-form { min-width: 220px; }
@@ -916,16 +866,7 @@
   .map-option .mo-label { font-size: 12px; color: var(--text-secondary); transition: color 0.15s; }
   .map-option:hover .mo-label { color: var(--text-primary); }
   .map-option input { position: absolute; opacity: 0; width: 0; height: 0; }
-  .map-option .mo-switch {
-    position: relative; width: 34px; height: 18px; border-radius: 9px; flex-shrink: 0;
-    background: var(--bg-dark); border: 1px solid var(--border); transition: background 0.2s, border-color 0.2s;
-  }
-  .map-option .mo-switch::after {
-    content: ''; position: absolute; top: 2px; left: 2px; width: 12px; height: 12px;
-    border-radius: 50%; background: var(--text-muted); transition: left 0.2s, background 0.2s;
-  }
-  .map-option input:checked + .mo-switch { background: var(--accent-dim); border-color: var(--accent); }
-  .map-option input:checked + .mo-switch::after { left: 18px; background: var(--bg-dark); }
+  .mo-switch { --sw-w: 34px; --sw-h: 18px; }   /* map-option switch is a touch larger */
   .map-option input:focus-visible + .mo-switch { outline: 2px solid var(--accent); outline-offset: 2px; }
 
   /* Search empty state */

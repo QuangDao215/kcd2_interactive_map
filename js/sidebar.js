@@ -81,7 +81,7 @@ function renderCategoryGroupHtml(groupName, cats, counts, expanded, toggleAllAtt
   html += `  <span class="group-arrow">▶</span>`;
   html += `  <span class="group-name">${groupName}</span>`;
   html += `  ${progressHtml}`;
-  html += `  <button class="group-toggle-all${activeCount === cats.length ? ' on' : ''}" aria-label="Toggle all ${groupName}" onclick="event.stopPropagation();${toggleAllAttr(activeCount < cats.length)}"></button>`;
+  html += `  <button class="group-toggle-all switch${activeCount === cats.length ? ' on' : ''}" aria-label="Toggle all ${groupName}" onclick="event.stopPropagation();${toggleAllAttr(activeCount < cats.length)}"></button>`;
   html += `</div>`;
   html += `<div class="cat-group-children ${cls}">`;
   cats.forEach(cat => {
@@ -100,7 +100,7 @@ function renderCategoryGroupHtml(groupName, cats, counts, expanded, toggleAllAtt
         <span class="cat-icon">${iconHtml}</span>
         <span class="cat-name">${cat.name}</span>
         ${statsHtml}
-        <span class="cat-toggle"></span>
+        <span class="cat-toggle switch"></span>
       </div>`;
   });
   html += `</div></div>`;
