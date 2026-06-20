@@ -14,7 +14,7 @@ window.LOCAL_MAPS_DATA = {
           11186
         ]
       ],
-      "minZoom": 5.5
+      "minZoom": 4.75
     },
     {
       "name": "Suchdol",
@@ -29,7 +29,7 @@ window.LOCAL_MAPS_DATA = {
           2852
         ]
       ],
-      "minZoom": 5.5
+      "minZoom": 6.0
     },
     {
       "name": "Raborsch",
@@ -44,7 +44,7 @@ window.LOCAL_MAPS_DATA = {
           3535
         ]
       ],
-      "minZoom": 5.5
+      "minZoom": 5.75
     },
     {
       "name": "Bohunowitz",
@@ -59,7 +59,7 @@ window.LOCAL_MAPS_DATA = {
           4240
         ]
       ],
-      "minZoom": 6.0
+      "minZoom": 6.25
     },
     {
       "name": "Devil's Den",
@@ -74,7 +74,7 @@ window.LOCAL_MAPS_DATA = {
           6516
         ]
       ],
-      "minZoom": 5.5
+      "minZoom": 6.5
     },
     {
       "name": "Horschan",
@@ -89,7 +89,7 @@ window.LOCAL_MAPS_DATA = {
           6778
         ]
       ],
-      "minZoom": 5.5
+      "minZoom": 5.75
     },
     {
       "name": "Grund",
@@ -104,7 +104,7 @@ window.LOCAL_MAPS_DATA = {
           8066
         ]
       ],
-      "minZoom": 5.5
+      "minZoom": 5.75
     },
     {
       "name": "Sigismund's Camp",
@@ -119,7 +119,7 @@ window.LOCAL_MAPS_DATA = {
           4991
         ]
       ],
-      "minZoom": 5.5
+      "minZoom": 5.75
     },
     {
       "name": "Wysoka",
@@ -134,7 +134,7 @@ window.LOCAL_MAPS_DATA = {
           3530
         ]
       ],
-      "minZoom": 5.5
+      "minZoom": 6.0
     },
     {
       "name": "Maleshov",
@@ -149,7 +149,7 @@ window.LOCAL_MAPS_DATA = {
           7082
         ]
       ],
-      "minZoom": 5.5
+      "minZoom": 6.0
     },
     {
       "name": "Miskowitz",
@@ -164,7 +164,7 @@ window.LOCAL_MAPS_DATA = {
           6093
         ]
       ],
-      "minZoom": 5.5
+      "minZoom": 5.75
     },
     {
       "name": "Bylany",
@@ -179,7 +179,7 @@ window.LOCAL_MAPS_DATA = {
           7778
         ]
       ],
-      "minZoom": 5.5
+      "minZoom": 6.0
     },
     {
       "name": "Pschitoky",
@@ -194,7 +194,7 @@ window.LOCAL_MAPS_DATA = {
           7314
         ]
       ],
-      "minZoom": 5.5
+      "minZoom": 6.0
     },
     {
       "name": "Old Kutna",
@@ -209,7 +209,7 @@ window.LOCAL_MAPS_DATA = {
           9032
         ]
       ],
-      "minZoom": 5.5
+      "minZoom": 6.0
     },
     {
       "name": "Sedletz Monastery",
@@ -224,7 +224,7 @@ window.LOCAL_MAPS_DATA = {
           3944
         ]
       ],
-      "minZoom": 5.5
+      "minZoom": 6.0
     }
   ],
   "trosky": [
@@ -256,7 +256,7 @@ window.LOCAL_MAPS_DATA = {
           3032
         ]
       ],
-      "minZoom": 5.5
+      "minZoom": 4.75
     },
     {
       "name": "Nebakov",
@@ -271,7 +271,7 @@ window.LOCAL_MAPS_DATA = {
           3981
         ]
       ],
-      "minZoom": 5.5
+      "minZoom": 5.0
     },
     {
       "name": "Zhelejov",
@@ -286,7 +286,7 @@ window.LOCAL_MAPS_DATA = {
           3464
         ]
       ],
-      "minZoom": 5.5
+      "minZoom": 4.75
     },
     {
       "name": "Tachov",
@@ -301,7 +301,7 @@ window.LOCAL_MAPS_DATA = {
           4021
         ]
       ],
-      "minZoom": 5.5
+      "minZoom": 4.75
     },
     {
       "name": "Troskowitz",
@@ -316,7 +316,7 @@ window.LOCAL_MAPS_DATA = {
           5295
         ]
       ],
-      "minZoom": 5.5
+      "minZoom": 4.5
     },
     {
       "name": "Apollonia",
@@ -331,7 +331,7 @@ window.LOCAL_MAPS_DATA = {
           5958
         ]
       ],
-      "minZoom": 5.5
+      "minZoom": 4.75
     },
     {
       "name": "Trosky Castle",
@@ -346,7 +346,7 @@ window.LOCAL_MAPS_DATA = {
           5318
         ]
       ],
-      "minZoom": 5.5
+      "minZoom": 5.0
     }
   ]
 };

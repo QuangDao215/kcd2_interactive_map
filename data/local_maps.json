@@ -13,7 +13,7 @@
           11186
         ]
       ],
-      "minZoom": 5.5
+      "minZoom": 4.75
     },
     {
       "name": "Suchdol",
@@ -28,7 +28,7 @@
           2852
         ]
       ],
-      "minZoom": 5.5
+      "minZoom": 6.0
     },
     {
       "name": "Raborsch",
@@ -43,7 +43,7 @@
           3535
         ]
       ],
-      "minZoom": 5.5
+      "minZoom": 5.75
     },
     {
       "name": "Bohunowitz",
@@ -58,7 +58,7 @@
           4240
         ]
       ],
-      "minZoom": 6.0
+      "minZoom": 6.25
     },
     {
       "name": "Devil's Den",
@@ -73,7 +73,7 @@
           6516
         ]
       ],
-      "minZoom": 5.5
+      "minZoom": 6.5
     },
     {
       "name": "Horschan",
@@ -88,7 +88,7 @@
           6778
         ]
       ],
-      "minZoom": 5.5
+      "minZoom": 5.75
     },
     {
       "name": "Grund",
@@ -103,7 +103,7 @@
           8066
         ]
       ],
-      "minZoom": 5.5
+      "minZoom": 5.75
     },
     {
       "name": "Sigismund's Camp",
@@ -118,7 +118,7 @@
           4991
         ]
       ],
-      "minZoom": 5.5
+      "minZoom": 5.75
     },
     {
       "name": "Wysoka",
@@ -133,7 +133,7 @@
           3530
         ]
       ],
-      "minZoom": 5.5
+      "minZoom": 6.0
     },
     {
       "name": "Maleshov",
@@ -148,7 +148,7 @@
           7082
         ]
       ],
-      "minZoom": 5.5
+      "minZoom": 6.0
     },
     {
       "name": "Miskowitz",
@@ -163,7 +163,7 @@
           6093
         ]
       ],
-      "minZoom": 5.5
+      "minZoom": 5.75
     },
     {
       "name": "Bylany",
@@ -178,7 +178,7 @@
           7778
         ]
       ],
-      "minZoom": 5.5
+      "minZoom": 6.0
     },
     {
       "name": "Pschitoky",
@@ -193,7 +193,7 @@
           7314
         ]
       ],
-      "minZoom": 5.5
+      "minZoom": 6.0
     },
     {
       "name": "Old Kutna",
@@ -208,7 +208,7 @@
           9032
         ]
       ],
-      "minZoom": 5.5
+      "minZoom": 6.0
     },
     {
       "name": "Sedletz Monastery",
@@ -223,7 +223,7 @@
           3944
         ]
       ],
-      "minZoom": 5.5
+      "minZoom": 6.0
     }
   ],
   "trosky": [
@@ -255,7 +255,7 @@
           3032
         ]
       ],
-      "minZoom": 5.5
+      "minZoom": 4.75
     },
     {
       "name": "Nebakov",
@@ -270,7 +270,7 @@
           3981
         ]
       ],
-      "minZoom": 5.5
+      "minZoom": 5.0
     },
     {
       "name": "Zhelejov",
@@ -285,7 +285,7 @@
           3464
         ]
       ],
-      "minZoom": 5.5
+      "minZoom": 4.75
     },
     {
       "name": "Tachov",
@@ -300,7 +300,7 @@
           4021
         ]
       ],
-      "minZoom": 5.5
+      "minZoom": 4.75
     },
     {
       "name": "Troskowitz",
@@ -315,7 +315,7 @@
           5295
         ]
       ],
-      "minZoom": 5.5
+      "minZoom": 4.5
     },
     {
       "name": "Apollonia",
@@ -330,7 +330,7 @@
           5958
         ]
       ],
-      "minZoom": 5.5
+      "minZoom": 4.75
     },
     {
       "name": "Trosky Castle",
@@ -345,7 +345,7 @@
           5318
         ]
       ],
-      "minZoom": 5.5
+      "minZoom": 5.0
     }
   ]
 }

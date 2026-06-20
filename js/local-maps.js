@@ -300,10 +300,8 @@ function loadLocalMaps(region) {
       interactive: false,
       zIndex: 500,
     });
-    // Trigger zoom adapts to the town's footprint (overrides the JSON minZoom).
-    const regionMaxZoom = (CONFIG.regions[region] && CONFIG.regions[region].max_zoom) || 5;
-    const config = { ...cfg, bounds, minZoom: adaptiveLocalMapMinZoom(bounds, regionMaxZoom) };
-    localMapOverlays.push({ layer, config, visible: false });
+    // minZoom (the trigger zoom) is hand-set per town in data/local_maps.json.
+    localMapOverlays.push({ layer, config: { ...cfg, bounds }, visible: false });
   });
 
   // Apply initial visibility based on current zoom
@@ -316,26 +314,9 @@ function loadLocalMaps(region) {
 // the detail you're inspecting.
 const LOCAL_MAP_TRIGGER = 0.5;  // 1.0 = whole footprint, 0.5 = inner half, smaller = tighter
 
-// Adaptive trigger zoom: a town's detail overlay should appear once it has grown to
-// a useful ON-SCREEN size — so a tiny camp (a speck on the world map) needs you
-// zoomed right in, while a sprawling town appears earlier. On-screen size at zoom z
-// is footprint × 2^(z − regionMaxZoom); we solve for the zoom at which it reaches a
-// target. Region-aware so the same on-screen trigger stays reachable in both regions
-// (Trosky's max zoom is lower than Kuttenberg's). Calibrated so Devil's Den (~779px
-// footprint in Kuttenberg, native max zoom 6) triggers at zoom 6.5.
-const LOCAL_MAP_TARGET_PX = 1102;   // 779 × 2^0.5 → Devil's Den = 6.5
-function adaptiveLocalMapMinZoom(bounds, regionMaxZoom) {
-  const width = Math.abs(bounds[1][1] - bounds[0][1]);
-  const height = Math.abs(bounds[1][0] - bounds[0][0]);
-  const size = (width + height) / 2;
-  if (!size) return regionMaxZoom;
-  const z = regionMaxZoom + Math.log2(LOCAL_MAP_TARGET_PX / size);
-  // Keep it reachable: never below a sane floor, never at/above the map's max zoom.
-  const clamped = Math.min(regionMaxZoom + 1.75, Math.max(regionMaxZoom - 2, z));
-  // Snap to the 0.25 zoom grid (map zoomSnap) so the threshold lands on a zoom you
-  // can actually stop at — otherwise a ~6.50 threshold only triggers at 6.75.
-  return Math.round(clamped / 0.25) * 0.25;
-}
+// Per-town trigger zoom (`minZoom`) is hand-set in data/local_maps.json — smaller
+// towns get higher values, so you must zoom in more before the overlay appears.
+// Values snap to the 0.25 zoom grid (the map's zoomSnap), so e.g. 6.5 triggers at 6.5.
 
 function updateLocalMapVisibility() {
   if (!showLocalMaps) return;

@@ -140,14 +140,14 @@ py = 0.0334*x + -0.9963*y + 9800.12
 - Reconstruction: header[:128 or 148] + largest mip only, patch mipMapCount=1
 - **Column-major** stitching was wrong → **row-major** is correct
 - Config stored in `data/local_maps.json` + `data/local_maps.js` (script-tag fallback)
-- Visibility: zoom ≥ an **adaptive per-town minZoom** AND the viewport center is within the
-  overlay's **centered inner trigger zone** (`LOCAL_MAP_TRIGGER = 0.5`, inner 50%) — so panning a
-  town's outskirts doesn't pop the overlay over the detail you're inspecting
-- The trigger zoom adapts to town footprint (`adaptiveLocalMapMinZoom(bounds, regionMaxZoom)`):
-  a town appears once its overlay reaches a target **on-screen** size (`LOCAL_MAP_TARGET_PX`),
-  region-aware so it stays reachable in both regions (Trosky max zoom 7 < Kuttenberg 8).
-  Calibrated so **Devil's Den = 6.5**; e.g. Kuttenberg city ~4.7, Nomad's Camp ~5.5, tiny
-  Kuttenberg camps up to 6.5. Overrides the JSON `minZoom` at runtime.
+- Visibility: zoom ≥ each town's **hand-set `minZoom`** (read straight from `data/local_maps.json`)
+  AND the viewport center is within the overlay's **centered inner trigger zone**
+  (`LOCAL_MAP_TRIGGER = 0.5`, inner 50%) — so panning a town's outskirts doesn't pop the overlay
+  over the detail you're inspecting
+- Per-town trigger zoom is set **manually** in `data/local_maps.json` (smaller towns → higher
+  values; keep values on the 0.25 zoom grid, e.g. Devil's Den = 6.5, Kuttenberg city = 4.75, so
+  the threshold lands on a zoom you can stop at). An auto-scaling formula was trialled and
+  **dropped** in favour of manual control.
 - Calibration tool: Tools → Calibrate Local Map → select map → drag to move, scale % to resize → Export Config downloads both JSON+JS
 - Calibrated bounds persist in localStorage + exportable to JSON files
 
