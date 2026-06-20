@@ -229,6 +229,12 @@ async function loadRegion(region, opts = {}) {
 
   // Center on region (or restore the prior view when preserving it)
   map.fitBounds(bounds);
+  // Floor the zoom at the full-map fit — no zooming out past the whole region, so
+  // we never render the empty padded area beyond the map. The fit zoom depends on
+  // the viewport, so recompute it whenever the map container resizes (sidebar
+  // drawer, fullscreen, window resize).
+  map.setMinZoom(map.getBoundsZoom(bounds));
+  map.on('resize', () => { if (currentRegionBounds) map.setMinZoom(map.getBoundsZoom(currentRegionBounds)); });
   if (savedView) map.setView(savedView.center, savedView.zoom, { animate: false });
   updateLabelScale();
 
