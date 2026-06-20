@@ -146,8 +146,8 @@ py = 0.0334*x + -0.9963*y + 9800.12
 - The trigger zoom adapts to town footprint (`adaptiveLocalMapMinZoom(bounds, regionMaxZoom)`):
   a town appears once its overlay reaches a target **on-screen** size (`LOCAL_MAP_TARGET_PX`),
   region-aware so it stays reachable in both regions (Trosky max zoom 7 < Kuttenberg 8).
-  Calibrated so **Devil's Den = 7.0**; e.g. Kuttenberg city ~5.2, Nomad's Camp ~6.0, tiny
-  Kuttenberg camps up to 7.0. Overrides the JSON `minZoom` at runtime.
+  Calibrated so **Devil's Den = 6.5**; e.g. Kuttenberg city ~4.7, Nomad's Camp ~5.5, tiny
+  Kuttenberg camps up to 6.5. Overrides the JSON `minZoom` at runtime.
 - Calibration tool: Tools → Calibrate Local Map → select map → drag to move, scale % to resize → Export Config downloads both JSON+JS
 - Calibrated bounds persist in localStorage + exportable to JSON files
 
