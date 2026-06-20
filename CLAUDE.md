@@ -140,9 +140,12 @@ py = 0.0334*x + -0.9963*y + 9800.12
 - Reconstruction: header[:128 or 148] + largest mip only, patch mipMapCount=1
 - **Column-major** stitching was wrong → **row-major** is correct
 - Config stored in `data/local_maps.json` + `data/local_maps.js` (script-tag fallback)
-- Visibility: zoom ≥ minZoom (5.5) AND the viewport center is within the overlay's **centered
-  inner trigger zone** (`LOCAL_MAP_TRIGGER = 0.5`, inner 50%) — so panning a town's outskirts
-  doesn't pop the overlay over the detail you're inspecting
+- Visibility: zoom ≥ an **adaptive per-town minZoom** AND the viewport center is within the
+  overlay's **centered inner trigger zone** (`LOCAL_MAP_TRIGGER = 0.5`, inner 50%) — so panning a
+  town's outskirts doesn't pop the overlay over the detail you're inspecting
+- The trigger zoom adapts to town footprint (`adaptiveLocalMapMinZoom`): halving the footprint
+  adds one zoom level, so a tiny camp needs ~6.2 while the Kuttenberg city shows by ~4.5 (clamped
+  4.5–6.5; baseline 5.5 at a ~1200px reference). Overrides the JSON `minZoom` at runtime.
 - Calibration tool: Tools → Calibrate Local Map → select map → drag to move, scale % to resize → Export Config downloads both JSON+JS
 - Calibrated bounds persist in localStorage + exportable to JSON files
 

@@ -300,7 +300,9 @@ function loadLocalMaps(region) {
       interactive: false,
       zIndex: 500,
     });
-    localMapOverlays.push({ layer, config: { ...cfg, bounds }, visible: false });
+    // Trigger zoom adapts to the town's footprint (overrides the JSON minZoom).
+    const config = { ...cfg, bounds, minZoom: adaptiveLocalMapMinZoom(bounds) };
+    localMapOverlays.push({ layer, config, visible: false });
   });
 
   // Apply initial visibility based on current zoom
@@ -312,6 +314,24 @@ function loadLocalMaps(region) {
 // inside it — so zooming around a town's outskirts doesn't pop the overlay over
 // the detail you're inspecting.
 const LOCAL_MAP_TRIGGER = 0.5;  // 1.0 = whole footprint, 0.5 = inner half, smaller = tighter
+
+// Adaptive trigger zoom: a town's detail overlay should appear once it has grown to
+// a useful on-screen size. A tiny camp is a speck until you zoom right in, so it
+// needs a higher zoom; a sprawling town appears earlier. Derived from the overlay's
+// world-pixel footprint relative to a reference town — halving the footprint adds one
+// zoom level. (Region CRS scale differs, so this keeps cross-region behaviour as-is.)
+const LOCAL_MAP_REF_SIZE = 1200;   // ~typical town footprint (world px) → baseline zoom
+const LOCAL_MAP_BASE_ZOOM = 5.5;   // minZoom for a reference-sized town
+const LOCAL_MAP_MIN_TRIGGER_ZOOM = 4.5;   // clamp — largest cities
+const LOCAL_MAP_MAX_TRIGGER_ZOOM = 6.5;   // clamp — tiniest camps
+function adaptiveLocalMapMinZoom(bounds) {
+  const width = Math.abs(bounds[1][1] - bounds[0][1]);
+  const height = Math.abs(bounds[1][0] - bounds[0][0]);
+  const size = (width + height) / 2;
+  if (!size) return LOCAL_MAP_BASE_ZOOM;
+  const z = LOCAL_MAP_BASE_ZOOM + Math.log2(LOCAL_MAP_REF_SIZE / size);
+  return Math.min(LOCAL_MAP_MAX_TRIGGER_ZOOM, Math.max(LOCAL_MAP_MIN_TRIGGER_ZOOM, z));
+}
 
 function updateLocalMapVisibility() {
   if (!showLocalMaps) return;
