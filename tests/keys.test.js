@@ -45,8 +45,12 @@ const TEST = `
   discoveredMarkers = {};
   currentRegion = 'trosky';
 
+  // getEditedMarkers is memoized; the app invalidates the cache via
+  // mergeMarkerEdit/addMarkerDelete, so a test poking localStorage directly must
+  // invalidate the same way before re-reading.
   // A rename + move stored under the ORIGINAL key
   localStorage.setItem('kcd2_marker_edits', JSON.stringify({ trosky: { 'shrine:10:20': { name:'A2', x:11, y:21 } } }));
+  invalidateEditedMarkers();
   const edited = getEditedMarkers('trosky');
   const a = edited.find(m => m._baseKey === 'shrine:10:20');
   eq('move applies new coords', [a.x, a.y], [11, 21]);
@@ -55,15 +59,19 @@ const TEST = `
 
   // Category change: applies the new category but keeps the original identity key
   localStorage.setItem('kcd2_marker_edits', JSON.stringify({ trosky: { 'shrine:10:20': { name:'A2', x:11, y:21, category:'nest' } } }));
+  invalidateEditedMarkers();
   const a2 = getEditedMarkers('trosky').find(m => m._baseKey === 'shrine:10:20');
   eq('category override applies', a2.category, 'nest');
   eq('identity stable after recategorize', getMarkerKey(a2), 'shrine:10:20');
   localStorage.setItem('kcd2_marker_edits', JSON.stringify({ trosky: { 'shrine:10:20': { name:'A2', x:11, y:21 } } }));
+  invalidateEditedMarkers();
 
   // Delete removes the marker
   localStorage.setItem('kcd2_marker_deletes', JSON.stringify({ trosky: ['grave:30:40'] }));
+  invalidateEditedMarkers();
   eq('delete removes marker', getEditedMarkers('trosky').some(m => m._baseKey === 'grave:30:40'), false);
   localStorage.setItem('kcd2_marker_deletes', JSON.stringify({}));
+  invalidateEditedMarkers();
 
   // userMarkerToDbMarker tags provenance
   const extra = userMarkerToDbMarker({ name:'C', category:'nest', x:5, y:6 });

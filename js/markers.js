@@ -28,7 +28,7 @@ function createMarkerIcon(emoji, color, size = 28, categoryId = '', glowColor = 
 }
 
 function addPoiMarker(markerData) {
-  const cat = categories.find(c => c.id === markerData.category);
+  const cat = categoriesById[markerData.category];
   if (!cat) {
     console.warn(`[KCD2 Map] Skipped marker "${markerData.name}" — category "${markerData.category}" not found`);
     return;
@@ -59,7 +59,11 @@ function addPoiMarker(markerData) {
   // Dragging is active only while the Edit Markers tool is on — otherwise a click
   // just opens the popup. Set the right state whenever the marker is (re)added to
   // the map (e.g. when its category is toggled visible).
-  marker.on('add', () => { if (marker.dragging) (markerEditing ? marker.dragging.enable() : marker.dragging.disable()); });
+  marker.on('add', () => {
+    if (marker.dragging) (markerEditing ? marker.dragging.enable() : marker.dragging.disable());
+    // A marker built/added while "Hide discovered" is on must also be unclickable.
+    if (marker._icon && marker.options.opacity === 0) marker._icon.style.pointerEvents = 'none';
+  });
   marker.on('dragstart', () => marker.closePopup());
   marker.on('dragend', () => {
     const ll = marker.getLatLng();
@@ -71,14 +75,26 @@ function addPoiMarker(markerData) {
     showToast(`Moved to X: ${nx}  Y: ${ny}`);
   });
 
-  // Fade discovered markers
+  // Fade discovered markers — fully hidden if "Hide discovered" is active so a
+  // lazily-built / freshly-added marker respects the toggle on first reveal.
   if (isMarkerDiscovered(markerData)) {
-    marker.setOpacity(0.5);
+    marker.setOpacity(hideDiscovered ? 0 : 0.5);
   }
 
   if (markerLayers[cat.id]) {
     markerLayers[cat.id].addLayer(marker);
   }
+}
+
+// Lazily construct the L.markers for one category (P1: don't build all ~1900
+// markers up front). Called on region load for active categories and the first
+// time a category is toggled on. Returns the number of markers built.
+function ensureCategoryBuilt(catId) {
+  if (builtCategories.has(catId)) return 0;
+  builtCategories.add(catId);
+  const list = markersByCategory[catId] || [];
+  list.forEach(addPoiMarker);
+  return list.length;
 }
 
 // ── POI marker editing (Edit Markers tool) ──
@@ -100,6 +116,7 @@ function mergeMarkerEdit(region, key, patch) {
     if (!all[region]) all[region] = {};
     all[region][key] = { ...(all[region][key] || {}), ...patch };
     localStorage.setItem(MARKER_EDIT_KEY, JSON.stringify(all));
+    invalidateEditedMarkers(region);
   } catch (e) { console.error('Failed to save marker edit:', e); }
 }
 function saveMarkerEdit(region, key, name) { mergeMarkerEdit(region, key, { name }); }
@@ -111,12 +128,24 @@ function addMarkerDelete(region, key) {
     if (!all[region]) all[region] = [];
     if (!all[region].includes(key)) all[region].push(key);
     localStorage.setItem(MARKER_DELETE_KEY, JSON.stringify(all));
+    invalidateEditedMarkers(region);
   } catch (e) { console.error('Failed to save marker deletion:', e); }
 }
 
 // Base markers for a region with local renames applied and deletions removed.
 // Returns fresh copies so the pristine allMarkerData is never mutated.
+// Memoized per region — invalidated whenever edits/deletes change or a region
+// (re)loads. getEditedMarkers is on many hot paths (sidebar render, progress,
+// search); each rebuild clones ~1900 markers and parses localStorage twice, so
+// caching removes the bulk of per-toggle / per-mark-discovered work.
+let _editedMarkerCache = {};
+function invalidateEditedMarkers(region) {
+  if (region) delete _editedMarkerCache[region];
+  else _editedMarkerCache = {};
+}
 function getEditedMarkers(region) {
+  const cached = _editedMarkerCache[region];
+  if (cached) return cached;
   // Use the loaded region data, else the script-tag global (so progress can be
   // counted for a region the user hasn't opened yet).
   const g = window['MARKER_DATA_' + region.toUpperCase()];
@@ -137,6 +166,7 @@ function getEditedMarkers(region) {
     }
     out.push(nm);
   });
+  _editedMarkerCache[region] = out;
   return out;
 }
 
@@ -199,7 +229,7 @@ function savePoiMarkerName(key) {
     renderCategoryList(document.getElementById('search-input')?.value || '');
   }
   updateMarkerEditStatus();
-  const catName = (categories.find(c => c.id === newCat) || {}).name || newCat;
+  const catName = (categoriesById[newCat] || {}).name || newCat;
   showToast(catChanged ? `Renamed & moved to "${catName}"` : `Renamed to "${newName}"`);
 }
 
@@ -323,6 +353,7 @@ function clearRegionMarkerEdits(region) {
     localStorage.setItem(MARKER_EDIT_KEY, JSON.stringify(e));
     const d = JSON.parse(localStorage.getItem(MARKER_DELETE_KEY) || '{}'); delete d[region];
     localStorage.setItem(MARKER_DELETE_KEY, JSON.stringify(d));
+    invalidateEditedMarkers(region);
   } catch (err) {}
 }
 
@@ -510,7 +541,7 @@ async function promoteUserMarkers() {
 }
 
 function addUserMarkerToMap(markerData) {
-  const cat = categories.find(c => c.id === markerData.category);
+  const cat = categoriesById[markerData.category];
   const icon = createMarkerIcon(
     cat ? cat.icon : '📌',
     cat ? cat.color : '#c9a84c',
@@ -553,9 +584,10 @@ function addUserMarkerToMap(markerData) {
   // Store reference for opacity control
   markersByKey[markerKey] = marker;
 
-  // Fade discovered markers
+  // Fade discovered markers — fully hidden if "Hide discovered" is active so a
+  // lazily-built / freshly-added marker respects the toggle on first reveal.
   if (isMarkerDiscovered(markerData)) {
-    marker.setOpacity(0.5);
+    marker.setOpacity(hideDiscovered ? 0 : 0.5);
   }
 
   // Update position on drag

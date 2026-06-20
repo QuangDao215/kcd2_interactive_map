@@ -10,6 +10,17 @@ function renderCategoryList(filter = '') {
   ];
   const filterLower = filter.toLowerCase();
 
+  // Single O(markers) pass: per-category {total, discovered}, reused by every
+  // group/category below instead of re-filtering the whole array many times.
+  const counts = {};
+  const discSet = discoveredMarkers[currentRegion];
+  regionMarkers.forEach(m => {
+    let c = counts[m.category];
+    if (!c) c = counts[m.category] = { total: 0, discovered: 0 };
+    c.total++;
+    if (discSet && discSet.has(getMarkerKey(m))) c.discovered++;
+  });
+
   // Initialize collapsed state from defaults on first render
   if (Object.keys(collapsedGroups).length === 0) {
     CATEGORY_GROUPS.forEach(g => { collapsedGroups[g.name] = g.collapsed; });
@@ -30,18 +41,18 @@ function renderCategoryList(filter = '') {
   // Render each named group, then the trailing "Other" bucket of ungrouped cats
   CATEGORY_GROUPS.forEach(group => {
     const groupCats = group.categories
-      .map(id => categories.find(c => c.id === id))
+      .map(id => categoriesById[id])
       .filter(cat => cat && (!filter || cat.name.toLowerCase().includes(filterLower)));
     if (groupCats.length === 0) return;
     const expanded = filter ? true : !collapsedGroups[group.name];
-    html += renderCategoryGroupHtml(group.name, groupCats, regionMarkers, expanded,
+    html += renderCategoryGroupHtml(group.name, groupCats, counts, expanded,
       on => `toggleGroupCategories('${group.name}', ${on})`);
   });
 
   if (ungroupedCats.length > 0) {
     if (collapsedGroups['Other'] === undefined) collapsedGroups['Other'] = true;
     const expanded = filter ? true : !collapsedGroups['Other'];
-    html += renderCategoryGroupHtml('Other', ungroupedCats, regionMarkers, expanded,
+    html += renderCategoryGroupHtml('Other', ungroupedCats, counts, expanded,
       on => `toggleOtherCategories(${on})`);
   }
 
@@ -51,12 +62,13 @@ function renderCategoryList(filter = '') {
 // Render one collapsible group box (header + category rows). Shared by the named
 // CATEGORY_GROUPS and the trailing "Other" bucket. toggleAllAttr(shouldEnable)
 // returns the group toggle-all onclick (differs per group type).
-function renderCategoryGroupHtml(groupName, cats, regionMarkers, expanded, toggleAllAttr) {
+function renderCategoryGroupHtml(groupName, cats, counts, expanded, toggleAllAttr) {
   const iconMap = window.ICON_MAP || {};
-  const total = cats.reduce((s, c) => s + regionMarkers.filter(m => m.category === c.id).length, 0);
+  const cnt = id => counts[id] || { total: 0, discovered: 0 };
+  const total = cats.reduce((s, c) => s + cnt(c.id).total, 0);
   const progressCats = cats.filter(c => PROGRESS_CATEGORIES.has(c.id));
-  const progressTotal = progressCats.reduce((s, c) => s + regionMarkers.filter(m => m.category === c.id).length, 0);
-  const discovered = progressCats.reduce((s, c) => s + regionMarkers.filter(m => m.category === c.id && isMarkerDiscovered(m)).length, 0);
+  const progressTotal = progressCats.reduce((s, c) => s + cnt(c.id).total, 0);
+  const discovered = progressCats.reduce((s, c) => s + cnt(c.id).discovered, 0);
   const activeCount = cats.filter(c => activeCategories.has(c.id)).length;
   const pct = progressTotal > 0 ? Math.round(discovered / progressTotal * 100) : 0;
   const cls = expanded ? 'expanded' : '';
@@ -73,10 +85,9 @@ function renderCategoryGroupHtml(groupName, cats, regionMarkers, expanded, toggl
   html += `</div>`;
   html += `<div class="cat-group-children ${cls}">`;
   cats.forEach(cat => {
-    const catMarkers = regionMarkers.filter(m => m.category === cat.id);
-    const count = catMarkers.length;
+    const count = cnt(cat.id).total;
     const trackable = PROGRESS_CATEGORIES.has(cat.id);
-    const dcount = trackable ? catMarkers.filter(m => isMarkerDiscovered(m)).length : 0;
+    const dcount = trackable ? cnt(cat.id).discovered : 0;
     const active = activeCategories.has(cat.id);
     const iconHtml = iconMap[cat.id]
       ? `<img src="${iconMap[cat.id]}" style="width:20px;height:20px;object-fit:contain;" alt="">`
@@ -107,6 +118,7 @@ function toggleGroupCategories(groupName, show) {
   group.categories.forEach(catId => {
     if (show) {
       activeCategories.add(catId);
+      ensureCategoryBuilt(catId);
       if (markerLayers[catId]) map.addLayer(markerLayers[catId]);
     } else {
       activeCategories.delete(catId);
@@ -124,6 +136,7 @@ function toggleOtherCategories(show) {
     if (groupedCatIds.has(cat.id)) return;
     if (show) {
       activeCategories.add(cat.id);
+      ensureCategoryBuilt(cat.id);
       if (markerLayers[cat.id]) map.addLayer(markerLayers[cat.id]);
     } else {
       activeCategories.delete(cat.id);
@@ -146,7 +159,7 @@ function renderLegend() {
   let html = '';
   CATEGORY_GROUPS.forEach(g => {
     const color = GROUP_COLORS[g.name] || DEFAULT_GROUP_COLOR;
-    const cats = g.categories.map(id => categories.find(c => c.id === id)).filter(Boolean);
+    const cats = g.categories.map(id => categoriesById[id]).filter(Boolean);
     if (!cats.length) return;
     html += `<div class="legend-group-title" style="color:${color}">${g.name}</div>`;
     cats.forEach(c => {
@@ -166,6 +179,7 @@ function toggleCategory(catId) {
     if (markerLayers[catId]) map.removeLayer(markerLayers[catId]);
   } else {
     activeCategories.add(catId);
+    ensureCategoryBuilt(catId);
     if (markerLayers[catId]) map.addLayer(markerLayers[catId]);
   }
   saveActiveCategoriesFromStorage();
@@ -177,6 +191,7 @@ function toggleAllCategories(show) {
   categories.forEach(cat => {
     if (show) {
       activeCategories.add(cat.id);
+      ensureCategoryBuilt(cat.id);
       if (markerLayers[cat.id]) {
         map.addLayer(markerLayers[cat.id]);
         totalMarkers += markerLayers[cat.id].getLayers().length;
@@ -237,7 +252,7 @@ function onSearchInput(query) {
   // Limit to 20 results
   const limited = matches.slice(0, 20);
   resultsEl.innerHTML = limited.map(m => {
-    const cat = categories.find(c => c.id === m.category);
+    const cat = categoriesById[m.category];
     const iconSrc = iconMap[m.category];
     const iconHtml = iconSrc
       ? `<img src="${iconSrc}" onerror="this.style.display='none'">`
@@ -266,6 +281,7 @@ function searchResultClick(x, y, markerKey) {
   const catId = parts[0];
   if (!activeCategories.has(catId) && markerLayers[catId]) {
     activeCategories.add(catId);
+    ensureCategoryBuilt(catId);
     markerLayers[catId].addTo(map);
     saveActiveCategoriesFromStorage();
     renderCategoryList('');
@@ -296,14 +312,19 @@ function toggleHideDiscovered() {
 }
 
 function applyHideDiscovered() {
-  Object.entries(markersByKey).forEach(([key, marker]) => {
-    const set = discoveredMarkers[currentRegion];
-    const discovered = set && set.has(key);
-    if (hideDiscovered && discovered) {
+  // Only discovered markers ever deviate from full opacity, so iterate just that
+  // set (intersected with the markers actually on the map) instead of scanning
+  // every marker. Non-discovered markers are always opacity 1 and untouched.
+  const set = discoveredMarkers[currentRegion];
+  if (!set) return;
+  set.forEach(key => {
+    const marker = markersByKey[key];
+    if (!marker) return;
+    if (hideDiscovered) {
       marker.setOpacity(0);
       if (marker._icon) marker._icon.style.pointerEvents = 'none';
     } else {
-      marker.setOpacity(discovered ? 0.5 : 1.0);
+      marker.setOpacity(0.5);
       if (marker._icon) marker._icon.style.pointerEvents = '';
     }
   });

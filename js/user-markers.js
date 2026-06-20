@@ -163,7 +163,7 @@ function editUserMarker(id) {
 
   // Build edit form with icon dropdown
   const iconMap = window.ICON_MAP || {};
-  const currentCat = categories.find(c => c.id === markerData.category);
+  const currentCat = categoriesById[markerData.category];
   const currentIconSrc = iconMap[markerData.category] || '';
   const currentCatName = currentCat ? currentCat.name : 'Custom';
   const currentIconHtml = currentIconSrc
@@ -305,7 +305,7 @@ function renderMyMarkersList() {
   }
 
   list.innerHTML = markers.map(m => {
-    const cat = categories.find(c => c.id === m.category);
+    const cat = categoriesById[m.category];
     const iconMap = window.ICON_MAP || {};
     const iconSrc = iconMap[m.category];
     const iconHtml = iconSrc

@@ -316,6 +316,7 @@ async function importAll() {
     if (data.markerDeletes && typeof data.markerDeletes === 'object') {
       localStorage.setItem(MARKER_DELETE_KEY, JSON.stringify(data.markerDeletes));
     }
+    invalidateEditedMarkers();  // imported edits/deletes affect both regions' caches
 
     // Rebuild the whole view so markers, progress, category filters, label
     // positions and marker edits all reflect the imported state.

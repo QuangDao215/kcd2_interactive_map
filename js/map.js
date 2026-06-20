@@ -288,6 +288,10 @@ async function loadRegion(region, opts = {}) {
     });
   });
 
+  // Fast O(1) category lookup, rebuilt per region (categories is reassigned above).
+  categoriesById = {};
+  categories.forEach(cat => { categoriesById[cat.id] = cat; });
+
   // Initialize category layers
   categories.forEach(cat => {
     markerLayers[cat.id] = L.layerGroup();
@@ -296,13 +300,20 @@ async function loadRegion(region, opts = {}) {
     }
   });
 
-  // Add markers to layers (with local renames applied and deletions removed)
-  let markerCount = 0;
-  getEditedMarkers(region).forEach(m => {
-    addPoiMarker(m);
-    markerCount++;
+  // Group this region's markers (renames/deletes applied) by category, then build
+  // ONLY the active categories now. Inactive categories are constructed lazily the
+  // first time they're toggled on (ensureCategoryBuilt) — so a default visit doesn't
+  // allocate every marker + its drag handler up front.
+  invalidateEditedMarkers(region);
+  const allMarkers = getEditedMarkers(region);
+  markersByCategory = {};
+  builtCategories = new Set();
+  allMarkers.forEach(m => {
+    (markersByCategory[m.category] || (markersByCategory[m.category] = [])).push(m);
   });
-  console.log(`[KCD2 Map] Region: ${region}, Categories: ${categories.length}, Markers loaded: ${markerCount}, Active layers: ${activeCategories.size}`);
+  let markerCount = 0;
+  activeCategories.forEach(catId => { markerCount += ensureCategoryBuilt(catId); });
+  console.log(`[KCD2 Map] Region: ${region}, Categories: ${categories.length}, Markers built: ${markerCount}/${allMarkers.length} (active only), Active layers: ${activeCategories.size}`);
 
   // Render user markers
   renderUserMarkersOnMap(region);
