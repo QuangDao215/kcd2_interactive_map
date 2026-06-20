@@ -77,6 +77,7 @@ function calClose() {
   calBounds = null;
   calOriginalBounds = null;
   map.dragging.enable();
+  updateLocalMapVisibility();  // restore normal trigger-based visibility
 }
 
 function saveLocalMapBounds(region, name, bounds) {
@@ -320,6 +321,10 @@ const LOCAL_MAP_TRIGGER = 0.5;  // 1.0 = whole footprint, 0.5 = inner half, smal
 
 function updateLocalMapVisibility() {
   if (!showLocalMaps) return;
+  // While the calibration tool is open it force-shows every overlay so you can see
+  // and position them — don't let pan/zoom hide them out from under you.
+  const calPanel = document.getElementById('calibration-panel');
+  if (calPanel && calPanel.classList.contains('active')) return;
   const zoom = map.getZoom();
   const center = map.getCenter();
 
