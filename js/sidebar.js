@@ -77,7 +77,7 @@ function renderCategoryGroupHtml(groupName, cats, counts, expanded, toggleAllAtt
     : `<span class="group-progress">${total}</span>`;
 
   let html = `<div class="cat-group">`;
-  html += `<div class="cat-group-header ${cls}" onclick="toggleGroup('${groupName}')">`;
+  html += `<div class="cat-group-header ${cls}" tabindex="0" role="button" aria-expanded="${expanded}" onclick="toggleGroup('${groupName}')">`;
   html += `  <span class="group-arrow">▶</span>`;
   html += `  <span class="group-name">${groupName}</span>`;
   html += `  ${progressHtml}`;
@@ -96,7 +96,7 @@ function renderCategoryGroupHtml(groupName, cats, counts, expanded, toggleAllAtt
       ? `<span class="cat-progress"><span class="done">${dcount}</span>/${count}</span>`
       : `<span class="cat-progress">${count}</span>`;
     html += `
-      <div class="category-item ${active ? 'active' : ''}" onclick="toggleCategory('${cat.id}')">
+      <div class="category-item ${active ? 'active' : ''}" tabindex="0" role="switch" aria-checked="${active}" aria-label="${escapeHtml(cat.name)}" onclick="toggleCategory('${cat.id}')">
         <span class="cat-icon">${iconHtml}</span>
         <span class="cat-name">${cat.name}</span>
         ${statsHtml}

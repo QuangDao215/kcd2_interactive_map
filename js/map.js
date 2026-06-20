@@ -44,6 +44,11 @@ async function init() {
   loadDiscoveredFromStorage();
   loadCollapsedGroups();
 
+  // On phones the sidebar is an overlay drawer — start collapsed so the map shows.
+  if (window.matchMedia && window.matchMedia('(max-width: 768px)').matches) {
+    document.getElementById('sidebar').classList.add('collapsed');
+  }
+
   // Load local maps config
   try {
     if (window.location.protocol !== 'file:') {

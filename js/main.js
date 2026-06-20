@@ -73,6 +73,12 @@ document.addEventListener('keydown', e => {
   }
   // Esc closes the topmost overlay (confirm → modal → tool panel → search → legend → popup)
   if (e.key === 'Escape') closeTopmostOverlay();
+  // Enter / Space activates a keyboard-focused category row or group header
+  if ((e.key === 'Enter' || e.key === ' ') && e.target && e.target.classList &&
+      (e.target.classList.contains('category-item') || e.target.classList.contains('cat-group-header'))) {
+    e.preventDefault();
+    e.target.click();
+  }
 });
 
 // ── Map view controls (U2/U3) ──
