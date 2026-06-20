@@ -883,41 +883,8 @@
      ██ ILLUMINATED EDITION — creative design layer
      ═══════════════════════════════════════════════ */
 
-  /* Faint paper grain blended into the sidebar panel */
-  #sidebar {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.4'/%3E%3C/svg%3E");
-    background-blend-mode: soft-light;
-  }
-
-  /* Candle-glow on the title + active region button */
-  .sidebar-header h1 { text-shadow: 0 0 14px rgba(201,168,76,0.32); animation: candleGlow 5s ease-in-out infinite; }
-  @keyframes candleGlow {
-    0%, 100% { text-shadow: 0 0 10px rgba(201,168,76,0.20); }
-    45% { text-shadow: 0 1px 18px rgba(221,185,79,0.48); }
-    70% { text-shadow: 0 0 12px rgba(201,168,76,0.28); }
-  }
-  .region-btn.active { box-shadow: 0 0 14px rgba(201,168,76,0.28), inset 0 0 0 1px var(--accent); }
-
-  /* Soft illuminated halo on settlement names (stacks with their legibility shadow) */
-  .settlement-label { filter: drop-shadow(0 0 5px rgba(232,213,163,0.35)); }
-
   /* Tactile press feedback on buttons */
   button:active, .tool-btn:active, .region-btn:active, .cat-ctrl-btn:active { transform: translateY(1px); }
-
-  /* ── Map frame: vignette + corner flourishes + compass rose ── */
-  #map-frame { position: absolute; inset: 0; pointer-events: none; z-index: 600; color: var(--accent); }
-  .mf-vignette {
-    position: absolute; inset: 0;
-    box-shadow: inset 0 0 170px 46px rgba(26,16,5,0.55);
-    background: radial-gradient(125% 125% at 50% 50%, transparent 60%, rgba(26,16,5,0.30) 100%);
-  }
-  .mf-corner { position: absolute; width: 74px; height: 74px; opacity: 0.5; filter: drop-shadow(0 1px 2px rgba(0,0,0,0.6)); }
-  .mf-tl { top: 6px; left: 6px; }
-  .mf-tr { top: 6px; right: 6px; transform: scaleX(-1); }
-  .mf-bl { bottom: 6px; left: 6px; transform: scaleY(-1); }
-  .mf-br { bottom: 6px; right: 6px; transform: scale(-1, -1); }
-  .mf-compass { position: absolute; right: 16px; bottom: 72px; width: 112px; height: 112px; opacity: 0.32; filter: drop-shadow(0 1px 3px rgba(0,0,0,0.7)); }
-  .mf-compass svg { width: 100%; height: 100%; }
 
   /* ── Cinematic intro / themed loading overlay ── */
   #intro-overlay {
@@ -942,10 +909,6 @@
   /* ── Scroll & wax-seal popups ── */
   .leaflet-popup-content-wrapper {
     background: linear-gradient(180deg, rgba(58,48,34,0.28), rgba(58,48,34,0) 42%), var(--bg-panel) !important;
-  }
-  .popup-title::after {
-    content: '❧'; display: block; text-align: center; color: var(--accent);
-    font-size: 12px; opacity: 0.65; margin: 4px 0 2px; line-height: 1;
   }
   .popup-progress-btn.completed { box-shadow: inset 0 1px 0 rgba(255,255,255,0.12), inset 0 -2px 6px rgba(0,0,0,0.30); }
   .popup-progress-btn.stamp { animation: inkStamp 0.45s cubic-bezier(.3, 1.4, .5, 1); }

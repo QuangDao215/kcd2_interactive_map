@@ -16,7 +16,7 @@
 <meta name="twitter:title" content="KCD2 Interactive Map">
 <meta name="twitter:description" content="Interactive POI/loot/quest map for Kingdom Come: Deliverance II with progress tracking.">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"/>
-<link rel="stylesheet" href="style.css?v=2026-06-20e">
+<link rel="stylesheet" href="style.css?v=2026-06-20f">
 </head>
 <body>
 
@@ -30,15 +30,6 @@
     <div class="intro-loading">Unrolling the map…</div>
   </div>
 </div>
-
-<!-- Decorative corner ornament, reused 4× in the map frame -->
-<svg width="0" height="0" style="position:absolute" aria-hidden="true">
-  <symbol id="ico-corner" viewBox="0 0 80 80" fill="none" stroke="currentColor" stroke-linecap="round">
-    <path d="M5 30 V11 A6 6 0 0 1 11 5 H30" stroke-width="2"/>
-    <path d="M12 12 C30 16 34 30 26 42 C27 31 18 28 11 33 C20 26 22 19 12 12 Z" stroke-width="1.1" opacity="0.85"/>
-    <circle cx="8" cy="8" r="2" fill="currentColor" stroke="none"/>
-  </symbol>
-</svg>
 
 <!-- Sidebar -->
 <div id="sidebar">
@@ -194,30 +185,6 @@
 <div id="map-container">
   <button id="toggle-sidebar" onclick="toggleSidebar()" aria-label="Toggle sidebar" title="Toggle sidebar">☰</button>
   <div id="map"></div>
-  <!-- Illuminated-cartography frame: aged vignette, corner flourishes, compass rose -->
-  <div id="map-frame" aria-hidden="true">
-    <div class="mf-vignette"></div>
-    <svg class="mf-corner mf-tl" viewBox="0 0 80 80"><use href="#ico-corner"/></svg>
-    <svg class="mf-corner mf-tr" viewBox="0 0 80 80"><use href="#ico-corner"/></svg>
-    <svg class="mf-corner mf-bl" viewBox="0 0 80 80"><use href="#ico-corner"/></svg>
-    <svg class="mf-corner mf-br" viewBox="0 0 80 80"><use href="#ico-corner"/></svg>
-    <div class="mf-compass">
-      <svg viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-linejoin="round">
-        <circle cx="60" cy="60" r="52" stroke-width="1.5" opacity="0.55"/>
-        <circle cx="60" cy="60" r="44" stroke-width="0.7" opacity="0.4"/>
-        <path d="M60 60 L86 34 L66 56 Z" fill="currentColor" stroke="none" opacity="0.3"/>
-        <path d="M60 60 L86 86 L64 66 Z" fill="currentColor" stroke="none" opacity="0.3"/>
-        <path d="M60 60 L34 86 L54 64 Z" fill="currentColor" stroke="none" opacity="0.3"/>
-        <path d="M60 60 L34 34 L56 54 Z" fill="currentColor" stroke="none" opacity="0.3"/>
-        <path d="M60 6 L66 60 L60 54 L54 60 Z" fill="currentColor" stroke="none" opacity="0.85"/>
-        <path d="M60 114 L54 60 L60 66 L66 60 Z" fill="currentColor" stroke="none" opacity="0.55"/>
-        <path d="M6 60 L60 54 L54 60 L60 66 Z" fill="currentColor" stroke="none" opacity="0.55"/>
-        <path d="M114 60 L60 66 L66 60 L60 54 Z" fill="currentColor" stroke="none" opacity="0.55"/>
-        <circle cx="60" cy="60" r="4" fill="currentColor" stroke="none" opacity="0.7"/>
-        <text x="60" y="20" font-size="12" font-family="Cinzel, serif" text-anchor="middle" fill="currentColor" stroke="none" opacity="0.95">N</text>
-      </svg>
-    </div>
-  </div>
   <div id="map-controls">
     <button onclick="resetView()" title="Reset view to whole region" aria-label="Reset view">⌂</button>
     <button onclick="toggleFullscreen()" title="Toggle fullscreen" aria-label="Toggle fullscreen">⛶</button>
@@ -373,21 +340,21 @@
      order preserved. The whole-game completion bar needs BOTH regions' totals up
      front, and these are also the file:// fallback, so we keep loading both — just
      no longer render-blocking. -->
-<script defer src="data/markers_trosky.js?v=2026-06-20e"></script>
-<script defer src="data/markers_kuttenberg.js?v=2026-06-20e"></script>
-<script defer src="data/icon_map.js?v=2026-06-20e"></script>
-<script defer src="data/settlement_labels.js?v=2026-06-20e"></script>
-<script defer src="data/local_maps.js?v=2026-06-20e"></script>
+<script defer src="data/markers_trosky.js?v=2026-06-20f"></script>
+<script defer src="data/markers_kuttenberg.js?v=2026-06-20f"></script>
+<script defer src="data/icon_map.js?v=2026-06-20f"></script>
+<script defer src="data/settlement_labels.js?v=2026-06-20f"></script>
+<script defer src="data/local_maps.js?v=2026-06-20f"></script>
 <!-- app split into domain scripts; load order matters (shared global scope) -->
-<script defer src="js/config.js?v=2026-06-20e"></script>
-<script defer src="js/map.js?v=2026-06-20e"></script>
-<script defer src="js/markers.js?v=2026-06-20e"></script>
-<script defer src="js/sidebar.js?v=2026-06-20e"></script>
-<script defer src="js/user-markers.js?v=2026-06-20e"></script>
-<script defer src="js/import-export.js?v=2026-06-20e"></script>
-<script defer src="js/local-maps.js?v=2026-06-20e"></script>
-<script defer src="js/labels.js?v=2026-06-20e"></script>
-<script defer src="js/storage.js?v=2026-06-20e"></script>
-<script defer src="js/main.js?v=2026-06-20e"></script>
+<script defer src="js/config.js?v=2026-06-20f"></script>
+<script defer src="js/map.js?v=2026-06-20f"></script>
+<script defer src="js/markers.js?v=2026-06-20f"></script>
+<script defer src="js/sidebar.js?v=2026-06-20f"></script>
+<script defer src="js/user-markers.js?v=2026-06-20f"></script>
+<script defer src="js/import-export.js?v=2026-06-20f"></script>
+<script defer src="js/local-maps.js?v=2026-06-20f"></script>
+<script defer src="js/labels.js?v=2026-06-20f"></script>
+<script defer src="js/storage.js?v=2026-06-20f"></script>
+<script defer src="js/main.js?v=2026-06-20f"></script>
 </body>
 </html>
