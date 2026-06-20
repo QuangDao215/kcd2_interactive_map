@@ -31,6 +31,9 @@ const CONFIG = {
     markerDeletes: 'kcd2_marker_deletes',
     labelPositions: 'kcd2_label_positions',
     localMapBounds: 'kcd2_local_map_bounds',
+    collapsedGroups: 'kcd2_collapsed_groups',
+    activeTab: 'kcd2_active_tab',
+    mapHintDismissed: 'kcd2_map_hint_dismissed',
   },
   // IndexedDB store for the remembered data/ folder handle (File System Access API).
   dirHandleStore: { db: 'kcd2-fs', store: 'handles', key: 'dataDir' },
@@ -59,6 +62,7 @@ let markersByKey = {};       // markerKey -> L.marker (for opacity control)
 let categoriesById = {};     // category_id -> category obj (O(1) lookup; built per region in loadRegion)
 let markersByCategory = {};  // category_id -> [markerData] for the current region (lazy-build source)
 let builtCategories = new Set(); // categories whose L.markers have been constructed (lazy build)
+let currentRegionBounds = null;  // L.latLngBounds of the active region (for Reset view)
 let userMarkerLayer = null;
 let settlementLabelLayer = null;  // text labels for settlement names
 let labelEditing = false;         // when true, settlement names are drag-to-position

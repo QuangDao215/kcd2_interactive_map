@@ -42,6 +42,7 @@ async function init() {
   loadUserMarkersFromStorage();
   loadActiveCategoriesFromStorage();
   loadDiscoveredFromStorage();
+  loadCollapsedGroups();
 
   // Load local maps config
   try {
@@ -67,6 +68,12 @@ async function init() {
 
   // Restore from URL hash if present
   restoreFromHash();
+
+  // Restore the last-open sidebar tab, then surface the one-time right-click hint.
+  let savedTab = null;
+  try { savedTab = localStorage.getItem(CONFIG.storageKeys.activeTab); } catch (e) { /* ignore */ }
+  if (savedTab) switchTab(savedTab);
+  maybeShowMapHint();
 }
 
 function attachMapEventHandlers() {
@@ -188,6 +195,7 @@ async function loadRegion(region, opts = {}) {
 
   // Bounds in image pixel coordinates
   const bounds = [[0, 0], [mapH, mapW]];
+  currentRegionBounds = bounds;   // remembered for the Reset-view control
   const pad = 200;
   // Pad south/east/west but NOT north — north padding would produce
   // negative pixel y with our transformation.
@@ -249,6 +257,7 @@ async function loadRegion(region, opts = {}) {
       } else {
         console.error(`[KCD2 Map] No marker data found for ${region}`);
         allMarkerData[region] = { categories: [], markers: [] };
+        if (typeof showToast === 'function') showToast(`Could not load markers for ${region} — check your connection`);
       }
     }
   }

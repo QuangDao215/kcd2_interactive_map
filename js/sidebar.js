@@ -109,7 +109,17 @@ function renderCategoryGroupHtml(groupName, cats, counts, expanded, toggleAllAtt
 
 function toggleGroup(groupName) {
   collapsedGroups[groupName] = !collapsedGroups[groupName];
+  saveCollapsedGroups();
   renderCategoryList(document.getElementById('search-input').value);
+}
+function saveCollapsedGroups() {
+  try { localStorage.setItem(CONFIG.storageKeys.collapsedGroups, JSON.stringify(collapsedGroups)); } catch (e) { /* ignore */ }
+}
+function loadCollapsedGroups() {
+  try {
+    const saved = localStorage.getItem(CONFIG.storageKeys.collapsedGroups);
+    if (saved) collapsedGroups = JSON.parse(saved);
+  } catch (e) { /* ignore */ }
 }
 
 function toggleGroupCategories(groupName, show) {

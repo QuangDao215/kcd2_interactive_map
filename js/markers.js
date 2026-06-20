@@ -198,7 +198,8 @@ function poiPopupHtml(markerData, cat, markerKey, btnId, doneLabel, undoneLabel)
     <div class="popup-coords">X: ${markerData.x} &nbsp; Y: ${markerData.y}</div>
     <button class="popup-progress-btn${discovered ? ' completed' : ''}" id="${btnId}"
       data-done-label="${doneLabel}" data-undone-label="${undoneLabel}"
-      onclick="toggleMarkerDiscovered('${markerKey}', '${btnId}')">${discovered ? doneLabel : undoneLabel}</button>`;
+      onclick="toggleMarkerDiscovered('${markerKey}', '${btnId}')">${discovered ? doneLabel : undoneLabel}</button>
+    <button class="popup-link-btn" onclick="copyCurrentLink()" title="Copy a link to this marker">🔗 Copy link</button>`;
 }
 
 function savePoiMarkerName(key) {

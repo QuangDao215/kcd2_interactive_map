@@ -53,27 +53,31 @@ function importMarkers() {
 
     if (!userMarkers[currentRegion]) userMarkers[currentRegion] = [];
 
-    let count = 0;
+    let count = 0, skipped = 0;
     markers.forEach(m => {
-      if (m.x !== undefined && m.y !== undefined) {
+      if (m && Number.isFinite(+m.x) && Number.isFinite(+m.y)) {
         const newMarker = {
           id: nextUserMarkerId++,
           name: m.name || 'Imported Marker',
           category: m.category || 'interesting_site',
           description: m.description || '',
-          x: m.x,
-          y: m.y,
+          x: +m.x,
+          y: +m.y,
         };
         userMarkers[currentRegion].push(newMarker);
         addUserMarkerToMap(newMarker);
         count++;
+      } else {
+        skipped++;
       }
     });
 
     saveUserMarkersToStorage();
     renderMyMarkersList();
     closeImportModal();
-    showToast(`Imported ${count} markers`);
+    showToast(skipped
+      ? `Imported ${count} markers (${skipped} skipped — missing/invalid coordinates)`
+      : `Imported ${count} markers`);
   } catch (e) {
     showToast('Invalid JSON format');
     console.error('Import error:', e);

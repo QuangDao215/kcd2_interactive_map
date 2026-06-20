@@ -4,6 +4,7 @@
 
 function onRightClick(e) {
   e.originalEvent.preventDefault();
+  dismissMapHint();   // they found the feature — retire the hint
   const x = Math.round(e.latlng.lng);
   const y = Math.round(e.latlng.lat);
 
@@ -318,7 +319,7 @@ function renderMyMarkersList() {
           <div class="mm-name">${escapeHtml(m.name)}</div>
           <div class="mm-coords">X: ${m.x} Y: ${m.y}</div>
         </div>
-        <button class="mm-delete" onclick="event.stopPropagation();deleteUserMarker(${m.id})" title="Delete">✕</button>
+        <button class="mm-delete" onclick="event.stopPropagation();showConfirm('Delete this marker?',{title:'Delete marker',confirmText:'Delete',danger:true}).then(ok=>ok&&deleteUserMarker(${m.id}))" title="Delete">✕</button>
       </div>
     `;
   }).join('');
