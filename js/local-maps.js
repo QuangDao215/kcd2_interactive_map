@@ -301,7 +301,8 @@ function loadLocalMaps(region) {
       zIndex: 500,
     });
     // Trigger zoom adapts to the town's footprint (overrides the JSON minZoom).
-    const config = { ...cfg, bounds, minZoom: adaptiveLocalMapMinZoom(bounds) };
+    const regionMaxZoom = (CONFIG.regions[region] && CONFIG.regions[region].max_zoom) || 5;
+    const config = { ...cfg, bounds, minZoom: adaptiveLocalMapMinZoom(bounds, regionMaxZoom) };
     localMapOverlays.push({ layer, config, visible: false });
   });
 
@@ -316,21 +317,21 @@ function loadLocalMaps(region) {
 const LOCAL_MAP_TRIGGER = 0.5;  // 1.0 = whole footprint, 0.5 = inner half, smaller = tighter
 
 // Adaptive trigger zoom: a town's detail overlay should appear once it has grown to
-// a useful on-screen size. A tiny camp is a speck until you zoom right in, so it
-// needs a higher zoom; a sprawling town appears earlier. Derived from the overlay's
-// world-pixel footprint relative to a reference town — halving the footprint adds one
-// zoom level. (Region CRS scale differs, so this keeps cross-region behaviour as-is.)
-const LOCAL_MAP_REF_SIZE = 1200;   // ~typical town footprint (world px) → baseline zoom
-const LOCAL_MAP_BASE_ZOOM = 5.5;   // minZoom for a reference-sized town
-const LOCAL_MAP_MIN_TRIGGER_ZOOM = 4.5;   // clamp — largest cities
-const LOCAL_MAP_MAX_TRIGGER_ZOOM = 6.5;   // clamp — tiniest camps
-function adaptiveLocalMapMinZoom(bounds) {
+// a useful ON-SCREEN size — so a tiny camp (a speck on the world map) needs you
+// zoomed right in, while a sprawling town appears earlier. On-screen size at zoom z
+// is footprint × 2^(z − regionMaxZoom); we solve for the zoom at which it reaches a
+// target. Region-aware so the same on-screen trigger stays reachable in both regions
+// (Trosky's max zoom is lower than Kuttenberg's). Calibrated so Devil's Den (~779px
+// footprint in Kuttenberg, native max zoom 6) triggers at zoom 7.5.
+const LOCAL_MAP_TARGET_PX = 2203;   // 779 × 2^1.5 → Devil's Den = 7.5
+function adaptiveLocalMapMinZoom(bounds, regionMaxZoom) {
   const width = Math.abs(bounds[1][1] - bounds[0][1]);
   const height = Math.abs(bounds[1][0] - bounds[0][0]);
   const size = (width + height) / 2;
-  if (!size) return LOCAL_MAP_BASE_ZOOM;
-  const z = LOCAL_MAP_BASE_ZOOM + Math.log2(LOCAL_MAP_REF_SIZE / size);
-  return Math.min(LOCAL_MAP_MAX_TRIGGER_ZOOM, Math.max(LOCAL_MAP_MIN_TRIGGER_ZOOM, z));
+  if (!size) return regionMaxZoom;
+  const z = regionMaxZoom + Math.log2(LOCAL_MAP_TARGET_PX / size);
+  // Keep it reachable: never below a sane floor, never at/above the map's max zoom.
+  return Math.min(regionMaxZoom + 1.75, Math.max(regionMaxZoom - 2, z));
 }
 
 function updateLocalMapVisibility() {
