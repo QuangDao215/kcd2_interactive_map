@@ -331,7 +331,10 @@ function adaptiveLocalMapMinZoom(bounds, regionMaxZoom) {
   if (!size) return regionMaxZoom;
   const z = regionMaxZoom + Math.log2(LOCAL_MAP_TARGET_PX / size);
   // Keep it reachable: never below a sane floor, never at/above the map's max zoom.
-  return Math.min(regionMaxZoom + 1.75, Math.max(regionMaxZoom - 2, z));
+  const clamped = Math.min(regionMaxZoom + 1.75, Math.max(regionMaxZoom - 2, z));
+  // Snap to the 0.25 zoom grid (map zoomSnap) so the threshold lands on a zoom you
+  // can actually stop at — otherwise a ~6.50 threshold only triggers at 6.75.
+  return Math.round(clamped / 0.25) * 0.25;
 }
 
 function updateLocalMapVisibility() {
