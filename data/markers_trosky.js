@@ -550,7 +550,7 @@ window.MARKER_DATA_TROSKY = {
       "label_key": "@ui_maplegend_beeHives"
     },
     {
-      "name": "Roe Deer Hunting Spot",
+      "name": "Roe Hunting Spot",
       "category": "hunting_deer",
       "description": "",
       "world_x": 2878.45,
@@ -609,7 +609,7 @@ window.MARKER_DATA_TROSKY = {
       "label_key": "@ui_maplegend_apothecaryEmerich"
     },
     {
-      "name": "Roe Deer Hunting Spot",
+      "name": "Roe Hunting Spot",
       "category": "hunting_deer",
       "description": "",
       "world_x": 1854.38,
@@ -1124,7 +1124,7 @@ window.MARKER_DATA_TROSKY = {
       "label_key": "@ui_maplegend_zelejovsPool"
     },
     {
-      "name": "Roe Deer Hunting Spot",
+      "name": "Roe Hunting Spot",
       "category": "hunting_deer",
       "description": "",
       "world_x": 2300.99,
@@ -1466,7 +1466,7 @@ window.MARKER_DATA_TROSKY = {
       "label_key": "@ui_maplegend_unearthedCorpseAndWolfes"
     },
     {
-      "name": "Roe Deer Hunting Spot",
+      "name": "Roe Hunting Spot",
       "category": "hunting_deer",
       "description": "",
       "world_x": 2265.01,
@@ -1657,7 +1657,7 @@ window.MARKER_DATA_TROSKY = {
       "label_key": "@ui_maplegend_banditNearTachov"
     },
     {
-      "name": "Roe Deer Hunting Spot",
+      "name": "Roe Hunting Spot",
       "category": "hunting_deer",
       "description": "",
       "world_x": 1003.48,
@@ -1730,7 +1730,7 @@ window.MARKER_DATA_TROSKY = {
       "label_key": "@ui_maplegend_vantagePoint"
     },
     {
-      "name": "Roe Deer Hunting Spot",
+      "name": "Roe Hunting Spot",
       "category": "hunting_deer",
       "description": "",
       "world_x": 2583.49,
@@ -1773,7 +1773,7 @@ window.MARKER_DATA_TROSKY = {
       "is_discoverable": true
     },
     {
-      "name": "Roe Deer Hunting Spot",
+      "name": "Roe Hunting Spot",
       "category": "hunting_deer",
       "description": "",
       "world_x": 2130.98,
@@ -2076,7 +2076,7 @@ window.MARKER_DATA_TROSKY = {
       "label_key": "@ui_maplegend_unearthedCorpses"
     },
     {
-      "name": "Roe Deer Hunting Spot",
+      "name": "Roe Hunting Spot",
       "category": "hunting_deer",
       "description": "",
       "world_x": 2140.31,
@@ -2470,7 +2470,7 @@ window.MARKER_DATA_TROSKY = {
       "label_key": "@ui_maplegend_roadsideCamp"
     },
     {
-      "name": "Roe Deer Hunting Spot",
+      "name": "Roe Hunting Spot",
       "category": "hunting_deer",
       "description": "",
       "world_x": 2763.42,
@@ -2484,7 +2484,7 @@ window.MARKER_DATA_TROSKY = {
       "is_discoverable": true
     },
     {
-      "name": "Roe Deer Hunting Spot",
+      "name": "Roe Hunting Spot",
       "category": "hunting_deer",
       "description": "",
       "world_x": 1979.75,
@@ -2644,7 +2644,7 @@ window.MARKER_DATA_TROSKY = {
       "is_discoverable": true
     },
     {
-      "name": "Roe Deer Hunting Spot",
+      "name": "Roe Hunting Spot",
       "category": "hunting_deer",
       "description": "",
       "world_x": 2102.01,
@@ -3160,7 +3160,7 @@ window.MARKER_DATA_TROSKY = {
       "label_key": "@ui_maplegend_blacksmithRadovan"
     },
     {
-      "name": "Roe Deer Hunting Spot",
+      "name": "Roe Hunting Spot",
       "category": "hunting_deer",
       "description": "",
       "world_x": 1626.55,
@@ -3174,7 +3174,7 @@ window.MARKER_DATA_TROSKY = {
       "is_discoverable": true
     },
     {
-      "name": "Roe Deer Hunting Spot",
+      "name": "Roe Hunting Spot",
       "category": "hunting_deer",
       "description": "",
       "world_x": 2693.33,
@@ -3277,7 +3277,7 @@ window.MARKER_DATA_TROSKY = {
       "label_key": "@ui_maplegend_skeletonInWetlands"
     },
     {
-      "name": "Roe Deer Hunting Spot",
+      "name": "Roe Hunting Spot",
       "category": "hunting_deer",
       "description": "",
       "world_x": 1717.77,
@@ -3425,7 +3425,7 @@ window.MARKER_DATA_TROSKY = {
       "label_key": "@ui_maplegend_zizkasWatch"
     },
     {
-      "name": "Roe Deer Hunting Spot",
+      "name": "Roe Hunting Spot",
       "category": "hunting_deer",
       "description": "",
       "world_x": 2716.84,
@@ -3439,7 +3439,7 @@ window.MARKER_DATA_TROSKY = {
       "is_discoverable": true
     },
     {
-      "name": "Roe Deer Hunting Spot",
+      "name": "Roe Hunting Spot",
       "category": "hunting_deer",
       "description": "",
       "world_x": 2708.83,
@@ -3453,7 +3453,7 @@ window.MARKER_DATA_TROSKY = {
       "is_discoverable": true
     },
     {
-      "name": "Roe Deer Hunting Spot",
+      "name": "Roe Hunting Spot",
       "category": "hunting_deer",
       "description": "",
       "world_x": 1923.44,
@@ -3597,7 +3597,7 @@ window.MARKER_DATA_TROSKY = {
       "is_discoverable": true
     },
     {
-      "name": "Roe Deer Hunting Spot",
+      "name": "Roe Hunting Spot",
       "category": "hunting_deer",
       "description": "",
       "world_x": 2098.12,

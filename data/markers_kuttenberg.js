@@ -543,7 +543,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "label_key": "ui_maplegend_dogsGrave"
     },
     {
-      "name": "Hospoda Miskovice",
+      "name": "Tavern",
       "category": "tavern",
       "description": "",
       "world_x": 1545.53,
@@ -819,7 +819,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "label_key": "@ui_maplegend_abandonedHouse"
     },
     {
-      "name": "Poi5",
+      "name": "Enemy camp",
       "category": "bandit_camp",
       "description": "",
       "world_x": 3756.76,
@@ -1152,7 +1152,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Roe Deer Hunting Spot",
+      "name": "Roe Hunting Spot",
       "category": "hunting_deer",
       "description": "",
       "world_x": 3391.98,
@@ -1209,7 +1209,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Krejci Miskovice",
+      "name": "Tailor",
       "category": "tailor",
       "description": "",
       "world_x": 1543.05,
@@ -1279,7 +1279,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Roe Deer Hunting Spot",
+      "name": "Roe Hunting Spot",
       "category": "hunting_deer",
       "description": "",
       "world_x": 1881.89,
@@ -1322,7 +1322,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Reznik Miskovice",
+      "name": "Butcher",
       "category": "butchery",
       "description": "",
       "world_x": 1564.79,
@@ -1422,7 +1422,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "label_key": "@ui_maplegend_hiddenChest"
     },
     {
-      "name": "Roe Deer Hunting Spot",
+      "name": "Roe Hunting Spot",
       "category": "hunting_deer",
       "description": "",
       "world_x": 406.42,
@@ -1822,7 +1822,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Cat Lady",
+      "name": "Cat woman",
       "category": "interesting_site",
       "description": "",
       "world_x": 3765.1,
@@ -2099,7 +2099,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Roe Deer Hunting Spot",
+      "name": "Roe Hunting Spot",
       "category": "hunting_deer",
       "description": "",
       "world_x": 894.67,
@@ -2230,7 +2230,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "label_key": "@ui_maplegend_fishpond"
     },
     {
-      "name": "Pekar Miskovice",
+      "name": "Baker",
       "category": "baker",
       "description": "",
       "world_x": 1534.38,
@@ -2258,7 +2258,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Reznik Pritoky",
+      "name": "Butcher",
       "category": "butchery",
       "description": "",
       "world_x": 2358.05,
@@ -2400,7 +2400,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Roe Deer Hunting Spot",
+      "name": "Roe Hunting Spot",
       "category": "hunting_deer",
       "description": "",
       "world_x": 368.77,
@@ -2442,7 +2442,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Roe Deer Hunting Spot",
+      "name": "Roe Hunting Spot",
       "category": "hunting_deer",
       "description": "",
       "world_x": 1357.78,
@@ -2456,7 +2456,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Roe Deer Hunting Spot",
+      "name": "Roe Hunting Spot",
       "category": "hunting_deer",
       "description": "",
       "world_x": 447.09,
@@ -2602,7 +2602,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "label_key": "@ui_maplegend_abandonedCamp"
     },
     {
-      "name": "Roe Deer Hunting Spot",
+      "name": "Roe Hunting Spot",
       "category": "hunting_deer",
       "description": "",
       "world_x": 2004.54,
@@ -2687,7 +2687,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Roe Deer Hunting Spot",
+      "name": "Roe Hunting Spot",
       "category": "hunting_deer",
       "description": "",
       "world_x": 2739.51,
@@ -2774,7 +2774,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "label_key": "@ui_maplegend_burnedForest"
     },
     {
-      "name": "Roe Deer Hunting Spot",
+      "name": "Roe Hunting Spot",
       "category": "hunting_deer",
       "description": "",
       "world_x": 1972.1,
@@ -2788,7 +2788,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Roe Deer Hunting Spot",
+      "name": "Roe Hunting Spot",
       "category": "hunting_deer",
       "description": "",
       "world_x": 1735.6,
@@ -2831,7 +2831,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Roe Deer Hunting Spot",
+      "name": "Roe Hunting Spot",
       "category": "hunting_deer",
       "description": "",
       "world_x": 1144.75,
@@ -2845,7 +2845,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Zelinar Miskovice",
+      "name": "Grocer",
       "category": "grocer",
       "description": "",
       "world_x": 1538.14,
@@ -2859,14 +2859,14 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Apatykar Pritoky",
+      "name": "Apothecary",
       "category": "apothecary",
       "description": "",
       "world_x": 2291.84,
       "world_y": 1791.34,
       "world_z": 130.07,
-      "x": 6896,
-      "y": 6117,
+      "x": 6895,
+      "y": 6120,
       "poi_type_name": "apothecary",
       "poi_type_id": "5ebec865-8490-4f72-b06e-74e324f04865",
       "is_fast_travel": false,
@@ -2902,7 +2902,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "label_key": "@ui_maplegend_desertersCamp"
     },
     {
-      "name": "Roe Deer Hunting Spot",
+      "name": "Roe Hunting Spot",
       "category": "hunting_deer",
       "description": "",
       "world_x": 954.29,
@@ -3019,7 +3019,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Roe Deer Hunting Spot",
+      "name": "Roe Hunting Spot",
       "category": "hunting_deer",
       "description": "",
       "world_x": 3487.97,
@@ -3106,7 +3106,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "label_key": "@ui_maplegend_abandonedSmithy"
     },
     {
-      "name": "Roe Deer Hunting Spot",
+      "name": "Roe Hunting Spot",
       "category": "hunting_deer",
       "description": "",
       "world_x": 2835.45,
@@ -3194,7 +3194,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "label_key": "@ui_maplegend_minerWithShop"
     },
     {
-      "name": "Roe Deer Hunting Spot",
+      "name": "Roe Hunting Spot",
       "category": "hunting_deer",
       "description": "",
       "world_x": 1309.66,
@@ -3339,14 +3339,14 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Zelinar Pritoky",
+      "name": "Grocer",
       "category": "grocer",
       "description": "",
       "world_x": 2326.09,
       "world_y": 1836.35,
       "world_z": 131.74,
-      "x": 6880,
-      "y": 6236,
+      "x": 6877,
+      "y": 6244,
       "poi_type_name": "vegetable_shop",
       "poi_type_id": "4bf7bb03-a62a-4d70-b203-7c96ee7952c5",
       "is_fast_travel": false,
@@ -3586,7 +3586,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Roe Deer Hunting Spot",
+      "name": "Roe Hunting Spot",
       "category": "hunting_deer",
       "description": "",
       "world_x": 2156.01,
@@ -3672,7 +3672,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Roe Deer Hunting Spot",
+      "name": "Roe Hunting Spot",
       "category": "hunting_deer",
       "description": "",
       "world_x": 2293.05,
@@ -3714,7 +3714,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Roe Deer Hunting Spot",
+      "name": "Roe Hunting Spot",
       "category": "hunting_deer",
       "description": "",
       "world_x": 3174.35,
@@ -3757,7 +3757,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "label_key": "@ui_maplegend_cartInPool"
     },
     {
-      "name": "Roe Deer Hunting Spot",
+      "name": "Roe Hunting Spot",
       "category": "hunting_deer",
       "description": "",
       "world_x": 1001.57,
@@ -3800,7 +3800,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Roe Deer Hunting Spot",
+      "name": "Roe Hunting Spot",
       "category": "hunting_deer",
       "description": "",
       "world_x": 3469.75,
@@ -3872,7 +3872,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Roe Deer Hunting Spot",
+      "name": "Roe Hunting Spot",
       "category": "hunting_deer",
       "description": "",
       "world_x": 946.55,
@@ -4057,7 +4057,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "label_key": "@ui_maplegend_herbalGarden"
     },
     {
-      "name": "Roe Deer Hunting Spot",
+      "name": "Roe Hunting Spot",
       "category": "hunting_deer",
       "description": "",
       "world_x": 1670.77,
@@ -4142,7 +4142,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Roe Deer Hunting Spot",
+      "name": "Roe Hunting Spot",
       "category": "hunting_deer",
       "description": "",
       "world_x": 2160.02,
@@ -4248,8 +4248,8 @@ window.MARKER_DATA_KUTTENBERG = {
       "world_x": 3068.36,
       "world_y": 1358.66,
       "world_z": 100.25,
-      "x": 8705,
-      "y": 6632,
+      "x": 8690,
+      "y": 6656,
       "poi_type_name": "fasttravel",
       "poi_type_id": "882a2326-ab14-4b8e-a953-b7e54346c41c",
       "is_fast_travel": true,
@@ -4284,7 +4284,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Roe Deer Hunting Spot",
+      "name": "Roe Hunting Spot",
       "category": "hunting_deer",
       "description": "",
       "world_x": 799.52,
@@ -4511,7 +4511,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "label_key": "@ui_maplegend_stallWithBeverage"
     },
     {
-      "name": "Roe Deer Hunting Spot",
+      "name": "Roe Hunting Spot",
       "category": "hunting_deer",
       "description": "",
       "world_x": 3152.67,
@@ -4701,7 +4701,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "label_key": "@ui_maplegend_herbalGarden"
     },
     {
-      "name": "Roe Deer Hunting Spot",
+      "name": "Roe Hunting Spot",
       "category": "hunting_deer",
       "description": "",
       "world_x": 947.06,
@@ -4815,7 +4815,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Roe Deer Hunting Spot",
+      "name": "Roe Hunting Spot",
       "category": "hunting_deer",
       "description": "",
       "world_x": 1585.26,
@@ -4858,7 +4858,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "label_key": "@ui_maplegend_remnantsOfCaravan"
     },
     {
-      "name": "Roe Deer Hunting Spot",
+      "name": "Roe Hunting Spot",
       "category": "hunting_deer",
       "description": "",
       "world_x": 487.49,
@@ -4974,7 +4974,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Roe Deer Hunting Spot",
+      "name": "Roe Hunting Spot",
       "category": "hunting_deer",
       "description": "",
       "world_x": 448.49,
@@ -4988,28 +4988,28 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Pekar Pritoky",
+      "name": "Baker",
       "category": "baker",
       "description": "",
       "world_x": 2299.34,
       "world_y": 1836.55,
       "world_z": 129.92,
-      "x": 6840,
-      "y": 6196,
+      "x": 6834,
+      "y": 6206,
       "poi_type_name": "bakery",
       "poi_type_id": "4f537a7c-a42f-4dd7-97ab-8460761dc8f5",
       "is_fast_travel": false,
       "is_discoverable": true
     },
     {
-      "name": "Poi4",
+      "name": "Trader",
       "category": "trader",
       "description": "",
       "world_x": 2314.84,
       "world_y": 1808.35,
       "world_z": 131.26,
-      "x": 6905,
-      "y": 6177,
+      "x": 6901,
+      "y": 6182,
       "poi_type_name": "shop",
       "poi_type_id": "3b1c883b-387e-4b9c-a5df-d9fc7dc8195c",
       "is_fast_travel": false,
@@ -7673,8 +7673,8 @@ window.MARKER_DATA_KUTTENBERG = {
       "world_x": 3048.65,
       "world_y": 1339.79,
       "world_z": 110.85,
-      "x": 8704,
-      "y": 6574,
+      "x": 8694,
+      "y": 6586,
       "poi_type_name": "nest",
       "poi_type_id": "_entity_nest",
       "is_fast_travel": false,
@@ -7785,8 +7785,8 @@ window.MARKER_DATA_KUTTENBERG = {
       "world_x": 3062.71,
       "world_y": 1432.25,
       "world_z": 113.88,
-      "x": 8586,
-      "y": 6734,
+      "x": 8601,
+      "y": 6742,
       "poi_type_name": "nest",
       "poi_type_id": "_entity_nest",
       "is_fast_travel": false,
@@ -8863,8 +8863,8 @@ window.MARKER_DATA_KUTTENBERG = {
       "world_x": 3070.61,
       "world_y": 1440.78,
       "world_z": 107.13,
-      "x": 8585,
-      "y": 6759,
+      "x": 8590,
+      "y": 6777,
       "poi_type_name": "indulgence_box",
       "poi_type_id": "_entity_indulgence_box",
       "is_fast_travel": false,
@@ -9913,8 +9913,8 @@ window.MARKER_DATA_KUTTENBERG = {
       "world_x": 3087.79,
       "world_y": 1350.8,
       "world_z": 98.99,
-      "x": 8746,
-      "y": 6649,
+      "x": 8748,
+      "y": 6661,
       "poi_type_name": "drying_rack",
       "poi_type_id": "_entity_drying_rack",
       "is_fast_travel": false,
@@ -14008,23 +14008,6 @@ window.MARKER_DATA_KUTTENBERG = {
       "name": "Hunting sword",
       "category": "loot_sword",
       "description": "",
-      "x": 8748,
-      "y": 6620,
-      "world_x": 0,
-      "world_y": 0,
-      "world_z": 0,
-      "poi_type_name": "gg_import_loot_sword",
-      "poi_type_id": "_gg_db-45974",
-      "is_fast_travel": false,
-      "is_discoverable": true,
-      "source": "gamerguides",
-      "gg_marker_id": 203645,
-      "gg_icon": "/images/map-marker-icon/15/252410/huntingswordbasic_icon-c5ec17ae.png.png"
-    },
-    {
-      "name": "Hunting sword",
-      "category": "loot_sword",
-      "description": "",
       "x": 6287,
       "y": 1206,
       "world_x": 0,
@@ -15839,23 +15822,6 @@ window.MARKER_DATA_KUTTENBERG = {
       "source": "gamerguides",
       "gg_marker_id": 204054,
       "gg_icon": "/images/map-marker-icon/15/252379/sermiry_longswordguild_icon-b1f93204.png.png"
-    },
-    {
-      "name": "Riding gloves",
-      "category": "loot_armour_arms",
-      "description": "",
-      "x": 8754,
-      "y": 6621,
-      "world_x": 0,
-      "world_y": 0,
-      "world_z": 0,
-      "poi_type_name": "gg_import_loot_armour_arms",
-      "poi_type_id": "_gg_db-45956",
-      "is_fast_travel": false,
-      "is_discoverable": true,
-      "source": "gamerguides",
-      "gg_marker_id": 204056,
-      "gg_icon": "/images/map-marker-icon/15/252432/gloves05_m06_c_icon-ea0328f4.png.png"
     },
     {
       "name": "Riding gloves",
@@ -19343,142 +19309,6 @@ window.MARKER_DATA_KUTTENBERG = {
       "gg_icon": "/images/map-marker-icon/15/254018/player_lockpick_icon-91e29864.png.png"
     },
     {
-      "name": "Dried deer ribs",
-      "category": "loot_food",
-      "description": "",
-      "x": 10133,
-      "y": 7294,
-      "world_x": 0,
-      "world_y": 0,
-      "world_z": 0,
-      "poi_type_name": "gg_import_loot_food",
-      "poi_type_id": "_gg_db-45963",
-      "is_fast_travel": false,
-      "is_discoverable": true,
-      "source": "gamerguides",
-      "gg_marker_id": 204642,
-      "gg_icon": "/images/map-marker-icon/15/252726/foodinsack_icon-f0fcc655.png.png"
-    },
-    {
-      "name": "Dried roe deer meat",
-      "category": "loot_food",
-      "description": "",
-      "x": 10146,
-      "y": 7297,
-      "world_x": 0,
-      "world_y": 0,
-      "world_z": 0,
-      "poi_type_name": "gg_import_loot_food",
-      "poi_type_id": "_gg_db-45963",
-      "is_fast_travel": false,
-      "is_discoverable": true,
-      "source": "gamerguides",
-      "gg_marker_id": 204643,
-      "gg_icon": "/images/map-marker-icon/15/252733/foodinsack_icon-f0fcc655.png.png"
-    },
-    {
-      "name": "Pretzel",
-      "category": "loot_food",
-      "description": "",
-      "x": 10157,
-      "y": 7293,
-      "world_x": 0,
-      "world_y": 0,
-      "world_z": 0,
-      "poi_type_name": "gg_import_loot_food",
-      "poi_type_id": "_gg_db-45963",
-      "is_fast_travel": false,
-      "is_discoverable": true,
-      "source": "gamerguides",
-      "gg_marker_id": 204644,
-      "gg_icon": "/images/map-marker-icon/15/252881/pretzel_icon-fb484b4a.png.png"
-    },
-    {
-      "name": "Groschen",
-      "category": "loot_usable",
-      "description": "",
-      "x": 10146,
-      "y": 7287,
-      "world_x": 0,
-      "world_y": 0,
-      "world_z": 0,
-      "poi_type_name": "gg_import_loot_usable",
-      "poi_type_id": "_gg_db-45995",
-      "is_fast_travel": false,
-      "is_discoverable": true,
-      "source": "gamerguides",
-      "gg_marker_id": 204645,
-      "gg_icon": "/images/map-marker-icon/15/254004/money_icon-5c505d87.png.png"
-    },
-    {
-      "name": "Ordinary coat",
-      "category": "loot_armour_body",
-      "description": "",
-      "x": 10086,
-      "y": 7412,
-      "world_x": 0,
-      "world_y": 0,
-      "world_z": 0,
-      "poi_type_name": "gg_import_loot_armour_body",
-      "poi_type_id": "_gg_db-45953",
-      "is_fast_travel": false,
-      "is_discoverable": true,
-      "source": "gamerguides",
-      "gg_marker_id": 204646,
-      "gg_icon": "/images/map-marker-icon/15/252504/coat02_m05_d_icon-72a36eb6.png.png"
-    },
-    {
-      "name": "Leather gloves",
-      "category": "loot_armour_arms",
-      "description": "",
-      "x": 10096,
-      "y": 7413,
-      "world_x": 0,
-      "world_y": 0,
-      "world_z": 0,
-      "poi_type_name": "gg_import_loot_armour_arms",
-      "poi_type_id": "_gg_db-45956",
-      "is_fast_travel": false,
-      "is_discoverable": true,
-      "source": "gamerguides",
-      "gg_marker_id": 204647,
-      "gg_icon": "/images/map-marker-icon/15/252440/gloves01_m05_b1_icon-9a64c2c1.png.png"
-    },
-    {
-      "name": "Spade",
-      "category": "loot_usable",
-      "description": "",
-      "x": 10082,
-      "y": 7450,
-      "world_x": 0,
-      "world_y": 0,
-      "world_z": 0,
-      "poi_type_name": "gg_import_loot_usable",
-      "poi_type_id": "_gg_db-45995",
-      "is_fast_travel": false,
-      "is_discoverable": true,
-      "source": "gamerguides",
-      "gg_marker_id": 204648,
-      "gg_icon": "/images/map-marker-icon/15/254014/player_shovel_icon-7bb7367f.png.png"
-    },
-    {
-      "name": "Beer",
-      "category": "loot_food",
-      "description": "",
-      "x": 10098,
-      "y": 7451,
-      "world_x": 0,
-      "world_y": 0,
-      "world_z": 0,
-      "poi_type_name": "gg_import_loot_food",
-      "poi_type_id": "_gg_db-45963",
-      "is_fast_travel": false,
-      "is_discoverable": true,
-      "source": "gamerguides",
-      "gg_marker_id": 204649,
-      "gg_icon": "/images/map-marker-icon/15/252784/beer_icon-b25b7998.png.png"
-    },
-    {
       "name": "Frankfurt steel",
       "category": "loot_blacksmithing",
       "description": "",
@@ -19494,40 +19324,6 @@ window.MARKER_DATA_KUTTENBERG = {
       "source": "gamerguides",
       "gg_marker_id": 204650,
       "gg_icon": "/images/map-marker-icon/15/253327/bsmt_steelnormal_icon-3528a4f1.png.png"
-    },
-    {
-      "name": "Hare pelt",
-      "category": "loot_misc",
-      "description": "",
-      "x": 10131,
-      "y": 7453,
-      "world_x": 0,
-      "world_y": 0,
-      "world_z": 0,
-      "poi_type_name": "gg_import_loot_misc",
-      "poi_type_id": "_gg_db-45994",
-      "is_fast_travel": false,
-      "is_discoverable": true,
-      "source": "gamerguides",
-      "gg_marker_id": 204651,
-      "gg_icon": "/images/map-marker-icon/15/253866/skin_hare_icon-d55ac285.png.png"
-    },
-    {
-      "name": "Sheepskin",
-      "category": "loot_misc",
-      "description": "",
-      "x": 10145,
-      "y": 7454,
-      "world_x": 0,
-      "world_y": 0,
-      "world_z": 0,
-      "poi_type_name": "gg_import_loot_misc",
-      "poi_type_id": "_gg_db-45994",
-      "is_fast_travel": false,
-      "is_discoverable": true,
-      "source": "gamerguides",
-      "gg_marker_id": 204652,
-      "gg_icon": "/images/map-marker-icon/15/253912/skin_sheep_icon-a2c03569.png.png"
     },
     {
       "name": "All's fair...",
@@ -20805,79 +20601,11 @@ window.MARKER_DATA_KUTTENBERG = {
       "gg_icon": "/images/map-marker-icon/15/253860/loot_goldencross_icon-954cdc04.png.png"
     },
     {
-      "name": "Weak Cockerel",
-      "category": "loot_potion",
-      "description": "",
-      "x": 8730,
-      "y": 6594,
-      "world_x": 0,
-      "world_y": 0,
-      "world_z": 0,
-      "poi_type_name": "gg_import_loot_potion",
-      "poi_type_id": "_gg_db-45969",
-      "is_fast_travel": false,
-      "is_discoverable": true,
-      "source": "gamerguides",
-      "gg_marker_id": 204808,
-      "gg_icon": "/images/map-marker-icon/15/252985/potion_insomnia_icon-da9bae5a.png.png"
-    },
-    {
-      "name": "Peach",
-      "category": "loot_food",
-      "description": "",
-      "x": 8738,
-      "y": 6596,
-      "world_x": 0,
-      "world_y": 0,
-      "world_z": 0,
-      "poi_type_name": "gg_import_loot_food",
-      "poi_type_id": "_gg_db-45963",
-      "is_fast_travel": false,
-      "is_discoverable": true,
-      "source": "gamerguides",
-      "gg_marker_id": 204809,
-      "gg_icon": "/images/map-marker-icon/15/252737/peach_icon-432de02a.png.png"
-    },
-    {
-      "name": "Apple",
-      "category": "loot_food",
-      "description": "",
-      "x": 8732,
-      "y": 6586,
-      "world_x": 0,
-      "world_y": 0,
-      "world_z": 0,
-      "poi_type_name": "gg_import_loot_food",
-      "poi_type_id": "_gg_db-45963",
-      "is_fast_travel": false,
-      "is_discoverable": true,
-      "source": "gamerguides",
-      "gg_marker_id": 204810,
-      "gg_icon": "/images/map-marker-icon/15/252708/applecooked_icon-3f392ecd.png.png"
-    },
-    {
-      "name": "Pear",
-      "category": "loot_food",
-      "description": "",
-      "x": 8740,
-      "y": 6591,
-      "world_x": 0,
-      "world_y": 0,
-      "world_z": 0,
-      "poi_type_name": "gg_import_loot_food",
-      "poi_type_id": "_gg_db-45963",
-      "is_fast_travel": false,
-      "is_discoverable": true,
-      "source": "gamerguides",
-      "gg_marker_id": 204811,
-      "gg_icon": "/images/map-marker-icon/15/252750/pear_icon-7e570d29.png.png"
-    },
-    {
       "name": "Hounskull bascinet",
       "category": "loot_armour_head",
       "description": "",
-      "x": 8740,
-      "y": 6618,
+      "x": 8749,
+      "y": 6621,
       "world_x": 0,
       "world_y": 0,
       "world_z": 0,
@@ -20893,8 +20621,8 @@ window.MARKER_DATA_KUTTENBERG = {
       "name": "Weak Quickfinger potion",
       "category": "loot_potion",
       "description": "",
-      "x": 8742,
-      "y": 6610,
+      "x": 8758,
+      "y": 6617,
       "world_x": 0,
       "world_y": 0,
       "world_z": 0,
@@ -20911,7 +20639,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "category": "loot_potion",
       "description": "",
       "x": 8748,
-      "y": 6613,
+      "y": 6615,
       "world_x": 0,
       "world_y": 0,
       "world_z": 0,
@@ -20927,8 +20655,8 @@ window.MARKER_DATA_KUTTENBERG = {
       "name": "Pear sword pommel",
       "category": "loot_blacksmithing",
       "description": "",
-      "x": 8756,
-      "y": 6616,
+      "x": 8753,
+      "y": 6617,
       "world_x": 0,
       "world_y": 0,
       "world_z": 0,
@@ -20944,8 +20672,8 @@ window.MARKER_DATA_KUTTENBERG = {
       "name": "Groschen",
       "category": "loot_usable",
       "description": "",
-      "x": 8759,
-      "y": 6610,
+      "x": 8758,
+      "y": 6614,
       "world_x": 0,
       "world_y": 0,
       "world_z": 0,
@@ -20961,8 +20689,8 @@ window.MARKER_DATA_KUTTENBERG = {
       "name": "Lady's gemstone necklace",
       "category": "loot_misc",
       "description": "",
-      "x": 8751,
-      "y": 6608,
+      "x": 8752,
+      "y": 6612,
       "world_x": 0,
       "world_y": 0,
       "world_z": 0,
@@ -20978,8 +20706,8 @@ window.MARKER_DATA_KUTTENBERG = {
       "name": "Silver cup",
       "category": "loot_misc",
       "description": "",
-      "x": 8745,
-      "y": 6605,
+      "x": 8758,
+      "y": 6621,
       "world_x": 0,
       "world_y": 0,
       "world_z": 0,
@@ -30425,7 +30153,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "source": "manual"
     },
     {
-      "name": "Martin\u2019s Dream",
+      "name": "Martin\u2019s dream",
       "category": "quest_side",
       "description": "",
       "x": 9585,
@@ -30475,6 +30203,96 @@ window.MARKER_DATA_KUTTENBERG = {
       "description": "",
       "x": 11237,
       "y": 7026,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Bawdy Whistle Tune",
+      "category": "loot_letter",
+      "description": "",
+      "x": 10890,
+      "y": 7206,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Tragic Flute Song",
+      "category": "loot_letter",
+      "description": "",
+      "x": 10888,
+      "y": 7193,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Popular Flute Song",
+      "category": "loot_letter",
+      "description": "",
+      "x": 10894,
+      "y": 7215,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Thief's hose",
+      "category": "loot_armour_legs",
+      "description": "",
+      "x": 9902,
+      "y": 7539,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "The Executioner\u2019s Pride",
+      "category": "quest_side",
+      "description": "",
+      "x": 10510,
+      "y": 5455,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Sketch - Knight's axe",
+      "category": "loot_recipe",
+      "description": "",
+      "x": 10339,
+      "y": 7645,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Hourglass gauntlets",
+      "category": "loot_armour_arms",
+      "description": "",
+      "x": 8753,
+      "y": 6622,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Knight's sword",
+      "category": "loot_sword",
+      "description": "",
+      "x": 8746,
+      "y": 6619,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "X Marks the Spot",
+      "category": "quest_task",
+      "description": "",
+      "x": 6824,
+      "y": 6146,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Hired hand Krizhan",
+      "category": "skill_trainer",
+      "description": "",
+      "x": 6821,
+      "y": 6142,
       "is_discoverable": true,
       "source": "manual"
     }
