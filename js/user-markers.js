@@ -2,35 +2,53 @@
 // ██ USER MARKERS
 // ═══════════════════════════════════════════════
 
+// Category chosen on the previous add — pre-selected next time so tagging many
+// markers of one type doesn't mean re-picking it each time.
+let lastUserMarkerCategory = '';
+
+// Remove the unsaved temp pin (Save/Cancel, or Esc / click-away closing the popup).
+// Null first so a re-entrant popupclose fired by removeLayer is a no-op.
+function removeTempMarker() {
+  if (!tempMarker) return;
+  const m = tempMarker;
+  tempMarker = null;
+  map.removeLayer(m);
+}
+
 function onRightClick(e) {
   e.originalEvent.preventDefault();
   dismissMapHint();   // they found the feature — retire the hint
   const x = Math.round(e.latlng.lng);
   const y = Math.round(e.latlng.lat);
 
-  // Remove temp marker if exists
-  if (tempMarker) map.removeLayer(tempMarker);
+  removeTempMarker();   // clear any previous unsaved temp pin
 
   // Category options with real icons (sorted alphabetically)
   const catItems = buildCategoryDropdownItems();
+
+  // Pre-fill the dropdown with the last-used category ('' = generic Custom).
+  const preCat = categoriesById[lastUserMarkerCategory];
+  const preIconSrc = (window.ICON_MAP || {})[lastUserMarkerCategory] || '';
+  const preLabel = preCat ? preCat.name : 'Custom';
+  const preIconHtml = preIconSrc
+    ? `<img src="${preIconSrc}" style="width:20px;height:20px;image-rendering:pixelated">`
+    : `<span style="width:20px;text-align:center">${preCat ? (preCat.icon || '📦') : '📌'}</span>`;
 
   const formHtml = `
     <div class="marker-form">
       <h3>Add Marker</h3>
       <label>Name</label>
-      <input type="text" id="new-marker-name" placeholder="Enter name..." autofocus>
+      <input type="text" id="new-marker-name" placeholder="Enter name..." autofocus
+        onkeydown="if(event.key==='Enter'){event.preventDefault();saveNewMarker(${x}, ${y});}">
       <label>Category</label>
-      <input type="hidden" id="new-marker-cat" value="">
+      <input type="hidden" id="new-marker-cat" value="${preCat ? escapeHtml(lastUserMarkerCategory) : ''}">
       <div class="icon-dropdown" id="cat-dropdown">
         <div class="icon-dropdown-btn" onclick="toggleCatDropdown()">
-          <span style="width:20px;text-align:center">📌</span> <span id="cat-dropdown-label">Custom</span>
+          ${preIconHtml} <span id="cat-dropdown-label">${escapeHtml(preLabel)}</span>
         </div>
         <div class="icon-dropdown-list" id="cat-dropdown-list">
           <input type="text" class="icon-dropdown-search" id="cat-search" placeholder="Search..." oninput="filterCatDropdown(this.value)">
-          <div id="cat-dropdown-items">
-            <div class="icon-dropdown-item" data-value="" onclick="selectCategory('', 'Custom', '')"><span style="width:20px;text-align:center">📌</span> Custom</div>
-            ${catItems}
-          </div>
+          <div id="cat-dropdown-items">${catItems}</div>
         </div>
       </div>
       <label>Description</label>
@@ -46,20 +64,49 @@ function onRightClick(e) {
     icon: createMarkerIcon('📌', '#c9a84c', 26)
   }).addTo(map);
 
+  tempMarker.on('popupclose', removeTempMarker);
   tempMarker.bindPopup(formHtml, { maxWidth: 300, closeOnClick: false, autoClose: false }).openPopup();
 }
 
-// The <div.icon-dropdown-item> rows for every category, sorted by name — shared
-// by the add-marker and edit-marker forms.
+// The category picker for the add-marker and edit-marker forms: a compact grid of
+// icon tiles, sectioned by CATEGORY_GROUPS (with a colour-titled header) so you can
+// jump to the right class by eye instead of scrolling one long list. Includes the
+// generic "Custom" tile up top. Filtered live by filterCatDropdown().
 function buildCategoryDropdownItems() {
   const iconMap = window.ICON_MAP || {};
-  return [...categories].sort((a, b) => a.name.localeCompare(b.name)).map(c => {
-    const iconSrc = iconMap[c.id] || '';
+  const byId = {};
+  categories.forEach(c => { byId[c.id] = c; });
+
+  const tile = (id, name, iconSrc, emoji) => {
     const iconHtml = iconSrc
       ? `<img src="${iconSrc}" onerror="this.style.display='none'">`
-      : `<span style="width:20px;text-align:center">${c.icon || '📦'}</span>`;
-    return `<div class="icon-dropdown-item" data-value="${c.id}" onclick="selectCategory('${c.id}', '${c.name.replace(/'/g, "\\'")}', '${iconSrc}')">${iconHtml} ${c.name}</div>`;
-  }).join('');
+      : `<span class="it-emoji">${emoji || '📦'}</span>`;
+    return `<div class="icon-tile" data-name="${escapeHtml(name.toLowerCase())}" title="${escapeHtml(name)}" onclick="selectCategory('${id}', '${name.replace(/'/g, "\\'")}', '${iconSrc}')">${iconHtml}<span class="it-label">${escapeHtml(name)}</span></div>`;
+  };
+  const section = (header, color, cats) =>
+    `<div class="icon-group">${header ? `<div class="icon-group-header" style="color:${color}">${escapeHtml(header)}</div>` : ''}` +
+    `<div class="icon-grid">${cats.join('')}</div></div>`;
+
+  // Pinned generic option first.
+  let html = section('', '', [tile('', 'Custom', '', '📌')]);
+
+  const grouped = new Set();
+  CATEGORY_GROUPS.forEach(group => {
+    const cats = group.categories.map(id => byId[id]).filter(Boolean)
+      .sort((a, b) => a.name.localeCompare(b.name));
+    if (!cats.length) return;
+    cats.forEach(c => grouped.add(c.id));
+    const color = GROUP_COLORS[group.name] || DEFAULT_GROUP_COLOR;
+    html += section(group.name, color, cats.map(c => tile(c.id, c.name, iconMap[c.id] || '', c.icon)));
+  });
+
+  // Anything not in a defined group → an "Other" bucket at the end.
+  const others = categories.filter(c => !grouped.has(c.id))
+    .sort((a, b) => a.name.localeCompare(b.name));
+  if (others.length) {
+    html += section('Other', DEFAULT_GROUP_COLOR, others.map(c => tile(c.id, c.name, iconMap[c.id] || '', c.icon)));
+  }
+  return html;
 }
 
 function toggleCatDropdown() {
@@ -91,17 +138,23 @@ function selectCategory(value, name, iconSrc) {
 }
 
 function filterCatDropdown(query) {
-  const items = document.querySelectorAll('#cat-dropdown-items .icon-dropdown-item');
-  const q = query.toLowerCase();
-  items.forEach(item => {
-    const text = item.textContent.toLowerCase();
-    item.style.display = text.includes(q) ? '' : 'none';
+  const q = query.trim().toLowerCase();
+  document.querySelectorAll('#cat-dropdown-items .icon-group').forEach(group => {
+    let any = false;
+    group.querySelectorAll('.icon-tile').forEach(tile => {
+      const match = (tile.dataset.name || '').includes(q);
+      tile.style.display = match ? '' : 'none';
+      if (match) any = true;
+    });
+    group.style.display = any ? '' : 'none';   // collapse sections with no matches
   });
 }
 
 function saveNewMarker(x, y) {
   const name = document.getElementById('new-marker-name').value.trim() || 'Unnamed Marker';
-  const category = document.getElementById('new-marker-cat').value || 'interesting_site';
+  // '' = generic Custom (gold pin); honoured live, mapped to interesting_site only
+  // when embedded into the shared DB (see userMarkerToDbMarker).
+  const category = document.getElementById('new-marker-cat').value;
   const description = document.getElementById('new-marker-desc').value.trim();
 
   const markerData = {
@@ -117,11 +170,9 @@ function saveNewMarker(x, y) {
   userMarkers[currentRegion].push(markerData);
   saveUserMarkersToStorage();
 
-  // Remove temp, add permanent
-  if (tempMarker) {
-    map.removeLayer(tempMarker);
-    tempMarker = null;
-  }
+  lastUserMarkerCategory = category;   // remember for the next add
+
+  removeTempMarker();
   addUserMarkerToMap(markerData);
   renderMyMarkersList();
   updatePromoteStatus();
@@ -129,10 +180,7 @@ function saveNewMarker(x, y) {
 }
 
 function cancelNewMarker() {
-  if (tempMarker) {
-    map.removeLayer(tempMarker);
-    tempMarker = null;
-  }
+  removeTempMarker();
 }
 
 function deleteUserMarker(id) {
@@ -177,7 +225,8 @@ function editUserMarker(id) {
     <div class="marker-form">
       <h3>Edit Marker</h3>
       <label>Name</label>
-      <input type="text" id="edit-marker-name" value="${escapeHtml(markerData.name)}">
+      <input type="text" id="edit-marker-name" value="${escapeHtml(markerData.name)}"
+        onkeydown="if(event.key==='Enter'){event.preventDefault();saveEditedMarker(${id});}">
       <label>Category</label>
       <input type="hidden" id="new-marker-cat" value="${markerData.category}">
       <div class="icon-dropdown" id="cat-dropdown">
@@ -186,10 +235,7 @@ function editUserMarker(id) {
         </div>
         <div class="icon-dropdown-list" id="cat-dropdown-list">
           <input type="text" class="icon-dropdown-search" id="cat-search" placeholder="Search..." oninput="filterCatDropdown(this.value)">
-          <div id="cat-dropdown-items">
-            <div class="icon-dropdown-item" data-value="" onclick="selectCategory('', 'Custom', '')"><span style="width:20px;text-align:center">📌</span> Custom</div>
-            ${catItems}
-          </div>
+          <div id="cat-dropdown-items">${catItems}</div>
         </div>
       </div>
       <label>Description</label>
@@ -214,7 +260,7 @@ function saveEditedMarker(id) {
 
   // Read new values
   const newName = document.getElementById('edit-marker-name').value.trim() || 'Unnamed Marker';
-  const newCategory = document.getElementById('new-marker-cat').value || 'interesting_site';
+  const newCategory = document.getElementById('new-marker-cat').value;   // '' = generic Custom
   const newDesc = document.getElementById('edit-marker-desc').value.trim();
 
   // Update discovered key if category changed
@@ -296,33 +342,89 @@ function renderUserMarkersOnMap(region) {
   markers.forEach(m => addUserMarkerToMap(m));
 }
 
+// My Markers list view state (display-only — never reorders the stored array).
+let myMarkersFilter = '';
+let myMarkersSort = 'recent';   // 'recent' | 'name'
+const MM_CONTROLS_THRESHOLD = 6;   // show search/sort once the list is this long
+
+function setMyMarkersSort(value) {
+  myMarkersSort = value;
+  renderMyMarkersList();
+}
+
+// Filter rows in place (no re-render) so the search box keeps focus while typing.
+function filterMyMarkers(query) {
+  myMarkersFilter = query;
+  const q = query.trim().toLowerCase();
+  let shown = 0;
+  document.querySelectorAll('#my-markers-list .my-marker-item').forEach(row => {
+    const match = (row.dataset.name || '').includes(q);
+    row.style.display = match ? '' : 'none';
+    if (match) shown++;
+  });
+  const empty = document.getElementById('mm-no-match');
+  if (empty) empty.style.display = shown ? 'none' : '';
+}
+
 function renderMyMarkersList() {
   const list = document.getElementById('my-markers-list');
-  const markers = userMarkers[currentRegion] || [];
+  const all = userMarkers[currentRegion] || [];
 
-  if (markers.length === 0) {
+  if (all.length === 0) {
     list.innerHTML = '<div class="no-markers">Right-click on the map to add a custom marker.</div>';
     return;
   }
 
-  list.innerHTML = markers.map(m => {
+  // Sort a shallow copy for display only.
+  const markers = [...all];
+  if (myMarkersSort === 'name') {
+    markers.sort((a, b) => (a.name || '').localeCompare(b.name || ''));
+  } else {
+    markers.reverse();   // most-recently-added first
+  }
+
+  const iconMap = window.ICON_MAP || {};
+  const rowsHtml = markers.map(m => {
     const cat = categoriesById[m.category];
-    const iconMap = window.ICON_MAP || {};
     const iconSrc = iconMap[m.category];
     const iconHtml = iconSrc
       ? `<img src="${iconSrc}" style="width:20px;height:20px;image-rendering:pixelated">`
       : `<span>${cat ? cat.icon : '📌'}</span>`;
     return `
-      <div class="my-marker-item" onclick="flyToMarker(${m.x}, ${m.y}, '${getMarkerKey(m)}')">
+      <div class="my-marker-item" data-name="${escapeHtml((m.name || '').toLowerCase())}" onclick="flyToMarker(${m.x}, ${m.y}, '${getMarkerKey(m)}')">
         <span class="mm-icon">${iconHtml}</span>
         <div class="mm-info">
           <div class="mm-name">${escapeHtml(m.name)}</div>
           <div class="mm-coords">X: ${m.x} Y: ${m.y}</div>
         </div>
+        <button class="mm-edit" onclick="event.stopPropagation();editUserMarker(${m.id})" title="Edit">✎</button>
         <button class="mm-delete" onclick="event.stopPropagation();showConfirm('Delete this marker?',{title:'Delete marker',confirmText:'Delete',danger:true}).then(ok=>ok&&deleteUserMarker(${m.id}))" title="Delete">✕</button>
       </div>
     `;
   }).join('');
+
+  const controlsHtml = all.length > MM_CONTROLS_THRESHOLD ? `
+    <div class="mm-controls">
+      <input type="text" class="mm-search" id="mm-search" placeholder="Filter markers..." value="${escapeHtml(myMarkersFilter)}" oninput="filterMyMarkers(this.value)">
+      <select class="mm-sort" onchange="setMyMarkersSort(this.value)">
+        <option value="recent"${myMarkersSort === 'recent' ? ' selected' : ''}>Recent</option>
+        <option value="name"${myMarkersSort === 'name' ? ' selected' : ''}>A–Z</option>
+      </select>
+    </div>` : '';
+
+  // Hint that the other region has markers (they're not shown here).
+  const other = currentRegion === 'trosky' ? 'kuttenberg' : 'trosky';
+  const otherCount = (userMarkers[other] || []).length;
+  const otherName = other.charAt(0).toUpperCase() + other.slice(1);
+  const otherHtml = otherCount
+    ? `<div class="mm-other-region">↔ ${otherCount} marker${otherCount > 1 ? 's' : ''} in ${otherName} — switch region to view</div>`
+    : '';
+
+  list.innerHTML = controlsHtml + rowsHtml +
+    '<div class="no-markers" id="mm-no-match" style="display:none">No markers match your filter.</div>' +
+    otherHtml;
+
+  if (myMarkersFilter.trim()) filterMyMarkers(myMarkersFilter);
 }
 
 

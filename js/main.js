@@ -49,10 +49,8 @@ function _isTypingTarget(el) {
 function closeTopmostOverlay() {
   const confirmModal = document.getElementById('confirm-modal');
   if (confirmModal && confirmModal.classList.contains('show')) { _confirmClose(false); return true; }
-  for (const id of ['import-modal', 'import-progress-modal', 'import-all-modal']) {
-    const m = document.getElementById(id);
-    if (m && m.classList.contains('show')) { m.classList.remove('show'); return true; }
-  }
+  const importAll = document.getElementById('import-all-modal');
+  if (importAll && importAll.classList.contains('show')) { importAll.classList.remove('show'); return true; }
   const panels = [['calibration-panel', calClose], ['label-edit-panel', labelEditClose], ['marker-edit-panel', markerEditClose]];
   for (const [id, close] of panels) {
     const p = document.getElementById(id);

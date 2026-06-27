@@ -541,6 +541,37 @@ async function promoteUserMarkers() {
   }
 }
 
+// The progress-button id for a user marker — recomputed from current coords so it
+// stays correct after a drag (the marker key is category:x:y).
+function userBtnId(markerData) {
+  return `prog-user-${getMarkerKey(markerData).replace(/[^a-zA-Z0-9]/g, '_')}`;
+}
+
+// Single source of truth for the user-marker popup — used on first bind and after
+// a drag, so the two can never drift apart.
+function buildUserMarkerPopup(markerData) {
+  const cat = categoriesById[markerData.category];
+  const isItem = ITEM_CATEGORIES.has(markerData.category);
+  const doneLabel = isItem ? '✓ Collected' : '✓ Discovered';
+  const undoneLabel = isItem ? '☐ Mark as Collected' : '☐ Mark as Discovered';
+  const key = getMarkerKey(markerData);
+  const btnId = userBtnId(markerData);
+  const discovered = isMarkerDiscovered(markerData);
+  return `
+    <div class="popup-title">${escapeHtml(markerData.name) || 'Custom Marker'}</div>
+    <div class="popup-category">${cat ? cat.name : 'Custom'} — User Marker</div>
+    ${markerData.description ? `<div class="popup-desc">${escapeHtml(markerData.description)}</div>` : ''}
+    <div class="popup-coords">X: ${markerData.x} &nbsp; Y: ${markerData.y}</div>
+    <button class="popup-progress-btn${discovered ? ' completed' : ''}" id="${btnId}"
+      data-done-label="${doneLabel}" data-undone-label="${undoneLabel}"
+      onclick="toggleMarkerDiscovered('${key}', '${btnId}')">${discovered ? doneLabel : undoneLabel}</button>
+    <div class="popup-actions">
+      <button class="popup-action-btn" onclick="editUserMarker(${markerData.id})">✎ Edit</button>
+      <button class="popup-action-btn danger" onclick="showConfirm('Delete this marker?',{title:'Delete marker',confirmText:'Delete',danger:true}).then(ok=>ok&&deleteUserMarker(${markerData.id}))">✕ Delete</button>
+    </div>
+  `;
+}
+
 function addUserMarkerToMap(markerData) {
   const cat = categoriesById[markerData.category];
   const icon = createMarkerIcon(
@@ -551,36 +582,19 @@ function addUserMarkerToMap(markerData) {
   );
 
   const marker = L.marker([markerData.y, markerData.x], { icon, draggable: true });
+  let markerKey = getMarkerKey(markerData);
 
-  const markerKey = getMarkerKey(markerData);
-  const isItem = ITEM_CATEGORIES.has(markerData.category);
-  const doneLabel = isItem ? '✓ Collected' : '✓ Discovered';
-  const undoneLabel = isItem ? '☐ Mark as Collected' : '☐ Mark as Discovered';
-  const btnId = `prog-user-${markerKey.replace(/[^a-zA-Z0-9]/g, '_')}`;
-
+  // Re-sync the discover button on open (btnId is recomputed from current coords).
   marker.on('popupopen', () => {
-    const btn = document.getElementById(btnId);
+    const btn = document.getElementById(userBtnId(markerData));
     if (btn) {
       const discovered = isMarkerDiscovered(markerData);
       btn.classList.toggle('completed', discovered);
-      btn.textContent = discovered ? doneLabel : undoneLabel;
+      btn.textContent = discovered ? btn.dataset.doneLabel : btn.dataset.undoneLabel;
     }
   });
 
-  const popupHtml = `
-    <div class="popup-title">${escapeHtml(markerData.name) || 'Custom Marker'}</div>
-    <div class="popup-category">${cat ? cat.name : 'Custom'} — User Marker</div>
-    ${markerData.description ? `<div class="popup-desc">${escapeHtml(markerData.description)}</div>` : ''}
-    <div class="popup-coords">X: ${markerData.x} &nbsp; Y: ${markerData.y}</div>
-    <button class="popup-progress-btn" id="${btnId}"
-      data-done-label="${doneLabel}" data-undone-label="${undoneLabel}"
-      onclick="toggleMarkerDiscovered('${markerKey}', '${btnId}')">${undoneLabel}</button>
-    <div class="popup-actions">
-      <button class="popup-action-btn" onclick="editUserMarker(${markerData.id})">✎ Edit</button>
-      <button class="popup-action-btn danger" onclick="showConfirm('Delete this marker?',{title:'Delete marker',confirmText:'Delete',danger:true}).then(ok=>ok&&deleteUserMarker(${markerData.id}))">✕ Delete</button>
-    </div>
-  `;
-  marker.bindPopup(popupHtml, { maxWidth: 280 });
+  marker.bindPopup(buildUserMarkerPopup(markerData), { maxWidth: 280 });
 
   // Store reference for opacity control
   markersByKey[markerKey] = marker;
@@ -599,26 +613,12 @@ function addUserMarkerToMap(markerData) {
     saveUserMarkersToStorage();
     renderMyMarkersList();
 
-    // Update popup with new coords (keep discover button)
-    const newBtnId = `prog-user-${getMarkerKey(markerData).replace(/[^a-zA-Z0-9]/g, '_')}`;
-    const newPopup = `
-      <div class="popup-title">${escapeHtml(markerData.name) || 'Custom Marker'}</div>
-      <div class="popup-category">${cat ? cat.name : 'Custom'} — User Marker</div>
-      ${markerData.description ? `<div class="popup-desc">${escapeHtml(markerData.description)}</div>` : ''}
-      <div class="popup-coords">X: ${markerData.x} &nbsp; Y: ${markerData.y}</div>
-      <button class="popup-progress-btn" id="${newBtnId}"
-        data-done-label="${doneLabel}" data-undone-label="${undoneLabel}"
-        onclick="toggleMarkerDiscovered('${getMarkerKey(markerData)}', '${newBtnId}')">${undoneLabel}</button>
-      <div class="popup-actions">
-        <button class="popup-action-btn" onclick="editUserMarker(${markerData.id})">✎ Edit</button>
-        <button class="popup-action-btn danger" onclick="showConfirm('Delete this marker?',{title:'Delete marker',confirmText:'Delete',danger:true}).then(ok=>ok&&deleteUserMarker(${markerData.id}))">✕ Delete</button>
-      </div>
-    `;
-    marker.setPopupContent(newPopup);
+    marker.setPopupContent(buildUserMarkerPopup(markerData));
 
-    // Update markersByKey with new key
+    // Re-key markersByKey to the new coords.
     delete markersByKey[markerKey];
-    markersByKey[getMarkerKey(markerData)] = marker;
+    markerKey = getMarkerKey(markerData);
+    markersByKey[markerKey] = marker;
   });
 
   marker._userMarkerId = markerData.id;

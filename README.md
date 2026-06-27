@@ -34,7 +34,7 @@ Just open the live site. No login, no account, no tracking. Everything is stored
 - **Toggle categories** — Use the sidebar checkboxes
 - **Track progress** — Click any marker, then click "Mark as Discovered" or "Mark as Collected"
 - **Switch regions** — Click "Trosky" or "Kuttenberg" at the top of the sidebar
-- **Backup your data** — Tools tab → Export Progress / Export My Markers
+- **Backup your data** — Tools tab → Export All Data (one file: markers, progress, label positions & filters)
 
 ---
 

@@ -228,8 +228,9 @@ py = 0.0334*x + -0.9963*y + 9800.12
   **label positions (`kcd2_label_positions`) + active category filters + marker edits/deletes
   (`kcd2_marker_edits`/`kcd2_marker_deletes`)** + version/date. Import is backward-compatible
   with v1/v2 backups and rebuilds the view via `loadRegion`.
-- Separate Export/Import for markers and progress individually
 - Import All handles ID conflict resolution (resets nextUserMarkerId)
+- The per-type Export/Import (markers-only, progress-only) buttons were **removed** — Export/Import
+  All covers them. `clearMyMarkers`/`clearProgress` (Data Management) remain.
 
 ### URL Permalinks
 - Format: `#zoom/lat/lng` or `#zoom/lat/lng/category:x:y` (with marker)
