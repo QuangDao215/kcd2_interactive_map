@@ -500,7 +500,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "label_key": "@ui_maplegend_beeHives"
     },
     {
-      "name": "Tabor Cumanu Mezholezko Relikviar",
+      "name": "Enemy camp",
       "category": "bandit_camp",
       "description": "",
       "world_x": 1061.89,
@@ -877,14 +877,14 @@ window.MARKER_DATA_KUTTENBERG = {
       "label_key": "@ui_maplegend_smugglersStore"
     },
     {
-      "name": "Maplegen Iron Eagle Pub",
+      "name": "Iron Eagle",
       "category": "tavern",
       "description": "",
       "world_x": 3218.86,
       "world_y": 755.84,
       "world_z": 52.32,
-      "x": 9834,
-      "y": 5951,
+      "x": 9846,
+      "y": 5975,
       "poi_type_name": "pub",
       "poi_type_id": "249bc291-7732-4819-909f-a78356effa03",
       "is_fast_travel": false,
@@ -1293,7 +1293,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Shoemaker Vejmola",
+      "name": "Cobbler Vejmola",
       "category": "cobbler",
       "description": "",
       "world_x": 375.88,
@@ -1364,7 +1364,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Malesov Carpenter",
+      "name": "Malesov carpenter",
       "category": "huntsman",
       "description": "",
       "world_x": 581.92,
@@ -1549,7 +1549,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Abandoned Barn",
+      "name": "Abandoned barn",
       "category": "interesting_site",
       "description": "",
       "world_x": 298.78,
@@ -1710,7 +1710,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "label_key": "@ui_maplegend_secretShrine"
     },
     {
-      "name": "Stara Lhota",
+      "name": "Old Lhota",
       "category": "fast_travel",
       "description": "",
       "world_x": 627.49,
@@ -1794,7 +1794,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Tabor Lapku Mezholezko Ukradeny Kun",
+      "name": "Enemy camp",
       "category": "bandit_camp",
       "description": "",
       "world_x": 226.3,
@@ -1865,14 +1865,14 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Black Horse Pub",
+      "name": "Black Horse Tavern",
       "category": "tavern",
       "description": "",
       "world_x": 2937.26,
       "world_y": 834.06,
       "world_z": 64.13,
-      "x": 9296,
-      "y": 5646,
+      "x": 9303,
+      "y": 5665,
       "poi_type_name": "pub",
       "poi_type_id": "249bc291-7732-4819-909f-a78356effa03",
       "is_fast_travel": false,
@@ -1953,7 +1953,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Sacred Tree",
+      "name": "Sacred tree",
       "category": "interesting_site",
       "description": "",
       "world_x": 806.35,
@@ -1968,7 +1968,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "label_key": "@ui_maplegend_sacredTree"
     },
     {
-      "name": "Menhir",
+      "name": "Sacred stone",
       "category": "interesting_site",
       "description": "",
       "world_x": 769.09,
@@ -2070,7 +2070,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Town Bathhouse",
+      "name": "City bathhouse",
       "category": "baths",
       "description": "",
       "world_x": 2902.96,
@@ -2171,7 +2171,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "label_key": "@ui_maplegend_millstonesQuarry"
     },
     {
-      "name": "Cellar With Skeleton",
+      "name": "Hatch with a skeleton",
       "category": "interesting_site",
       "description": "",
       "world_x": 671.66,
@@ -2201,14 +2201,14 @@ window.MARKER_DATA_KUTTENBERG = {
       "label_key": "@ui_maplegend_abandonedWolfsDen"
     },
     {
-      "name": "Platner Vinna",
+      "name": "Armourer",
       "category": "armourer",
       "description": "",
       "world_x": 3028.21,
       "world_y": 860.45,
       "world_z": 63.19,
-      "x": 9392,
-      "y": 5822,
+      "x": 9393,
+      "y": 5836,
       "poi_type_name": "armourer",
       "poi_type_id": "0ec444f9-1da3-42e3-8044-98fe5e48f566",
       "is_fast_travel": false,
@@ -2372,7 +2372,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "label_key": "@ui_maplegend_roadsideCamp"
     },
     {
-      "name": "Kupec Bylany",
+      "name": "Trader",
       "category": "trader",
       "description": "",
       "world_x": 1682.8,
@@ -2414,7 +2414,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Hospoda Bylany",
+      "name": "Tavern",
       "category": "tavern",
       "description": "",
       "world_x": 1766.66,
@@ -2470,7 +2470,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Noose Pub",
+      "name": "Hangman's Halter Tavern",
       "category": "hotel",
       "description": "",
       "world_x": 3159.09,
@@ -2817,7 +2817,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "label_key": "@ui_maplegend_drownedChest_poi"
     },
     {
-      "name": "Zelinar Bylany",
+      "name": "Grocer",
       "category": "grocer",
       "description": "",
       "world_x": 1660.04,
@@ -3442,7 +3442,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "label_key": "@ui_maplegend_roadsideCamp"
     },
     {
-      "name": "Mezholezy",
+      "name": "Burnt Mesoles",
       "category": "interesting_site",
       "description": "",
       "world_x": 708.41,
@@ -3557,7 +3557,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Lumberjack Camp",
+      "name": "Woodcutters' camp",
       "category": "camp",
       "description": "",
       "world_x": 1069.56,
@@ -3644,21 +3644,21 @@ window.MARKER_DATA_KUTTENBERG = {
       "label_key": "@ui_maplegend_herbalGarden"
     },
     {
-      "name": "Poi16",
+      "name": "Underground entrance",
       "category": "underground",
       "description": "",
       "world_x": 3280.8,
       "world_y": 720.32,
       "world_z": 46.6,
-      "x": 9979,
-      "y": 5991,
+      "x": 9981,
+      "y": 6011,
       "poi_type_name": "undergrounEntrance",
       "poi_type_id": "28ac4f8a-cf64-4b2b-aca0-d6e233e7f40b",
       "is_fast_travel": false,
       "is_discoverable": true
     },
     {
-      "name": "Pekar Bylany",
+      "name": "Baker",
       "category": "baker",
       "description": "",
       "world_x": 1703.16,
@@ -3814,7 +3814,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Poi135",
+      "name": "Smithy",
       "category": "smithy",
       "description": "",
       "world_x": 2941.62,
@@ -3986,14 +3986,14 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Kupec Vinna",
+      "name": "Trader",
       "category": "trader",
       "description": "",
       "world_x": 3011.29,
       "world_y": 882.67,
       "world_z": 63.81,
-      "x": 9333,
-      "y": 5830,
+      "x": 9335,
+      "y": 5847,
       "poi_type_name": "shop",
       "poi_type_id": "3b1c883b-387e-4b9c-a5df-d9fc7dc8195c",
       "is_fast_travel": false,
@@ -4106,8 +4106,8 @@ window.MARKER_DATA_KUTTENBERG = {
       "world_x": 555.8,
       "world_y": 354.91,
       "world_z": 110.44,
-      "x": 6458,
-      "y": 1351,
+      "x": 6444,
+      "y": 1368,
       "poi_type_name": "fasttravel",
       "poi_type_id": "882a2326-ab14-4b8e-a953-b7e54346c41c",
       "is_fast_travel": true,
@@ -4128,7 +4128,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Poi9",
+      "name": "Kovar Konsky Trh",
       "category": "smithy",
       "description": "",
       "world_x": 2923,
@@ -4569,7 +4569,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Reznik Bylany",
+      "name": "Butcher",
       "category": "butchery",
       "description": "",
       "world_x": 1726.92,
@@ -4671,7 +4671,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "label_key": "@ui_maplegend_wineCellar"
     },
     {
-      "name": "Cimburk Ruins",
+      "name": "Ruins of Zimburg",
       "category": "interesting_site",
       "description": "",
       "world_x": 1436.64,
@@ -4730,7 +4730,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "label_key": "@ui_maplegend_dam"
     },
     {
-      "name": "Pub Dira",
+      "name": "The Hole in the Wall",
       "category": "hotel",
       "description": "",
       "world_x": 3204.17,
@@ -9994,20 +9994,6 @@ window.MARKER_DATA_KUTTENBERG = {
       "name": "Lootable Corpse",
       "category": "lootable_corpse",
       "description": "",
-      "world_x": 807.46,
-      "world_y": 2290.61,
-      "world_z": 247.12,
-      "x": 3931,
-      "y": 4640,
-      "poi_type_name": "lootable_corpse",
-      "poi_type_id": "_entity_lootable_corpse",
-      "is_fast_travel": false,
-      "is_discoverable": true
-    },
-    {
-      "name": "Lootable Corpse",
-      "category": "lootable_corpse",
-      "description": "",
       "world_x": 3424.13,
       "world_y": 1454.72,
       "world_z": 85.43,
@@ -10041,20 +10027,6 @@ window.MARKER_DATA_KUTTENBERG = {
       "world_z": 57.91,
       "x": 8445,
       "y": 4560,
-      "poi_type_name": "lootable_corpse",
-      "poi_type_id": "_entity_lootable_corpse",
-      "is_fast_travel": false,
-      "is_discoverable": true
-    },
-    {
-      "name": "Lootable Corpse",
-      "category": "lootable_corpse",
-      "description": "",
-      "world_x": 714.71,
-      "world_y": 1746.22,
-      "world_z": 161.51,
-      "x": 4609,
-      "y": 3682,
       "poi_type_name": "lootable_corpse",
       "poi_type_id": "_entity_lootable_corpse",
       "is_fast_travel": false,
@@ -13325,7 +13297,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "gg_icon": "/images/map-marker-icon/15/252333/hookgunnormal01_icon-df66dd6e.png.png"
     },
     {
-      "name": "Dogwood village bow",
+      "name": "Village dogwood bow",
       "category": "loot_bow",
       "description": "",
       "x": 4740,
@@ -18202,23 +18174,6 @@ window.MARKER_DATA_KUTTENBERG = {
       "source": "gamerguides",
       "gg_marker_id": 204535,
       "gg_icon": "/images/map-marker-icon/15/316072/washing_icon_result-d60fc253.png.png"
-    },
-    {
-      "name": "Spade",
-      "category": "loot_usable",
-      "description": "",
-      "x": 8395,
-      "y": 5132,
-      "world_x": 0,
-      "world_y": 0,
-      "world_z": 0,
-      "poi_type_name": "gg_import_loot_usable",
-      "poi_type_id": "_gg_db-45995",
-      "is_fast_travel": false,
-      "is_discoverable": true,
-      "source": "gamerguides",
-      "gg_marker_id": 204536,
-      "gg_icon": "/images/map-marker-icon/15/254014/player_shovel_icon-7bb7367f.png.png"
     },
     {
       "name": "Weak Saviour Schnapps",
@@ -26874,23 +26829,6 @@ window.MARKER_DATA_KUTTENBERG = {
       "gg_icon": "/images/map-marker-icon/15/253511/quest_activity_red_started_icon_result-5dcd5a5e-5dcd5a5e.png.png"
     },
     {
-      "name": "X Marks the Spot",
-      "category": "quest_task",
-      "description": "",
-      "x": 7135,
-      "y": 5542,
-      "world_x": 0,
-      "world_y": 0,
-      "world_z": 0,
-      "poi_type_name": "gg_import_quest_task",
-      "poi_type_id": "_gg_db-45973",
-      "is_fast_travel": false,
-      "is_discoverable": true,
-      "source": "gamerguides",
-      "gg_marker_id": 205364,
-      "gg_icon": "/images/map-marker-icon/15/253491/quest_activity_red_started_icon_result-5dcd5a5e-5dcd5a5e.png.png"
-    },
-    {
       "name": "The Sword and the Quill",
       "category": "quest_main",
       "description": "",
@@ -30127,7 +30065,7 @@ window.MARKER_DATA_KUTTENBERG = {
     },
     {
       "name": "Magdalena\u2019s Axe",
-      "category": "quest_side",
+      "category": "quest_task",
       "description": "",
       "x": 10186,
       "y": 5537,
@@ -30293,6 +30231,447 @@ window.MARKER_DATA_KUTTENBERG = {
       "description": "",
       "x": 6821,
       "y": 6142,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Saviour Schnapps",
+      "category": "loot_potion",
+      "description": "",
+      "x": 3043,
+      "y": 4002,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Thief's shoes",
+      "category": "loot_armour_legs",
+      "description": "",
+      "x": 3039,
+      "y": 4003,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Racing horseshoes",
+      "category": "loot_horseshoe",
+      "description": "",
+      "x": 3661,
+      "y": 4534,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Knight's longsword",
+      "category": "loot_sword",
+      "description": "",
+      "x": 3728,
+      "y": 4777,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Bread",
+      "category": "loot_food",
+      "description": "",
+      "x": 3929,
+      "y": 4637,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Deer heart",
+      "category": "loot_food",
+      "description": "",
+      "x": 3931,
+      "y": 4642,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Strong Aesop",
+      "category": "loot_potion",
+      "description": "",
+      "x": 3925,
+      "y": 4640,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Strong Bowman's brew",
+      "category": "loot_potion",
+      "description": "",
+      "x": 3923,
+      "y": 4637,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Henbane",
+      "category": "loot_herb",
+      "description": "",
+      "x": 3928,
+      "y": 4647,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Poppy",
+      "category": "loot_herb",
+      "description": "",
+      "x": 3924,
+      "y": 4646,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Groschen",
+      "category": "loot_usable",
+      "description": "",
+      "x": 3920,
+      "y": 4642,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Cannibal house",
+      "category": "interesting_site",
+      "description": "",
+      "x": 3329,
+      "y": 3233,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Forgotten contract",
+      "category": "loot_letter",
+      "description": "",
+      "x": 4626,
+      "y": 4158,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Smithy",
+      "category": "smithy",
+      "description": "",
+      "x": 4638,
+      "y": 4117,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Sketch - Battle longsword",
+      "category": "loot_recipe",
+      "description": "",
+      "x": 4654,
+      "y": 4120,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Sketch - Noble's sword",
+      "category": "loot_recipe",
+      "description": "",
+      "x": 4649,
+      "y": 4114,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Farmer's horseshoes",
+      "category": "loot_horseshoe",
+      "description": "",
+      "x": 4716,
+      "y": 3774,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Aesop",
+      "category": "loot_potion",
+      "description": "",
+      "x": 4718,
+      "y": 3772,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Apple",
+      "category": "loot_food",
+      "description": "",
+      "x": 4771,
+      "y": 3608,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Schnapps",
+      "category": "loot_food",
+      "description": "",
+      "x": 4765,
+      "y": 3613,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Groschen",
+      "category": "loot_usable",
+      "description": "",
+      "x": 4763,
+      "y": 3606,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Madman's dugout",
+      "category": "interesting_site",
+      "description": "",
+      "x": 7526,
+      "y": 2112,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Shrine",
+      "category": "shrine",
+      "description": "",
+      "x": 6972,
+      "y": 1196,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Jan Posy of Zimburg",
+      "category": "skill_trainer",
+      "description": "",
+      "x": 7573,
+      "y": 2901,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Your bed",
+      "category": "player_bed",
+      "description": "",
+      "x": 7587,
+      "y": 2871,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Sharpshooter duel",
+      "category": "interesting_site",
+      "description": "",
+      "x": 8927,
+      "y": 4459,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Forge Waffenrock",
+      "category": "quest_task",
+      "description": "",
+      "x": 9817,
+      "y": 5858,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Sculptor Without a Future",
+      "category": "quest_task",
+      "description": "",
+      "x": 10196,
+      "y": 5537,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Friendly Bout",
+      "category": "quest_task",
+      "description": "",
+      "x": 9609,
+      "y": 5995,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "A Pleasant Pastime",
+      "category": "quest_task",
+      "description": "",
+      "x": 9394,
+      "y": 5831,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "God Disposes",
+      "category": "quest_side",
+      "description": "",
+      "x": 9437,
+      "y": 5856,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "The King Solomon Tavern",
+      "category": "tavern",
+      "description": "",
+      "x": 9711,
+      "y": 6165,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Dice",
+      "category": "dice_table",
+      "description": "",
+      "x": 9707,
+      "y": 6160,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Drying rack",
+      "category": "drying_rack",
+      "description": "",
+      "x": 10224,
+      "y": 5581,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Drying rack",
+      "category": "drying_rack",
+      "description": "",
+      "x": 10231,
+      "y": 5584,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Knight of the Forge",
+      "category": "quest_task",
+      "description": "",
+      "x": 9360,
+      "y": 5612,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Weak Marigold decoction",
+      "category": "loot_potion",
+      "description": "",
+      "x": 4954,
+      "y": 2910,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Brass brooch with lettering",
+      "category": "loot_armour_jewellery",
+      "description": "",
+      "x": 4950,
+      "y": 2956,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Silver cross with insignia",
+      "category": "loot_armour_jewellery",
+      "description": "",
+      "x": 4955,
+      "y": 2947,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Eight-sided sword pommel",
+      "category": "loot_blacksmithing",
+      "description": "",
+      "x": 4958,
+      "y": 2957,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Frankfurt steel",
+      "category": "loot_blacksmithing",
+      "description": "",
+      "x": 4952,
+      "y": 2965,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Iron",
+      "category": "loot_blacksmithing",
+      "description": "",
+      "x": 4961,
+      "y": 2966,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Ordinary sword guard",
+      "category": "loot_blacksmithing",
+      "description": "",
+      "x": 4967,
+      "y": 2956,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Groschen",
+      "category": "loot_usable",
+      "description": "",
+      "x": 4968,
+      "y": 2965,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Weak Marigold decoction",
+      "category": "loot_potion",
+      "description": "",
+      "x": 4981,
+      "y": 2959,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Enemy camp",
+      "category": "bandit_camp",
+      "description": "",
+      "x": 4968,
+      "y": 2944,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Burgher's shoes",
+      "category": "loot_armour_legs",
+      "description": "",
+      "x": 4991,
+      "y": 2965,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Eight-sided sword pommel",
+      "category": "loot_blacksmithing",
+      "description": "",
+      "x": 4990,
+      "y": 2959,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Shrine",
+      "category": "shrine",
+      "description": "",
+      "x": 6983,
+      "y": 1712,
       "is_discoverable": true,
       "source": "manual"
     }
