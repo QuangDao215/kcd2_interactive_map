@@ -112,21 +112,46 @@ function buildTerritoryCanvasUrl(region, seeds) {
   // Radius caps in canvas-pixel² (world radius scaled to this canvas).
   const rDone2 = (TERRITORY_RADIUS_DONE * scale) ** 2;
   const rTodo2 = (TERRITORY_RADIUS_TODO * scale) ** 2;
+
+  // Colour every pixel by its owning seed, flagging the ones beyond their radius
+  // cap as "capped" (transparent candidates).
+  const capped = new Uint8Array(CW * CH);
   for (let p = 0; p < CW * CH; p++) {
     const s = owner[p];
     const idx = p * 4;
-    if (s < 0) { data[idx + 3] = 0; continue; }
+    if (s < 0) { data[idx + 3] = 0; capped[p] = 1; continue; }
     const px = p % CW, py = (p / CW) | 0;
     const dx = px - sx[s], dy = py - sy[s];
     const dist2 = dx * dx + dy * dy;
     if (seeds.disc[s]) {
-      if (dist2 > rDone2) { data[idx + 3] = 0; continue; }   // beyond the green blob
       data[idx] = GREEN[0]; data[idx + 1] = GREEN[1]; data[idx + 2] = GREEN[2]; data[idx + 3] = ADONE;
+      capped[p] = dist2 > rDone2 ? 1 : 0;
     } else {
-      if (dist2 > rTodo2) { data[idx + 3] = 0; continue; }   // beyond the (tighter) red blob
       data[idx] = RED[0]; data[idx + 1] = RED[1]; data[idx + 2] = RED[2]; data[idx + 3] = ATODO;
+      capped[p] = dist2 > rTodo2 ? 1 : 0;
     }
   }
+
+  // Apply the cap only at the OUTER edge of the marker field: flood-fill the
+  // exterior (capped pixels reachable from the canvas border through capped pixels)
+  // and blank just those. Capped pixels enclosed by coloured cells are interior
+  // gaps — they keep their owner's tint, linking neighbouring areas so the explored
+  // region reads as continuous instead of pocked with holes.
+  const exterior = new Uint8Array(CW * CH);
+  const stack = [];
+  const pushIf = q => { if (capped[q] && !exterior[q]) { exterior[q] = 1; stack.push(q); } };
+  for (let x = 0; x < CW; x++) { pushIf(x); pushIf((CH - 1) * CW + x); }
+  for (let y = 0; y < CH; y++) { pushIf(y * CW); pushIf(y * CW + CW - 1); }
+  while (stack.length) {
+    const p = stack.pop();
+    const px = p % CW, py = (p / CW) | 0;
+    if (px > 0) pushIf(p - 1);
+    if (px < CW - 1) pushIf(p + 1);
+    if (py > 0) pushIf(p - CW);
+    if (py < CH - 1) pushIf(p + CW);
+  }
+  for (let p = 0; p < CW * CH; p++) { if (exterior[p]) data[p * 4 + 3] = 0; }
+
   ctx.putImageData(img, 0, 0);
   return cv.toDataURL();
 }

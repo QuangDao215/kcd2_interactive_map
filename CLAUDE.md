@@ -253,9 +253,11 @@ py = 0.0334*x + -0.9963*y + 9800.12
   world fixtures (dice tables, sharpening wheels, smithies, camps, hunting grounds, fast-travel, …)
   are never "discovered", so they don't seed red cells.
 - **Radius-capped cells** (`TERRITORY_RADIUS_DONE` 360 / `TERRITORY_RADIUS_TODO` 200 world units):
-  an isolated cell only tints out to its radius, then goes transparent — so a lone to-find marker
-  reads as a small red dot, not a red wilderness. Undiscovered is kept tighter than discovered.
-  Dense clusters (markers closer than the radius) still tile fully.
+  the cap applies only at the **outer edge** of the marker field. A capped pixel is blanked only if
+  it's the *exterior* (reachable from the canvas border through capped pixels via flood-fill); capped
+  pixels **enclosed** by coloured cells are interior gaps and keep their owner's tint — so the
+  explored region reads continuous instead of pocked with holes, while a lone marker in open
+  wilderness still stays a small dot. Undiscovered is kept tighter than discovered.
 - Rendered as a soft, low-opacity **canvas wash** (`L.imageOverlay` of a 320-wide canvas,
   browser-upscaled) in a dedicated **`territoryPane` at z-index 350** (above tiles 200, below
   detail overlays 400 + markers 600). No geometry lib, no hand-drawn polygons.
