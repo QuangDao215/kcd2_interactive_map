@@ -3943,7 +3943,7 @@
       "label_key": "@ui_maplegend_burnedTrap"
     },
     {
-      "name": "Wine Barrells",
+      "name": "Fallen barrels",
       "category": "interesting_site",
       "description": "",
       "world_x": 1831.81,
@@ -30422,6 +30422,15 @@
       "description": "",
       "x": 5990,
       "y": 4342,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Otter's treasure",
+      "category": "interesting_site",
+      "description": "",
+      "x": 6086,
+      "y": 4923,
       "is_discoverable": true,
       "source": "manual"
     }
