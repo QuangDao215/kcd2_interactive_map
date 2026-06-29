@@ -14,6 +14,7 @@ async function clearMyMarkers() {
   saveUserMarkersToStorage();
   userMarkerLayer.clearLayers();
   renderMyMarkersList();
+  if (typeof refreshTerritories === 'function') refreshTerritories();
   showToast('All custom markers cleared');
 }
 
@@ -36,6 +37,7 @@ async function clearProgress() {
 
   renderCategoryList(document.getElementById('search-input')?.value || '');
   updateGameProgress();
+  if (typeof refreshTerritories === 'function') refreshTerritories();
   showToast('All progress cleared');
 }
 

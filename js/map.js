@@ -44,6 +44,7 @@ async function init() {
   loadActiveCategoriesFromStorage();
   loadDiscoveredFromStorage();
   loadCollapsedGroups();
+  if (typeof loadTerritoryPref === 'function') loadTerritoryPref();
 
   // On phones the sidebar is an overlay drawer — start collapsed so the map shows.
   if (window.matchMedia && window.matchMedia('(max-width: 768px)').matches) {
@@ -183,6 +184,7 @@ async function loadRegion(region, opts = {}) {
   markerLayers = {};
   markersByKey = {};
   settlementLabelLayer = null;
+  territoryLayer = null;          // map is rebuilt → old overlay + its pane are gone
 
   // Create new map with region-specific CRS
   // maxZoom extends beyond the tile pyramid's max — Leaflet upscales the
@@ -356,6 +358,9 @@ async function loadRegion(region, opts = {}) {
   // Keep the Edit Markers counter + overall game-completion bar in sync
   if (typeof updateMarkerEditStatus === 'function') updateMarkerEditStatus();
   if (typeof updateGameProgress === 'function') updateGameProgress();
+
+  // Discovered-territory overlay (opt-in; rebuilt for this region's CRS)
+  if (typeof renderTerritories === 'function' && showTerritories) renderTerritories(region);
 }
 
 function switchRegion(region) {

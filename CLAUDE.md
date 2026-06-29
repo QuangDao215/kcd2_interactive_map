@@ -24,6 +24,7 @@ E:\kcd2_map\  (repo root)
 │   ├── import-export.js             #   backup v3 import/export
 │   ├── local-maps.js                #   detail-map overlays + calibration tool
 │   ├── labels.js                    #   settlement-name labels
+│   ├── territories.js               #   discovered-territory overlay (per-marker Voronoi, JFA)
 │   ├── storage.js                   #   localStorage + getMarkerKey/discovered
 │   └── main.js                      #   UI helpers + init()
 ├── main_icon.png                    # Favicon (game icon)
@@ -239,7 +240,27 @@ py = 0.0334*x + -0.9963*y + 9800.12
 - Loading URL with marker → flies to it and opens popup
 
 ### Map Options
-- Toggle **switches** (not checkboxes): Settlement names · Detail maps · Hide discovered
+- Toggle **switches** (not checkboxes): Settlement names · Detail maps · Hide discovered ·
+  Discovered territories
+
+### Discovered Territories (`js/territories.js`)
+- **Per-marker Voronoi coverage overlay** (opt-in, off by default). **Every** marker (DB + edits
+  + custom) is a seed; each map point belongs to its nearest marker, and that cell is tinted by
+  whether that marker is discovered — **green** (done) vs a **faint red haze** (still to find).
+  Discovered clusters merge into solid "areas done"; lone finds light up their neighbourhood.
+- Rendered as a soft, low-opacity **canvas wash** (`L.imageOverlay` of a 384-wide canvas,
+  browser-upscaled) in a dedicated **`territoryPane` at z-index 350** (above tiles 200, below
+  detail overlays 400 + markers 600). No geometry lib, no hand-drawn polygons.
+- The partition is computed with the **Jump Flood Algorithm** (`buildTerritoryCanvasUrl`) so cost
+  is driven by canvas size, **not seed count** — ~1,600 markers tint as fast as a handful.
+- Re-tints live on discover/un-discover (`refreshTerritories` from `toggleMarkerDiscovered`), on
+  bulk Clear, and on region load. Map is rebuilt per region switch, so `territoryLayer` + pane are
+  recreated each load.
+- **Seed exclusions (`TERRITORY_EXCLUDED_CATEGORIES`):** permanent world fixtures with no real
+  discovered state — `camp` + the hunting grounds (`hunting_spot`/`_deer`/`_boar`/`_wolf`) — are
+  **not** seeded, so they don't punch red holes into cleared areas. (`bandit_camp` + NPC/facility
+  classes are still seeded.) Adding/editing a *custom* marker doesn't re-tint until the next
+  discover toggle or region reload. Earlier town-seeded + `%`-pill version was replaced by this.
 
 ### Map Markers (rendering)
 - Per-category icons get a subtle **group-coloured glow** (`GROUP_COLORS` → `--glow` on the img)
@@ -336,6 +357,7 @@ function makeMapCRS(maxZoom, mapHeight) {
 - `kcd2_label_positions` — drag-calibrated settlement-name positions per region
 - `kcd2_marker_edits` — Edit Markers tool: POI renames `{region: {"cat:x:y": {name}}}`
 - `kcd2_marker_deletes` — Edit Markers tool: deleted POI keys `{region: ["cat:x:y"]}`
+- `kcd2_show_territories` — discovered-territory overlay on/off (`'1'`/`'0'`)
 
 ### File Protocol Fallback
 Data files have both `.json` (fetched via HTTP) and `.js` (loaded via `<script>` tag) versions. The JS wrappers set globals: `window.MARKER_DATA_TROSKY`, `window.MARKER_DATA_KUTTENBERG`, `SETTLEMENT_LABELS` (also on `window`), `window.LOCAL_MAPS_DATA`, `window.ICON_MAP`. Markers/local-maps try fetch first, fall back to the globals for `file://`; settlement labels load only via the `<script>` tag.

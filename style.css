@@ -422,6 +422,9 @@
     line-height: 1.6;
   }
 
+  /* ── Discovered-territory overlay ── */
+  .territory-overlay { image-rendering: auto; }   /* soft upscale of the low-res wash */
+
   /* ── Tools Tab ── */
   .tools-section { padding: 16px 18px; }
   .tools-section h3 {
