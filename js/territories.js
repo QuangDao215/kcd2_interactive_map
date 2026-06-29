@@ -18,22 +18,25 @@ const TERRITORY_CANVAS_W = 320;   // downsampled grid; the browser upscales it s
 const TERRITORY_A_DONE = 0.34;    // green tint over discovered cells
 const TERRITORY_A_TODO = 0.15;    // faint red haze over undiscovered cells
 
-// Permanent world fixtures (campsites, hunting grounds) have no real "discovered"
-// state — you never check them off — so seeding them would punch undiscovered (red)
-// cells into areas you've actually cleared. They're left out of the partition.
-const TERRITORY_EXCLUDED_CATEGORIES = new Set([
-  "camp",
-  "hunting_spot", "hunting_deer", "hunting_boar", "hunting_wolf",
-]);
+// Max blob radius (world units) a single marker tints — caps how far an isolated
+// cell bleeds in sparse areas. Undiscovered is kept tighter than discovered, so a
+// lone "to-find" marker reads as a small red dot rather than a big red wilderness,
+// while cleared clusters still merge into broad green areas. (Dense areas where
+// markers sit closer than this just tile fully, as before.)
+const TERRITORY_RADIUS_DONE = 360;
+const TERRITORY_RADIUS_TODO = 200;
 
-// Each eligible marker (DB + edits + custom) becomes a seed: parallel x / y /
-// discovered arrays. Permanent fixtures (see above) are skipped.
+// A marker seeds the overlay only if its category is "discoverable content" — the
+// same PROGRESS_CATEGORIES the completion bar uses (loot, quests, shrines, graves,
+// crosses, nests, stashes, corpses, interesting sites). NPCs, shops, and world
+// fixtures (dice tables, sharpening wheels, smithies, camps, hunting grounds,
+// fast-travel, …) are never "discovered", so they don't seed red cells.
 function computeMarkerSeeds(region) {
   const discovered = discoveredMarkers[region] || new Set();
   const markers = [...getEditedMarkers(region), ...(userMarkers[region] || [])];
   const xs = [], ys = [], disc = [];
   markers.forEach(m => {
-    if (TERRITORY_EXCLUDED_CATEGORIES.has(m.category)) return;
+    if (!PROGRESS_CATEGORIES.has(m.category)) return;
     if (!Number.isFinite(+m.x) || !Number.isFinite(+m.y)) return;
     xs.push(+m.x);
     ys.push(+m.y);
@@ -106,13 +109,21 @@ function buildTerritoryCanvasUrl(region, seeds) {
   const data = img.data;
   const GREEN = [107, 158, 90], RED = [176, 82, 74];
   const ADONE = Math.round(TERRITORY_A_DONE * 255), ATODO = Math.round(TERRITORY_A_TODO * 255);
+  // Radius caps in canvas-pixel² (world radius scaled to this canvas).
+  const rDone2 = (TERRITORY_RADIUS_DONE * scale) ** 2;
+  const rTodo2 = (TERRITORY_RADIUS_TODO * scale) ** 2;
   for (let p = 0; p < CW * CH; p++) {
     const s = owner[p];
     const idx = p * 4;
     if (s < 0) { data[idx + 3] = 0; continue; }
+    const px = p % CW, py = (p / CW) | 0;
+    const dx = px - sx[s], dy = py - sy[s];
+    const dist2 = dx * dx + dy * dy;
     if (seeds.disc[s]) {
+      if (dist2 > rDone2) { data[idx + 3] = 0; continue; }   // beyond the green blob
       data[idx] = GREEN[0]; data[idx + 1] = GREEN[1]; data[idx + 2] = GREEN[2]; data[idx + 3] = ADONE;
     } else {
+      if (dist2 > rTodo2) { data[idx + 3] = 0; continue; }   // beyond the (tighter) red blob
       data[idx] = RED[0]; data[idx + 1] = RED[1]; data[idx + 2] = RED[2]; data[idx + 3] = ATODO;
     }
   }

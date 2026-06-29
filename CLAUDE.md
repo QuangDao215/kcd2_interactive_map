@@ -244,23 +244,25 @@ py = 0.0334*x + -0.9963*y + 9800.12
   Discovered territories
 
 ### Discovered Territories (`js/territories.js`)
-- **Per-marker Voronoi coverage overlay** (opt-in, off by default). **Every** marker (DB + edits
-  + custom) is a seed; each map point belongs to its nearest marker, and that cell is tinted by
-  whether that marker is discovered — **green** (done) vs a **faint red haze** (still to find).
-  Discovered clusters merge into solid "areas done"; lone finds light up their neighbourhood.
-- Rendered as a soft, low-opacity **canvas wash** (`L.imageOverlay` of a 384-wide canvas,
+- **Per-marker Voronoi coverage overlay** (opt-in, off by default). Each discoverable marker is a
+  seed; each map point belongs to its nearest seed, and that cell is tinted by whether that marker
+  is discovered — **green** (done) vs a **faint red haze** (still to find). Discovered clusters
+  merge into solid "areas done"; lone finds light up their immediate surroundings.
+- **Seeds = discoverable content only** (`PROGRESS_CATEGORIES`, the completion-bar set: loot,
+  quests, shrines, graves, crosses, nests, stashes, corpses, interesting sites). NPCs, shops, and
+  world fixtures (dice tables, sharpening wheels, smithies, camps, hunting grounds, fast-travel, …)
+  are never "discovered", so they don't seed red cells.
+- **Radius-capped cells** (`TERRITORY_RADIUS_DONE` 360 / `TERRITORY_RADIUS_TODO` 200 world units):
+  an isolated cell only tints out to its radius, then goes transparent — so a lone to-find marker
+  reads as a small red dot, not a red wilderness. Undiscovered is kept tighter than discovered.
+  Dense clusters (markers closer than the radius) still tile fully.
+- Rendered as a soft, low-opacity **canvas wash** (`L.imageOverlay` of a 320-wide canvas,
   browser-upscaled) in a dedicated **`territoryPane` at z-index 350** (above tiles 200, below
   detail overlays 400 + markers 600). No geometry lib, no hand-drawn polygons.
 - The partition is computed with the **Jump Flood Algorithm** (`buildTerritoryCanvasUrl`) so cost
-  is driven by canvas size, **not seed count** — ~1,600 markers tint as fast as a handful.
-- Re-tints live on discover/un-discover (`refreshTerritories` from `toggleMarkerDiscovered`), on
-  bulk Clear, and on region load. Map is rebuilt per region switch, so `territoryLayer` + pane are
-  recreated each load.
-- **Seed exclusions (`TERRITORY_EXCLUDED_CATEGORIES`):** permanent world fixtures with no real
-  discovered state — `camp` + the hunting grounds (`hunting_spot`/`_deer`/`_boar`/`_wolf`) — are
-  **not** seeded, so they don't punch red holes into cleared areas. (`bandit_camp` + NPC/facility
-  classes are still seeded.) Adding/editing a *custom* marker doesn't re-tint until the next
-  discover toggle or region reload. Earlier town-seeded + `%`-pill version was replaced by this.
+  is driven by canvas size, **not seed count**. Re-tints live on discover/un-discover (debounced
+  `refreshTerritories` from `toggleMarkerDiscovered`), on bulk Clear, and on region load. Map is
+  rebuilt per region switch, so `territoryLayer` + pane are recreated each load.
 
 ### Map Markers (rendering)
 - Per-category icons get a subtle **group-coloured glow** (`GROUP_COLORS` → `--glow` on the img)
