@@ -252,12 +252,14 @@ py = 0.0334*x + -0.9963*y + 9800.12
   quests, shrines, graves, crosses, nests, stashes, corpses, interesting sites). NPCs, shops, and
   world fixtures (dice tables, sharpening wheels, smithies, camps, hunting grounds, fast-travel, …)
   are never "discovered", so they don't seed red cells.
-- **Radius-capped cells** (`TERRITORY_RADIUS_DONE` 360 / `TERRITORY_RADIUS_TODO` 200 world units):
-  the cap applies only at the **outer edge** of the marker field. A capped pixel is blanked only if
-  it's the *exterior* (reachable from the canvas border through capped pixels via flood-fill); capped
-  pixels **enclosed** by coloured cells are interior gaps and keep their owner's tint — so the
-  explored region reads continuous instead of pocked with holes, while a lone marker in open
-  wilderness still stays a small dot. Undiscovered is kept tighter than discovered.
+- **Green fills, red dots.** Discovered (green) cells are **uncapped** — each fills its whole Voronoi
+  territory, auto-expanding to consume the un-tinted space nearest a found marker, so cleared areas
+  read as broad green regions. Undiscovered (red) cells are capped to `TERRITORY_RADIUS_TODO` (200
+  world units) so a lone to-find marker stays a small dot, not a red wilderness.
+- The red cap applies only at the **outer edge**: a capped (red) pixel is blanked only if it's the
+  *exterior* (reachable from the canvas border through capped pixels via flood-fill); capped pixels
+  **enclosed** by colour keep their owner's tint, so the explored region reads continuous instead of
+  pocked with holes.
 - Rendered as a soft, low-opacity **canvas wash** (`L.imageOverlay` of a 320-wide canvas,
   browser-upscaled) in a dedicated **`territoryPane` at z-index 350** (above tiles 200, below
   detail overlays 400 + markers 600). No geometry lib, no hand-drawn polygons.

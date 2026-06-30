@@ -18,12 +18,11 @@ const TERRITORY_CANVAS_W = 320;   // downsampled grid; the browser upscales it s
 const TERRITORY_A_DONE = 0.34;    // green tint over discovered cells
 const TERRITORY_A_TODO = 0.15;    // faint red haze over undiscovered cells
 
-// Max blob radius (world units) a single marker tints — caps how far an isolated
-// cell bleeds in sparse areas. Undiscovered is kept tighter than discovered, so a
-// lone "to-find" marker reads as a small red dot rather than a big red wilderness,
-// while cleared clusters still merge into broad green areas. (Dense areas where
-// markers sit closer than this just tile fully, as before.)
-const TERRITORY_RADIUS_DONE = 360;
+// Discovered (green) cells are UNCAPPED — each fills its whole Voronoi territory,
+// auto-expanding to consume the empty/un-tinted space nearest a found marker, so
+// cleared areas read as broad green regions. Undiscovered (red) cells stay capped
+// to this radius (world units) so a lone to-find marker is a small red dot, not a
+// red wilderness.
 const TERRITORY_RADIUS_TODO = 200;
 
 // A marker seeds the overlay only if its category is "discoverable content" — the
@@ -109,26 +108,25 @@ function buildTerritoryCanvasUrl(region, seeds) {
   const data = img.data;
   const GREEN = [107, 158, 90], RED = [176, 82, 74];
   const ADONE = Math.round(TERRITORY_A_DONE * 255), ATODO = Math.round(TERRITORY_A_TODO * 255);
-  // Radius caps in canvas-pixel² (world radius scaled to this canvas).
-  const rDone2 = (TERRITORY_RADIUS_DONE * scale) ** 2;
+  // Red radius cap in canvas-pixel² (world radius scaled to this canvas). Green has none.
   const rTodo2 = (TERRITORY_RADIUS_TODO * scale) ** 2;
 
-  // Colour every pixel by its owning seed, flagging the ones beyond their radius
-  // cap as "capped" (transparent candidates).
+  // Colour every pixel by its owning seed. Discovered (green) is never capped, so
+  // it fills its whole territory; undiscovered (red) is flagged "capped" beyond its
+  // radius (a transparent candidate).
   const capped = new Uint8Array(CW * CH);
   for (let p = 0; p < CW * CH; p++) {
     const s = owner[p];
     const idx = p * 4;
     if (s < 0) { data[idx + 3] = 0; capped[p] = 1; continue; }
-    const px = p % CW, py = (p / CW) | 0;
-    const dx = px - sx[s], dy = py - sy[s];
-    const dist2 = dx * dx + dy * dy;
     if (seeds.disc[s]) {
       data[idx] = GREEN[0]; data[idx + 1] = GREEN[1]; data[idx + 2] = GREEN[2]; data[idx + 3] = ADONE;
-      capped[p] = dist2 > rDone2 ? 1 : 0;
+      capped[p] = 0;   // green auto-expands to fill its full Voronoi territory
     } else {
+      const px = p % CW, py = (p / CW) | 0;
+      const dx = px - sx[s], dy = py - sy[s];
+      capped[p] = (dx * dx + dy * dy) > rTodo2 ? 1 : 0;
       data[idx] = RED[0]; data[idx + 1] = RED[1]; data[idx + 2] = RED[2]; data[idx + 3] = ATODO;
-      capped[p] = dist2 > rTodo2 ? 1 : 0;
     }
   }
 
