@@ -22,6 +22,9 @@ desktop.ini
 notes.txt
 TODO.md
 
+# Personal backup exports (kept locally, never committed)
+kcd2_backup_*.json
+
 # Icons — committed selectively via active_icons.txt
 icons/*
 icons/items/*
