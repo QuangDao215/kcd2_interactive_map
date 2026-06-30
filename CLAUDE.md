@@ -24,7 +24,6 @@ E:\kcd2_map\  (repo root)
 │   ├── import-export.js             #   backup v3 import/export
 │   ├── local-maps.js                #   detail-map overlays + calibration tool
 │   ├── labels.js                    #   settlement-name labels
-│   ├── territories.js               #   discovered-territory overlay (per-marker Voronoi, JFA)
 │   ├── storage.js                   #   localStorage + getMarkerKey/discovered
 │   └── main.js                      #   UI helpers + init()
 ├── main_icon.png                    # Favicon (game icon)
@@ -240,33 +239,7 @@ py = 0.0334*x + -0.9963*y + 9800.12
 - Loading URL with marker → flies to it and opens popup
 
 ### Map Options
-- Toggle **switches** (not checkboxes): Settlement names · Detail maps · Hide discovered ·
-  Discovered territories
-
-### Discovered Territories (`js/territories.js`)
-- **Per-marker Voronoi coverage overlay** (opt-in, off by default). Each discoverable marker is a
-  seed; each map point belongs to its nearest seed, and that cell is tinted by whether that marker
-  is discovered — **green** (done) vs a **faint red haze** (still to find). Discovered clusters
-  merge into solid "areas done"; lone finds light up their immediate surroundings.
-- **Seeds = discoverable content only** (`PROGRESS_CATEGORIES`, the completion-bar set: loot,
-  quests, shrines, graves, crosses, nests, stashes, corpses, interesting sites). NPCs, shops, and
-  world fixtures (dice tables, sharpening wheels, smithies, camps, hunting grounds, fast-travel, …)
-  are never "discovered", so they don't seed red cells.
-- **Green fills, red dots.** Discovered (green) cells are **uncapped** — each fills its whole Voronoi
-  territory, auto-expanding to consume the un-tinted space nearest a found marker, so cleared areas
-  read as broad green regions. Undiscovered (red) cells are capped to `TERRITORY_RADIUS_TODO` (200
-  world units) so a lone to-find marker stays a small dot, not a red wilderness.
-- The red cap applies only at the **outer edge**: a capped (red) pixel is blanked only if it's the
-  *exterior* (reachable from the canvas border through capped pixels via flood-fill); capped pixels
-  **enclosed** by colour keep their owner's tint, so the explored region reads continuous instead of
-  pocked with holes.
-- Rendered as a soft, low-opacity **canvas wash** (`L.imageOverlay` of a 320-wide canvas,
-  browser-upscaled) in a dedicated **`territoryPane` at z-index 350** (above tiles 200, below
-  detail overlays 400 + markers 600). No geometry lib, no hand-drawn polygons.
-- The partition is computed with the **Jump Flood Algorithm** (`buildTerritoryCanvasUrl`) so cost
-  is driven by canvas size, **not seed count**. Re-tints live on discover/un-discover (debounced
-  `refreshTerritories` from `toggleMarkerDiscovered`), on bulk Clear, and on region load. Map is
-  rebuilt per region switch, so `territoryLayer` + pane are recreated each load.
+- Toggle **switches** (not checkboxes): Settlement names · Detail maps · Hide discovered
 
 ### Map Markers (rendering)
 - Per-category icons get a subtle **group-coloured glow** (`GROUP_COLORS` → `--glow` on the img)
@@ -363,7 +336,6 @@ function makeMapCRS(maxZoom, mapHeight) {
 - `kcd2_label_positions` — drag-calibrated settlement-name positions per region
 - `kcd2_marker_edits` — Edit Markers tool: POI renames `{region: {"cat:x:y": {name}}}`
 - `kcd2_marker_deletes` — Edit Markers tool: deleted POI keys `{region: ["cat:x:y"]}`
-- `kcd2_show_territories` — discovered-territory overlay on/off (`'1'`/`'0'`)
 
 ### File Protocol Fallback
 Data files have both `.json` (fetched via HTTP) and `.js` (loaded via `<script>` tag) versions. The JS wrappers set globals: `window.MARKER_DATA_TROSKY`, `window.MARKER_DATA_KUTTENBERG`, `SETTLEMENT_LABELS` (also on `window`), `window.LOCAL_MAPS_DATA`, `window.ICON_MAP`. Markers/local-maps try fetch first, fall back to the globals for `file://`; settlement labels load only via the `<script>` tag.

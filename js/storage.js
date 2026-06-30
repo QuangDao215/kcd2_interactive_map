@@ -150,7 +150,6 @@ function toggleMarkerDiscovered(key, btnId) {
   // Refresh sidebar progress stats + overall game completion
   renderCategoryList(document.getElementById('search-input')?.value || '');
   updateGameProgress();
-  if (typeof refreshTerritories === 'function') refreshTerritories();
 }
 
 
