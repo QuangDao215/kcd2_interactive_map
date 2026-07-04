@@ -564,10 +564,10 @@ function buildUserMarkerPopup(markerData) {
     <div class="popup-coords">X: ${markerData.x} &nbsp; Y: ${markerData.y}</div>
     <button class="popup-progress-btn${discovered ? ' completed' : ''}" id="${btnId}"
       data-done-label="${doneLabel}" data-undone-label="${undoneLabel}"
-      onclick="toggleMarkerDiscovered('${key}', '${btnId}')">${discovered ? doneLabel : undoneLabel}</button>
+      onclick="event.stopPropagation();toggleMarkerDiscovered('${key}', '${btnId}')">${discovered ? doneLabel : undoneLabel}</button>
     <div class="popup-actions">
-      <button class="popup-action-btn" onclick="editUserMarker(${markerData.id})">✎ Edit</button>
-      <button class="popup-action-btn danger" onclick="showConfirm('Delete this marker?',{title:'Delete marker',confirmText:'Delete',danger:true}).then(ok=>ok&&deleteUserMarker(${markerData.id}))">✕ Delete</button>
+      <button class="popup-action-btn" onclick="event.stopPropagation();editUserMarker(${markerData.id})">✎ Edit</button>
+      <button class="popup-action-btn danger" onclick="event.stopPropagation();showConfirm('Delete this marker?',{title:'Delete marker',confirmText:'Delete',danger:true}).then(ok=>ok&&deleteUserMarker(${markerData.id}))">✕ Delete</button>
     </div>
   `;
 }
@@ -594,10 +594,11 @@ function addUserMarkerToMap(markerData) {
     }
   });
 
-  // closeOnClick:false — otherwise a click on a popup button (Edit/Delete/Discover)
-  // propagates to the map and Leaflet's closePopupOnClick shuts the popup before the
-  // edit form can show. (The add-marker form is bound the same way for this reason.)
-  marker.bindPopup(buildUserMarkerPopup(markerData), { maxWidth: 280, closeOnClick: false });
+  // Default closeOnClick so an outside/map click dismisses the popup. The popup's own
+  // buttons call event.stopPropagation() (see buildUserMarkerPopup) so clicking them
+  // doesn't reach the map — which would otherwise shut the popup before the edit form
+  // can show.
+  marker.bindPopup(buildUserMarkerPopup(markerData), { maxWidth: 280 });
 
   // Store reference for opacity control
   markersByKey[markerKey] = marker;
