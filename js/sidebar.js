@@ -46,14 +46,14 @@ function renderCategoryList(filter = '') {
     if (groupCats.length === 0) return;
     const expanded = filter ? true : !collapsedGroups[group.name];
     html += renderCategoryGroupHtml(group.name, groupCats, counts, expanded,
-      on => `toggleGroupCategories('${group.name}', ${on})`);
+      on => `toggleGroupCategories('${group.name}', ${on}, this)`);
   });
 
   if (ungroupedCats.length > 0) {
     if (collapsedGroups['Other'] === undefined) collapsedGroups['Other'] = true;
     const expanded = filter ? true : !collapsedGroups['Other'];
     html += renderCategoryGroupHtml('Other', ungroupedCats, counts, expanded,
-      on => `toggleOtherCategories(${on})`);
+      on => `toggleOtherCategories(${on}, this)`);
   }
 
   list.innerHTML = html;
@@ -122,39 +122,50 @@ function loadCollapsedGroups() {
   } catch (e) { /* ignore */ }
 }
 
-function toggleGroupCategories(groupName, show) {
+function toggleGroupCategories(groupName, show, el) {
   const group = CATEGORY_GROUPS.find(g => g.name === groupName);
   if (!group) return;
-  group.categories.forEach(catId => {
-    if (show) {
-      activeCategories.add(catId);
-      ensureCategoryBuilt(catId);
-      if (markerLayers[catId]) map.addLayer(markerLayers[catId]);
-    } else {
-      activeCategories.delete(catId);
-      if (markerLayers[catId]) map.removeLayer(markerLayers[catId]);
-    }
-  });
+  group.categories.forEach(catId => { if (show) activeCategories.add(catId); else activeCategories.delete(catId); });
   saveActiveCategoriesFromStorage();
-  renderCategoryList(document.getElementById('search-input').value);
+  applyGroupToggleInPlace(group.categories, show, el);
 }
 
-function toggleOtherCategories(show) {
+function toggleOtherCategories(show, el) {
   const groupedCatIds = new Set();
   CATEGORY_GROUPS.forEach(g => g.categories.forEach(id => groupedCatIds.add(id)));
-  categories.forEach(cat => {
-    if (groupedCatIds.has(cat.id)) return;
-    if (show) {
-      activeCategories.add(cat.id);
-      ensureCategoryBuilt(cat.id);
-      if (markerLayers[cat.id]) map.addLayer(markerLayers[cat.id]);
-    } else {
-      activeCategories.delete(cat.id);
-      if (markerLayers[cat.id]) map.removeLayer(markerLayers[cat.id]);
-    }
-  });
+  const otherIds = categories.filter(cat => !groupedCatIds.has(cat.id)).map(c => c.id);
+  otherIds.forEach(catId => { if (show) activeCategories.add(catId); else activeCategories.delete(catId); });
   saveActiveCategoriesFromStorage();
-  renderCategoryList(document.getElementById('search-input').value);
+  applyGroupToggleInPlace(otherIds, show, el);
+}
+
+// Flip a whole group's switches IN PLACE (the group's toggle-all + every child row)
+// so they slide, then defer the heavy marker-layer work a couple of frames so it
+// can't block those slides from painting. Falls back to a re-render if el is absent.
+function applyGroupToggleInPlace(catIds, show, el) {
+  if (el) {
+    el.classList.toggle('on', show);
+    const group = el.closest('.cat-group');
+    if (group) {
+      group.querySelectorAll('.cat-group-children .category-item').forEach(item => {
+        item.classList.toggle('active', show);
+        item.setAttribute('aria-checked', show);
+      });
+    }
+  }
+  const applyLayers = () => {
+    catIds.forEach(catId => {
+      if (show) {
+        ensureCategoryBuilt(catId);
+        if (markerLayers[catId]) map.addLayer(markerLayers[catId]);
+      } else if (markerLayers[catId]) {
+        map.removeLayer(markerLayers[catId]);
+      }
+    });
+    if (!el) renderCategoryList(document.getElementById('search-input').value);
+  };
+  if (el) requestAnimationFrame(() => requestAnimationFrame(applyLayers));
+  else applyLayers();
 }
 
 // ── Legend overlay ──
