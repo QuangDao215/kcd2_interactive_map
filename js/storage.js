@@ -146,6 +146,14 @@ function toggleMarkerDiscovered(key, btnId) {
       }
     }
   }
+  // The label changes length (Discovered <-> Mark as Discovered), so re-measure the
+  // popup: Leaflet only sizes it at open, and the longer label would otherwise wrap
+  // inside the fixed-width box. This stretches it to fit on one line.
+  const popup = marker && marker.getPopup && marker.getPopup();
+  if (popup && popup.isOpen && popup.isOpen() && popup._updateLayout) {
+    popup._updateLayout();
+    popup._updatePosition();
+  }
   saveDiscoveredToStorage();
   // Refresh sidebar progress stats + overall game completion
   renderCategoryList(document.getElementById('search-input')?.value || '');
