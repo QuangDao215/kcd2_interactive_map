@@ -46,14 +46,14 @@ function renderCategoryList(filter = '') {
     if (groupCats.length === 0) return;
     const expanded = filter ? true : !collapsedGroups[group.name];
     html += renderCategoryGroupHtml(group.name, groupCats, counts, expanded,
-      on => `toggleGroupCategories('${group.name}', ${on}, this)`);
+      () => `toggleGroupCategories('${group.name}', this)`);
   });
 
   if (ungroupedCats.length > 0) {
     if (collapsedGroups['Other'] === undefined) collapsedGroups['Other'] = true;
     const expanded = filter ? true : !collapsedGroups['Other'];
     html += renderCategoryGroupHtml('Other', ungroupedCats, counts, expanded,
-      on => `toggleOtherCategories(${on}, this)`);
+      () => `toggleOtherCategories(this)`);
   }
 
   list.innerHTML = html;
@@ -122,18 +122,23 @@ function loadCollapsedGroups() {
   } catch (e) { /* ignore */ }
 }
 
-function toggleGroupCategories(groupName, show, el) {
+function toggleGroupCategories(groupName, el) {
   const group = CATEGORY_GROUPS.find(g => g.name === groupName);
   if (!group) return;
+  // Decide show/hide from the CURRENT state at click time — we no longer re-render,
+  // so a value baked into the markup at render time would stick after the first click.
+  const show = !group.categories.every(catId => activeCategories.has(catId));
   group.categories.forEach(catId => { if (show) activeCategories.add(catId); else activeCategories.delete(catId); });
   saveActiveCategoriesFromStorage();
   applyGroupToggleInPlace(group.categories, show, el);
 }
 
-function toggleOtherCategories(show, el) {
+function toggleOtherCategories(el) {
   const groupedCatIds = new Set();
   CATEGORY_GROUPS.forEach(g => g.categories.forEach(id => groupedCatIds.add(id)));
   const otherIds = categories.filter(cat => !groupedCatIds.has(cat.id)).map(c => c.id);
+  if (!otherIds.length) return;
+  const show = !otherIds.every(catId => activeCategories.has(catId));
   otherIds.forEach(catId => { if (show) activeCategories.add(catId); else activeCategories.delete(catId); });
   saveActiveCategoriesFromStorage();
   applyGroupToggleInPlace(otherIds, show, el);
