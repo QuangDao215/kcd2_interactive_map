@@ -185,20 +185,12 @@ function renderLegend() {
 
 function toggleCategory(catId, el) {
   const active = !activeCategories.has(catId);
-  if (active) {
-    activeCategories.add(catId);
-    ensureCategoryBuilt(catId);
-    if (markerLayers[catId]) map.addLayer(markerLayers[catId]);
-  } else {
-    activeCategories.delete(catId);
-    if (markerLayers[catId]) map.removeLayer(markerLayers[catId]);
-  }
+  if (active) activeCategories.add(catId); else activeCategories.delete(catId);
   saveActiveCategoriesFromStorage();
 
-  // Update the toggled row IN PLACE so its switch actually slides — a full
-  // renderCategoryList() recreates the element in its final position and the CSS
-  // transition has nothing to animate from. The group's "toggle all" switch is
-  // re-synced from the sibling rows' live state.
+  // Flip the switch IN PLACE first (a full renderCategoryList would recreate the
+  // element already in its final position, leaving the CSS transition nothing to
+  // animate from). The group's "toggle all" switch is re-synced from sibling rows.
   if (el) {
     el.classList.toggle('active', active);
     el.setAttribute('aria-checked', active);
@@ -209,9 +201,21 @@ function toggleCategory(catId, el) {
       const toggleAll = group.querySelector('.group-toggle-all');
       if (toggleAll) toggleAll.classList.toggle('on', allActive);
     }
-  } else {
-    renderCategoryList(document.getElementById('search-input').value);
   }
+
+  // Building/adding a large category's markers is heavy + synchronous; defer it a
+  // couple of frames so it can't block the toggle's slide from starting to paint.
+  const applyLayer = () => {
+    if (active) {
+      ensureCategoryBuilt(catId);
+      if (markerLayers[catId]) map.addLayer(markerLayers[catId]);
+    } else if (markerLayers[catId]) {
+      map.removeLayer(markerLayers[catId]);
+    }
+    if (!el) renderCategoryList(document.getElementById('search-input').value);
+  };
+  if (el) requestAnimationFrame(() => requestAnimationFrame(applyLayer));
+  else applyLayer();
 }
 
 function toggleAllCategories(show) {
