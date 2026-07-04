@@ -594,7 +594,10 @@ function addUserMarkerToMap(markerData) {
     }
   });
 
-  marker.bindPopup(buildUserMarkerPopup(markerData), { maxWidth: 280 });
+  // closeOnClick:false — otherwise a click on a popup button (Edit/Delete/Discover)
+  // propagates to the map and Leaflet's closePopupOnClick shuts the popup before the
+  // edit form can show. (The add-marker form is bound the same way for this reason.)
+  marker.bindPopup(buildUserMarkerPopup(markerData), { maxWidth: 280, closeOnClick: false });
 
   // Store reference for opacity control
   markersByKey[markerKey] = marker;
