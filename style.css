@@ -110,6 +110,21 @@
   }
 
   /* ── Overall Game Completion bar ── */
+  /* ── Editorial eyebrow: one quiet, uppercase, letter-spaced section label that
+     recedes into the type system, with a hairline to group the list it heads.
+     Gold stays reserved for the figures + active states. ── */
+  .section-eyebrow {
+    font-family: 'Cinzel', serif;
+    font-size: 10.5px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-secondary);
+    padding-bottom: 6px;
+    margin-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+
   .game-progress {
     padding: 10px 18px 12px;
     border-bottom: 1px solid var(--border);
@@ -119,8 +134,8 @@
     display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 6px;
   }
   .game-progress .gp-header span:first-child {
-    font-family: 'Cinzel', serif; font-size: 12px; font-weight: 600;
-    color: var(--accent); text-transform: uppercase; letter-spacing: 0.5px;
+    font-family: 'Cinzel', serif; font-size: 10.5px; font-weight: 600;
+    color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.1em;
   }
   .game-progress #gp-pct { font-size: 14px; font-weight: 700; color: var(--accent); }
   .game-progress .gp-bar {
@@ -221,6 +236,7 @@
     user-select: none;
   }
   .cat-group-header:hover { background: var(--bg-hover); }
+  .cat-group-header:hover .group-name { color: var(--text-primary); }
   .cat-group-header .group-arrow {
     font-size: 10px;
     color: var(--text-muted);
@@ -232,12 +248,13 @@
   .cat-group-header.expanded .group-arrow { transform: rotate(90deg); }
   .cat-group-header .group-name {
     font-family: 'Cinzel', serif;
-    font-size: 12px;
+    font-size: 11px;
     font-weight: 600;
-    color: var(--accent);
-    letter-spacing: 0.5px;
+    color: var(--text-secondary);
+    letter-spacing: 0.1em;
     text-transform: uppercase;
     flex: 1;
+    transition: color 0.15s;
   }
   .cat-group-header .group-count {
     font-size: 12px;
@@ -426,12 +443,14 @@
   .tools-section { padding: 16px 18px; }
   .tools-section h3 {
     font-family: 'Cinzel', serif;
-    font-size: 13px;
+    font-size: 10.5px;
     font-weight: 600;
-    color: var(--accent);
-    margin-bottom: 10px;
-    letter-spacing: 0.5px;
+    color: var(--text-secondary);
+    letter-spacing: 0.1em;
     text-transform: uppercase;
+    padding-bottom: 6px;
+    margin-bottom: 12px;
+    border-bottom: 1px solid var(--border);
   }
   .tool-btn {
     display: block;

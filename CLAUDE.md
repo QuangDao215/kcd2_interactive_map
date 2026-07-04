@@ -187,6 +187,12 @@ py = 0.0334*x + -0.9963*y + 9800.12
 - Per-category progress stats: `discovered/total` for PROGRESS_CATEGORIES, plain count for NPCs/facilities
 - Group-level percentage: `12/45 (27%)`
 - Three tabs: Markers, My Markers, Tools
+- **Eyebrow labels** (adapted from the editorial-artifacts design language): all section/group
+  labels — Game Completion, Map Options, Tools headers (`.tools-section h3`), category group
+  names (`.cat-group-header .group-name`), and the reusable `.section-eyebrow` — are quiet
+  **muted** (`--text-secondary`) uppercase Cinzel at ~10.5–11px with 0.1em tracking and a hairline
+  as the grouping device. **Gold (`--accent`) is reserved** for the display title, the `%`/count
+  figures, and active states, so it reads as a deliberate highlight rather than everywhere.
 
 ### Categories
 **PROGRESS_CATEGORIES** (tracked with discovered/total):
