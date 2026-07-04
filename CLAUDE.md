@@ -193,6 +193,11 @@ py = 0.0334*x + -0.9963*y + 9800.12
   **muted** (`--text-secondary`) uppercase Cinzel at ~10.5–11px with 0.1em tracking and a hairline
   as the grouping device. **Gold (`--accent`) is reserved** for the display title, the `%`/count
   figures, and active states, so it reads as a deliberate highlight rather than everywhere.
+- **Completion stat card + mono figures:** Game Completion reads as an editorial stat — a large
+  **mono** `%` figure (`--font-mono`) over the eyebrow, a thin gold fill bar, and the `x / y found`
+  + per-region `%` in mono. **Toggle polish:** the shared `.switch` gained a recessed track (inset
+  shadow) + a raised drop-shadow thumb with a 0.24s slide; the on-state keeps the **gold track
+  fill** (dark thumb) for at-a-glance legibility across the dense category list.
 
 ### Categories
 **PROGRESS_CATEGORIES** (tracked with discovered/total):

@@ -12,6 +12,7 @@
     --text-muted: #968b78;          /* lightened from #746a5c → ~4.8:1 on panel (WCAG AA) */
     --accent: #c9a84c;
     --label-gold: #e8d5a3;          /* settlement-name gold (was a hard-coded one-off) */
+    --font-mono: ui-monospace, "SF Mono", "Cascadia Mono", "Segoe UI Mono", Menlo, Consolas, monospace;
     --accent-hover: #ddb94f;
     --accent-dim: #a08535;
     --danger: #b34444;
@@ -134,20 +135,27 @@
     display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 6px;
   }
   .game-progress .gp-header span:first-child {
-    font-family: 'Cinzel', serif; font-size: 10.5px; font-weight: 600;
-    color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.1em;
+    font-family: 'Cinzel', serif; font-size: 13px; font-weight: 600;
+    color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.08em;
   }
-  .game-progress #gp-pct { font-size: 14px; font-weight: 700; color: var(--accent); }
+  /* The hero stat figure: a large mono %, gold (gold is reserved for figures). */
+  .game-progress #gp-pct {
+    font-family: var(--font-mono); font-size: 18px; font-weight: 600;
+    color: var(--accent); line-height: 1; letter-spacing: -0.03em;
+  }
   .game-progress .gp-bar {
-    height: 9px; background: var(--bg-dark); border: 1px solid var(--border);
-    border-radius: 5px; overflow: hidden;
+    height: 6px; background: var(--bg-dark); border: 1px solid var(--border);
+    border-radius: 4px; overflow: hidden; margin-top: 2px;
   }
   .game-progress .gp-fill {
     height: 100%; width: 0%;
     background: linear-gradient(90deg, var(--accent-dim), var(--accent-hover));
-    border-radius: 5px; transition: width 0.4s ease;
+    border-radius: 4px; transition: width 0.4s ease;
   }
-  .game-progress .gp-detail { font-size: 10px; color: var(--text-muted); margin-top: 4px; text-align: right; }
+  .game-progress .gp-detail {
+    font-family: var(--font-mono); font-size: 10.5px; color: var(--text-muted);
+    margin-top: 5px; text-align: right; letter-spacing: -0.01em;
+  }
   /* Per-region breakdown */
   .game-progress .gp-regions { margin-top: 8px; display: flex; flex-direction: column; gap: 5px; }
   .game-progress .gp-region { display: flex; align-items: center; gap: 8px; }
@@ -156,7 +164,7 @@
   .game-progress .gpr-bar { flex: 1; height: 5px; background: var(--bg-dark); border: 1px solid var(--border); border-radius: 3px; overflow: hidden; }
   .game-progress .gpr-fill { display: block; height: 100%; width: 0%; background: var(--accent-dim); border-radius: 3px; transition: width 0.4s ease; }
   .game-progress .gp-region.active .gpr-fill { background: var(--accent); }
-  .game-progress .gpr-pct { font-size: 10px; color: var(--text-muted); width: 30px; text-align: right; flex-shrink: 0; }
+  .game-progress .gpr-pct { font-family: var(--font-mono); font-size: 10px; color: var(--text-muted); width: 34px; text-align: right; flex-shrink: 0; letter-spacing: -0.02em; }
 
   /* ── Sidebar Tabs ── */
   .sidebar-tabs {
@@ -269,14 +277,19 @@
     position: relative; flex-shrink: 0; cursor: pointer; padding: 0;
     width: var(--sw-w, 30px); height: var(--sw-h, 16px);
     border-radius: 999px; border: 1px solid var(--border); background: var(--bg-dark);
-    transition: background 0.15s, border-color 0.15s;
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.38);   /* recessed track */
+    transition: border-color 0.24s;
   }
   .switch::after {
     content: ''; position: absolute; top: 2px; left: 2px;
     width: calc(var(--sw-h, 16px) - 6px); height: calc(var(--sw-h, 16px) - 6px);
     border-radius: 50%; background: var(--text-muted);
-    transition: left 0.15s, background 0.15s;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.5);          /* raised thumb */
+    transition: left 0.24s cubic-bezier(0.4,0,0.2,1), background 0.24s;
   }
+  /* ON: the track fills gold and the (dark) thumb slides right — the strong
+     at-a-glance signal that keeps the dense category list scannable. The recessed
+     track + raised thumb + smooth slide above is the editorial tactile polish. */
   .group-toggle-all.on,
   .category-item.active .cat-toggle,
   .map-option input:checked + .mo-switch {
