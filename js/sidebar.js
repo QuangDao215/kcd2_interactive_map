@@ -96,7 +96,7 @@ function renderCategoryGroupHtml(groupName, cats, counts, expanded, toggleAllAtt
       ? `<span class="cat-progress"><span class="done">${dcount}</span>/${count}</span>`
       : `<span class="cat-progress">${count}</span>`;
     html += `
-      <div class="category-item ${active ? 'active' : ''}" tabindex="0" role="switch" aria-checked="${active}" aria-label="${escapeHtml(cat.name)}" onclick="toggleCategory('${cat.id}')">
+      <div class="category-item ${active ? 'active' : ''}" tabindex="0" role="switch" aria-checked="${active}" aria-label="${escapeHtml(cat.name)}" onclick="toggleCategory('${cat.id}', this)">
         <span class="cat-icon">${iconHtml}</span>
         <span class="cat-name">${cat.name}</span>
         ${statsHtml}
@@ -183,17 +183,35 @@ function renderLegend() {
   document.getElementById('legend-content').innerHTML = html;
 }
 
-function toggleCategory(catId) {
-  if (activeCategories.has(catId)) {
-    activeCategories.delete(catId);
-    if (markerLayers[catId]) map.removeLayer(markerLayers[catId]);
-  } else {
+function toggleCategory(catId, el) {
+  const active = !activeCategories.has(catId);
+  if (active) {
     activeCategories.add(catId);
     ensureCategoryBuilt(catId);
     if (markerLayers[catId]) map.addLayer(markerLayers[catId]);
+  } else {
+    activeCategories.delete(catId);
+    if (markerLayers[catId]) map.removeLayer(markerLayers[catId]);
   }
   saveActiveCategoriesFromStorage();
-  renderCategoryList(document.getElementById('search-input').value);
+
+  // Update the toggled row IN PLACE so its switch actually slides — a full
+  // renderCategoryList() recreates the element in its final position and the CSS
+  // transition has nothing to animate from. The group's "toggle all" switch is
+  // re-synced from the sibling rows' live state.
+  if (el) {
+    el.classList.toggle('active', active);
+    el.setAttribute('aria-checked', active);
+    const group = el.closest('.cat-group');
+    if (group) {
+      const items = group.querySelectorAll('.cat-group-children .category-item');
+      const allActive = items.length > 0 && [...items].every(it => it.classList.contains('active'));
+      const toggleAll = group.querySelector('.group-toggle-all');
+      if (toggleAll) toggleAll.classList.toggle('on', allActive);
+    }
+  } else {
+    renderCategoryList(document.getElementById('search-input').value);
+  }
 }
 
 function toggleAllCategories(show) {
