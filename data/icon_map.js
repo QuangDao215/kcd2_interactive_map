@@ -106,4 +106,8 @@ window.ICON_MAP = {
   "loot_utility":          "icons/items/repairKit_tailorsSmall_icon.png",
   "quest_main":            "icons/quest_main_red_icon.png",
   "quest_task":            "icons/quest_activity_blue_icon.png",
+  "quest_dlc0":            "icons/DLC0_icon.png",
+  "quest_dlc1":            "icons/DLC1_icon.png",
+  "quest_dlc2":            "icons/DLC2_icon.png",
+  "quest_dlc3":            "icons/DLC3_icon.png",
 };

@@ -98,3 +98,7 @@ icons/washing_icon.png
 icons/weaponsmiths_icon.png
 icons/brand/kcd2_icon.jpg
 icons/brand/kcd2_logo.png
+icons/DLC0_icon.png
+icons/DLC1_icon.png
+icons/DLC2_icon.png
+icons/DLC3_icon.png
