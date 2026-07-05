@@ -29768,7 +29768,8 @@ window.MARKER_DATA_KUTTENBERG = {
     },
     {
       "name": "The Royal Physician",
-      "category": "quest_side",
+      "category": "quest_dlc3",
+      "_baseKey": "quest_side:2279:6205",
       "description": "",
       "x": 2279,
       "y": 6205,
