@@ -17,7 +17,9 @@
     --accent-dim: #a08535;
     --ember: #e07b39;               /* distinct warm accent — collapse carets */
     --ember-hover: #f2954f;
-    --danger: #b34444;
+    --halo: #6db3ff;                /* marker highlight glow (audit-tuned lighter blue) */
+    --halo-bright: #8fc4ff;         /* halo on hover */
+    --danger: #c95a54;              /* brightened from #b34444 → clears the 3:1 UI bar */
     --success: #5a9e4b;
     --scrollbar-thumb: #4a4238;
     --scrollbar-track: #1a1714;
@@ -599,10 +601,10 @@
      map) and auto-applies to markers created later. */
   body.highlight-markers .leaflet-marker-icon.poi-marker img,
   body.highlight-markers .custom-marker-icon {
-    filter: drop-shadow(0 0 1.5px #3ea1ff) drop-shadow(0 0 3px #3ea1ff);
+    filter: drop-shadow(0 0 1.5px var(--halo)) drop-shadow(0 0 3px var(--halo));
   }
   body.highlight-markers .leaflet-marker-icon.poi-marker:hover img {
-    filter: drop-shadow(0 0 2.5px #6bb8ff) drop-shadow(0 0 4px #3ea1ff);
+    filter: drop-shadow(0 0 2.5px var(--halo-bright)) drop-shadow(0 0 4px var(--halo));
   }
 
   /* ── Marker tooltips (name on hover) ── */
