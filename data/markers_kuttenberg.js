@@ -1,3 +1,4 @@
+// Marker data for kuttenberg — edited via the in-app Edit Markers tool
 window.MARKER_DATA_KUTTENBERG = {
   "region": "kuttenberg",
   "coordinate_system": "pixel",
@@ -5,481 +6,481 @@ window.MARKER_DATA_KUTTENBERG = {
     {
       "id": "alchemy_bench",
       "name": "Alchemy Bench",
-      "icon": "\u2697\ufe0f",
+      "icon": "⚗️",
       "color": "#8e44ad"
     },
     {
       "id": "apothecary",
       "name": "Apothecary",
-      "icon": "\ud83d\udc8a",
+      "icon": "💊",
       "color": "#16a085"
     },
     {
       "id": "archery_range",
       "name": "Archery Range",
-      "icon": "\ud83c\udfaf",
+      "icon": "🎯",
       "color": "#e67e22"
     },
     {
       "id": "armourer",
       "name": "Armourer",
-      "icon": "\ud83d\udee1\ufe0f",
+      "icon": "🛡️",
       "color": "#7a8b99"
     },
     {
       "id": "baker",
       "name": "Baker / Bakery",
-      "icon": "\ud83c\udf5e",
+      "icon": "🍞",
       "color": "#d4a564"
     },
     {
       "id": "bandit_camp",
       "name": "Enemy Camp",
-      "icon": "\ud83d\udc80",
+      "icon": "💀",
       "color": "#e74c3c"
     },
     {
       "id": "baths",
       "name": "Bathhouse",
-      "icon": "\ud83d\udec1",
+      "icon": "🛁",
       "color": "#3498db"
     },
     {
       "id": "smithy",
       "name": "Smithy",
-      "icon": "\u2692\ufe0f",
+      "icon": "⚒️",
       "color": "#8b7355"
     },
     {
       "id": "butchery",
       "name": "Butchery",
-      "icon": "\ud83e\udd69",
+      "icon": "🥩",
       "color": "#c0392b"
     },
     {
       "id": "camp",
       "name": "Camp",
-      "icon": "\ud83c\udfd5\ufe0f",
+      "icon": "🏕️",
       "color": "#95a5a6"
     },
     {
       "id": "cart_stash",
       "name": "Cart Stash",
-      "icon": "\ud83d\uded2",
+      "icon": "🛒",
       "color": "#8b6914"
     },
     {
       "id": "cobbler",
       "name": "Cobbler",
-      "icon": "\ud83d\udc62",
+      "icon": "👢",
       "color": "#6d4c41"
     },
     {
       "id": "combat_arena",
       "name": "Combat Arena",
-      "icon": "\ud83d\udc4a",
+      "icon": "👊",
       "color": "#e74c3c"
     },
     {
       "id": "dice_table",
       "name": "Dice Table",
-      "icon": "\ud83c\udfb2",
+      "icon": "🎲",
       "color": "#f39c12"
     },
     {
       "id": "drying_rack",
       "name": "Drying Rack",
-      "icon": "\ud83e\uddfa",
+      "icon": "🧺",
       "color": "#b8860b"
     },
     {
       "id": "fast_travel",
       "name": "Fast Travel",
-      "icon": "\ud83c\udfc1",
+      "icon": "🏁",
       "color": "#4a90d9"
     },
     {
       "id": "fisherman",
       "name": "Fisherman",
-      "icon": "\ud83d\udc1f",
+      "icon": "🐟",
       "color": "#2980b9"
     },
     {
       "id": "grave",
       "name": "Grave",
-      "icon": "\ud83e\udea6",
+      "icon": "🪦",
       "color": "#7f8c8d"
     },
     {
       "id": "grocer",
       "name": "Grocer",
-      "icon": "\ud83e\udd6c",
+      "icon": "🥬",
       "color": "#27ae60"
     },
     {
       "id": "gunsmith",
       "name": "Gunsmith",
-      "icon": "\ud83d\udd2b",
+      "icon": "🔫",
       "color": "#7f8c8d"
     },
     {
       "id": "herbalist",
       "name": "Herbalist",
-      "icon": "\ud83c\udf3f",
+      "icon": "🌿",
       "color": "#27ae60"
     },
     {
       "id": "horse_trader",
       "name": "Horse Trader",
-      "icon": "\ud83d\udc34",
+      "icon": "🐴",
       "color": "#8b6914"
     },
     {
       "id": "hunting_boar",
       "name": "Hunting Spot (Boar)",
-      "icon": "\ud83d\udc17",
+      "icon": "🐗",
       "color": "#5d7b3a"
     },
     {
       "id": "hunting_deer",
       "name": "Hunting Spot (Roe Deer)",
-      "icon": "\ud83e\udd8c",
+      "icon": "🦌",
       "color": "#5d7b3a"
     },
     {
       "id": "hunting_spot",
       "name": "Hunting Spot (Deer)",
-      "icon": "\ud83e\udd8c",
+      "icon": "🦌",
       "color": "#5d7b3a"
     },
     {
       "id": "hunting_wolf",
       "name": "Hunting Spot (Wolf)",
-      "icon": "\ud83d\udc3a",
+      "icon": "🐺",
       "color": "#5d7b3a"
     },
     {
       "id": "huntsman",
       "name": "Huntsman",
-      "icon": "\ud83c\udff9",
+      "icon": "🏹",
       "color": "#5d7b3a"
     },
     {
       "id": "indulgence_box",
       "name": "Indulgence Box",
-      "icon": "\ud83d\udce6",
+      "icon": "📦",
       "color": "#d4a564"
     },
     {
       "id": "interesting_site",
       "name": "Interesting Site",
-      "icon": "\u2b50",
+      "icon": "⭐",
       "color": "#f1c40f"
     },
     {
       "id": "lodgings",
       "name": "Lodgings",
-      "icon": "\ud83d\udecf\ufe0f",
+      "icon": "🛏️",
       "color": "#9b59b6"
     },
     {
       "id": "loot_alchemy_mat",
       "name": "Alchemy Material",
-      "icon": "\u2697\ufe0f",
+      "icon": "⚗️",
       "color": "#8e44ad"
     },
     {
       "id": "loot_ammo",
       "name": "Ammo / Arrows",
-      "icon": "\u27a1\ufe0f",
+      "icon": "➡️",
       "color": "#8d6e63"
     },
     {
       "id": "loot_armour_arms",
       "name": "Arm Armour",
-      "icon": "\ud83e\udde4",
+      "icon": "🧤",
       "color": "#795548"
     },
     {
       "id": "loot_armour_body",
       "name": "Body Armour",
-      "icon": "\ud83e\uddba",
+      "icon": "🦺",
       "color": "#8b7355"
     },
     {
       "id": "loot_armour_head",
       "name": "Head Armour",
-      "icon": "\u26d1\ufe0f",
+      "icon": "⛑️",
       "color": "#7a8b99"
     },
     {
       "id": "loot_armour_jewellery",
       "name": "Jewellery",
-      "icon": "\ud83d\udc8d",
+      "icon": "💍",
       "color": "#c9a84c"
     },
     {
       "id": "loot_armour_legs",
       "name": "Leg Armour",
-      "icon": "\ud83d\udc62",
+      "icon": "👢",
       "color": "#6d4c41"
     },
     {
       "id": "loot_badge",
       "name": "Gambling Badge",
-      "icon": "\ud83c\udfc5",
+      "icon": "🏅",
       "color": "#c9a84c"
     },
     {
       "id": "loot_blacksmithing",
       "name": "Blacksmithing Material",
-      "icon": "\u2692\ufe0f",
+      "icon": "⚒️",
       "color": "#8b7355"
     },
     {
       "id": "loot_bow",
       "name": "Bow",
-      "icon": "\ud83c\udff9",
+      "icon": "🏹",
       "color": "#5d7b3a"
     },
     {
       "id": "loot_bridle",
       "name": "Bridle",
-      "icon": "\ud83d\udc34",
+      "icon": "🐴",
       "color": "#795548"
     },
     {
       "id": "loot_dagger",
       "name": "Dagger",
-      "icon": "\ud83d\udde1\ufe0f",
+      "icon": "🗡️",
       "color": "#607d8b"
     },
     {
       "id": "loot_dice",
       "name": "Dice",
-      "icon": "\ud83c\udfb2",
+      "icon": "🎲",
       "color": "#f39c12"
     },
     {
       "id": "loot_food",
       "name": "Food",
-      "icon": "\ud83c\udf56",
+      "icon": "🍖",
       "color": "#c0392b"
     },
     {
       "id": "loot_heavy_weapon",
       "name": "Heavy Weapon",
-      "icon": "\ud83e\ude93",
+      "icon": "🪓",
       "color": "#795548"
     },
     {
       "id": "loot_herb",
       "name": "Herb",
-      "icon": "\ud83c\udf3f",
+      "icon": "🌿",
       "color": "#27ae60"
     },
     {
       "id": "loot_horseshoe",
       "name": "Horseshoe",
-      "icon": "\ud83d\udc34",
+      "icon": "🐴",
       "color": "#607d8b"
     },
     {
       "id": "loot_letter",
       "name": "Letter",
-      "icon": "\u2709\ufe0f",
+      "icon": "✉️",
       "color": "#bdc3c7"
     },
     {
       "id": "loot_lore_book",
       "name": "Lore Book",
-      "icon": "\ud83d\udcd6",
+      "icon": "📖",
       "color": "#8b6914"
     },
     {
       "id": "loot_map",
       "name": "Treasure Map",
-      "icon": "\ud83d\uddfa\ufe0f",
+      "icon": "🗺️",
       "color": "#d4a564"
     },
     {
       "id": "loot_misc",
       "name": "Miscellaneous",
-      "icon": "\ud83d\udce6",
+      "icon": "📦",
       "color": "#95a5a6"
     },
     {
       "id": "loot_polearm",
       "name": "Polearm",
-      "icon": "\ud83d\udd31",
+      "icon": "🔱",
       "color": "#6d4c41"
     },
     {
       "id": "loot_potion",
       "name": "Potion",
-      "icon": "\ud83e\uddea",
+      "icon": "🧪",
       "color": "#16a085"
     },
     {
       "id": "loot_recipe",
       "name": "Recipe",
-      "icon": "\ud83d\udccb",
+      "icon": "📋",
       "color": "#e67e22"
     },
     {
       "id": "loot_saddle",
       "name": "Saddle",
-      "icon": "\ud83d\udc34",
+      "icon": "🐴",
       "color": "#a0522d"
     },
     {
       "id": "loot_shield",
       "name": "Shield",
-      "icon": "\ud83d\udee1\ufe0f",
+      "icon": "🛡️",
       "color": "#7a8b99"
     },
     {
       "id": "loot_skill_book",
       "name": "Skill Book",
-      "icon": "\ud83d\udcd8",
+      "icon": "📘",
       "color": "#2980b9"
     },
     {
       "id": "loot_sword",
       "name": "Sword",
-      "icon": "\u2694\ufe0f",
+      "icon": "⚔️",
       "color": "#8b4513"
     },
     {
       "id": "loot_usable",
       "name": "Usable Item",
-      "icon": "\ud83d\udd11",
+      "icon": "🔑",
       "color": "#7f8c8d"
     },
     {
       "id": "loot_utility",
       "name": "Utility Kit",
-      "icon": "\ud83e\uddf0",
+      "icon": "🧰",
       "color": "#607d8b"
     },
     {
       "id": "lootable_corpse",
       "name": "Lootable Corpse",
-      "icon": "\ud83d\udc80",
+      "icon": "💀",
       "color": "#7f8c8d"
     },
     {
       "id": "nest",
       "name": "Nest",
-      "icon": "\ud83e\udeba",
+      "icon": "🪺",
       "color": "#8d6e63"
     },
     {
       "id": "player_bed",
       "name": "Player Bed",
-      "icon": "\ud83d\udecf\ufe0f",
+      "icon": "🛏️",
       "color": "#4a90d9"
     },
     {
       "id": "quest_main",
       "name": "Main Quest",
-      "icon": "\u2757",
+      "icon": "❗",
       "color": "#e74c3c"
     },
     {
       "id": "quest_side",
       "name": "Side Quest",
-      "icon": "\u2753",
+      "icon": "❓",
       "color": "#3498db"
     },
     {
       "id": "quest_task",
       "name": "Task / Activity",
-      "icon": "\ud83d\udcdd",
+      "icon": "📝",
       "color": "#e67e22"
     },
     {
       "id": "saddler",
       "name": "Saddler",
-      "icon": "\ud83d\udc0e",
+      "icon": "🐎",
       "color": "#a0522d"
     },
     {
       "id": "scribe",
       "name": "Scribe",
-      "icon": "\ud83d\udcdc",
+      "icon": "📜",
       "color": "#7f8c8d"
     },
     {
       "id": "sharpening_wheel",
       "name": "Sharpening Wheel",
-      "icon": "\ud83d\udd27",
+      "icon": "🔧",
       "color": "#95a5a6"
     },
     {
       "id": "shrine",
       "name": "Shrine",
-      "icon": "\u26ea",
+      "icon": "⛪",
       "color": "#bdc3c7"
     },
     {
       "id": "skill_trainer",
       "name": "Skill Teacher",
-      "icon": "\ud83d\udcd6",
+      "icon": "📖",
       "color": "#3498db"
     },
     {
       "id": "smokehouse",
       "name": "Smokehouse",
-      "icon": "\ud83d\udd25",
+      "icon": "🔥",
       "color": "#d35400"
     },
     {
       "id": "tailor",
       "name": "Tailor",
-      "icon": "\ud83e\uddf5",
+      "icon": "🧵",
       "color": "#9b59b6"
     },
     {
       "id": "tavern",
       "name": "Tavern",
-      "icon": "\ud83c\udf7a",
+      "icon": "🍺",
       "color": "#c9a84c"
     },
     {
       "id": "hotel",
       "name": "Inn",
-      "icon": "\ud83d\udecf\ufe0f",
+      "icon": "🛏️",
       "color": "#c9a84c"
     },
     {
       "id": "trader",
       "name": "Trader / Shop",
-      "icon": "\ud83c\udfea",
+      "icon": "🏪",
       "color": "#27ae60"
     },
     {
       "id": "underground",
       "name": "Underground Entrance",
-      "icon": "\ud83d\udd73\ufe0f",
+      "icon": "🕳️",
       "color": "#34495e"
     },
     {
       "id": "washing",
       "name": "Washing",
-      "icon": "\ud83d\udc55",
+      "icon": "👕",
       "color": "#3498db"
     },
     {
       "id": "weaponsmith",
       "name": "Weaponsmith",
-      "icon": "\u2694\ufe0f",
+      "icon": "⚔️",
       "color": "#8b4513"
     },
     {
       "id": "woodland_garden",
       "name": "Woodland Garden",
-      "icon": "\ud83c\udf31",
+      "icon": "🌱",
       "color": "#2ecc71"
     }
   ],
@@ -14796,7 +14797,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "gg_icon": "/images/map-marker-icon/15/252702/spurs01_m02_c_icon-72aaa5c1.png.png"
     },
     {
-      "name": "Sketch \u2013 Racing horseshoes",
+      "name": "Sketch – Racing horseshoes",
       "category": "loot_recipe",
       "description": "",
       "x": 9221,
@@ -14813,7 +14814,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "gg_icon": "/images/map-marker-icon/15/253162/recipe_smith_icon-fb36808f.png.png"
     },
     {
-      "name": "Sketch \u2013 Carpenter's axe",
+      "name": "Sketch – Carpenter's axe",
       "category": "loot_recipe",
       "description": "",
       "x": 9855,
@@ -14830,7 +14831,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "gg_icon": "/images/map-marker-icon/15/253164/recipe_smith_icon-fb36808f.png.png"
     },
     {
-      "name": "Sketch \u2013 Falchion",
+      "name": "Sketch – Falchion",
       "category": "loot_recipe",
       "description": "",
       "x": 2270,
@@ -14847,7 +14848,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "gg_icon": "/images/map-marker-icon/15/253166/recipe_smith_icon-fb36808f.png.png"
     },
     {
-      "name": "Sketch \u2013 Work axe",
+      "name": "Sketch – Work axe",
       "category": "loot_recipe",
       "description": "",
       "x": 9480,
@@ -14932,7 +14933,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "gg_icon": "/images/map-marker-icon/15/253188/recipe_alchemy_icon-dc355668.png.png"
     },
     {
-      "name": "Sketch \u2013 Hunting sword",
+      "name": "Sketch – Hunting sword",
       "category": "loot_recipe",
       "description": "",
       "x": 5166,
@@ -17244,7 +17245,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "gg_icon": "/images/map-marker-icon/15/252627/kettlehat01_m03_e2_icon-3927f79e.png.png"
     },
     {
-      "name": "Bascinet with bret\u00e8che",
+      "name": "Bascinet with bretèche",
       "category": "loot_armour_head",
       "description": "",
       "x": 9808,
@@ -17261,7 +17262,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "gg_icon": "/images/map-marker-icon/15/252634/bascinetopen03_m01_c3_icon-8872e0ac.png.png"
     },
     {
-      "name": "Bascinet with bret\u00e8che",
+      "name": "Bascinet with bretèche",
       "category": "loot_armour_head",
       "description": "",
       "x": 9395,
@@ -17278,7 +17279,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "gg_icon": "/images/map-marker-icon/15/252634/bascinetopen03_m01_c3_icon-8872e0ac.png.png"
     },
     {
-      "name": "Bascinet with bret\u00e8che",
+      "name": "Bascinet with bretèche",
       "category": "loot_armour_head",
       "description": "",
       "x": 9395,
@@ -17295,7 +17296,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "gg_icon": "/images/map-marker-icon/15/252634/bascinetopen03_m01_c3_icon-8872e0ac.png.png"
     },
     {
-      "name": "Bascinet with bret\u00e8che",
+      "name": "Bascinet with bretèche",
       "category": "loot_armour_head",
       "description": "",
       "x": 9381,
@@ -17312,7 +17313,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "gg_icon": "/images/map-marker-icon/15/252634/bascinetopen03_m01_c3_icon-8872e0ac.png.png"
     },
     {
-      "name": "Bascinet with bret\u00e8che",
+      "name": "Bascinet with bretèche",
       "category": "loot_armour_head",
       "description": "",
       "x": 9400,
@@ -17329,7 +17330,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "gg_icon": "/images/map-marker-icon/15/252634/bascinetopen03_m01_c3_icon-8872e0ac.png.png"
     },
     {
-      "name": "Bascinet with bret\u00e8che",
+      "name": "Bascinet with bretèche",
       "category": "loot_armour_head",
       "description": "",
       "x": 9722,
@@ -17346,7 +17347,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "gg_icon": "/images/map-marker-icon/15/252634/bascinetopen03_m01_c3_icon-8872e0ac.png.png"
     },
     {
-      "name": "Bascinet with bret\u00e8che",
+      "name": "Bascinet with bretèche",
       "category": "loot_armour_head",
       "description": "",
       "x": 9833,
@@ -19539,7 +19540,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "gg_icon": "/images/map-marker-icon/15/254019/key_general_icon-696361d2.png.png"
     },
     {
-      "name": "Sketch \u2013 Common sabre",
+      "name": "Sketch – Common sabre",
       "category": "loot_recipe",
       "description": "",
       "x": 5673,
@@ -20610,7 +20611,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "gg_icon": "/images/map-marker-icon/15/253125/lorebook_adorned_04_icon-5c2a9f98.png.png"
     },
     {
-      "name": "K\u00f6nigshof Manuscript",
+      "name": "Königshof Manuscript",
       "category": "loot_lore_book",
       "description": "",
       "x": 6302,
@@ -20831,7 +20832,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "gg_icon": "/images/map-marker-icon/15/253652/warsaddle03_m05_icon-72ece223.png.png"
     },
     {
-      "name": "Sketch \u2013 Broadsword",
+      "name": "Sketch – Broadsword",
       "category": "loot_recipe",
       "description": "",
       "x": 6428,
@@ -20848,7 +20849,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "gg_icon": "/images/map-marker-icon/15/253170/recipe_smith_icon-fb36808f.png.png"
     },
     {
-      "name": "Sketch \u2013 Cuman shashka",
+      "name": "Sketch – Cuman shashka",
       "category": "loot_recipe",
       "description": "",
       "x": 6417,
@@ -21953,7 +21954,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "gg_icon": "/images/map-marker-icon/15/253844/loot_silverchalice_icon-902b9a36.png.png"
     },
     {
-      "name": "Sketch \u2013 Horseman's pick",
+      "name": "Sketch – Horseman's pick",
       "category": "loot_recipe",
       "description": "",
       "x": 7703,
@@ -22021,7 +22022,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "gg_icon": "/images/map-marker-icon/15/252942/potion_marigold_icon-0d2154d7.png.png"
     },
     {
-      "name": "Sketch \u2013 Noble's sword",
+      "name": "Sketch – Noble's sword",
       "category": "loot_recipe",
       "description": "",
       "x": 7668,
@@ -23228,7 +23229,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "gg_icon": "/images/map-marker-icon/15/254004/money_icon-5c505d87.png.png"
     },
     {
-      "name": "Sketch \u2013 Broadsword",
+      "name": "Sketch – Broadsword",
       "category": "loot_recipe",
       "description": "",
       "x": 2287,
@@ -23772,7 +23773,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "gg_icon": "/images/map-marker-icon/15/252665/legsbrigandine01_m05_c2_icon-629682ec.png.png"
     },
     {
-      "name": "Sketch \u2013 Knight's axe",
+      "name": "Sketch – Knight's axe",
       "category": "loot_recipe",
       "description": "",
       "x": 9952,
@@ -25132,7 +25133,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "gg_icon": "/images/map-marker-icon/15/252291/warhammerraven_icon-6c84a0eb.png.png"
     },
     {
-      "name": "Sketch \u2013 Ataman's sabre",
+      "name": "Sketch – Ataman's sabre",
       "category": "loot_recipe",
       "description": "",
       "x": 4418,
@@ -25812,7 +25813,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "gg_icon": "/images/map-marker-icon/15/316073/sharpeningwheel_icon_result-5beba061.png.png"
     },
     {
-      "name": "Sketch \u2013 Ataman's sabre",
+      "name": "Sketch – Ataman's sabre",
       "category": "loot_recipe",
       "description": "",
       "x": 9811,
@@ -27206,7 +27207,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "gg_icon": "/images/map-marker-icon/15/253389/quest_main_red_started_icon_result-841c595d-841c595d.png.png"
     },
     {
-      "name": "So it begins\u2026",
+      "name": "So it begins…",
       "category": "quest_main",
       "description": "",
       "x": 2298,
@@ -27937,7 +27938,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "gg_icon": "/images/map-marker-icon/15/252419/shortswordbasilard_icon-8446a0e3.png.png"
     },
     {
-      "name": "Sketch \u2013 Horseman's pick",
+      "name": "Sketch – Horseman's pick",
       "category": "loot_recipe",
       "description": "",
       "x": 4676,
@@ -29305,7 +29306,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "source": "manual"
     },
     {
-      "name": "Magdalena\u2019s Axe",
+      "name": "Magdalena’s Axe",
       "category": "quest_dlc2",
       "_baseKey": "quest_task:10186:5537",
       "description": "",
@@ -29315,7 +29316,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "source": "manual"
     },
     {
-      "name": "The Master\u2019s Game",
+      "name": "The Master’s Game",
       "category": "quest_dlc2",
       "_baseKey": "quest_side:10184:5546",
       "description": "",
@@ -29325,7 +29326,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "source": "manual"
     },
     {
-      "name": "Klaus\u2019 Introduction",
+      "name": "Klaus’ Introduction",
       "category": "quest_dlc2",
       "_baseKey": "quest_side:9581:5816",
       "description": "",
@@ -29335,7 +29336,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "source": "manual"
     },
     {
-      "name": "Martin\u2019s dream",
+      "name": "Martin’s dream",
       "category": "quest_dlc2",
       "_baseKey": "quest_side:9585:5815",
       "description": "",
@@ -29427,7 +29428,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "source": "manual"
     },
     {
-      "name": "The Executioner\u2019s Pride",
+      "name": "The Executioner’s Pride",
       "category": "quest_side",
       "description": "",
       "x": 10510,
