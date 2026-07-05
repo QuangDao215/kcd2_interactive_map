@@ -16,7 +16,7 @@
 <meta name="twitter:title" content="KCD2 Interactive Map">
 <meta name="twitter:description" content="Interactive POI/loot/quest map for Kingdom Come: Deliverance II with progress tracking.">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"/>
-<link rel="stylesheet" href="style.css?v=2026-07-05">
+<link rel="stylesheet" href="style.css?v=2026-07-05j">
 </head>
 <body>
 
@@ -49,61 +49,94 @@
 
   <!-- Overall Game Completion -->
   <div class="game-progress" id="game-progress" title="Quests + collectibles discovered across both regions">
-    <div class="gp-header"><span>Game Completion</span><span id="gp-pct">0%</span></div>
-    <div class="gp-bar"><div class="gp-fill" id="gp-fill"></div></div>
-    <div class="gp-detail" id="gp-detail">0 / 0 found</div>
-    <div class="gp-regions">
-      <div class="gp-region" id="gp-trosky-row">
-        <span class="gpr-name">Trosky</span>
-        <span class="gpr-bar"><span class="gpr-fill" id="gp-trosky-fill"></span></span>
-        <span class="gpr-pct" id="gp-trosky-pct">0%</span>
-      </div>
-      <div class="gp-region" id="gp-kuttenberg-row">
-        <span class="gpr-name">Kuttenberg</span>
-        <span class="gpr-bar"><span class="gpr-fill" id="gp-kuttenberg-fill"></span></span>
-        <span class="gpr-pct" id="gp-kuttenberg-pct">0%</span>
+    <button type="button" class="gp-header" aria-expanded="true" aria-controls="gp-body" onclick="toggleGameProgress(this)">
+      <span>Game Completion</span>
+      <span class="gp-header-end"><span id="gp-pct">0%</span><span class="mo-caret" aria-hidden="true"></span></span>
+    </button>
+    <div class="gp-body" id="gp-body">
+      <div class="gp-bar"><div class="gp-fill" id="gp-fill"></div></div>
+      <div class="gp-detail" id="gp-detail">0 / 0 found</div>
+      <div class="gp-regions">
+        <div class="gp-region" id="gp-trosky-row">
+          <span class="gpr-name">Trosky</span>
+          <span class="gpr-bar"><span class="gpr-fill" id="gp-trosky-fill"></span></span>
+          <span class="gpr-pct" id="gp-trosky-pct">0%</span>
+        </div>
+        <div class="gp-region" id="gp-kuttenberg-row">
+          <span class="gpr-name">Kuttenberg</span>
+          <span class="gpr-bar"><span class="gpr-fill" id="gp-kuttenberg-fill"></span></span>
+          <span class="gpr-pct" id="gp-kuttenberg-pct">0%</span>
+        </div>
       </div>
     </div>
   </div>
 
-  <!-- Map Options -->
-  <div class="map-options">
-    <div class="section-eyebrow">Map Options</div>
-    <label class="map-option">
-      <span class="mo-label">Settlement names</span>
-      <input type="checkbox" id="toggle-labels" checked onchange="toggleSettlementLabels()">
-      <span class="mo-switch switch"></span>
-    </label>
-    <label class="map-option">
-      <span class="mo-label">Detail maps</span>
-      <input type="checkbox" id="toggle-local-maps" checked onchange="toggleLocalMaps()">
-      <span class="mo-switch switch"></span>
-    </label>
-    <label class="map-option">
-      <span class="mo-label">Hide discovered</span>
-      <input type="checkbox" id="toggle-hide-discovered" onchange="toggleHideDiscovered()">
-      <span class="mo-switch switch"></span>
-    </label>
+  <!-- Map view options — shown by default; toggles are text-in-button chips -->
+  <div class="map-options" id="map-options">
+    <button type="button" class="mo-header" aria-expanded="true" aria-controls="mo-body" onclick="toggleMapOptions(this)">
+      <span>View</span>
+      <span class="mo-caret" aria-hidden="true"></span>
+    </button>
+    <div class="mo-body" id="mo-body">
+      <label class="mo-chip">
+        <input type="checkbox" id="toggle-labels" checked onchange="toggleSettlementLabels()">
+        <svg class="ui-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 21V4M5 4h11l-2.2 3.5L16 11H5"/></svg>
+        <span>Settlement names</span>
+      </label>
+      <label class="mo-chip">
+        <input type="checkbox" id="toggle-local-maps" checked onchange="toggleLocalMaps()">
+        <svg class="ui-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l9 5-9 5-9-5 9-5z"/><path d="M3 13l9 5 9-5"/></svg>
+        <span>Detail maps</span>
+      </label>
+      <label class="mo-chip">
+        <input type="checkbox" id="toggle-hide-discovered" onchange="toggleHideDiscovered()">
+        <svg class="ui-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3l18 18"/><path d="M10.6 10.6a2 2 0 002.8 2.8"/><path d="M9.4 5.4A9.7 9.7 0 0112 5c5 0 8.5 4 9.5 7-.4 1.2-1.2 2.6-2.4 3.8"/><path d="M6.5 6.6C4.3 8 2.9 10 2.5 12c1 3 4.5 7 9.5 7 1 0 2-.2 2.9-.5"/></svg>
+        <span>Hide discovered</span>
+      </label>
+      <label class="mo-chip">
+        <input type="checkbox" id="toggle-highlight" onchange="toggleHighlight()">
+        <svg class="ui-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3.5"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.5 1.5M17.6 17.6l1.5 1.5M19.1 4.9l-1.5 1.5M6.4 17.6l-1.5 1.5"/></svg>
+        <span>Highlight markers</span>
+      </label>
+    </div>
   </div>
 
   <!-- Tabs -->
   <div class="sidebar-tabs">
-    <button class="sidebar-tab active" data-tab="markers" onclick="switchTab('markers')">Markers</button>
-    <button class="sidebar-tab" data-tab="my-markers" onclick="switchTab('my-markers')">My Markers</button>
-    <button class="sidebar-tab" data-tab="tools" onclick="switchTab('tools')">Tools</button>
+    <button class="sidebar-tab active" data-tab="markers" onclick="switchTab('markers')">
+      <svg class="ui-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      <span>Markers</span>
+    </button>
+    <button class="sidebar-tab" data-tab="my-markers" onclick="switchTab('my-markers')">
+      <svg class="ui-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      <span>My Markers</span>
+    </button>
+    <button class="sidebar-tab" data-tab="tools" onclick="switchTab('tools')">
+      <svg class="ui-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
+      <span>Tools</span>
+    </button>
   </div>
 
   <!-- Search -->
   <div class="search-box">
-    <input type="text" class="search-input" id="search-input" placeholder="Search markers by name..." oninput="onSearchInput(this.value)" onfocus="onSearchInput(this.value)">
+    <div class="search-field">
+      <svg class="search-icon ui-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+      <input type="text" class="search-input" id="search-input" placeholder="Search markers by name..." oninput="onSearchInput(this.value)" onfocus="onSearchInput(this.value)">
+    </div>
   </div>
   <div class="search-results" id="search-results"></div>
 
   <!-- Markers Tab -->
   <div class="tab-content active" id="tab-markers">
     <div class="category-controls">
-      <button class="cat-ctrl-btn" onclick="toggleAllCategories(true)">Show All</button>
-      <button class="cat-ctrl-btn" onclick="toggleAllCategories(false)">Hide All</button>
+      <button class="cat-ctrl-btn" onclick="toggleAllCategories(true)">
+        <svg class="ui-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg>
+        <span>Show All</span>
+      </button>
+      <button class="cat-ctrl-btn" onclick="toggleAllCategories(false)">
+        <svg class="ui-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3l18 18"/><path d="M10.6 10.6a2 2 0 002.8 2.8"/><path d="M9.4 5.4A9.7 9.7 0 0112 5c5 0 8.5 4 9.5 7-.4 1.2-1.2 2.6-2.4 3.8"/><path d="M6.5 6.6C4.3 8 2.9 10 2.5 12c1 3 4.5 7 9.5 7 1 0 2-.2 2.9-.5"/></svg>
+        <span>Hide All</span>
+      </button>
     </div>
     <div class="category-list" id="category-list"></div>
   </div>
@@ -120,38 +153,59 @@
     <div class="tools-section">
       <h3>Import / Export</h3>
       <button class="tool-btn" onclick="exportAll()" style="border-left: 3px solid var(--accent);">
-        Export All Data
-        <div class="tool-desc">Download markers, progress, label positions &amp; filters in one file</div>
+        <svg class="tool-icon ui-icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></svg>
+        <span class="tool-txt">
+          <span class="tool-title">Export All Data</span>
+          <span class="tool-desc">Download markers, progress, label positions &amp; filters in one file</span>
+        </span>
       </button>
       <button class="tool-btn" onclick="showImportAllModal()" style="border-left: 3px solid var(--accent);">
-        Import All Data
-        <div class="tool-desc">Restore everything from a backup file</div>
+        <svg class="tool-icon ui-icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><path d="M17 8l-5-5-5 5"/><path d="M12 3v12"/></svg>
+        <span class="tool-txt">
+          <span class="tool-title">Import All Data</span>
+          <span class="tool-desc">Restore everything from a backup file</span>
+        </span>
       </button>
     </div>
     <div class="tools-section">
       <h3>Data Management</h3>
       <button class="tool-btn danger" onclick="clearMyMarkers()">
-        Clear My Markers
-        <div class="tool-desc">Remove all custom markers (cannot undo)</div>
+        <svg class="tool-icon ui-icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h18"/><path d="M8 6V4a2 2 0 012-2h4a2 2 0 012 2v2"/><path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6"/><path d="M10 11v6M14 11v6"/></svg>
+        <span class="tool-txt">
+          <span class="tool-title">Clear My Markers</span>
+          <span class="tool-desc">Remove all custom markers (cannot undo)</span>
+        </span>
       </button>
       <button class="tool-btn danger" onclick="clearProgress()">
-        Clear Progress
-        <div class="tool-desc">Reset all discovered/collected markers (cannot undo)</div>
+        <svg class="tool-icon ui-icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 4v6h6"/><path d="M3.51 15a9 9 0 102.13-9.36L1 10"/></svg>
+        <span class="tool-txt">
+          <span class="tool-title">Clear Progress</span>
+          <span class="tool-desc">Reset all discovered/collected markers (cannot undo)</span>
+        </span>
       </button>
     </div>
     <div class="tools-section">
       <h3>Developer Tools</h3>
       <button class="tool-btn" onclick="calOpen()">
-        Calibrate Local Map
-        <div class="tool-desc">Drag and resize a local map overlay to find correct bounds</div>
+        <svg class="tool-icon ui-icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M22 12h-4M6 12H2M12 6V2M12 22v-4"/></svg>
+        <span class="tool-txt">
+          <span class="tool-title">Calibrate Local Map</span>
+          <span class="tool-desc">Drag and resize a local map overlay to find correct bounds</span>
+        </span>
       </button>
       <button class="tool-btn" onclick="labelEditOpen()">
-        Position Settlement Names
-        <div class="tool-desc">Drag each settlement name to reposition it, then export</div>
+        <svg class="tool-icon ui-icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 9l-3 3 3 3"/><path d="M9 5l3-3 3 3"/><path d="M15 19l-3 3-3-3"/><path d="M19 9l3 3-3 3"/><path d="M2 12h20"/><path d="M12 2v20"/></svg>
+        <span class="tool-txt">
+          <span class="tool-title">Position Settlement Names</span>
+          <span class="tool-desc">Drag each settlement name to reposition it, then export</span>
+        </span>
       </button>
       <button class="tool-btn" onclick="markerEditOpen()">
-        Edit Markers
-        <div class="tool-desc">Click a marker to rename or delete it, then export</div>
+        <svg class="tool-icon ui-icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 3a2.83 2.83 0 014 4L7.5 20.5 2 22l1.5-5.5L17 3z"/></svg>
+        <span class="tool-txt">
+          <span class="tool-title">Edit Markers</span>
+          <span class="tool-desc">Click a marker to rename or delete it, then export</span>
+        </span>
       </button>
     </div>
     <div class="tools-section">
@@ -296,21 +350,21 @@
      order preserved. The whole-game completion bar needs BOTH regions' totals up
      front, and these are also the file:// fallback, so we keep loading both — just
      no longer render-blocking. -->
-<script defer src="data/markers_trosky.js?v=2026-07-05"></script>
-<script defer src="data/markers_kuttenberg.js?v=2026-07-05"></script>
-<script defer src="data/icon_map.js?v=2026-07-05"></script>
-<script defer src="data/settlement_labels.js?v=2026-07-05"></script>
-<script defer src="data/local_maps.js?v=2026-07-05"></script>
+<script defer src="data/markers_trosky.js?v=2026-07-05j"></script>
+<script defer src="data/markers_kuttenberg.js?v=2026-07-05j"></script>
+<script defer src="data/icon_map.js?v=2026-07-05j"></script>
+<script defer src="data/settlement_labels.js?v=2026-07-05j"></script>
+<script defer src="data/local_maps.js?v=2026-07-05j"></script>
 <!-- app split into domain scripts; load order matters (shared global scope) -->
-<script defer src="js/config.js?v=2026-07-05"></script>
-<script defer src="js/map.js?v=2026-07-05"></script>
-<script defer src="js/markers.js?v=2026-07-05"></script>
-<script defer src="js/sidebar.js?v=2026-07-05"></script>
-<script defer src="js/user-markers.js?v=2026-07-05"></script>
-<script defer src="js/import-export.js?v=2026-07-05"></script>
-<script defer src="js/local-maps.js?v=2026-07-05"></script>
-<script defer src="js/labels.js?v=2026-07-05"></script>
-<script defer src="js/storage.js?v=2026-07-05"></script>
-<script defer src="js/main.js?v=2026-07-05"></script>
+<script defer src="js/config.js?v=2026-07-05j"></script>
+<script defer src="js/map.js?v=2026-07-05j"></script>
+<script defer src="js/markers.js?v=2026-07-05j"></script>
+<script defer src="js/sidebar.js?v=2026-07-05j"></script>
+<script defer src="js/user-markers.js?v=2026-07-05j"></script>
+<script defer src="js/import-export.js?v=2026-07-05j"></script>
+<script defer src="js/local-maps.js?v=2026-07-05j"></script>
+<script defer src="js/labels.js?v=2026-07-05j"></script>
+<script defer src="js/storage.js?v=2026-07-05j"></script>
+<script defer src="js/main.js?v=2026-07-05j"></script>
 </body>
 </html>

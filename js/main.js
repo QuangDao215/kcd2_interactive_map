@@ -6,6 +6,27 @@ function toggleSidebar() {
   document.getElementById('sidebar').classList.toggle('collapsed');
 }
 
+// Collapsible "View" disclosure — reveals/hides the three map-view toggles.
+function toggleMapOptions(btn) {
+  const el = document.getElementById('map-options');
+  const nowCollapsed = el.classList.toggle('collapsed');
+  btn.setAttribute('aria-expanded', nowCollapsed ? 'false' : 'true');
+}
+
+// Collapsible Game Completion card — its header toggles the whole body.
+function toggleGameProgress(btn) {
+  const el = document.getElementById('game-progress');
+  const nowCollapsed = el.classList.toggle('collapsed');
+  btn.setAttribute('aria-expanded', nowCollapsed ? 'false' : 'true');
+}
+
+// "Highlight markers" View toggle — a blue halo around every marker (a body
+// class so it persists across region switches and covers future markers).
+function toggleHighlight() {
+  const on = document.getElementById('toggle-highlight').checked;
+  document.body.classList.toggle('highlight-markers', on);
+}
+
 function switchTab(tabName) {
   document.querySelectorAll('.sidebar-tab').forEach(t => t.classList.toggle('active', t.dataset.tab === tabName));
   document.querySelectorAll('.tab-content').forEach(tc => tc.classList.remove('active'));

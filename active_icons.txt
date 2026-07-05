@@ -61,6 +61,7 @@ icons/items/letter_fancy_icon.png
 icons/items/loot_goldenCross_icon.png
 icons/items/lorebook_simple_03_icon.png
 icons/items/map_book_icon.png
+icons/items/money_icon.png
 icons/items/necklace_golden_cross_garnet_icon.png
 icons/items/player_lockpick_icon.png
 icons/items/polearmPoleaxe_icon.png

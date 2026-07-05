@@ -102,7 +102,7 @@ window.ICON_MAP = {
   "loot_skill_book":       "icons/items/skillbook_marksmanship_icon.png",
   "loot_sword":            "icons/items/alias_dlc2_familySwordBroad_icon.png",
   "loot_tack":             "icons/items/Caparison01_mLeipa01_icon.png",
-  "loot_usable":           "icons/items/player_lockpick_icon.png",
+  "loot_usable":           "icons/items/money_icon.png",
   "loot_utility":          "icons/items/repairKit_tailorsSmall_icon.png",
   "quest_main":            "icons/quest_main_red_icon.png",
   "quest_task":            "icons/quest_activity_blue_icon.png",

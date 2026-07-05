@@ -15,6 +15,8 @@
     --font-mono: ui-monospace, "SF Mono", "Cascadia Mono", "Segoe UI Mono", Menlo, Consolas, monospace;
     --accent-hover: #ddb94f;
     --accent-dim: #a08535;
+    --ember: #e07b39;               /* distinct warm accent — collapse carets */
+    --ember-hover: #f2954f;
     --danger: #b34444;
     --success: #5a9e4b;
     --scrollbar-thumb: #4a4238;
@@ -164,7 +166,21 @@
     flex-shrink: 0;
   }
   .game-progress .gp-header {
-    display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 6px;
+    display: flex; justify-content: space-between; align-items: baseline;
+    width: 100%; margin-bottom: 6px; padding: 0;
+    background: none; border: none; cursor: pointer; font-family: inherit;
+  }
+  .game-progress .gp-header-end { display: flex; align-items: center; gap: 8px; }
+  .game-progress.collapsed .gp-header { margin-bottom: 0; }
+  .game-progress.collapsed .mo-caret { transform: rotate(-45deg); }
+  /* The whole card body collapses; the % figure stays visible in the header. */
+  .game-progress .gp-body {
+    overflow: hidden; max-height: 220px; opacity: 1;
+    transition: max-height 0.28s ease, opacity 0.2s ease, visibility 0s;
+  }
+  .game-progress.collapsed .gp-body {
+    max-height: 0; opacity: 0; visibility: hidden;
+    transition: max-height 0.28s ease, opacity 0.2s ease, visibility 0s 0.28s;
   }
   .game-progress .gp-header span:first-child {
     font-family: 'Cinzel', serif; font-size: 13px; font-weight: 600;
@@ -188,10 +204,10 @@
     font-family: var(--font-mono); font-size: 10.5px; color: var(--text-muted);
     margin-top: 5px; text-align: right; letter-spacing: -0.01em;
   }
-  /* Per-region breakdown */
+  /* Per-region breakdown (enlarged names; lives inside the collapsible card body) */
   .game-progress .gp-regions { margin-top: 8px; display: flex; flex-direction: column; gap: 5px; }
   .game-progress .gp-region { display: flex; align-items: center; gap: 8px; }
-  .game-progress .gpr-name { font-size: 11px; color: var(--text-secondary); width: 72px; flex-shrink: 0; }
+  .game-progress .gpr-name { font-size: 12.5px; color: var(--text-secondary); width: 80px; flex-shrink: 0; }
   .game-progress .gp-region.active .gpr-name { color: var(--accent); font-weight: 600; }
   .game-progress .gpr-bar { flex: 1; height: 5px; background: var(--bg-dark); border: 1px solid var(--border); border-radius: 3px; overflow: hidden; }
   .game-progress .gpr-fill { display: block; height: 100%; width: 0%; background: var(--accent-dim); border-radius: 3px; transition: width 0.4s ease; }
@@ -205,6 +221,7 @@
     flex-shrink: 0;
   }
   .sidebar-tab {
+    display: flex; align-items: center; justify-content: center; gap: 5px;
     flex: 1;
     padding: 10px 6px;
     background: transparent;
@@ -249,6 +266,7 @@
     flex-shrink: 0;
   }
   .cat-ctrl-btn {
+    display: inline-flex; align-items: center; gap: 5px;
     padding: 5px 12px;
     background: var(--bg-hover);
     border: 1px solid var(--border-light);
@@ -373,9 +391,15 @@
     border-bottom: 1px solid var(--border);
     flex-shrink: 0;
   }
+  .search-field { position: relative; }
+  .search-icon {
+    position: absolute; left: 11px; top: 50%; transform: translateY(-50%);
+    color: var(--text-muted); pointer-events: none;
+  }
+  .search-field:focus-within .search-icon { color: var(--accent-dim); }
   .search-input {
     width: 100%;
-    padding: 8px 12px;
+    padding: 8px 12px 8px 34px;
     background: var(--bg-dark);
     border: 1px solid var(--border);
     border-radius: 4px;
@@ -484,7 +508,21 @@
     color: var(--text-muted);
     font-size: 13px;
     line-height: 1.6;
+    --empty-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z'/%3E%3Ccircle cx='12' cy='10' r='3'/%3E%3C/svg%3E");
   }
+  /* Faint glyph above empty-state messages — themeable (currentColor fill + SVG
+     mask), so the JS-rendered empty strings need no icon markup of their own. */
+  .no-markers::before, .search-no-results::before {
+    content: ''; display: block; width: 30px; height: 30px; margin: 2px auto 12px;
+    background: currentColor; opacity: 0.75;
+    -webkit-mask: var(--empty-icon) center / contain no-repeat;
+    mask: var(--empty-icon) center / contain no-repeat;
+  }
+  .search-no-results {
+    --empty-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='11' cy='11' r='8'/%3E%3Cpath d='M21 21l-4.35-4.35'/%3E%3C/svg%3E");
+  }
+  /* Shared inline-icon baseline: never shrink in a flex row. */
+  .ui-icon { flex-shrink: 0; }
 
   /* ── Tools Tab ── */
   .tools-section { padding: 16px 18px; }
@@ -500,7 +538,9 @@
     border-bottom: 1px solid var(--border);
   }
   .tool-btn {
-    display: block;
+    display: flex;
+    align-items: flex-start;
+    gap: 11px;
     width: 100%;
     padding: 10px 14px;
     margin-bottom: 8px;
@@ -517,6 +557,10 @@
   .tool-btn:hover { border-color: var(--border-light); background: var(--bg-hover); }
   .tool-btn.danger { border-color: rgba(179,68,68,0.3); }
   .tool-btn.danger:hover { border-color: var(--danger); background: rgba(179,68,68,0.1); }
+  .tool-icon { flex-shrink: 0; margin-top: 1px; color: var(--text-secondary); transition: color 0.15s; }
+  .tool-btn:hover .tool-icon { color: var(--accent); }
+  .tool-btn.danger .tool-icon { color: var(--danger); }
+  .tool-txt { display: flex; flex-direction: column; min-width: 0; }
   .tool-desc { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
 
   /* ── Map ── */
@@ -549,6 +593,16 @@
   }
   .leaflet-marker-icon.poi-marker:hover img {
     filter: drop-shadow(0 0 6px var(--glow)) drop-shadow(0 0 3px var(--glow));
+  }
+  /* "Highlight markers" View toggle — a blue halo around every marker.
+     Driven by a body class so it survives region switches (which recreate the
+     map) and auto-applies to markers created later. */
+  body.highlight-markers .leaflet-marker-icon.poi-marker img,
+  body.highlight-markers .custom-marker-icon {
+    filter: drop-shadow(0 0 1.5px #3ea1ff) drop-shadow(0 0 3px #3ea1ff);
+  }
+  body.highlight-markers .leaflet-marker-icon.poi-marker:hover img {
+    filter: drop-shadow(0 0 2.5px #6bb8ff) drop-shadow(0 0 4px #3ea1ff);
   }
 
   /* ── Marker tooltips (name on hover) ── */
@@ -980,15 +1034,62 @@
   .legend-row img { width: 18px; height: 18px; image-rendering: pixelated; flex-shrink: 0; }
 
   /* ── Map Options (toggle switches) ── */
+  /* ── Map view options — collapsible "View" disclosure ──
+     Collapsed by default to reclaim ~100px of permanent panel height; the
+     three toggles reveal on click. Their on/off state persists regardless of
+     whether the disclosure is open. */
   .map-options {
-    padding: 8px 18px 10px;
+    padding: 6px 18px 8px;
     border-bottom: 1px solid var(--border);
     flex-shrink: 0;
   }
-  .map-option {
+  .mo-header {
     display: flex; align-items: center; justify-content: space-between;
-    padding: 5px 0; cursor: pointer; user-select: none;
+    width: 100%; padding: 5px 0; background: none; border: none;
+    cursor: pointer; color: var(--text-secondary);
+    font-family: 'Cinzel', serif; font-size: 10.5px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.1em;
+    transition: color 0.15s;
   }
+  .mo-header:hover { color: var(--text-primary); }
+  .mo-caret {
+    width: 6px; height: 6px; margin-right: 3px;
+    border-right: 2px solid var(--ember); border-bottom: 2px solid var(--ember);
+    transform: rotate(45deg);            /* points down = expanded */
+    transition: transform 0.22s ease, border-color 0.15s ease;
+  }
+  .mo-header:hover .mo-caret, .gp-header:hover .mo-caret { border-color: var(--ember-hover); }
+  .map-options.collapsed .mo-caret { transform: rotate(-45deg); }   /* points right = collapsed */
+  .mo-body {
+    display: flex; flex-wrap: wrap; gap: 6px; padding-top: 3px;
+    overflow: hidden; max-height: 160px; opacity: 1;
+    transition: max-height 0.26s ease, opacity 0.2s ease, visibility 0s;
+  }
+  .map-options.collapsed .mo-body {
+    max-height: 0; opacity: 0; visibility: hidden; padding-top: 0;
+    /* hide from tab order only after the collapse finishes */
+    transition: max-height 0.26s ease, opacity 0.2s ease, visibility 0s 0.26s;
+  }
+  /* Text-in-button toggle chips: the whole chip is the control, its checkbox is
+     the hidden state of record, and :has(input:checked) lights it gold with a
+     filled status dot. Keeping the checkbox means the existing toggle handlers
+     (and the label-edit tool that flips toggle-labels) work unchanged. */
+  .mo-chip {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 5px 11px; border-radius: 6px;
+    border: 1px solid var(--border); background: transparent;
+    color: var(--text-secondary); font-size: 12px;
+    cursor: pointer; user-select: none;
+    transition: color 0.18s, border-color 0.18s, background 0.18s;
+  }
+  .mo-chip:hover { border-color: var(--border-light); color: var(--text-primary); }
+  .mo-chip input { position: absolute; opacity: 0; width: 0; height: 0; }
+  /* Leading glyph inherits currentColor — gold when on, muted when off. */
+  .mo-chip .ui-icon { flex-shrink: 0; }
+  .mo-chip:has(input:checked) {
+    background: rgba(201,168,76,0.14); border-color: var(--accent); color: var(--accent);
+  }
+  .mo-chip:has(input:focus-visible) { outline: 2px solid var(--accent); outline-offset: 2px; }
   .map-option .mo-label { font-size: 12px; color: var(--text-secondary); transition: color 0.15s; }
   .map-option:hover .mo-label { color: var(--text-primary); }
   .map-option input { position: absolute; opacity: 0; width: 0; height: 0; }
