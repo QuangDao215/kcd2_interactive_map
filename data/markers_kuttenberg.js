@@ -29718,7 +29718,8 @@ window.MARKER_DATA_KUTTENBERG = {
     },
     {
       "name": "Adept",
-      "category": "quest_side",
+      "category": "quest_dlc2",
+      "_baseKey": "quest_side:10189:5516",
       "description": "",
       "x": 10189,
       "y": 5516,
@@ -30454,6 +30455,26 @@ window.MARKER_DATA_KUTTENBERG = {
       "description": "",
       "x": 9437,
       "y": 5842,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Old Plans",
+      "category": "quest_dlc2",
+      "_baseKey": "quest_side:10190:5544",
+      "description": "",
+      "x": 10190,
+      "y": 5544,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "The Last Step",
+      "category": "quest_dlc2",
+      "_baseKey": "quest_side:10193:5526",
+      "description": "",
+      "x": 10193,
+      "y": 5526,
       "is_discoverable": true,
       "source": "manual"
     }
