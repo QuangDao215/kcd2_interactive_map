@@ -22081,23 +22081,6 @@
       "gg_icon": "/images/map-marker-icon/15/252462/tunicshort01_m02_d_icon-82ce9cea.png.png"
     },
     {
-      "name": "Frilled dress",
-      "category": "loot_armour_body",
-      "description": "",
-      "x": 2579,
-      "y": 3422,
-      "world_x": 0,
-      "world_y": 0,
-      "world_z": 0,
-      "poi_type_name": "gg_import_loot_armour_body",
-      "poi_type_id": "_gg_db-45953",
-      "is_fast_travel": false,
-      "is_discoverable": true,
-      "source": "gamerguides",
-      "gg_marker_id": 204153,
-      "gg_icon": "/images/map-marker-icon/15/252471/f_simpledress07_m11_c_icon-5ca9e0cb.png.png"
-    },
-    {
       "name": "Mended cuirass",
       "category": "loot_armour_body",
       "description": "",
@@ -22282,23 +22265,6 @@
       "is_discoverable": true,
       "source": "gamerguides",
       "gg_marker_id": 204384,
-      "gg_icon": "/images/map-marker-icon/15/252690/bootsankle01_m06_c_icon-b66782c5.png.png"
-    },
-    {
-      "name": "Work boots",
-      "category": "loot_armour_legs",
-      "description": "",
-      "x": 2573,
-      "y": 3420,
-      "world_x": 0,
-      "world_y": 0,
-      "world_z": 0,
-      "poi_type_name": "gg_import_loot_armour_legs",
-      "poi_type_id": "_gg_db-45955",
-      "is_fast_travel": false,
-      "is_discoverable": true,
-      "source": "gamerguides",
-      "gg_marker_id": 204386,
       "gg_icon": "/images/map-marker-icon/15/252690/bootsankle01_m06_c_icon-b66782c5.png.png"
     },
     {
@@ -25234,7 +25200,6 @@
     {
       "name": "A Sketchy Situation",
       "category": "quest_dlc1",
-      "_baseKey": "quest_side:4936:3854",
       "description": "",
       "x": 4936,
       "y": 3854,
@@ -25244,7 +25209,6 @@
     {
       "name": "Source of Inspiration",
       "category": "quest_dlc1",
-      "_baseKey": "quest_side:4349:4275",
       "description": "",
       "x": 4349,
       "y": 4275,
@@ -25254,7 +25218,6 @@
     {
       "name": "Chiaroscuro",
       "category": "quest_dlc1",
-      "_baseKey": "quest_side:4345:4272",
       "description": "",
       "x": 4345,
       "y": 4272,
@@ -25264,7 +25227,6 @@
     {
       "name": "Portrait in Red",
       "category": "quest_dlc1",
-      "_baseKey": "quest_side:4349:4270",
       "description": "",
       "x": 4349,
       "y": 4270,
@@ -25274,7 +25236,6 @@
     {
       "name": "The Lion's Crest",
       "category": "quest_dlc0",
-      "_baseKey": "quest_side:4190:3065",
       "description": "",
       "x": 4190,
       "y": 3065,
