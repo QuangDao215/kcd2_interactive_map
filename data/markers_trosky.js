@@ -25269,7 +25269,7 @@ window.MARKER_DATA_TROSKY = {
     },
     {
       "name": "The Lion's Crest",
-      "category": "quest_side",
+      "category": "quest_dlc0",
       "description": "",
       "x": 4190,
       "y": 3065,
