@@ -6,18 +6,24 @@ marker data (`data/markers_trosky.json`, `data/markers_kuttenberg.json`) contain
 **no** DLC entries (0 references), so these names come from the wiki/walkthroughs,
 not the game files this repo extracts.
 
-## Icon → DLC mapping (verify in-game before baking markers)
+## Icon → DLC mapping (owner-confirmed)
 
-The four crests are the game's internal `DLC0`–`DLC3` index, but there are only
-**three** story-expansion DLCs. Best-guess mapping:
+The four crests are the game's internal `DLC0`–`DLC3` index. Confirmed mapping (the
+category display names now use these DLC names; ids stay `quest_dlc0`–`quest_dlc3`):
 
-| Icon | Crest | Likely DLC | Confidence |
-|---|---|---|---|
-| `DLC3_icon` | green shield, cross | **Mysteria Ecclesiae** (monastery/church) | high — crest theme matches |
-| `DLC1_icon` / `DLC2_icon` | purple crests | **Brushes with Death** / **Legacy of the Forge** | order unconfirmed |
-| `DLC0_icon` | purple, white lion | a cosmetic / pre-order / free-content pack | likely **no story quest line** |
+| Icon | Crest | DLC |
+|---|---|---|
+| `DLC0_icon` | purple, white lion | **The Lion's Crest** (pre-order pack — 1 bonus quest) |
+| `DLC1_icon` | purple crest | **Brushes with Death** |
+| `DLC2_icon` | purple, crown | **Legacy of the Forge** |
+| `DLC3_icon` | green shield, cross | **Mysteria Ecclesiae** |
 
-Confirm which crest belongs to which DLC in-game before attaching quest markers.
+## The Lion's Crest — 1 bonus quest (pre-order pack)
+A treasure hunt (a riddle + 4 treasure maps). Start: speak to **Scribe Gaibl** in
+**Troskowitz** (Trosky region) after the prologue. Reward: Knight Brunswick's
+legendary set — poleaxe, belt dagger, full plate armour, and a horse caparison.
+
+1. The Lion's Crest
 
 ## Brushes with Death — 10 side quests
 Painter **Master Voyta** storyline.
@@ -72,6 +78,6 @@ Web research run **2026-07-05**. English in-game titles; order per walkthrough
 sequence. Some Mysteria Ecclesiae quests are missable depending on dialogue/NPC
 choices. Sources:
 
-- PowerPyx walkthroughs — [Brushes with Death](https://www.powerpyx.com/kingdom-come-deliverance-2-brushes-with-death-dlc-walkthrough/), [Legacy of the Forge](https://www.powerpyx.com/kingdom-come-deliverance-2-legacy-of-the-forge-dlc-walkthrough/), [Mysteria Ecclesiae](https://www.powerpyx.com/kingdom-come-deliverance-2-mysteria-ecclesiae-dlc-walkthrough/)
+- PowerPyx walkthroughs — [The Lion's Crest](https://www.powerpyx.com/kingdom-come-deliverance-2-the-lions-crest-walkthrough/), [Brushes with Death](https://www.powerpyx.com/kingdom-come-deliverance-2-brushes-with-death-dlc-walkthrough/), [Legacy of the Forge](https://www.powerpyx.com/kingdom-come-deliverance-2-legacy-of-the-forge-dlc-walkthrough/), [Mysteria Ecclesiae](https://www.powerpyx.com/kingdom-come-deliverance-2-mysteria-ecclesiae-dlc-walkthrough/)
 - [gamepressure — Brushes with Death, all quests](https://www.gamepressure.com/kingdom-come-deliverance-2/all-quests/zf119ac)
 - [KCD2 Fextralife wiki — DLC hub](https://kingdomcomedeliverance2.wiki.fextralife.com/DLC)

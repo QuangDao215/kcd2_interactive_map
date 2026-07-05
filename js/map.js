@@ -293,11 +293,13 @@ async function loadRegion(region, opts = {}) {
     { id: "fist_fight_arena", name: "Fist Fight Arena", icon: "👊", color: "#c9a84c" },
     { id: "player_bed", name: "Player Bed", icon: "🛏️", color: "#c9a84c" },
     { id: "smithy", name: "Smithy", icon: "⚒️", color: "#c9a84c" },
-    // DLC quest classes — icons resolve from ICON_MAP → icons/DLCn_icon.png
-    { id: "quest_dlc0", name: "DLC0 Quests", icon: "📜", color: "#9d6bd0" },
-    { id: "quest_dlc1", name: "DLC1 Quests", icon: "📜", color: "#9d6bd0" },
-    { id: "quest_dlc2", name: "DLC2 Quests", icon: "📜", color: "#9d6bd0" },
-    { id: "quest_dlc3", name: "DLC3 Quests", icon: "📜", color: "#9d6bd0" },
+    // DLC quest classes — icons resolve from ICON_MAP → icons/DLCn_icon.png.
+    // DLC0=The Lion's Crest, DLC1=Brushes with Death, DLC2=Legacy of the Forge,
+    // DLC3=Mysteria Ecclesiae (owner-confirmed icon→DLC mapping).
+    { id: "quest_dlc0", name: "The Lion's Crest", icon: "📜", color: "#9d6bd0" },
+    { id: "quest_dlc1", name: "Brushes with Death", icon: "📜", color: "#9d6bd0" },
+    { id: "quest_dlc2", name: "Legacy of the Forge", icon: "📜", color: "#9d6bd0" },
+    { id: "quest_dlc3", name: "Mysteria Ecclesiae", icon: "📜", color: "#9d6bd0" },
   ];
   EXTRA_CATEGORIES.forEach(extra => {
     if (!categories.find(c => c.id === extra.id)) {
