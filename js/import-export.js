@@ -31,8 +31,13 @@ async function clearProgress() {
   discoveredMarkers[currentRegion] = new Set();
   saveDiscoveredToStorage();
 
-  // Restore all markers to full opacity
-  Object.values(markersByKey).forEach(marker => marker.setOpacity(1.0));
+  // Restore all markers to full opacity AND clickability — if "Hide discovered"
+  // was on, discovered icons had pointer-events:none set (storage.js), which
+  // setOpacity alone doesn't undo (they'd be visible but unclickable otherwise).
+  Object.values(markersByKey).forEach(marker => {
+    marker.setOpacity(1.0);
+    if (marker._icon) marker._icon.style.pointerEvents = '';
+  });
 
   renderCategoryList(document.getElementById('search-input')?.value || '');
   updateGameProgress();

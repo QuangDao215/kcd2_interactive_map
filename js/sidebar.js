@@ -260,8 +260,18 @@ function filterCategories(query) {
 
 let hideDiscovered = false;
 
+// Normalize for search: fold curly/straight apostrophes together and strip
+// diacritics, so "atamans"/"ataman's" both match "Ataman's" and unaccented
+// typing matches accented Czech names. The data mixes ' (U+0027) and ’ (U+2019).
+function searchNorm(s) {
+  return (s || '')
+    .toLowerCase()
+    .normalize('NFD').replace(/[̀-ͯ]/g, '')  // strip combining diacritics
+    .replace(/['’ʼ`]/g, '');                 // drop apostrophes (so "atamans" finds "Ataman's")
+}
+
 function onSearchInput(query) {
-  const q = query.trim().toLowerCase();
+  const q = searchNorm(query.trim());
 
   // Always filter categories
   renderCategoryList(query);
@@ -281,12 +291,12 @@ function onSearchInput(query) {
   // Search both POI markers and user markers
   const matches = [];
   regionMarkers.forEach(m => {
-    if ((m.name || '').toLowerCase().includes(q)) {
+    if (searchNorm(m.name).includes(q)) {
       matches.push({ ...m, source: 'poi' });
     }
   });
   userMkrs.forEach(m => {
-    if ((m.name || '').toLowerCase().includes(q)) {
+    if (searchNorm(m.name).includes(q)) {
       matches.push({ ...m, source: 'user' });
     }
   });

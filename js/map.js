@@ -125,17 +125,20 @@ function restoreFromHash() {
     if (markerKey) {
       // Open the marker's popup after a short delay for rendering
       setTimeout(() => {
-        const marker = markersByKey[markerKey];
-        if (marker) {
-          // Ensure category is visible
-          const catId = markerKey.split(':')[0];
-          if (!activeCategories.has(catId) && markerLayers[catId]) {
+        // Activate AND build the marker's category before the lookup: categories
+        // build lazily, so a permalink into one the default view never opened
+        // wouldn't be in markersByKey yet (previously the popup silently no-op'd).
+        const catId = markerKey.split(':')[0];
+        if (markerLayers[catId]) {
+          if (!activeCategories.has(catId)) {
             activeCategories.add(catId);
             markerLayers[catId].addTo(map);
             renderCategoryList('');
           }
-          marker.openPopup();
+          ensureCategoryBuilt(catId);
         }
+        const marker = markersByKey[markerKey];
+        if (marker) marker.openPopup();
       }, 500);
     }
   }

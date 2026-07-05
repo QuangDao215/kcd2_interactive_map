@@ -2,8 +2,23 @@
 // ██ LOCAL STORAGE
 // ═══════════════════════════════════════════════
 
+// localStorage.setItem throws QuotaExceededError once the discovered sets +
+// marker edits + custom markers across both regions fill the ~5 MB budget. Wrap
+// every hot-path write so a full quota degrades to a toast instead of throwing
+// out of whatever triggered the save (e.g. aborting a marker add half-done).
+function safeSetItem(key, value) {
+  try {
+    localStorage.setItem(key, value);
+    return true;
+  } catch (e) {
+    console.warn('localStorage write failed for', key, e);
+    if (typeof showToast === 'function') showToast('Storage full — change not saved');
+    return false;
+  }
+}
+
 function saveUserMarkersToStorage() {
-  localStorage.setItem(CONFIG.storageKeys.userMarkers, JSON.stringify(userMarkers));
+  safeSetItem(CONFIG.storageKeys.userMarkers, JSON.stringify(userMarkers));
 }
 
 function loadUserMarkersFromStorage() {
@@ -24,7 +39,7 @@ function loadUserMarkersFromStorage() {
 }
 
 function saveActiveCategoriesFromStorage() {
-  localStorage.setItem(CONFIG.storageKeys.activeCategories, JSON.stringify([...activeCategories]));
+  safeSetItem(CONFIG.storageKeys.activeCategories, JSON.stringify([...activeCategories]));
 }
 
 function loadActiveCategoriesFromStorage() {
@@ -46,7 +61,7 @@ function saveDiscoveredToStorage() {
   Object.entries(discoveredMarkers).forEach(([region, set]) => {
     serializable[region] = [...set];
   });
-  localStorage.setItem(CONFIG.storageKeys.discoveredMarkers, JSON.stringify(serializable));
+  safeSetItem(CONFIG.storageKeys.discoveredMarkers, JSON.stringify(serializable));
 }
 
 function loadDiscoveredFromStorage() {
