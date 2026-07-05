@@ -96,3 +96,5 @@ icons/tanner_icon.png
 icons/vegetableShop_icon.png
 icons/washing_icon.png
 icons/weaponsmiths_icon.png
+icons/brand/kcd2_icon.jpg
+icons/brand/kcd2_logo.png
