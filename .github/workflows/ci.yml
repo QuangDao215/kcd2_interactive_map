@@ -1,0 +1,28 @@
+name: CI
+
+# Runs the same three checks that are otherwise manual/local:
+# marker-data validation, ESLint (real-bug rules), and the marker-key tests.
+on:
+  push:
+    branches: [main, "feat/**"]
+  pull_request:
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+      - name: Validate marker data
+        run: python tools/validate_data.py
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Lint JS (ESLint flat config)
+        run: npx --yes eslint@9 js/
+      - name: Marker-key logic tests
+        run: node tests/keys.test.js
