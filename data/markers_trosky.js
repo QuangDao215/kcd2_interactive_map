@@ -22081,6 +22081,23 @@ window.MARKER_DATA_TROSKY = {
       "gg_icon": "/images/map-marker-icon/15/252462/tunicshort01_m02_d_icon-82ce9cea.png.png"
     },
     {
+      "name": "Frilled dress",
+      "category": "loot_armour_body",
+      "description": "",
+      "x": 2579,
+      "y": 3422,
+      "world_x": 0,
+      "world_y": 0,
+      "world_z": 0,
+      "poi_type_name": "gg_import_loot_armour_body",
+      "poi_type_id": "_gg_db-45953",
+      "is_fast_travel": false,
+      "is_discoverable": true,
+      "source": "gamerguides",
+      "gg_marker_id": 204153,
+      "gg_icon": "/images/map-marker-icon/15/252471/f_simpledress07_m11_c_icon-5ca9e0cb.png.png"
+    },
+    {
       "name": "Mended cuirass",
       "category": "loot_armour_body",
       "description": "",
@@ -22265,6 +22282,23 @@ window.MARKER_DATA_TROSKY = {
       "is_discoverable": true,
       "source": "gamerguides",
       "gg_marker_id": 204384,
+      "gg_icon": "/images/map-marker-icon/15/252690/bootsankle01_m06_c_icon-b66782c5.png.png"
+    },
+    {
+      "name": "Work boots",
+      "category": "loot_armour_legs",
+      "description": "",
+      "x": 2573,
+      "y": 3420,
+      "world_x": 0,
+      "world_y": 0,
+      "world_z": 0,
+      "poi_type_name": "gg_import_loot_armour_legs",
+      "poi_type_id": "_gg_db-45955",
+      "is_fast_travel": false,
+      "is_discoverable": true,
+      "source": "gamerguides",
+      "gg_marker_id": 204386,
       "gg_icon": "/images/map-marker-icon/15/252690/bootsankle01_m06_c_icon-b66782c5.png.png"
     },
     {
