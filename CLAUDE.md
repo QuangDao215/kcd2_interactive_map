@@ -28,6 +28,10 @@ E:\kcd2_map\  (repo root)
 │   └── main.js                      #   UI helpers + init()
 ├── main_icon.png                    # Favicon (game icon)
 ├── README.md, LICENSE, .gitignore
+├── active_icons.txt                 # Manifest of item icons to force-commit (icons/items/* is gitignored)
+├── docs/
+│   ├── editorial_design_reference.md # The editorial design system we adopt (rules · tokens · mapping)
+│   └── kcd2_taverns_lodgings.md      # Verified Czech file-name ↔ English tavern/lodging names
 │
 ├── data/
 │   ├── markers_trosky.json          # Trosky region POI markers
@@ -186,18 +190,29 @@ py = 0.0334*x + -0.9963*y + 9800.12
 - 11+ collapsible category groups with real game icons (from ICON_MAP)
 - Per-category progress stats: `discovered/total` for PROGRESS_CATEGORIES, plain count for NPCs/facilities
 - Group-level percentage: `12/45 (27%)`
-- Three tabs: Markers, My Markers, Tools
-- **Eyebrow labels** (adapted from the editorial-artifacts design language): all section/group
-  labels — Game Completion, Map Options, Tools headers (`.tools-section h3`), category group
-  names (`.cat-group-header .group-name`), and the reusable `.section-eyebrow` — are quiet
-  **muted** (`--text-secondary`) uppercase Cinzel at ~10.5–11px with 0.1em tracking and a hairline
-  as the grouping device. **Gold (`--accent`) is reserved** for the display title, the `%`/count
-  figures, and active states, so it reads as a deliberate highlight rather than everywhere.
-- **Completion stat card + mono figures:** Game Completion reads as an editorial stat — a large
-  **mono** `%` figure (`--font-mono`) over the eyebrow, a thin gold fill bar, and the `x / y found`
-  + per-region `%` in mono. **Toggle polish:** the shared `.switch` gained a recessed track (inset
-  shadow) + a raised drop-shadow thumb with a 0.24s slide; the on-state keeps the **gold track
-  fill** (dark thumb) for at-a-glance legibility across the dense category list.
+- Three tabs — Markers, My Markers, Tools — each with a leading inline icon (pin / star / wrench)
+- **Region switcher** — a **sliding segmented control** (recessed track + gold pill) under a quiet
+  `Region` eyebrow. The pill is a `::before` positioned by which `.region-btn` is `.active` via a
+  `:has()` selector, so `switchRegion()` stays layout-agnostic; `aria-pressed` syncs with it.
+- **Eyebrow labels** (from the editorial-artifacts design language — full notes in
+  `docs/editorial_design_reference.md`): all section/group labels — the `View` header, Tools headers
+  (`.tools-section h3`), category group names (`.cat-group-header .group-name`), the `Region`
+  eyebrow, and the reusable `.section-eyebrow` — are quiet **muted** (`--text-secondary`) uppercase
+  Cinzel at ~10–11px with 0.1em tracking and a hairline as the grouping device. **Gold (`--accent`)
+  is reserved** for the display title, the `%`/count figures, and active states.
+- **Game Completion — collapsible stat card:** its header is a toggle button that collapses the whole
+  body (bar + `x / y found` + per-region rows); the large **mono** `%` figure (`--font-mono`, gold)
+  stays visible in the header when collapsed. Per-region Trosky/Kuttenberg names are 12.5px; the
+  active region's name + bar go gold.
+- **UI icon pass:** the chrome carries inline **`currentColor`** SVG icons that theme themselves —
+  search magnifier, tab icons, tool-button glyphs (download/upload/trash/reset/crosshair/move/pencil),
+  Show All / Hide All (eye / eye-off), the View chips, and empty-state glyphs (via CSS `mask`). No
+  icon font, CSP-safe.
+- **Ember accent (`--ember` `#e07b39`):** a second reserved hue used *only* for the collapse carets
+  (View + Game Completion), so the "this collapses" affordance reads distinctly from gold.
+- **Toggle polish:** the shared `.switch` (category on/off) has a recessed track (inset shadow) + a
+  raised drop-shadow thumb with a 0.24s slide; the on-state keeps the **gold track fill** (dark thumb)
+  for at-a-glance legibility across the dense category list.
 
 ### Categories
 **PROGRESS_CATEGORIES** (tracked with discovered/total):
@@ -249,12 +264,20 @@ py = 0.0334*x + -0.9963*y + 9800.12
 - Closing popup reverts to position-only
 - Loading URL with marker → flies to it and opens popup
 
-### Map Options
-- Toggle **switches** (not checkboxes): Settlement names · Detail maps · Hide discovered
+### View (map options)
+- A **collapsible `View` section** (open by default; ember caret in the header). Its options are
+  **text-in-button toggle chips** — an icon + label that lights **gold when on** (a hidden checkbox
+  is the state of record, so the existing handlers *and* the label-edit tool keep working unchanged):
+  **Settlement names · Detail maps · Hide discovered · Highlight markers**.
+- **Highlight markers** draws a tight **blue halo** (`--halo` `#6db3ff`, `--halo-bright` on hover)
+  around every marker. Driven by a `highlight-markers` class on `<body>`, so it survives the map
+  being recreated on a region switch and auto-covers markers rendered later.
 
 ### Map Markers (rendering)
 - Per-category icons get a subtle **group-coloured glow** (`GROUP_COLORS` → `--glow` on the img)
   that brightens on hover; **hover tooltips** show the marker name.
+- **Highlight markers** (a View toggle) overlays a blue halo (`--halo`) on every marker via a
+  `body.highlight-markers` class; it layers over the group glow (hover still brightens).
 - **Legend** overlay (🗝 button, bottom-left) lists every icon grouped + colour-titled.
 - Category on/off uses **toggle switches** at both the **group** header and **per-category** level.
 - Marker **clustering** (Leaflet.markercluster) was trialed and **removed** — the user prefers
@@ -304,16 +327,25 @@ crop_banner.py    → (LEGACY) cropped banner textures — banners removed, labe
 - [ ] Use the Edit Markers tool to clean false-info POI markers (the reason it was built)
 
 ### Medium Priority
-- [ ] Mobile responsiveness (sidebar covers map on phones)
 - [ ] More detailed marker descriptions (chest contents, NPC inventories)
-- [ ] Add cache-busting query to data-file fetches (returning visitors get stale markers/config after deploy)
 
 ### Low Priority
 - [ ] Keyboard shortcuts (`/` to focus search; Esc already closes the confirm dialog)
-- [ ] Fullscreen button · Reset view button
 - [ ] PWA / service worker for offline support (would need to vendor Leaflet locally)
 
+### Won't do
+- Mobile / touch responsiveness — **out of scope**; this is a desktop-only project (owner's call).
+
 ### Done (was pending)
+- [x] Sidebar UI pass: region switcher → sliding segmented control · View options → text-in-button
+      toggle chips (open by default) · collapsible Game Completion card · UI icon pass across the
+      chrome · ember collapse carets · "Highlight markers" blue-halo toggle
+- [x] Adopted the editorial-artifacts design language (`docs/editorial_design_reference.md`): eyebrows,
+      mono stat figure, sliding toggles; contrast audit (all text ≥ AA, danger red brightened to
+      `#c95a54`); 8/12 spacing-rhythm pass
+- [x] `loot_usable` now uses the money (Groschen) icon
+- [x] Fullscreen (⛶) + Reset-view (⌂) map buttons
+- [x] Cache-busting on data-file fetches (`DATA_VERSION` reuses the `?v=` from the data `<script>` tags)
 - [x] Legend overlay · keyboard focus rings · themed confirm dialogs · OG/meta tags
 - [x] Split monolith into index.html + style.css + app.js
 - [x] Banner labels removed → plain text; clustering trialed → reverted
@@ -347,6 +379,12 @@ function makeMapCRS(maxZoom, mapHeight) {
 - `kcd2_label_positions` — drag-calibrated settlement-name positions per region
 - `kcd2_marker_edits` — Edit Markers tool: POI renames `{region: {"cat:x:y": {name}}}`
 - `kcd2_marker_deletes` — Edit Markers tool: deleted POI keys `{region: ["cat:x:y"]}`
+- `kcd2_collapsed_groups` — which category groups are collapsed
+- `kcd2_active_tab` — last active sidebar tab (Markers / My Markers / Tools)
+- `kcd2_map_hint_dismissed` — the right-click "add a marker" hint was dismissed
+
+> Not persisted (intentional): the **Highlight markers** halo and the View / Game-Completion
+> collapse states — they reset to default on each load.
 
 ### File Protocol Fallback
 Data files have both `.json` (fetched via HTTP) and `.js` (loaded via `<script>` tag) versions. The JS wrappers set globals: `window.MARKER_DATA_TROSKY`, `window.MARKER_DATA_KUTTENBERG`, `SETTLEMENT_LABELS` (also on `window`), `window.LOCAL_MAPS_DATA`, `window.ICON_MAP`. Markers/local-maps try fetch first, fall back to the globals for `file://`; settlement labels load only via the `<script>` tag.

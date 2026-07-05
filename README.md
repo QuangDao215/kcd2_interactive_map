@@ -17,6 +17,7 @@ Track your progress, find merchants, locate quest objectives, and discover hidde
 - **Settlement labels** — All named villages, castles, and camps
 - **Progress tracking** — Mark locations as discovered or items as collected; state persists in your browser
 - **Custom markers** — Right-click anywhere to add your own waypoints
+- **Highlight markers** — Toggle a blue halo on every marker to make them pop against the map
 - **Import / export** — Backup your progress and custom markers as JSON
 - **Search and filter** — Find markers by name; toggle entire category groups on or off
 - **Shareable URLs** — The URL hash updates as you pan and zoom, so you can link directly to a specific spot
@@ -31,9 +32,9 @@ Just open the live site. No login, no account, no tracking. Everything is stored
 - **Pan** — Click and drag
 - **Zoom** — Scroll wheel, pinch, or the +/− controls
 - **Add a marker** — Right-click anywhere on the map
-- **Toggle categories** — Use the sidebar checkboxes
+- **Toggle categories** — Use the sidebar toggle switches (or Show All / Hide All)
 - **Track progress** — Click any marker, then click "Mark as Discovered" or "Mark as Collected"
-- **Switch regions** — Click "Trosky" or "Kuttenberg" at the top of the sidebar
+- **Switch regions** — Use the Trosky / Kuttenberg segmented control at the top of the sidebar
 - **Backup your data** — Tools tab → Export All Data (one file: markers, progress, label positions & filters)
 
 ---
@@ -43,8 +44,8 @@ Just open the live site. No login, no account, no tracking. Everything is stored
 The site is fully static — no build step or server required. But because browsers block `file://` requests, you'll need to serve it through a local HTTP server.
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/kcd2-map.git
-cd kcd2-map
+git clone https://github.com/QuangDao215/kcd2_interactive_map.git
+cd kcd2_interactive_map
 python -m http.server 8000
 ```
 
@@ -57,14 +58,17 @@ Any other static server works too (Node's `http-server`, VS Code Live Server, et
 ## Project Structure
 
 ```
-kcd2-map/
-├── index.html               # Main map viewer
+kcd2_interactive_map/
+├── index.html               # Page shell + markup
+├── style.css                # All styles
+├── js/                      # App logic (ordered classic scripts, shared global scope)
 ├── data/                    # Marker JSON, category icons, settlement labels
 ├── icons/                   # Extracted in-game icons (32×32 PNG)
 ├── tiles/                   # Tile pyramids for both regions (WebP)
 │   ├── trosky/
 │   └── kuttenberg/
 ├── tools/                   # Development scripts (data extraction, tile generation)
+├── docs/                    # Design reference + verified name tables
 └── README.md
 ```
 
@@ -81,13 +85,12 @@ kcd2-map/
 
 ## Contributing
 
-Spotted a missing marker, wrong location, or bug? Open an [issue](https://github.com/YOUR_USERNAME/kcd2-map/issues) or send a pull request.
+Spotted a missing marker, wrong location, or bug? Open an [issue](https://github.com/QuangDao215/kcd2_interactive_map/issues) or send a pull request.
 
 Especially welcome:
 - Missing markers (with coordinates if possible)
 - Better English names for locations
 - Bug reports with steps to reproduce
-- Mobile/touch UX improvements
 
 ---
 
