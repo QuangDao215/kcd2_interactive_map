@@ -557,7 +557,7 @@
       "is_discoverable": true
     },
     {
-      "name": "Rabstein Ruin",
+      "name": "Rabstein ruin",
       "category": "interesting_site",
       "description": "",
       "world_x": 682.04,
@@ -1364,7 +1364,7 @@
       "is_discoverable": true
     },
     {
-      "name": "Malesov carpenter",
+      "name": "Maleshov carpenter",
       "category": "huntsman",
       "description": "",
       "world_x": 581.92,
@@ -1851,20 +1851,6 @@
       "is_discoverable": true
     },
     {
-      "name": "Konsky Handlir Malesov",
-      "category": "horse_trader",
-      "description": "",
-      "world_x": 444.33,
-      "world_y": 752.22,
-      "world_z": 114.9,
-      "x": 5695,
-      "y": 1781,
-      "poi_type_name": "horseTrader",
-      "poi_type_id": "f546ece4-bd98-4008-b5b4-812dc2443557",
-      "is_fast_travel": false,
-      "is_discoverable": true
-    },
-    {
       "name": "Black Horse Tavern",
       "category": "tavern",
       "description": "",
@@ -2156,7 +2142,7 @@
       "is_discoverable": true
     },
     {
-      "name": "Millstones Quarry",
+      "name": "Millstones quarry",
       "category": "interesting_site",
       "description": "",
       "world_x": 1113.99,
@@ -2420,8 +2406,8 @@
       "world_x": 1766.66,
       "world_y": 1083.26,
       "world_z": 99.23,
-      "x": 7174,
-      "y": 4264,
+      "x": 7163,
+      "y": 4270,
       "poi_type_name": "pub",
       "poi_type_id": "249bc291-7732-4819-909f-a78356effa03",
       "is_fast_travel": false,
@@ -2485,7 +2471,7 @@
       "label_key": "@ui_maplegend_noosePub"
     },
     {
-      "name": "Burnout Household",
+      "name": "Burnt down building",
       "category": "interesting_site",
       "description": "",
       "world_x": 2609.53,
@@ -2587,7 +2573,7 @@
       "is_discoverable": true
     },
     {
-      "name": "Abandoned Camp",
+      "name": "Abandoned camp",
       "category": "interesting_site",
       "description": "",
       "world_x": 1483.68,
@@ -2990,7 +2976,7 @@
       "label_key": "@ui_maplegend_buriedStash"
     },
     {
-      "name": "Gamekeeper Malesov",
+      "name": "Huntsman",
       "category": "huntsman",
       "description": "",
       "world_x": 298.61,
@@ -3033,7 +3019,7 @@
       "is_discoverable": true
     },
     {
-      "name": "Kutenberg Gallows",
+      "name": "Kutenberg gallows",
       "category": "interesting_site",
       "description": "",
       "world_x": 3313.18,
@@ -4085,7 +4071,7 @@
       "is_discoverable": true
     },
     {
-      "name": "Caved In Mine",
+      "name": "Collapsed mine",
       "category": "interesting_site",
       "description": "",
       "world_x": 2291.43,
@@ -4575,8 +4561,8 @@
       "world_x": 1726.92,
       "world_y": 1114.14,
       "world_z": 101.1,
-      "x": 7068,
-      "y": 4251,
+      "x": 7066,
+      "y": 4265,
       "poi_type_name": "butchery",
       "poi_type_id": "a0f3c565-e17d-4c96-bb8c-43d29d0b58ba",
       "is_fast_travel": false,
@@ -4930,7 +4916,7 @@
       "label_key": "@ui_maplegend_stallWithBeverage"
     },
     {
-      "name": "Lumberjacks And Wolfs",
+      "name": "Woodcutters' camp with wolves",
       "category": "interesting_site",
       "description": "",
       "world_x": 2094.86,
@@ -5073,7 +5059,7 @@
       "is_discoverable": true
     },
     {
-      "name": "Ruin",
+      "name": "Ruins",
       "category": "interesting_site",
       "description": "",
       "world_x": 332.13,
@@ -8387,8 +8373,8 @@
       "world_x": 1759.76,
       "world_y": 1084.28,
       "world_z": 99.59,
-      "x": 7162,
-      "y": 4255,
+      "x": 7157,
+      "y": 4257,
       "poi_type_name": "dice_table",
       "poi_type_id": "_entity_dice_table",
       "is_fast_travel": false,
@@ -8934,7 +8920,7 @@
       "world_y": 963.98,
       "world_z": 64.09,
       "x": 9349,
-      "y": 6091,
+      "y": 6105,
       "poi_type_name": "indulgence_box",
       "poi_type_id": "_entity_indulgence_box",
       "is_fast_travel": false,
@@ -9213,8 +9199,8 @@
       "world_x": 1722.62,
       "world_y": 1113.92,
       "world_z": 101.42,
-      "x": 7062,
-      "y": 4244,
+      "x": 7047,
+      "y": 4251,
       "poi_type_name": "smokehouse",
       "poi_type_id": "_entity_smokehouse",
       "is_fast_travel": false,
@@ -9381,8 +9367,8 @@
       "world_x": 1724.96,
       "world_y": 1112.24,
       "world_z": 101.87,
-      "x": 7068,
-      "y": 4245,
+      "x": 7054,
+      "y": 4263,
       "poi_type_name": "drying_rack",
       "poi_type_id": "_entity_drying_rack",
       "is_fast_travel": false,
@@ -9577,7 +9563,7 @@
       "world_x": 1774.98,
       "world_y": 1086.21,
       "world_z": 99.98,
-      "x": 7182,
+      "x": 7171,
       "y": 4281,
       "poi_type_name": "drying_rack",
       "poi_type_id": "_entity_drying_rack",
@@ -11102,23 +11088,6 @@
       "source": "gamerguides",
       "gg_marker_id": 202496,
       "gg_icon": "/images/map-marker-icon/15/252249/arrow_normal_icon-879b201d.png.png"
-    },
-    {
-      "name": "Enhanced hunting bolt",
-      "category": "loot_ammo",
-      "description": "",
-      "x": 5156,
-      "y": 1839,
-      "world_x": 0,
-      "world_y": 0,
-      "world_z": 0,
-      "poi_type_name": "gg_import_loot_ammo",
-      "poi_type_id": "_gg_db-45979",
-      "is_fast_travel": false,
-      "is_discoverable": true,
-      "source": "gamerguides",
-      "gg_marker_id": 202595,
-      "gg_icon": "/images/map-marker-icon/15/252251/bolt_enh_hunting_icon-e755b2e5.png.png"
     },
     {
       "name": "Crude arrow",
@@ -13572,23 +13541,6 @@
       "name": "Battle longsword",
       "category": "loot_sword",
       "description": "",
-      "x": 5394,
-      "y": 5291,
-      "world_x": 0,
-      "world_y": 0,
-      "world_z": 0,
-      "poi_type_name": "gg_import_loot_sword",
-      "poi_type_id": "_gg_db-45974",
-      "is_fast_travel": false,
-      "is_discoverable": true,
-      "source": "gamerguides",
-      "gg_marker_id": 203554,
-      "gg_icon": "/images/map-marker-icon/15/252383/longswordsturdy_icon-8f808419.png.png"
-    },
-    {
-      "name": "Battle longsword",
-      "category": "loot_sword",
-      "description": "",
       "x": 9977,
       "y": 5820,
       "world_x": 0,
@@ -13759,23 +13711,6 @@
       "name": "Broadsword",
       "category": "loot_sword",
       "description": "",
-      "x": 5400,
-      "y": 5301,
-      "world_x": 0,
-      "world_y": 0,
-      "world_z": 0,
-      "poi_type_name": "gg_import_loot_sword",
-      "poi_type_id": "_gg_db-45974",
-      "is_fast_travel": false,
-      "is_discoverable": true,
-      "source": "gamerguides",
-      "gg_marker_id": 203603,
-      "gg_icon": "/images/map-marker-icon/15/252401/shortswordbroad_icon-ab2b302a.png.png"
-    },
-    {
-      "name": "Broadsword",
-      "category": "loot_sword",
-      "description": "",
       "x": 9608,
       "y": 6017,
       "world_x": 0,
@@ -13804,23 +13739,6 @@
       "is_discoverable": true,
       "source": "gamerguides",
       "gg_marker_id": 203614,
-      "gg_icon": "/images/map-marker-icon/15/252403/longswordcommon_icon-cff8e3d6.png.png"
-    },
-    {
-      "name": "Common longsword",
-      "category": "loot_sword",
-      "description": "",
-      "x": 5399,
-      "y": 5302,
-      "world_x": 0,
-      "world_y": 0,
-      "world_z": 0,
-      "poi_type_name": "gg_import_loot_sword",
-      "poi_type_id": "_gg_db-45974",
-      "is_fast_travel": false,
-      "is_discoverable": true,
-      "source": "gamerguides",
-      "gg_marker_id": 203616,
       "gg_icon": "/images/map-marker-icon/15/252403/longswordcommon_icon-cff8e3d6.png.png"
     },
     {
@@ -14538,23 +14456,6 @@
       "gg_icon": "/images/map-marker-icon/15/252581/bascinetvisor06_m01_b4_icon-fa95090a.png.png"
     },
     {
-      "name": "Cap with peacock feathers",
-      "category": "loot_armour_head",
-      "description": "",
-      "x": 6685,
-      "y": 1237,
-      "world_x": 0,
-      "world_y": 0,
-      "world_z": 0,
-      "poi_type_name": "gg_import_loot_armour_head",
-      "poi_type_id": "_gg_db-45954",
-      "is_fast_travel": false,
-      "is_discoverable": true,
-      "source": "gamerguides",
-      "gg_marker_id": 203744,
-      "gg_icon": "/images/map-marker-icon/15/252582/cap14_m02_b_icon-0710c345.png.png"
-    },
-    {
       "name": "Italian bascinet",
       "category": "loot_armour_head",
       "description": "",
@@ -14672,23 +14573,6 @@
       "source": "gamerguides",
       "gg_marker_id": 203764,
       "gg_icon": "/images/map-marker-icon/15/252614/kettlehat04_m01_c3_icon-9f08f27f.png.png"
-    },
-    {
-      "name": "Mikush's cap",
-      "category": "loot_armour_head",
-      "description": "",
-      "x": 5452,
-      "y": 3249,
-      "world_x": 0,
-      "world_y": 0,
-      "world_z": 0,
-      "poi_type_name": "gg_import_loot_armour_head",
-      "poi_type_id": "_gg_db-45954",
-      "is_fast_travel": false,
-      "is_discoverable": true,
-      "source": "gamerguides",
-      "gg_marker_id": 203766,
-      "gg_icon": "/images/map-marker-icon/15/253573/cap10_mmikus_c_icon-7f6391f3.png.png"
     },
     {
       "name": "Strange strawhat",
@@ -15456,23 +15340,6 @@
       "gg_icon": "/images/map-marker-icon/15/253639/horseshoenomad_icon-5e54c4f5.png.png"
     },
     {
-      "name": "Farmer's horseshoes",
-      "category": "loot_horseshoe",
-      "description": "",
-      "x": 7194,
-      "y": 4237,
-      "world_x": 0,
-      "world_y": 0,
-      "world_z": 0,
-      "poi_type_name": "gg_import_loot_horseshoe",
-      "poi_type_id": "_gg_db-45991",
-      "is_fast_travel": false,
-      "is_discoverable": true,
-      "source": "gamerguides",
-      "gg_marker_id": 203902,
-      "gg_icon": "/images/map-marker-icon/15/253641/horseshoefarmer_icon-505cb13d.png.png"
-    },
-    {
       "name": "Nobleman's horseshoes",
       "category": "loot_horseshoe",
       "description": "",
@@ -16051,23 +15918,6 @@
       "gg_icon": "/images/map-marker-icon/15/252450/gambesonshort02_m09_e1_icon-d22679b4.png.png"
     },
     {
-      "name": "Riding waffenrock",
-      "category": "loot_armour_body",
-      "description": "",
-      "x": 5436,
-      "y": 5154,
-      "world_x": 0,
-      "world_y": 0,
-      "world_z": 0,
-      "poi_type_name": "gg_import_loot_armour_body",
-      "poi_type_id": "_gg_db-45953",
-      "is_fast_travel": false,
-      "is_discoverable": true,
-      "source": "gamerguides",
-      "gg_marker_id": 204090,
-      "gg_icon": "/images/map-marker-icon/15/252451/waffenrock08_mpisek_b_icon-2b85d6aa.png.png"
-    },
-    {
       "name": "Long gambeson",
       "category": "loot_armour_body",
       "description": "",
@@ -16391,23 +16241,6 @@
       "gg_icon": "/images/map-marker-icon/15/252461/cuirass07_m03_a5_icon-31eeb307.png.png"
     },
     {
-      "name": "Short tunic",
-      "category": "loot_armour_body",
-      "description": "",
-      "x": 5442,
-      "y": 5162,
-      "world_x": 0,
-      "world_y": 0,
-      "world_z": 0,
-      "poi_type_name": "gg_import_loot_armour_body",
-      "poi_type_id": "_gg_db-45953",
-      "is_fast_travel": false,
-      "is_discoverable": true,
-      "source": "gamerguides",
-      "gg_marker_id": 204129,
-      "gg_icon": "/images/map-marker-icon/15/252462/tunicshort01_m02_d_icon-82ce9cea.png.png"
-    },
-    {
       "name": "Magdeburg cuirass",
       "category": "loot_armour_body",
       "description": "",
@@ -16646,7 +16479,7 @@
       "gg_icon": "/images/map-marker-icon/15/252479/f_simpledress06_m14_d_icon-3e0df575.png.png"
     },
     {
-      "name": "Patched cuirass",
+      "name": "Mended cuirass",
       "category": "loot_armour_body",
       "description": "",
       "x": 5277,
@@ -16695,23 +16528,6 @@
       "source": "gamerguides",
       "gg_marker_id": 204173,
       "gg_icon": "/images/map-marker-icon/15/252494/cuirass03_m01_a3_icon-4caf15d6.png.png"
-    },
-    {
-      "name": "Embroidered shirt",
-      "category": "loot_armour_body",
-      "description": "",
-      "x": 5436,
-      "y": 5170,
-      "world_x": 0,
-      "world_y": 0,
-      "world_z": 0,
-      "poi_type_name": "gg_import_loot_armour_body",
-      "poi_type_id": "_gg_db-45953",
-      "is_fast_travel": false,
-      "is_discoverable": true,
-      "source": "gamerguides",
-      "gg_marker_id": 204174,
-      "gg_icon": "/images/map-marker-icon/15/252495/tunicshort08_m01_e_icon-3acfb203.png.png"
     },
     {
       "name": "Milanese brigandine",
@@ -16831,40 +16647,6 @@
       "source": "gamerguides",
       "gg_marker_id": 204191,
       "gg_icon": "/images/map-marker-icon/15/252514/cuirass01_m02_c2_icon-d42a7e0e.png.png"
-    },
-    {
-      "name": "Beggar's shirt",
-      "category": "loot_armour_body",
-      "description": "",
-      "x": 5442,
-      "y": 5154,
-      "world_x": 0,
-      "world_y": 0,
-      "world_z": 0,
-      "poi_type_name": "gg_import_loot_armour_body",
-      "poi_type_id": "_gg_db-45953",
-      "is_fast_travel": false,
-      "is_discoverable": true,
-      "source": "gamerguides",
-      "gg_marker_id": 204195,
-      "gg_icon": "/images/map-marker-icon/15/252518/tunicshort07_m01_e_icon-008a995c.png.png"
-    },
-    {
-      "name": "Beggar's shirt",
-      "category": "loot_armour_body",
-      "description": "",
-      "x": 5436,
-      "y": 5162,
-      "world_x": 0,
-      "world_y": 0,
-      "world_z": 0,
-      "poi_type_name": "gg_import_loot_armour_body",
-      "poi_type_id": "_gg_db-45953",
-      "is_fast_travel": false,
-      "is_discoverable": true,
-      "source": "gamerguides",
-      "gg_marker_id": 204196,
-      "gg_icon": "/images/map-marker-icon/15/252518/tunicshort07_m01_e_icon-008a995c.png.png"
     },
     {
       "name": "Innkeeper's shirt",
@@ -17581,23 +17363,6 @@
       "gg_icon": "/images/map-marker-icon/15/252634/bascinetopen03_m01_c3_icon-8872e0ac.png.png"
     },
     {
-      "name": "Hose joined",
-      "category": "loot_armour_legs",
-      "description": "",
-      "x": 5448,
-      "y": 5170,
-      "world_x": 0,
-      "world_y": 0,
-      "world_z": 0,
-      "poi_type_name": "gg_import_loot_armour_legs",
-      "poi_type_id": "_gg_db-45955",
-      "is_fast_travel": false,
-      "is_discoverable": true,
-      "source": "gamerguides",
-      "gg_marker_id": 204306,
-      "gg_icon": "/images/map-marker-icon/15/252657/hosejoined01_m03_d_icon-f8f83079.png.png"
-    },
-    {
       "name": "Noble boots",
       "category": "loot_armour_legs",
       "description": "",
@@ -17613,23 +17378,6 @@
       "source": "gamerguides",
       "gg_marker_id": 204308,
       "gg_icon": "/images/map-marker-icon/15/252660/bootsknee01_m04_c_icon-c7f8069c.png.png"
-    },
-    {
-      "name": "Hose loose",
-      "category": "loot_armour_legs",
-      "description": "",
-      "x": 5442,
-      "y": 5170,
-      "world_x": 0,
-      "world_y": 0,
-      "world_z": 0,
-      "poi_type_name": "gg_import_loot_armour_legs",
-      "poi_type_id": "_gg_db-45955",
-      "is_fast_travel": false,
-      "is_discoverable": true,
-      "source": "gamerguides",
-      "gg_marker_id": 204310,
-      "gg_icon": "/images/map-marker-icon/15/252663/hoseloose01_m03_c_icon-b31728ba.png.png"
     },
     {
       "name": "Burgher's shoes",
@@ -19604,23 +19352,6 @@
       "gg_icon": "/images/map-marker-icon/15/316069/shrine_icon_result-29ff5ae5.png.png"
     },
     {
-      "name": "Laundry",
-      "category": "washing",
-      "description": "",
-      "x": 5351,
-      "y": 5222,
-      "world_x": 0,
-      "world_y": 0,
-      "world_z": 0,
-      "poi_type_name": "gg_import_washing",
-      "poi_type_id": "_gg_db-50310",
-      "is_fast_travel": false,
-      "is_discoverable": true,
-      "source": "gamerguides",
-      "gg_marker_id": 204711,
-      "gg_icon": "/images/map-marker-icon/15/316072/washing_icon_result-d60fc253.png.png"
-    },
-    {
       "name": "Shrine",
       "category": "shrine",
       "description": "",
@@ -21443,8 +21174,8 @@
       "name": "Smokehouse",
       "category": "smokehouse",
       "description": "",
-      "x": 6641,
-      "y": 1287,
+      "x": 6655,
+      "y": 1304,
       "world_x": 0,
       "world_y": 0,
       "world_z": 0,
@@ -21477,8 +21208,8 @@
       "name": "Smokehouse",
       "category": "smokehouse",
       "description": "",
-      "x": 6530,
-      "y": 1263,
+      "x": 6512,
+      "y": 1269,
       "world_x": 0,
       "world_y": 0,
       "world_z": 0,
@@ -21494,8 +21225,8 @@
       "name": "Drying Rack",
       "category": "drying_rack",
       "description": "",
-      "x": 6551,
-      "y": 1290,
+      "x": 6540,
+      "y": 1296,
       "world_x": 0,
       "world_y": 0,
       "world_z": 0,
@@ -21505,23 +21236,6 @@
       "is_discoverable": true,
       "source": "gamerguides",
       "gg_marker_id": 204893,
-      "gg_icon": "/images/map-marker-icon/15/316070/dryingfood_icon_result-a0f1904e.png.png"
-    },
-    {
-      "name": "Drying Rack",
-      "category": "drying_rack",
-      "description": "",
-      "x": 6549,
-      "y": 1102,
-      "world_x": 0,
-      "world_y": 0,
-      "world_z": 0,
-      "poi_type_name": "gg_import_drying_rack",
-      "poi_type_id": "_gg_db-50310",
-      "is_fast_travel": false,
-      "is_discoverable": true,
-      "source": "gamerguides",
-      "gg_marker_id": 204894,
       "gg_icon": "/images/map-marker-icon/15/316070/dryingfood_icon_result-a0f1904e.png.png"
     },
     {
@@ -21933,74 +21647,6 @@
       "gg_icon": "/images/map-marker-icon/15/253122/lorebook_simple_02_icon-e2318358.png.png"
     },
     {
-      "name": "Odd die",
-      "category": "loot_dice",
-      "description": "",
-      "x": 7169,
-      "y": 4289,
-      "world_x": 0,
-      "world_y": 0,
-      "world_z": 0,
-      "poi_type_name": "gg_import_loot_dice",
-      "poi_type_id": "_gg_db-45997",
-      "is_fast_travel": false,
-      "is_discoverable": true,
-      "source": "gamerguides",
-      "gg_marker_id": 204944,
-      "gg_icon": "/images/map-marker-icon/15/253725/die_k_icon-8dca37c1.png.png"
-    },
-    {
-      "name": "Silver warlord's badge",
-      "category": "loot_badge",
-      "description": "",
-      "x": 7178,
-      "y": 4277,
-      "world_x": 0,
-      "world_y": 0,
-      "world_z": 0,
-      "poi_type_name": "gg_import_loot_badge",
-      "poi_type_id": "_gg_db-45998",
-      "is_fast_travel": false,
-      "is_discoverable": true,
-      "source": "gamerguides",
-      "gg_marker_id": 204945,
-      "gg_icon": "/images/map-marker-icon/15/253685/multiplierdicebadgesilver_icon-fddfb579.png.png"
-    },
-    {
-      "name": "Tin badge of headstart",
-      "category": "loot_badge",
-      "description": "",
-      "x": 7186,
-      "y": 4281,
-      "world_x": 0,
-      "world_y": 0,
-      "world_z": 0,
-      "poi_type_name": "gg_import_loot_badge",
-      "poi_type_id": "_gg_db-45998",
-      "is_fast_travel": false,
-      "is_discoverable": true,
-      "source": "gamerguides",
-      "gg_marker_id": 204946,
-      "gg_icon": "/images/map-marker-icon/15/253700/headstartdicebadgeplumb_icon-a6ad3f67.png.png"
-    },
-    {
-      "name": "Groschen",
-      "category": "loot_usable",
-      "description": "",
-      "x": 7161,
-      "y": 4287,
-      "world_x": 0,
-      "world_y": 0,
-      "world_z": 0,
-      "poi_type_name": "gg_import_loot_usable",
-      "poi_type_id": "_gg_db-45995",
-      "is_fast_travel": false,
-      "is_discoverable": true,
-      "source": "gamerguides",
-      "gg_marker_id": 204947,
-      "gg_icon": "/images/map-marker-icon/15/254004/money_icon-5c505d87.png.png"
-    },
-    {
       "name": "Dragon's Lair",
       "category": "quest_side",
       "description": "",
@@ -22016,40 +21662,6 @@
       "source": "gamerguides",
       "gg_marker_id": 204948,
       "gg_icon": "/images/map-marker-icon/15/253424/quest_side_blue_started_icon_result-1821e58e-1821e58e.png.png"
-    },
-    {
-      "name": "Silver warlord's badge",
-      "category": "loot_badge",
-      "description": "",
-      "x": 7139,
-      "y": 4036,
-      "world_x": 0,
-      "world_y": 0,
-      "world_z": 0,
-      "poi_type_name": "gg_import_loot_badge",
-      "poi_type_id": "_gg_db-45998",
-      "is_fast_travel": false,
-      "is_discoverable": true,
-      "source": "gamerguides",
-      "gg_marker_id": 204950,
-      "gg_icon": "/images/map-marker-icon/15/253685/multiplierdicebadgesilver_icon-fddfb579.png.png"
-    },
-    {
-      "name": "Groschen",
-      "category": "loot_usable",
-      "description": "",
-      "x": 7077,
-      "y": 4275,
-      "world_x": 0,
-      "world_y": 0,
-      "world_z": 0,
-      "poi_type_name": "gg_import_loot_usable",
-      "poi_type_id": "_gg_db-45995",
-      "is_fast_travel": false,
-      "is_discoverable": true,
-      "source": "gamerguides",
-      "gg_marker_id": 204955,
-      "gg_icon": "/images/map-marker-icon/15/254004/money_icon-5c505d87.png.png"
     },
     {
       "name": "Shrine",
@@ -26237,8 +25849,8 @@
       "name": "Hush, My Darling...",
       "category": "quest_side",
       "description": "",
-      "x": 5553,
-      "y": 5213,
+      "x": 5554,
+      "y": 5200,
       "world_x": 0,
       "world_y": 0,
       "world_z": 0,
@@ -26594,8 +26206,8 @@
       "name": "The Collector",
       "category": "quest_task",
       "description": "",
-      "x": 5554,
-      "y": 5222,
+      "x": 5549,
+      "y": 5206,
       "world_x": 0,
       "world_y": 0,
       "world_z": 0,
@@ -27526,23 +27138,6 @@
       "gg_icon": "/images/map-marker-icon/15/317269/skillteacher_icon_result-bce7532b-bce7532b-bce7532b.png.png"
     },
     {
-      "name": "Jan Posy of Zimburg",
-      "category": "skill_trainer",
-      "description": "",
-      "x": 5528,
-      "y": 2687,
-      "world_x": 0,
-      "world_y": 0,
-      "world_z": 0,
-      "poi_type_name": "gg_import_skill_trainer",
-      "poi_type_id": "_gg_db-50314",
-      "is_fast_travel": false,
-      "is_discoverable": true,
-      "source": "gamerguides",
-      "gg_marker_id": 205435,
-      "gg_icon": "/images/map-marker-icon/15/317270/skillteacher_icon_result-bce7532b-bce7532b-bce7532b.png.png"
-    },
-    {
       "name": "Matthew the collector",
       "category": "skill_trainer",
       "description": "",
@@ -27796,23 +27391,6 @@
       "source": "gamerguides",
       "gg_marker_id": 205482,
       "gg_icon": "/images/map-marker-icon/15/253302/skillbook_alchemy_icon-c899fce3.png.png"
-    },
-    {
-      "name": "Weak Saviour Schnapps",
-      "category": "loot_potion",
-      "description": "",
-      "x": 5562,
-      "y": 5215,
-      "world_x": 0,
-      "world_y": 0,
-      "world_z": 0,
-      "poi_type_name": "gg_import_loot_potion",
-      "poi_type_id": "_gg_db-45969",
-      "is_fast_travel": false,
-      "is_discoverable": true,
-      "source": "gamerguides",
-      "gg_marker_id": 205485,
-      "gg_icon": "/images/map-marker-icon/15/252981/potion_saviourschnapps_icon-4ae3eaa1.png.png"
     },
     {
       "name": "Shrine",
@@ -30448,12 +30026,345 @@
       "source": "manual"
     },
     {
-      "name": "Root of Evil",
-      "category": "quest_dlc1",
-      "_baseKey": "quest_side:9429:5844",
+      "name": "Tailor Mikush",
+      "category": "skill_trainer",
       "description": "",
-      "x": 9429,
-      "y": 5844,
+      "x": 6073,
+      "y": 3955,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Groschen",
+      "category": "loot_usable",
+      "description": "",
+      "x": 5263,
+      "y": 5352,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Kuttenberg bread",
+      "category": "loot_food",
+      "description": "",
+      "x": 8435,
+      "y": 4558,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Nighthawk",
+      "category": "loot_potion",
+      "description": "",
+      "x": 8436,
+      "y": 4564,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Groschen",
+      "category": "loot_usable",
+      "description": "",
+      "x": 8436,
+      "y": 4552,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Dice",
+      "category": "dice_table",
+      "description": "",
+      "x": 6063,
+      "y": 7115,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Lucky die",
+      "category": "loot_dice",
+      "description": "",
+      "x": 5478,
+      "y": 2645,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Silver brooch enamelled",
+      "category": "loot_armour_jewellery",
+      "description": "",
+      "x": 5494,
+      "y": 2672,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Silver cross with insignia",
+      "category": "loot_armour_jewellery",
+      "description": "",
+      "x": 5498,
+      "y": 2671,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Recipe for Bane poison",
+      "category": "loot_recipe",
+      "description": "",
+      "x": 5492,
+      "y": 2678,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Beaked kettle hat - dark",
+      "category": "loot_armour_head",
+      "description": "",
+      "x": 7066,
+      "y": 2136,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Gemstone silver ring",
+      "category": "loot_armour_jewellery",
+      "description": "",
+      "x": 7060,
+      "y": 2119,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Skull Crusher III",
+      "category": "loot_skill_book",
+      "description": "",
+      "x": 7068,
+      "y": 2102,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Groschen",
+      "category": "loot_usable",
+      "description": "",
+      "x": 7054,
+      "y": 2108,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Improved hunting arrow",
+      "category": "loot_ammo",
+      "description": "",
+      "x": 5834,
+      "y": 1284,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Schnapps",
+      "category": "loot_food",
+      "description": "",
+      "x": 5840,
+      "y": 1271,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Nighthawk",
+      "category": "loot_potion",
+      "description": "",
+      "x": 5829,
+      "y": 1275,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Strong Quickfinger potion",
+      "category": "loot_potion",
+      "description": "",
+      "x": 5828,
+      "y": 1266,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Bezoar",
+      "category": "loot_blacksmithing",
+      "description": "",
+      "x": 5836,
+      "y": 1256,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Groschen",
+      "category": "loot_usable",
+      "description": "",
+      "x": 5845,
+      "y": 1261,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Cobbler's kit",
+      "category": "loot_utility",
+      "description": "",
+      "x": 5825,
+      "y": 1256,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Marksman's kit",
+      "category": "loot_utility",
+      "description": "",
+      "x": 5830,
+      "y": 1247,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Tailor's kit",
+      "category": "loot_utility",
+      "description": "",
+      "x": 5840,
+      "y": 1249,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Smithy",
+      "category": "smithy",
+      "description": "",
+      "x": 5705,
+      "y": 1802,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Horse trader",
+      "category": "horse_trader",
+      "description": "",
+      "x": 5676,
+      "y": 1791,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Recipe for Saviour Schnapps",
+      "category": "loot_recipe",
+      "description": "",
+      "x": 5737,
+      "y": 1798,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Trader",
+      "category": "trader",
+      "description": "",
+      "x": 6555,
+      "y": 1280,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Tavern",
+      "category": "tavern",
+      "description": "",
+      "x": 6612,
+      "y": 1315,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Dice",
+      "category": "dice_table",
+      "description": "",
+      "x": 6642,
+      "y": 1295,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Baths",
+      "category": "baths",
+      "description": "",
+      "x": 6601,
+      "y": 1228,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Shrine",
+      "category": "shrine",
+      "description": "",
+      "x": 5823,
+      "y": 1597,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Your bed",
+      "category": "player_bed",
+      "description": "",
+      "x": 5179,
+      "y": 1819,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Courtier's boots",
+      "category": "loot_armour_legs",
+      "description": "",
+      "x": 10403,
+      "y": 6721,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Headscarf",
+      "category": "loot_armour_head",
+      "description": "",
+      "x": 10399,
+      "y": 6726,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Bane poison",
+      "category": "loot_poison",
+      "description": "",
+      "x": 10405,
+      "y": 6733,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Tall Cuman cap",
+      "category": "loot_armour_head",
+      "description": "",
+      "x": 10400,
+      "y": 6734,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Miner hose",
+      "category": "loot_armour_legs",
+      "description": "",
+      "x": 10405,
+      "y": 6727,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Old Plans",
+      "category": "quest_dlc2",
+      "_baseKey": "quest_side:10190:5544",
+      "description": "",
+      "x": 10190,
+      "y": 5544,
       "is_discoverable": true,
       "source": "manual"
     },
@@ -30468,12 +30379,12 @@
       "source": "manual"
     },
     {
-      "name": "Old Plans",
-      "category": "quest_dlc2",
-      "_baseKey": "quest_side:10190:5544",
+      "name": "Root of Evil",
+      "category": "quest_dlc1",
+      "_baseKey": "quest_side:9429:5844",
       "description": "",
-      "x": 10190,
-      "y": 5544,
+      "x": 9429,
+      "y": 5844,
       "is_discoverable": true,
       "source": "manual"
     },
