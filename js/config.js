@@ -125,9 +125,7 @@ const CATEGORY_GROUPS = [
   { name: "Poisons", collapsed: true, categories: ["loot_poison"] },
   { name: "Potions", collapsed: true, categories: ["loot_potion"] },
   { name: "Quests", collapsed: true, categories: [
-    "quest_main", "quest_side", "quest_task"
-  ]},
-  { name: "DLC Quests", collapsed: true, categories: [
+    "quest_main", "quest_side", "quest_task",
     "quest_dlc0", "quest_dlc1", "quest_dlc2", "quest_dlc3"
   ]},
   { name: "Tack", collapsed: true, categories: [
@@ -168,7 +166,6 @@ const GROUP_COLORS = {
   "Poisons": "#6fae7a",          // venom green
   "Potions": "#a06ab5",          // violet
   "Quests": "#e0c24c",          // bright gold
-  "DLC Quests": "#9d6bd0",      // royal violet (DLC crests)
   "Tack": "#a98c6a",            // leather
   "Weapons": "#c25a5a",          // blood red
   "Points of Interest": "#5a9ec9", // blue
