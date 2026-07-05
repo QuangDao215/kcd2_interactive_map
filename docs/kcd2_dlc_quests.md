@@ -73,6 +73,8 @@ Friendly Bout, Sculptor Without a Future, A Pleasant Pastime. The other 4 story 
 
 ## Mysteria Ecclesiae — 11 (6 side quests + 5 tasks)
 Escort the royal physician to **Sedletz Monastery** east of Kuttenberg.
+Source nuance: quest #5 is **"Our Old Bread"** (PowerPyx) / **"Our Daily Bread"**
+(game-checklists) — same quest, name varies by source.
 
 1. The Royal Physician
 2. Anamnesis
@@ -85,6 +87,12 @@ Escort the royal physician to **Sedletz Monastery** east of Kuttenberg.
 9. Seek and you Shall Find
 10. To Dust you Shan't Return
 11. The Time has Come
+
+**In the data — only 1 marker:** `The Royal Physician`, re-classed to `quest_dlc3` (the DLC
+access quest). The other 10 are **not placed** on the map. ⚠️ Do not conflate the DLC's
+**"To Dust You Shan't Return"** (not in data) with the base-game Kuttenberg side quest
+**"Thou art but dust…"** (Brother Morticius / the Sedletz ossuary) — different quests that
+happen to share the monastery setting and a biblical phrase.
 
 ## Provenance
 
