@@ -91,8 +91,9 @@ const ITEM_CATEGORIES = new Set([
 // Categories that count toward progress stats (collectible/discoverable only).
 // NPCs, facilities, and persistent map fixtures are excluded.
 const PROGRESS_CATEGORIES = new Set([
-  // All loot items
-  ...ITEM_CATEGORIES,
+  // All loot items EXCEPT herbs — herbs are ambient world gathering, found
+  // all over the map, so they don't count toward Game Completion.
+  ...[...ITEM_CATEGORIES].filter(c => c !== "loot_herb"),
   // Quests
   "quest_main", "quest_side", "quest_task",
   // Discoverable landmarks

@@ -216,12 +216,14 @@ py = 0.0334*x + -0.9963*y + 9800.12
 
 ### Categories
 **PROGRESS_CATEGORIES** (tracked with discovered/total):
-- All loot_* items, quest_main, quest_side, quest_task
+- All loot_* items **except `loot_herb`**, quest_main, quest_side, quest_task
 - shrine, conc_cross, grave, interesting_site
 - nest, cart_stash, lootable_corpse
 
 **NOT tracked** (plain count only):
 - NPCs/merchants, facilities, locations, hunting/fishing spots
+- **Herbs (`loot_herb`)** — ambient world gathering found all over the map, so excluded from Game
+  Completion (still a browsable category, and its popup still says "Collected")
 
 **EXTRA_CATEGORIES** (always available even without marker data):
 - barber, fist_fight_arena, player_bed, smithy
