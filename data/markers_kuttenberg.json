@@ -29698,7 +29698,8 @@
     },
     {
       "name": "The Night-Mare",
-      "category": "quest_side",
+      "category": "quest_dlc1",
+      "_baseKey": "quest_side:9438:5849",
       "description": "",
       "x": 9438,
       "y": 5849,
@@ -29707,7 +29708,8 @@
     },
     {
       "name": "Man Proposes",
-      "category": "quest_side",
+      "category": "quest_dlc1",
+      "_baseKey": "quest_side:9444:5854",
       "description": "",
       "x": 9444,
       "y": 5854,
@@ -30166,7 +30168,8 @@
     },
     {
       "name": "God Disposes",
-      "category": "quest_side",
+      "category": "quest_dlc1",
+      "_baseKey": "quest_side:9437:5856",
       "description": "",
       "x": 9437,
       "y": 5856,
@@ -30431,6 +30434,26 @@
       "description": "",
       "x": 6086,
       "y": 4923,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Root of Evil",
+      "category": "quest_dlc1",
+      "_baseKey": "quest_side:9429:5844",
+      "description": "",
+      "x": 9429,
+      "y": 5844,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Stained Honour",
+      "category": "quest_dlc1",
+      "_baseKey": "quest_side:9437:5842",
+      "description": "",
+      "x": 9437,
+      "y": 5842,
       "is_discoverable": true,
       "source": "manual"
     }
