@@ -29728,7 +29728,8 @@ window.MARKER_DATA_KUTTENBERG = {
     },
     {
       "name": "Magdalena\u2019s Axe",
-      "category": "quest_task",
+      "category": "quest_dlc2",
+      "_baseKey": "quest_task:10186:5537",
       "description": "",
       "x": 10186,
       "y": 5537,
@@ -29737,7 +29738,8 @@ window.MARKER_DATA_KUTTENBERG = {
     },
     {
       "name": "The Master\u2019s Game",
-      "category": "quest_side",
+      "category": "quest_dlc2",
+      "_baseKey": "quest_side:10184:5546",
       "description": "",
       "x": 10184,
       "y": 5546,
@@ -29746,7 +29748,8 @@ window.MARKER_DATA_KUTTENBERG = {
     },
     {
       "name": "Klaus\u2019 Introduction",
-      "category": "quest_side",
+      "category": "quest_dlc2",
+      "_baseKey": "quest_side:9581:5816",
       "description": "",
       "x": 9581,
       "y": 5816,
@@ -29755,7 +29758,8 @@ window.MARKER_DATA_KUTTENBERG = {
     },
     {
       "name": "Martin\u2019s dream",
-      "category": "quest_side",
+      "category": "quest_dlc2",
+      "_baseKey": "quest_side:9585:5815",
       "description": "",
       "x": 9585,
       "y": 5815,
@@ -30133,7 +30137,8 @@ window.MARKER_DATA_KUTTENBERG = {
     },
     {
       "name": "Forge Waffenrock",
-      "category": "quest_task",
+      "category": "quest_dlc2",
+      "_baseKey": "quest_task:9817:5858",
       "description": "",
       "x": 9817,
       "y": 5858,
@@ -30142,7 +30147,8 @@ window.MARKER_DATA_KUTTENBERG = {
     },
     {
       "name": "Sculptor Without a Future",
-      "category": "quest_task",
+      "category": "quest_dlc2",
+      "_baseKey": "quest_task:10196:5537",
       "description": "",
       "x": 10196,
       "y": 5537,
@@ -30151,7 +30157,8 @@ window.MARKER_DATA_KUTTENBERG = {
     },
     {
       "name": "Friendly Bout",
-      "category": "quest_task",
+      "category": "quest_dlc2",
+      "_baseKey": "quest_task:9609:5995",
       "description": "",
       "x": 9609,
       "y": 5995,
@@ -30160,7 +30167,8 @@ window.MARKER_DATA_KUTTENBERG = {
     },
     {
       "name": "A Pleasant Pastime",
-      "category": "quest_task",
+      "category": "quest_dlc2",
+      "_baseKey": "quest_task:9394:5831",
       "description": "",
       "x": 9394,
       "y": 5831,
