@@ -28,7 +28,11 @@ function toggleHighlight() {
 }
 
 function switchTab(tabName) {
-  document.querySelectorAll('.sidebar-tab').forEach(t => t.classList.toggle('active', t.dataset.tab === tabName));
+  document.querySelectorAll('.sidebar-tab').forEach(t => {
+    const on = t.dataset.tab === tabName;
+    t.classList.toggle('active', on);
+    t.setAttribute('aria-selected', on ? 'true' : 'false');
+  });
   document.querySelectorAll('.tab-content').forEach(tc => tc.classList.remove('active'));
   document.getElementById(`tab-${tabName}`).classList.add('active');
   try { localStorage.setItem(CONFIG.storageKeys.activeTab, tabName); } catch (e) { /* private mode */ }
@@ -39,6 +43,23 @@ function showToast(message) {
   toast.textContent = message;
   toast.classList.add('show');
   setTimeout(() => toast.classList.remove('show'), 2500);
+}
+
+// ── Modal focus management: trap Tab inside a modal, restore focus on close ──
+let _modalOpener = null;
+function _restoreModalFocus() {
+  if (_modalOpener && typeof _modalOpener.focus === 'function') _modalOpener.focus();
+  _modalOpener = null;
+}
+function _trapModalTab(e, overlay) {
+  if (e.key !== 'Tab') return;
+  const f = [...overlay.querySelectorAll(
+    'a[href], button:not([disabled]), input:not([disabled]), textarea:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])'
+  )].filter(el => el.offsetParent !== null);
+  if (!f.length) return;
+  const first = f[0], last = f[f.length - 1];
+  if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+  else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
 }
 
 // Themed confirm dialog — returns a Promise<boolean>. Replaces window.confirm().
@@ -52,12 +73,14 @@ function showConfirm(message, { title = 'Are you sure?', confirmText = 'Confirm'
     ok.textContent = confirmText;
     ok.classList.toggle('btn-danger', danger);
     ok.classList.toggle('btn-primary', !danger);
+    _modalOpener = document.activeElement;
     document.getElementById('confirm-modal').classList.add('show');
     ok.focus();
   });
 }
 function _confirmClose(result) {
   document.getElementById('confirm-modal').classList.remove('show');
+  _restoreModalFocus();
   const r = _confirmResolve; _confirmResolve = null;
   if (r) r(result);
 }
@@ -71,7 +94,7 @@ function closeTopmostOverlay() {
   const confirmModal = document.getElementById('confirm-modal');
   if (confirmModal && confirmModal.classList.contains('show')) { _confirmClose(false); return true; }
   const importAll = document.getElementById('import-all-modal');
-  if (importAll && importAll.classList.contains('show')) { importAll.classList.remove('show'); return true; }
+  if (importAll && importAll.classList.contains('show')) { closeImportAllModal(); return true; }
   const panels = [['calibration-panel', calClose], ['label-edit-panel', labelEditClose], ['marker-edit-panel', markerEditClose]];
   for (const [id, close] of panels) {
     const p = document.getElementById(id);

@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>KCD2 Interactive Map — Kingdom Come: Deliverance II</title>
-<link rel="icon" type="image/jpeg" href="icons/brand/kcd2_icon.jpg?v=2026-07-05-2306">
+<link rel="icon" type="image/jpeg" href="icons/brand/kcd2_icon.jpg?v=2026-07-06-1850">
 <meta name="description" content="Interactive map for Kingdom Come: Deliverance II — POIs, loot, quests, NPCs and personal progress tracking across the Trosky and Kuttenberg regions.">
 <meta name="theme-color" content="#1a1714">
 <meta property="og:type" content="website">
@@ -16,7 +16,7 @@
 <meta name="twitter:title" content="KCD2 Interactive Map">
 <meta name="twitter:description" content="Interactive POI/loot/quest map for Kingdom Come: Deliverance II with progress tracking.">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"/>
-<link rel="stylesheet" href="style.css?v=2026-07-05-2306">
+<link rel="stylesheet" href="style.css?v=2026-07-06-1850">
 </head>
 <body>
 
@@ -34,7 +34,7 @@
 <!-- Sidebar -->
 <div id="sidebar">
   <div class="sidebar-header">
-    <img class="sb-logo" src="icons/brand/kcd2_logo.png?v=2026-07-05-2306" alt="Kingdom Come: Deliverance II">
+    <img class="sb-logo" src="icons/brand/kcd2_logo.png?v=2026-07-06-1850" alt="Kingdom Come: Deliverance II">
     <div class="sb-tagline">Interactive Map</div>
   </div>
 
@@ -102,16 +102,16 @@
   </div>
 
   <!-- Tabs -->
-  <div class="sidebar-tabs">
-    <button class="sidebar-tab active" data-tab="markers" onclick="switchTab('markers')">
+  <div class="sidebar-tabs" role="tablist" aria-label="Sidebar sections">
+    <button class="sidebar-tab active" data-tab="markers" role="tab" id="tab-btn-markers" aria-selected="true" aria-controls="tab-markers" onclick="switchTab('markers')">
       <svg class="ui-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
       <span>Markers</span>
     </button>
-    <button class="sidebar-tab" data-tab="my-markers" onclick="switchTab('my-markers')">
+    <button class="sidebar-tab" data-tab="my-markers" role="tab" id="tab-btn-my-markers" aria-selected="false" aria-controls="tab-my-markers" onclick="switchTab('my-markers')">
       <svg class="ui-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
       <span>My Markers</span>
     </button>
-    <button class="sidebar-tab" data-tab="tools" onclick="switchTab('tools')">
+    <button class="sidebar-tab" data-tab="tools" role="tab" id="tab-btn-tools" aria-selected="false" aria-controls="tab-tools" onclick="switchTab('tools')">
       <svg class="ui-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
       <span>Tools</span>
     </button>
@@ -121,13 +121,13 @@
   <div class="search-box">
     <div class="search-field">
       <svg class="search-icon ui-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
-      <input type="text" class="search-input" id="search-input" placeholder="Search markers by name..." oninput="onSearchInput(this.value)" onfocus="onSearchInput(this.value)">
+      <input type="text" class="search-input" id="search-input" role="combobox" aria-label="Search markers by name" aria-controls="search-results" aria-autocomplete="list" aria-expanded="false" placeholder="Search markers by name..." oninput="onSearchInput(this.value)" onfocus="onSearchInput(this.value)">
     </div>
   </div>
-  <div class="search-results" id="search-results"></div>
+  <div class="search-results" id="search-results" role="listbox" aria-label="Search results"></div>
 
   <!-- Markers Tab -->
-  <div class="tab-content active" id="tab-markers">
+  <div class="tab-content active" id="tab-markers" role="tabpanel" aria-labelledby="tab-btn-markers">
     <div class="category-controls">
       <button class="cat-ctrl-btn" onclick="toggleAllCategories(true)">
         <svg class="ui-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg>
@@ -142,14 +142,14 @@
   </div>
 
   <!-- My Markers Tab -->
-  <div class="tab-content" id="tab-my-markers">
+  <div class="tab-content" id="tab-my-markers" role="tabpanel" aria-labelledby="tab-btn-my-markers">
     <div class="my-markers-list" id="my-markers-list">
       <div class="no-markers">Right-click on the map to add a custom marker.</div>
     </div>
   </div>
 
   <!-- Tools Tab -->
-  <div class="tab-content" id="tab-tools">
+  <div class="tab-content" id="tab-tools" role="tabpanel" aria-labelledby="tab-btn-tools">
     <div class="tools-section">
       <h3>Import / Export</h3>
       <button class="tool-btn" onclick="exportAll()" style="border-left: 3px solid var(--accent);">
@@ -225,7 +225,7 @@
 
 <!-- Map -->
 <div id="map-container">
-  <button id="toggle-sidebar" onclick="toggleSidebar()" aria-label="Toggle sidebar" title="Toggle sidebar"><img src="icons/brand/kcd2_icon.jpg?v=2026-07-05-2306" alt=""></button>
+  <button id="toggle-sidebar" onclick="toggleSidebar()" aria-label="Toggle sidebar" title="Toggle sidebar"><img src="icons/brand/kcd2_icon.jpg?v=2026-07-06-1850" alt=""></button>
   <div id="map"></div>
   <div id="map-controls">
     <button onclick="resetView()" title="Reset view to whole region" aria-label="Reset view">⌂</button>
@@ -246,9 +246,9 @@
 <div id="toast"></div>
 
 <!-- Import All Modal -->
-<div class="modal-overlay" id="import-all-modal">
-  <div class="modal">
-    <h2>Import All Data</h2>
+<div class="modal-overlay" id="import-all-modal" onkeydown="_trapModalTab(event, this)">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="import-all-title">
+    <h2 id="import-all-title">Import All Data</h2>
     <p style="font-size:13px;color:var(--text-secondary);margin-bottom:12px;">
       Restore markers, progress, settlement-name positions and category filters from a backup file. This will <strong>replace</strong> your current data.
     </p>
@@ -262,8 +262,8 @@
 </div>
 
 <!-- Confirm Dialog -->
-<div class="modal-overlay" id="confirm-modal" onclick="if(event.target===this)_confirmClose(false)">
-  <div class="modal" style="max-width:380px;">
+<div class="modal-overlay" id="confirm-modal" onclick="if(event.target===this)_confirmClose(false)" onkeydown="_trapModalTab(event, this)">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="confirm-title" style="max-width:380px;">
     <h2 id="confirm-title">Are you sure?</h2>
     <p id="confirm-message" style="font-size:13px;color:var(--text-secondary);line-height:1.5;margin-bottom:4px;"></p>
     <div class="form-actions">
@@ -350,21 +350,21 @@
      order preserved. The whole-game completion bar needs BOTH regions' totals up
      front, and these are also the file:// fallback, so we keep loading both — just
      no longer render-blocking. -->
-<script defer src="data/markers_trosky.js?v=2026-07-05-2306"></script>
-<script defer src="data/markers_kuttenberg.js?v=2026-07-05-2306"></script>
-<script defer src="data/icon_map.js?v=2026-07-05-2306"></script>
-<script defer src="data/settlement_labels.js?v=2026-07-05-2306"></script>
-<script defer src="data/local_maps.js?v=2026-07-05-2306"></script>
+<script defer src="data/markers_trosky.js?v=2026-07-06-1850"></script>
+<script defer src="data/markers_kuttenberg.js?v=2026-07-06-1850"></script>
+<script defer src="data/icon_map.js?v=2026-07-06-1850"></script>
+<script defer src="data/settlement_labels.js?v=2026-07-06-1850"></script>
+<script defer src="data/local_maps.js?v=2026-07-06-1850"></script>
 <!-- app split into domain scripts; load order matters (shared global scope) -->
-<script defer src="js/config.js?v=2026-07-05-2306"></script>
-<script defer src="js/map.js?v=2026-07-05-2306"></script>
-<script defer src="js/markers.js?v=2026-07-05-2306"></script>
-<script defer src="js/sidebar.js?v=2026-07-05-2306"></script>
-<script defer src="js/user-markers.js?v=2026-07-05-2306"></script>
-<script defer src="js/import-export.js?v=2026-07-05-2306"></script>
-<script defer src="js/local-maps.js?v=2026-07-05-2306"></script>
-<script defer src="js/labels.js?v=2026-07-05-2306"></script>
-<script defer src="js/storage.js?v=2026-07-05-2306"></script>
-<script defer src="js/main.js?v=2026-07-05-2306"></script>
+<script defer src="js/config.js?v=2026-07-06-1850"></script>
+<script defer src="js/map.js?v=2026-07-06-1850"></script>
+<script defer src="js/markers.js?v=2026-07-06-1850"></script>
+<script defer src="js/sidebar.js?v=2026-07-06-1850"></script>
+<script defer src="js/user-markers.js?v=2026-07-06-1850"></script>
+<script defer src="js/import-export.js?v=2026-07-06-1850"></script>
+<script defer src="js/local-maps.js?v=2026-07-06-1850"></script>
+<script defer src="js/labels.js?v=2026-07-06-1850"></script>
+<script defer src="js/storage.js?v=2026-07-06-1850"></script>
+<script defer src="js/main.js?v=2026-07-06-1850"></script>
 </body>
 </html>

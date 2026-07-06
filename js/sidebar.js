@@ -270,6 +270,11 @@ function searchNorm(s) {
     .replace(/['’ʼ`]/g, '');                 // drop apostrophes (so "atamans" finds "Ataman's")
 }
 
+// Reflect popup visibility on the search combobox for assistive tech.
+function _setSearchExpanded(shown) {
+  document.getElementById('search-input')?.setAttribute('aria-expanded', shown ? 'true' : 'false');
+}
+
 function onSearchInput(query) {
   const q = searchNorm(query.trim());
 
@@ -281,6 +286,7 @@ function onSearchInput(query) {
   if (!q || q.length < 2) {
     resultsEl.classList.remove('active');
     resultsEl.innerHTML = '';
+    _setSearchExpanded(false);
     return;
   }
 
@@ -304,6 +310,7 @@ function onSearchInput(query) {
   if (matches.length === 0) {
     resultsEl.innerHTML = '<div class="search-no-results">No markers found</div>';
     resultsEl.classList.add('active');
+    _setSearchExpanded(true);
     return;
   }
 
@@ -317,7 +324,7 @@ function onSearchInput(query) {
       : `<span style="width:18px;text-align:center;font-size:12px">${cat?.icon || '📌'}</span>`;
     const catName = cat ? cat.name : 'Custom';
     const tag = m.source === 'user' ? ' (mine)' : '';
-    return `<div class="search-result-item" onclick="searchResultClick(${m.x}, ${m.y}, '${getMarkerKey(m)}')">
+    return `<div class="search-result-item" role="option" onclick="searchResultClick(${m.x}, ${m.y}, '${getMarkerKey(m)}')">
       ${iconHtml}
       <div>
         <div class="sr-name">${escapeHtml(m.name)}</div>
@@ -326,12 +333,14 @@ function onSearchInput(query) {
     </div>`;
   }).join('') + (matches.length > 20 ? `<div style="padding:6px 10px;font-size:11px;color:var(--text-muted);text-align:center">+${matches.length - 20} more results</div>` : '');
   resultsEl.classList.add('active');
+  _setSearchExpanded(true);
 }
 
 function searchResultClick(x, y, markerKey) {
   // Close search results
   document.getElementById('search-results').classList.remove('active');
   document.getElementById('search-input').value = '';
+  _setSearchExpanded(false);
   renderCategoryList('');
 
   // Ensure the category is visible

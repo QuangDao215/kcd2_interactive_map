@@ -89,13 +89,16 @@ function exportAll() {
 }
 
 function showImportAllModal() {
+  _modalOpener = document.activeElement;
   document.getElementById('import-all-modal').classList.add('show');
   document.getElementById('import-all-data').value = '';
   document.getElementById('import-all-file').value = '';
+  document.getElementById('import-all-file').focus();
 }
 
 function closeImportAllModal() {
   document.getElementById('import-all-modal').classList.remove('show');
+  _restoreModalFocus();
 }
 
 function loadImportAllFile(event) {
