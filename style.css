@@ -20,6 +20,7 @@
     --halo: #6db3ff;                /* marker highlight glow (audit-tuned lighter blue) */
     --halo-bright: #8fc4ff;         /* halo on hover */
     --danger: #c95a54;              /* brightened from #b34444 → clears the 3:1 UI bar */
+    --danger-rgb: 201, 90, 84;      /* == --danger (#c95a54), for translucent danger fills */
     --success: #5a9e4b;
     --scrollbar-thumb: #4a4238;
     --scrollbar-track: #1a1714;
@@ -332,7 +333,7 @@
     min-width: 24px;
     text-align: right;
   }
-  /* ── Shared toggle-switch component (group / category / map-option) ──
+  /* ── Shared toggle-switch component (group / category) ──
      Track + knob, sized via --sw-w / --sw-h. The three call sites trigger the
      shared "on" appearance via their own class / checkbox. */
   .switch {
@@ -355,13 +356,11 @@
      at-a-glance signal that keeps the dense category list scannable. The recessed
      track + raised thumb + smooth slide above is the editorial tactile polish. */
   .group-toggle-all.on,
-  .category-item.active .cat-toggle,
-  .map-option input:checked + .mo-switch {
+  .category-item.active .cat-toggle {
     background: var(--accent-dim); border-color: var(--accent);
   }
   .group-toggle-all.on::after,
-  .category-item.active .cat-toggle::after,
-  .map-option input:checked + .mo-switch::after {
+  .category-item.active .cat-toggle::after {
     transform: translateX(calc(var(--sw-w, 30px) - var(--sw-h, 16px))); background: var(--bg-dark);
   }
   .cat-group-children { display: none; padding-left: 8px; }
@@ -470,7 +469,7 @@
     border-radius: 3px;
     transition: all 0.15s;
   }
-  .my-marker-item .mm-delete:hover { color: var(--danger); background: rgba(179,68,68,0.15); }
+  .my-marker-item .mm-delete:hover { color: var(--danger); background: rgba(var(--danger-rgb),0.15); }
   .my-marker-item .mm-edit {
     padding: 2px 6px;
     background: transparent;
@@ -567,8 +566,8 @@
     transition: all 0.15s;
   }
   .tool-btn:hover { border-color: var(--border-light); background: var(--bg-hover); }
-  .tool-btn.danger { border-color: rgba(179,68,68,0.3); }
-  .tool-btn.danger:hover { border-color: var(--danger); background: rgba(179,68,68,0.1); }
+  .tool-btn.danger { border-color: rgba(var(--danger-rgb),0.3); }
+  .tool-btn.danger:hover { border-color: var(--danger); background: rgba(var(--danger-rgb),0.1); }
   .tool-icon { flex-shrink: 0; margin-top: 1px; color: var(--text-secondary); transition: color 0.15s; }
   .tool-btn:hover .tool-icon { color: var(--accent); }
   .tool-btn.danger .tool-icon { color: var(--danger); }
@@ -671,7 +670,8 @@
 
   /* ── Custom Popup Styles ── */
   .leaflet-popup-content-wrapper {
-    background: var(--bg-panel) !important;
+    /* base panel + a subtle top-lit sheen (merged up from the old Illuminated-Edition override) */
+    background: linear-gradient(180deg, rgba(58,48,34,0.28), rgba(58,48,34,0) 42%), var(--bg-panel) !important;
     border: 1px solid var(--border) !important;
     border-radius: 6px !important;
     color: var(--text-primary) !important;
@@ -736,7 +736,7 @@
     cursor: pointer; text-align: center; transition: all 0.15s;
   }
   .popup-action-btn:hover { background: var(--bg-hover); color: var(--text-primary); border-color: var(--border-light); }
-  .popup-action-btn.danger:hover { color: var(--danger); border-color: var(--danger); background: rgba(179,68,68,0.1); }
+  .popup-action-btn.danger:hover { color: var(--danger); border-color: var(--danger); background: rgba(var(--danger-rgb),0.1); }
 
   /* ── Local Map Calibration Panel ── */
   /* ── Tool panels (Calibrate / Position Names / Edit Markers) — shared chrome ── */
@@ -850,8 +850,8 @@
   }
   .marker-form .btn-save { background: var(--accent-dim); border-color: var(--accent); color: var(--bg-dark); }
   .marker-form .btn-save:hover { background: var(--accent); }
-  .marker-form .btn-del { background: rgba(179,68,68,0.15); border-color: var(--danger); color: var(--danger); }
-  .marker-form .btn-del:hover { background: rgba(179,68,68,0.28); }
+  .marker-form .btn-del { background: rgba(var(--danger-rgb),0.15); border-color: var(--danger); color: var(--danger); }
+  .marker-form .btn-del:hover { background: rgba(var(--danger-rgb),0.28); }
   .marker-form .btn-cancel { background: transparent; color: var(--text-secondary); }
   .marker-form .btn-cancel:hover { background: var(--bg-hover); }
 
@@ -1106,18 +1106,13 @@
     background: rgba(201,168,76,0.14); border-color: var(--accent); color: var(--accent);
   }
   .mo-chip:has(input:focus-visible) { outline: 2px solid var(--accent); outline-offset: 2px; }
-  .map-option .mo-label { font-size: 12px; color: var(--text-secondary); transition: color 0.15s; }
-  .map-option:hover .mo-label { color: var(--text-primary); }
-  .map-option input { position: absolute; opacity: 0; width: 0; height: 0; }
-  .mo-switch { --sw-w: 34px; --sw-h: 18px; }   /* map-option switch is a touch larger */
-  .map-option input:focus-visible + .mo-switch { outline: 2px solid var(--accent); outline-offset: 2px; }
 
   /* Search empty state */
   .search-no-results { padding: 14px 12px; text-align: center; color: var(--text-muted); font-size: 12px; }
 
   /* Danger button (themed confirm dialog) */
-  .modal .btn-danger { background: rgba(179,68,68,0.15); border-color: var(--danger); color: var(--danger); }
-  .modal .btn-danger:hover { background: rgba(179,68,68,0.28); }
+  .modal .btn-danger { background: rgba(var(--danger-rgb),0.15); border-color: var(--danger); color: var(--danger); }
+  .modal .btn-danger:hover { background: rgba(var(--danger-rgb),0.28); }
 
   /* ── Responsive ── */
   #sidebar-scrim { display: none; }
@@ -1150,16 +1145,13 @@
   @keyframes pulseFade { 0%, 100% { opacity: 0.4; } 50% { opacity: 0.85; } }
 
   /* ── Scroll & wax-seal popups ── */
-  .leaflet-popup-content-wrapper {
-    background: linear-gradient(180deg, rgba(58,48,34,0.28), rgba(58,48,34,0) 42%), var(--bg-panel) !important;
-  }
   .popup-progress-btn.completed { box-shadow: inset 0 1px 0 rgba(255,255,255,0.12), inset 0 -2px 6px rgba(0,0,0,0.30); }
   .popup-progress-btn.stamp { animation: inkStamp 0.45s cubic-bezier(.3, 1.4, .5, 1); }
   @keyframes inkStamp {
-    0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(179,68,68,0.45); }
+    0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(var(--danger-rgb),0.45); }
     30% { transform: scale(0.9); }
     55% { transform: scale(1.05); }
-    100% { transform: scale(1); box-shadow: 0 0 0 16px rgba(179,68,68,0); }
+    100% { transform: scale(1); box-shadow: 0 0 0 16px rgba(var(--danger-rgb),0); }
   }
 
   @media (max-width: 768px) {
