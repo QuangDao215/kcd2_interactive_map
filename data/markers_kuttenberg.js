@@ -631,14 +631,14 @@ window.MARKER_DATA_KUTTENBERG = {
       "label_key": "@ui_maplegend_scholarsSpot"
     },
     {
-      "name": "Old Giant Tree",
+      "name": "Old massive tree",
       "category": "interesting_site",
       "description": "",
       "world_x": 1976.5,
       "world_y": 168.91,
       "world_z": 65.32,
-      "x": 8858,
-      "y": 3204,
+      "x": 8861,
+      "y": 3214,
       "poi_type_name": "generalPoi",
       "poi_type_id": "d0116c47-38c0-4bf7-88ac-94cf92dc26f6",
       "is_fast_travel": false,
@@ -863,7 +863,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Smugglers Store",
+      "name": "Smugglers's storehouse",
       "category": "interesting_site",
       "description": "",
       "world_x": 3177.87,
@@ -1053,14 +1053,14 @@ window.MARKER_DATA_KUTTENBERG = {
       "label_key": "@ui_maplegend_roadsideCamp"
     },
     {
-      "name": "Prchajici Mnich Zebrik",
+      "name": "Hidden ladder",
       "category": "interesting_site",
       "description": "",
       "world_x": 3657.14,
       "world_y": 546.56,
       "world_z": 25.81,
-      "x": 10802,
-      "y": 6294,
+      "x": 10798,
+      "y": 6310,
       "poi_type_name": "generalPoi",
       "poi_type_id": "d0116c47-38c0-4bf7-88ac-94cf92dc26f6",
       "is_fast_travel": false,
@@ -1681,7 +1681,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "label_key": "@ui_maplegend_abandonedShaperdsHut"
     },
     {
-      "name": "Smugglers",
+      "name": "Smuggler's den",
       "category": "interesting_site",
       "description": "",
       "world_x": 3089.06,
@@ -2545,7 +2545,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "label_key": "@ui_maplegend_ratborsSpring"
     },
     {
-      "name": "Poachers Stash",
+      "name": "Poachers' hideout",
       "category": "interesting_site",
       "description": "",
       "world_x": 1477.03,
@@ -2789,7 +2789,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Drowned Chest Poi",
+      "name": "Sunken chest",
       "category": "interesting_site",
       "description": "",
       "world_x": 3421.25,
@@ -3049,7 +3049,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Tabor Lapku Vrchlicko Rezbari",
+      "name": "Enemy camp",
       "category": "bandit_camp",
       "description": "",
       "world_x": 1221.34,
@@ -3486,7 +3486,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Reznik Radnicni1",
+      "name": "Butcher",
       "category": "butchery",
       "description": "",
       "world_x": 3184.3,
@@ -3530,7 +3530,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "label_key": "@ui_maplegend_herbalGarden"
     },
     {
-      "name": "Reznik Radnicni2",
+      "name": "Butcher",
       "category": "butchery",
       "description": "",
       "world_x": 3186.08,
@@ -3687,7 +3687,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Tabor Lapku Vrchlicko Maliruv Lek",
+      "name": "Enemy camp",
       "category": "bandit_camp",
       "description": "",
       "world_x": 1739.31,
@@ -4475,8 +4475,8 @@ window.MARKER_DATA_KUTTENBERG = {
       "world_x": 2730.45,
       "world_y": 1138.05,
       "world_z": 93.53,
-      "x": 8531,
-      "y": 5793,
+      "x": 8523,
+      "y": 5790,
       "poi_type_name": "hotel",
       "poi_type_id": "51d23cfa-9b11-404f-8c46-c9ede3f7d7d1",
       "is_fast_travel": false,
@@ -4613,7 +4613,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true
     },
     {
-      "name": "Lovers Nest",
+      "name": "Love nest",
       "category": "interesting_site",
       "description": "",
       "world_x": 3531.61,
@@ -10159,8 +10159,8 @@ window.MARKER_DATA_KUTTENBERG = {
       "name": "The Strength of the Knight IV",
       "category": "loot_skill_book",
       "description": "",
-      "x": 10898,
-      "y": 5543,
+      "x": 10872,
+      "y": 5536,
       "world_x": 0,
       "world_y": 0,
       "world_z": 0,
@@ -10669,8 +10669,8 @@ window.MARKER_DATA_KUTTENBERG = {
       "name": "Key from nest",
       "category": "loot_usable",
       "description": "",
-      "x": 10925,
-      "y": 5534,
+      "x": 10892,
+      "y": 5517,
       "world_x": 0,
       "world_y": 0,
       "world_z": 0,
@@ -10686,8 +10686,8 @@ window.MARKER_DATA_KUTTENBERG = {
       "name": "Groschen",
       "category": "loot_usable",
       "description": "",
-      "x": 10901,
-      "y": 5552,
+      "x": 10885,
+      "y": 5535,
       "world_x": 0,
       "world_y": 0,
       "world_z": 0,
@@ -10703,8 +10703,8 @@ window.MARKER_DATA_KUTTENBERG = {
       "name": "River pearl necklace",
       "category": "loot_misc",
       "description": "",
-      "x": 10911,
-      "y": 5552,
+      "x": 10883,
+      "y": 5544,
       "world_x": 0,
       "world_y": 0,
       "world_z": 0,
@@ -10720,7 +10720,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "name": "Silver cup",
       "category": "loot_misc",
       "description": "",
-      "x": 10916,
+      "x": 10874,
       "y": 5546,
       "world_x": 0,
       "world_y": 0,
@@ -11819,23 +11819,6 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true,
       "source": "gamerguides",
       "gg_marker_id": 202884,
-      "gg_icon": "/images/map-marker-icon/15/253527/daggercommon_icon-3603133f.png.png"
-    },
-    {
-      "name": "Dagger",
-      "category": "loot_dagger",
-      "description": "",
-      "x": 8536,
-      "y": 5838,
-      "world_x": 0,
-      "world_y": 0,
-      "world_z": 0,
-      "poi_type_name": "gg_import_loot_dagger",
-      "poi_type_id": "_gg_db-45992",
-      "is_fast_travel": false,
-      "is_discoverable": true,
-      "source": "gamerguides",
-      "gg_marker_id": 202885,
       "gg_icon": "/images/map-marker-icon/15/253527/daggercommon_icon-3603133f.png.png"
     },
     {
@@ -14579,8 +14562,8 @@ window.MARKER_DATA_KUTTENBERG = {
       "name": "Strange strawhat",
       "category": "loot_armour_head",
       "description": "",
-      "x": 8876,
-      "y": 3216,
+      "x": 8862,
+      "y": 3198,
       "world_x": 0,
       "world_y": 0,
       "world_z": 0,
@@ -15627,23 +15610,6 @@ window.MARKER_DATA_KUTTENBERG = {
       "is_discoverable": true,
       "source": "gamerguides",
       "gg_marker_id": 204062,
-      "gg_icon": "/images/map-marker-icon/15/252436/gloves06_m01_a_icon-c916af0b.png.png"
-    },
-    {
-      "name": "Noble gloves",
-      "category": "loot_armour_arms",
-      "description": "",
-      "x": 9020,
-      "y": 3628,
-      "world_x": 0,
-      "world_y": 0,
-      "world_z": 0,
-      "poi_type_name": "gg_import_loot_armour_arms",
-      "poi_type_id": "_gg_db-45956",
-      "is_fast_travel": false,
-      "is_discoverable": true,
-      "source": "gamerguides",
-      "gg_marker_id": 204063,
       "gg_icon": "/images/map-marker-icon/15/252436/gloves06_m01_a_icon-c916af0b.png.png"
     },
     {
@@ -17619,23 +17585,6 @@ window.MARKER_DATA_KUTTENBERG = {
       "gg_icon": "/images/map-marker-icon/15/252686/f_shoes01_m10_a_icon-86798695.png.png"
     },
     {
-      "name": "Old quilted hose",
-      "category": "loot_armour_legs",
-      "description": "",
-      "x": 9008,
-      "y": 3628,
-      "world_x": 0,
-      "world_y": 0,
-      "world_z": 0,
-      "poi_type_name": "gg_import_loot_armour_legs",
-      "poi_type_id": "_gg_db-45955",
-      "is_fast_travel": false,
-      "is_discoverable": true,
-      "source": "gamerguides",
-      "gg_marker_id": 204387,
-      "gg_icon": "/images/map-marker-icon/15/252694/legspadded02_m11_e1_icon-fd0a43d3.png.png"
-    },
-    {
       "name": "Kuttenberg oath book",
       "category": "loot_lore_book",
       "description": "",
@@ -17874,7 +17823,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "gg_icon": "/images/map-marker-icon/15/253830/loot_silvercup_icon-feb80145.png.png"
     },
     {
-      "name": "Burgher's hat",
+      "name": "Master huntsman's hat",
       "category": "loot_armour_head",
       "description": "",
       "x": 10773,
@@ -17891,7 +17840,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "gg_icon": "/images/map-marker-icon/15/252570/cap23_m07_b_icon-4486be89.png.png"
     },
     {
-      "name": "Fitted coat",
+      "name": "Merchant's coat",
       "category": "loot_armour_body",
       "description": "",
       "x": 10781,
@@ -17908,7 +17857,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "gg_icon": "/images/map-marker-icon/15/252455/coat08_m01_a_icon-dbd200ff.png.png"
     },
     {
-      "name": "Simple hose",
+      "name": "Gartered hose",
       "category": "loot_armour_legs",
       "description": "",
       "x": 10790,
@@ -17925,7 +17874,7 @@ window.MARKER_DATA_KUTTENBERG = {
       "gg_icon": "/images/map-marker-icon/15/252675/hoseseparate01_m02_d_icon-b26c32a6.png.png"
     },
     {
-      "name": "Burgher's shoes",
+      "name": "Vagrant's boots",
       "category": "loot_armour_legs",
       "description": "",
       "x": 10798,
@@ -18333,23 +18282,6 @@ window.MARKER_DATA_KUTTENBERG = {
       "gg_icon": "/images/map-marker-icon/15/254068/soap_icon-7072add6.png.png"
     },
     {
-      "name": "Spade",
-      "category": "loot_usable",
-      "description": "",
-      "x": 9030,
-      "y": 3638,
-      "world_x": 0,
-      "world_y": 0,
-      "world_z": 0,
-      "poi_type_name": "gg_import_loot_usable",
-      "poi_type_id": "_gg_db-45995",
-      "is_fast_travel": false,
-      "is_discoverable": true,
-      "source": "gamerguides",
-      "gg_marker_id": 204599,
-      "gg_icon": "/images/map-marker-icon/15/254014/player_shovel_icon-7bb7367f.png.png"
-    },
-    {
       "name": "Hair o' the Dog",
       "category": "loot_potion",
       "description": "",
@@ -18571,23 +18503,6 @@ window.MARKER_DATA_KUTTENBERG = {
       "gg_icon": "/images/map-marker-icon/15/252784/beer_icon-b25b7998.png.png"
     },
     {
-      "name": "Old hunting crossbow",
-      "category": "loot_bow",
-      "description": "",
-      "x": 7999,
-      "y": 2563,
-      "world_x": 0,
-      "world_y": 0,
-      "world_z": 0,
-      "poi_type_name": "gg_import_loot_bow",
-      "poi_type_id": "_gg_db-45978",
-      "is_fast_travel": false,
-      "is_discoverable": true,
-      "source": "gamerguides",
-      "gg_marker_id": 204614,
-      "gg_icon": "/images/map-marker-icon/15/252319/crossbowlightcheap01_icon-afee1f70.png.png"
-    },
-    {
       "name": "Improved hunting arrow",
       "category": "loot_ammo",
       "description": "",
@@ -18620,57 +18535,6 @@ window.MARKER_DATA_KUTTENBERG = {
       "source": "gamerguides",
       "gg_marker_id": 204616,
       "gg_icon": "/images/map-marker-icon/15/252252/bolt_crude_icon-410cc946.png.png"
-    },
-    {
-      "name": "Couters",
-      "category": "loot_armour_arms",
-      "description": "",
-      "x": 7999,
-      "y": 2556,
-      "world_x": 0,
-      "world_y": 0,
-      "world_z": 0,
-      "poi_type_name": "gg_import_loot_armour_arms",
-      "poi_type_id": "_gg_db-45956",
-      "is_fast_travel": false,
-      "is_discoverable": true,
-      "source": "gamerguides",
-      "gg_marker_id": 204617,
-      "gg_icon": "/images/map-marker-icon/15/252427/armplate03_m02_c1_icon-4857516d.png.png"
-    },
-    {
-      "name": "Leather gloves",
-      "category": "loot_armour_arms",
-      "description": "",
-      "x": 7990,
-      "y": 2556,
-      "world_x": 0,
-      "world_y": 0,
-      "world_z": 0,
-      "poi_type_name": "gg_import_loot_armour_arms",
-      "poi_type_id": "_gg_db-45956",
-      "is_fast_travel": false,
-      "is_discoverable": true,
-      "source": "gamerguides",
-      "gg_marker_id": 204618,
-      "gg_icon": "/images/map-marker-icon/15/252440/gloves01_m05_b1_icon-9a64c2c1.png.png"
-    },
-    {
-      "name": "Poleyn",
-      "category": "loot_armour_legs",
-      "description": "",
-      "x": 7982,
-      "y": 2558,
-      "world_x": 0,
-      "world_y": 0,
-      "world_z": 0,
-      "poi_type_name": "gg_import_loot_armour_legs",
-      "poi_type_id": "_gg_db-45955",
-      "is_fast_travel": false,
-      "is_discoverable": true,
-      "source": "gamerguides",
-      "gg_marker_id": 204619,
-      "gg_icon": "/images/map-marker-icon/15/252683/legsplate06_m02_c3_icon-317ba765.png.png"
     },
     {
       "name": "Aesop",
@@ -20390,57 +20254,6 @@ window.MARKER_DATA_KUTTENBERG = {
       "gg_icon": "/images/map-marker-icon/15/253984/key_unique_icon-8867addb.png.png"
     },
     {
-      "name": "Gunsmith's kit",
-      "category": "loot_utility",
-      "description": "",
-      "x": 8592,
-      "y": 5862,
-      "world_x": 0,
-      "world_y": 0,
-      "world_z": 0,
-      "poi_type_name": "gg_import_loot_utility",
-      "poi_type_id": "_gg_db-45996",
-      "is_fast_travel": false,
-      "is_discoverable": true,
-      "source": "gamerguides",
-      "gg_marker_id": 204829,
-      "gg_icon": "/images/map-marker-icon/15/254054/repairkit_riflesmall_icon-3f509c19.png.png"
-    },
-    {
-      "name": "Spade",
-      "category": "loot_usable",
-      "description": "",
-      "x": 8585,
-      "y": 5819,
-      "world_x": 0,
-      "world_y": 0,
-      "world_z": 0,
-      "poi_type_name": "gg_import_loot_usable",
-      "poi_type_id": "_gg_db-45995",
-      "is_fast_travel": false,
-      "is_discoverable": true,
-      "source": "gamerguides",
-      "gg_marker_id": 204830,
-      "gg_icon": "/images/map-marker-icon/15/254014/player_shovel_icon-7bb7367f.png.png"
-    },
-    {
-      "name": "Strong Saviour Schnapps",
-      "category": "loot_potion",
-      "description": "",
-      "x": 8544,
-      "y": 5823,
-      "world_x": 0,
-      "world_y": 0,
-      "world_z": 0,
-      "poi_type_name": "gg_import_loot_potion",
-      "poi_type_id": "_gg_db-45968",
-      "is_fast_travel": false,
-      "is_discoverable": true,
-      "source": "gamerguides",
-      "gg_marker_id": 204834,
-      "gg_icon": "/images/map-marker-icon/15/252962/potion_saviourschnapps_icon-4ae3eaa1.png.png"
-    },
-    {
       "name": "About Saint Dorothy",
       "category": "loot_lore_book",
       "description": "",
@@ -20456,23 +20269,6 @@ window.MARKER_DATA_KUTTENBERG = {
       "source": "gamerguides",
       "gg_marker_id": 204835,
       "gg_icon": "/images/map-marker-icon/15/253118/lorebook_adorned_03_icon-72297bd7.png.png"
-    },
-    {
-      "name": "Weak Buck's blood",
-      "category": "loot_potion",
-      "description": "",
-      "x": 8514,
-      "y": 5815,
-      "world_x": 0,
-      "world_y": 0,
-      "world_z": 0,
-      "poi_type_name": "gg_import_loot_potion",
-      "poi_type_id": "_gg_db-45969",
-      "is_fast_travel": false,
-      "is_discoverable": true,
-      "source": "gamerguides",
-      "gg_marker_id": 204836,
-      "gg_icon": "/images/map-marker-icon/15/252982/potion_stamina_icon-db5c4bad.png.png"
     },
     {
       "name": "Evil Morals in Bohemia",
@@ -20492,40 +20288,6 @@ window.MARKER_DATA_KUTTENBERG = {
       "gg_icon": "/images/map-marker-icon/15/253120/lorebook_adorned_05_icon-c27109c0.png.png"
     },
     {
-      "name": "Marksman's kit",
-      "category": "loot_utility",
-      "description": "",
-      "x": 8502,
-      "y": 5819,
-      "world_x": 0,
-      "world_y": 0,
-      "world_z": 0,
-      "poi_type_name": "gg_import_loot_utility",
-      "poi_type_id": "_gg_db-45996",
-      "is_fast_travel": false,
-      "is_discoverable": true,
-      "source": "gamerguides",
-      "gg_marker_id": 204838,
-      "gg_icon": "/images/map-marker-icon/15/254062/repairkit_bowyersmall_icon-25a7dc36.png.png"
-    },
-    {
-      "name": "Tailor's kit",
-      "category": "loot_utility",
-      "description": "",
-      "x": 8500,
-      "y": 5845,
-      "world_x": 0,
-      "world_y": 0,
-      "world_z": 0,
-      "poi_type_name": "gg_import_loot_utility",
-      "poi_type_id": "_gg_db-45996",
-      "is_fast_travel": false,
-      "is_discoverable": true,
-      "source": "gamerguides",
-      "gg_marker_id": 204839,
-      "gg_icon": "/images/map-marker-icon/15/254066/repairkit_tailorssmall_icon-49f6dfbf.png.png"
-    },
-    {
       "name": "On Prague",
       "category": "loot_lore_book",
       "description": "",
@@ -20541,57 +20303,6 @@ window.MARKER_DATA_KUTTENBERG = {
       "source": "gamerguides",
       "gg_marker_id": 204840,
       "gg_icon": "/images/map-marker-icon/15/253094/lorebook_adorned_05_icon-c27109c0.png.png"
-    },
-    {
-      "name": "Aqua Vitalis",
-      "category": "loot_potion",
-      "description": "",
-      "x": 8533,
-      "y": 5848,
-      "world_x": 0,
-      "world_y": 0,
-      "world_z": 0,
-      "poi_type_name": "gg_import_loot_potion",
-      "poi_type_id": "_gg_db-45967",
-      "is_fast_travel": false,
-      "is_discoverable": true,
-      "source": "gamerguides",
-      "gg_marker_id": 204841,
-      "gg_icon": "/images/map-marker-icon/15/252945/potion_aquavitalis_icon-6cbf0b21.png.png"
-    },
-    {
-      "name": "Weak Mintha perfume",
-      "category": "loot_utility",
-      "description": "",
-      "x": 8540,
-      "y": 5850,
-      "world_x": 0,
-      "world_y": 0,
-      "world_z": 0,
-      "poi_type_name": "gg_import_loot_utility",
-      "poi_type_id": "_gg_db-45996",
-      "is_fast_travel": false,
-      "is_discoverable": true,
-      "source": "gamerguides",
-      "gg_marker_id": 204842,
-      "gg_icon": "/images/map-marker-icon/15/254064/perfume_longweak_icon-b61942a6.png.png"
-    },
-    {
-      "name": "Weak Saviour Schnapps",
-      "category": "loot_potion",
-      "description": "",
-      "x": 8504,
-      "y": 5810,
-      "world_x": 0,
-      "world_y": 0,
-      "world_z": 0,
-      "poi_type_name": "gg_import_loot_potion",
-      "poi_type_id": "_gg_db-45969",
-      "is_fast_travel": false,
-      "is_discoverable": true,
-      "source": "gamerguides",
-      "gg_marker_id": 204844,
-      "gg_icon": "/images/map-marker-icon/15/252981/potion_saviourschnapps_icon-4ae3eaa1.png.png"
     },
     {
       "name": "On the Margraviate Wars",
@@ -21748,23 +21459,6 @@ window.MARKER_DATA_KUTTENBERG = {
       "source": "gamerguides",
       "gg_marker_id": 204976,
       "gg_icon": "/images/map-marker-icon/15/253257/skillbook_survival_icon-8db2e33e.png.png"
-    },
-    {
-      "name": "Trollbane hammer",
-      "category": "loot_heavy_weapon",
-      "description": "",
-      "x": 9162,
-      "y": 3883,
-      "world_x": 0,
-      "world_y": 0,
-      "world_z": 0,
-      "poi_type_name": "gg_import_loot_heavy_weapon",
-      "poi_type_id": "_gg_db-45975",
-      "is_fast_travel": false,
-      "is_discoverable": true,
-      "source": "gamerguides",
-      "gg_marker_id": 204977,
-      "gg_icon": "/images/map-marker-icon/15/252289/warhammer03_icon-0057f6fe.png.png"
     },
     {
       "name": "Silver nuggets",
@@ -26190,8 +25884,8 @@ window.MARKER_DATA_KUTTENBERG = {
       "name": "Post Scriptum",
       "category": "quest_side",
       "description": "",
-      "x": 8516,
-      "y": 5808,
+      "x": 8510,
+      "y": 5804,
       "world_x": 0,
       "world_y": 0,
       "world_z": 0,
@@ -26239,7 +25933,7 @@ window.MARKER_DATA_KUTTENBERG = {
     },
     {
       "name": "The Thieves' Code",
-      "category": "quest_side",
+      "category": "quest_task",
       "description": "",
       "x": 10295,
       "y": 5507,
@@ -27635,8 +27329,8 @@ window.MARKER_DATA_KUTTENBERG = {
       "name": "Boar rump",
       "category": "loot_food",
       "description": "",
-      "x": 8848,
-      "y": 3216,
+      "x": 8823,
+      "y": 3246,
       "world_x": 0,
       "world_y": 0,
       "world_z": 0,
@@ -29278,7 +28972,6 @@ window.MARKER_DATA_KUTTENBERG = {
     {
       "name": "The Night-Mare",
       "category": "quest_dlc1",
-      "_baseKey": "quest_side:9438:5849",
       "description": "",
       "x": 9438,
       "y": 5849,
@@ -29288,7 +28981,6 @@ window.MARKER_DATA_KUTTENBERG = {
     {
       "name": "Man Proposes",
       "category": "quest_dlc1",
-      "_baseKey": "quest_side:9444:5854",
       "description": "",
       "x": 9444,
       "y": 5854,
@@ -29298,7 +28990,6 @@ window.MARKER_DATA_KUTTENBERG = {
     {
       "name": "Adept",
       "category": "quest_dlc2",
-      "_baseKey": "quest_side:10189:5516",
       "description": "",
       "x": 10189,
       "y": 5516,
@@ -29308,7 +28999,6 @@ window.MARKER_DATA_KUTTENBERG = {
     {
       "name": "Magdalena’s Axe",
       "category": "quest_dlc2",
-      "_baseKey": "quest_task:10186:5537",
       "description": "",
       "x": 10186,
       "y": 5537,
@@ -29318,7 +29008,6 @@ window.MARKER_DATA_KUTTENBERG = {
     {
       "name": "The Master’s Game",
       "category": "quest_dlc2",
-      "_baseKey": "quest_side:10184:5546",
       "description": "",
       "x": 10184,
       "y": 5546,
@@ -29328,7 +29017,6 @@ window.MARKER_DATA_KUTTENBERG = {
     {
       "name": "Klaus’ Introduction",
       "category": "quest_dlc2",
-      "_baseKey": "quest_side:9581:5816",
       "description": "",
       "x": 9581,
       "y": 5816,
@@ -29338,7 +29026,6 @@ window.MARKER_DATA_KUTTENBERG = {
     {
       "name": "Martin’s dream",
       "category": "quest_dlc2",
-      "_baseKey": "quest_side:9585:5815",
       "description": "",
       "x": 9585,
       "y": 5815,
@@ -29348,7 +29035,6 @@ window.MARKER_DATA_KUTTENBERG = {
     {
       "name": "The Royal Physician",
       "category": "quest_dlc3",
-      "_baseKey": "quest_side:2279:6205",
       "description": "",
       "x": 2279,
       "y": 6205,
@@ -29718,7 +29404,6 @@ window.MARKER_DATA_KUTTENBERG = {
     {
       "name": "Forge Waffenrock",
       "category": "quest_dlc2",
-      "_baseKey": "quest_task:9817:5858",
       "description": "",
       "x": 9817,
       "y": 5858,
@@ -29728,7 +29413,6 @@ window.MARKER_DATA_KUTTENBERG = {
     {
       "name": "Sculptor Without a Future",
       "category": "quest_dlc2",
-      "_baseKey": "quest_task:10196:5537",
       "description": "",
       "x": 10196,
       "y": 5537,
@@ -29738,7 +29422,6 @@ window.MARKER_DATA_KUTTENBERG = {
     {
       "name": "Friendly Bout",
       "category": "quest_dlc2",
-      "_baseKey": "quest_task:9609:5995",
       "description": "",
       "x": 9609,
       "y": 5995,
@@ -29748,7 +29431,6 @@ window.MARKER_DATA_KUTTENBERG = {
     {
       "name": "A Pleasant Pastime",
       "category": "quest_dlc2",
-      "_baseKey": "quest_task:9394:5831",
       "description": "",
       "x": 9394,
       "y": 5831,
@@ -29758,7 +29440,6 @@ window.MARKER_DATA_KUTTENBERG = {
     {
       "name": "God Disposes",
       "category": "quest_dlc1",
-      "_baseKey": "quest_side:9437:5856",
       "description": "",
       "x": 9437,
       "y": 5856,
@@ -30362,7 +30043,6 @@ window.MARKER_DATA_KUTTENBERG = {
     {
       "name": "Old Plans",
       "category": "quest_dlc2",
-      "_baseKey": "quest_side:10190:5544",
       "description": "",
       "x": 10190,
       "y": 5544,
@@ -30372,7 +30052,6 @@ window.MARKER_DATA_KUTTENBERG = {
     {
       "name": "Stained Honour",
       "category": "quest_dlc1",
-      "_baseKey": "quest_side:9437:5842",
       "description": "",
       "x": 9437,
       "y": 5842,
@@ -30382,7 +30061,6 @@ window.MARKER_DATA_KUTTENBERG = {
     {
       "name": "Root of Evil",
       "category": "quest_dlc1",
-      "_baseKey": "quest_side:9429:5844",
       "description": "",
       "x": 9429,
       "y": 5844,
@@ -30392,10 +30070,252 @@ window.MARKER_DATA_KUTTENBERG = {
     {
       "name": "The Last Step",
       "category": "quest_dlc2",
-      "_baseKey": "quest_side:10193:5526",
       "description": "",
       "x": 10193,
       "y": 5526,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Shrine",
+      "category": "shrine",
+      "description": "",
+      "x": 9146,
+      "y": 3886,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Beer",
+      "category": "loot_food",
+      "description": "",
+      "x": 9120,
+      "y": 3576,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Saviour Schnapps",
+      "category": "loot_potion",
+      "description": "",
+      "x": 9109,
+      "y": 3562,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Painkiller brew",
+      "category": "loot_potion",
+      "description": "",
+      "x": 9237,
+      "y": 3728,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Horseman's pick",
+      "category": "loot_heavy_weapon",
+      "description": "",
+      "x": 8303,
+      "y": 2581,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Sketch - Calvaria axe",
+      "category": "loot_recipe",
+      "description": "",
+      "x": 5493,
+      "y": 2691,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Shrine",
+      "category": "shrine",
+      "description": "",
+      "x": 9675,
+      "y": 5392,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Smuggler's map",
+      "category": "loot_map",
+      "description": "",
+      "x": 9738,
+      "y": 5714,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Marathon III",
+      "category": "loot_skill_book",
+      "description": "",
+      "x": 9762,
+      "y": 5900,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Saviour Schnapps",
+      "category": "loot_potion",
+      "description": "",
+      "x": 9758,
+      "y": 5897,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Groschen",
+      "category": "loot_usable",
+      "description": "",
+      "x": 9761,
+      "y": 5908,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Unveiling",
+      "category": "quest_dlc1",
+      "description": "",
+      "x": 9432,
+      "y": 5834,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Golden chalice",
+      "category": "loot_misc",
+      "description": "",
+      "x": 7388,
+      "y": 2405,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Gemstone silver ring",
+      "category": "loot_misc",
+      "description": "",
+      "x": 7392,
+      "y": 2406,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Golden heraldic brooch",
+      "category": "loot_misc",
+      "description": "",
+      "x": 7397,
+      "y": 2404,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Silver cross with garnet",
+      "category": "loot_misc",
+      "description": "",
+      "x": 7398,
+      "y": 2409,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Groschen",
+      "category": "loot_usable",
+      "description": "",
+      "x": 7402,
+      "y": 2408,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Brocade",
+      "category": "loot_misc",
+      "description": "",
+      "x": 7394,
+      "y": 2412,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Golden crucifix",
+      "category": "loot_misc",
+      "description": "",
+      "x": 7389,
+      "y": 2413,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Weak Cockerel",
+      "category": "loot_potion",
+      "description": "",
+      "x": 7414,
+      "y": 2411,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Damsel in Distress",
+      "category": "quest_task",
+      "description": "",
+      "x": 6012,
+      "y": 3085,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Shrine",
+      "category": "shrine",
+      "description": "",
+      "x": 8295,
+      "y": 8331,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Thief's tunic",
+      "category": "loot_armour_body",
+      "description": "",
+      "x": 8721,
+      "y": 8191,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Recipe for Lead shot gunpowder",
+      "category": "loot_recipe",
+      "description": "",
+      "x": 8770,
+      "y": 8097,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Recipe for Scattershot gunpowder",
+      "category": "loot_recipe",
+      "description": "",
+      "x": 8769,
+      "y": 8086,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Groschen",
+      "category": "loot_usable",
+      "description": "",
+      "x": 8774,
+      "y": 8088,
+      "is_discoverable": true,
+      "source": "manual"
+    },
+    {
+      "name": "Tin Doppelganger badge",
+      "category": "loot_badge",
+      "description": "",
+      "x": 8693,
+      "y": 8048,
       "is_discoverable": true,
       "source": "manual"
     }
