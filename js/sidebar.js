@@ -278,6 +278,10 @@ function _setSearchExpanded(shown) {
 function onSearchInput(query) {
   const q = searchNorm(query.trim());
 
+  // Show the clear (✕) button whenever the field has any text
+  const clearBtn = document.getElementById('search-clear');
+  if (clearBtn) clearBtn.hidden = query.length === 0;
+
   // Always filter categories
   renderCategoryList(query);
 
@@ -336,10 +340,24 @@ function onSearchInput(query) {
   _setSearchExpanded(true);
 }
 
+// Clear the search field and its results (the ✕ button in the search box).
+function clearSearch() {
+  const input = document.getElementById('search-input');
+  if (input) { input.value = ''; input.focus(); }
+  const clearBtn = document.getElementById('search-clear');
+  if (clearBtn) clearBtn.hidden = true;
+  const resultsEl = document.getElementById('search-results');
+  if (resultsEl) { resultsEl.classList.remove('active'); resultsEl.innerHTML = ''; }
+  _setSearchExpanded(false);
+  renderCategoryList('');
+}
+
 function searchResultClick(x, y, markerKey) {
   // Close search results
   document.getElementById('search-results').classList.remove('active');
   document.getElementById('search-input').value = '';
+  const clearBtn = document.getElementById('search-clear');
+  if (clearBtn) clearBtn.hidden = true;
   _setSearchExpanded(false);
   renderCategoryList('');
 
