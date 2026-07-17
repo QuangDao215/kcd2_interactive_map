@@ -609,9 +609,23 @@ function addUserMarkerToMap(markerData) {
     marker.setOpacity(hideDiscovered ? 0 : 0.5);
   }
 
+  // Match POI markers: drag-to-reposition only while the Edit Markers tool is on,
+  // so a stray drag while panning can't silently move (and re-key) a marker. The
+  // tool's toggle covers markers already on the map; this covers newly added ones.
+  marker.on('add', () => {
+    if (marker.dragging) (markerEditing ? marker.dragging.enable() : marker.dragging.disable());
+  });
+
   // Update position on drag
   marker.on('dragend', function(e) {
     const pos = e.target.getLatLng();
+
+    // A custom marker's identity IS its coords (no _baseKey pin), so moving it
+    // renames it. Capture the discovered tick before the re-key so it can follow.
+    const oldKey = markerKey;
+    const set = discoveredMarkers[currentRegion];
+    const wasDiscovered = !!(set && set.has(oldKey));
+
     markerData.x = Math.round(pos.lng);
     markerData.y = Math.round(pos.lat);
     saveUserMarkersToStorage();
@@ -623,6 +637,14 @@ function addUserMarkerToMap(markerData) {
     delete markersByKey[markerKey];
     markerKey = getMarkerKey(markerData);
     markersByKey[markerKey] = marker;
+
+    // Carry the discovered record across (as saveEditedMarker does for renames) —
+    // otherwise the move silently un-discovers it and orphans the old key.
+    if (wasDiscovered && oldKey !== markerKey) {
+      set.delete(oldKey);
+      set.add(markerKey);
+      saveDiscoveredToStorage();
+    }
   });
 
   marker._userMarkerId = markerData.id;
