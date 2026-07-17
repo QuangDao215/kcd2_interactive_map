@@ -248,7 +248,11 @@ py = 0.0334*x + -0.9963*y + 9800.12
 - Right-click to add, custom icon dropdown with real game icons + search filter
 - Edit button in popup (inline form with same icon dropdown)
 - Delete with confirmation
-- Drag to reposition
+- **Drag to reposition — only while the Edit Markers tool is on** (same guard as POI
+  markers). They used to be draggable always, which let a stray drag while panning
+  silently move a marker; since a custom marker's key **is** `category:x:y`, that also
+  silently dropped its discovered tick. `dragend` now migrates the discovered record
+  to the new key (as `saveEditedMarker` already did for renames).
 - flyToMarker from My Markers sidebar list (with real icons)
 
 ### Import/Export
